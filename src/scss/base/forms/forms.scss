@@ -1,19 +1,97 @@
 //<FORM>
 // Снипет (HTML):
 .form {
-	&__row {
-	}
-	&__column {
-	}
+	&__row {}
+
+	&__column {}
+
 	&__line {
+		position: relative;
+
+		&._form-focus {
+			.form__label {
+				top: -20px;
+				left: 0;
+				font-size: 12px;
+				line-height: 22px;
+			}
+		}
 	}
+
+	&__label {
+		transition: all 0.3s ease 0s;
+		position: absolute;
+		top: 13px;
+		left: 16px;
+		color: rgba(0, 0, 0, 0.604535);
+		font-size: 18px;
+		line-height: 22px;
+		pointer-events: none;
+
+		.has-error & {
+			top: 35px;
+		}
+	}
+
 	&__input {
+		background: #FFFFFF;
+		border: 1px solid rgba(0, 0, 0, 0.230742);
+		box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+		border-radius: 5px;
+		height: 48px;
+		padding: rem(16) rem(32) rem(16) rem(16);
+		width: 100%;
+
+		.has-error & {
+			border: 2px solid #CB2424;
+		}
+
+		&.parsley-error {
+			border: 2px solid #CB2424;
+		}
 	}
-	&__button {
+
+	&__clear-svg {
+		cursor: pointer;
+		position: absolute;
+		width: 32px;
+		height: 32px;
+		padding: rem(8);
+		top: 8px;
+		right: 4px;
+		display: none;
+		transition: all 0.3s ease 0s;
+		border-radius: 4px;
+
+		&:hover {
+			background: rgba(61, 74, 98, 0.07);
+
+			use {
+				fill: #AA2040;
+			}
+		}
+
+		&._active {
+			display: block;
+		}
+
+		use {
+			fill: #8A8A8A;
+		}
 	}
-	&__error {
-	}
+
+
+	&__button {}
+
+	&__error {}
 }
+
+.parsley-errors-list {
+	padding: rem(10) 0;
+	color: #CB2424;
+	margin-bottom: rem(-20);
+}
+
 //</FORM>
 
 // <BUTTONS>
@@ -22,7 +100,7 @@
 
 // <INPUTS>
 // Снипет (HTML): inp
-// @import "input";
+@import "input";
 
 // <CHECK>
 // Снипет (HTML): chk

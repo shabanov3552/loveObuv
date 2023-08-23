@@ -6,6 +6,35 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+	<style>
+		.preloader {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100vw;
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			z-index: 100000;
+			background-color: #fff;
+			transition: all 0.3s ease 0s;
+
+		}
+
+		.preloader .hide {
+			opacity: 0;
+			visibility: hidden;
+		}
+
+		.loaded body .preloader {
+			opacity: 0;
+			visibility: hidden;
+		}
+	</style>
 	<link rel="stylesheet" href="css/style.min.css">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
@@ -13,8 +42,241 @@
 </head>
 
 <body>
-	<div class="wrapper">
+	<div class="preloader" style="opacity: 0; visibility: hidden;"><img src="img/loader.gif" alt=""></div>
+	<script>
+		if (sessionStorage.getItem('preloader') === 'hide') {
+			document.querySelector('.preloader').style.cssText = 'opacity: 0; visibility: hidden;';
+		} else {
+			document.querySelector('.preloader').style.cssText = '';
+			sessionStorage.setItem('preloader', 'hide');
+		}
+	</script>
+	<div class="wrapper @@modClass">
 		<header class="header">
 			<div class="header__container">
+				<div class="header__top">
+					<div class="header__contacts">
+						<button type="button" class="header__link" data-popup="#addresses"><img src="img/icons/map-marker-black.svg" alt="">Адреса магазинов</button>
+						<a href="tel:8800123567" class="header__link">8 800 123 45 67</a>
+					</div>
+					<a href="" class="header__logo"><img src="img/logo.svg" alt=""></a>
+					<div class="header__search">
+						<button type="button" class="header__link header__link_search" data-popup="#search"><span>Поиск по товарам</span><img src="img/icons/search-black.svg" alt=""></button>
+					</div>
+					<button type="button" class="header__burger icon-menu"><span></span></button>
+				</div>
+				<div class="header__sidebar sidebar-header">
+					<a href="tel:8800123567" class="sidebar-header__link sidebar-header__link_mobile">
+						<img src="img/icons/phone.svg" alt="">
+					</a>
+					<a href="" class="sidebar-header__link">
+						<span class="sidebar-header__badge">2</span>
+						<img src="img/icons/basket.svg" alt="">
+					</a>
+					<a href="" class="sidebar-header__link">
+						<img src="img/icons/cabinet.svg" alt="">
+					</a>
+					<a href="" class="sidebar-header__link">
+						<span class="sidebar-header__badge">1</span>
+						<img src="img/icons/favorites.svg" alt="">
+					</a>
+				</div>
+				<div class="header__catalog catalog-header">
+					<button type="button" class="catalog-header__btn btn-transparent">Каталог</button>
+					<div class="catalog-header__menu">
+						<div class="catalog-header__mob-header">
+							<div class="catalog-header__title">Каталог</div>
+							<button type="button" class="catalog-header__back">
+								<svg>
+									<use xlink:href="img/icons/icons.svg#btn-menu-back"></use>
+								</svg>
+							</button>
+							<button type="button" class="catalog-header__close">
+								<svg>
+									<use xlink:href="img/icons/icons.svg#close-modal"></use>
+								</svg>
+							</button>
+						</div>
+						<div class="menu-catalog">
+							<div class="menu-catalog__lvl-1st">
+								<a href="" class="menu-catalog__link">Новинки</a>
+								<button type="button" class="menu-catalog__link" data-parent="222">Мужчинам</button>
+								<button type="button" class="menu-catalog__link" data-parent="333">Женщинам</button>
+								<button type="button" class="menu-catalog__link" data-parent="444">Уход за обувью</button>
+								<a href="" class="menu-catalog__link">SALE</a>
+							</div>
+							<div class="menu-catalog__lvl-2nd catalog-2nd-lvl">
+								<div class="catalog-2nd-lvl__wrapper">
+									<div data-submenu="222" class="catalog-2nd-lvl__block catalog-2nd-lvl__block_mens" hidden>
+										<div class="catalog-2nd-lvl__row">
+											<div class="catalog-2nd-lvl__banner">
+												<div class="menu-banner">
+													<div class="menu-banner__image-ibg">
+														<img src="img/header/banners/2.png" alt="">
+													</div>
+													<a class="menu-banner__banner-link" href="">
+														<span class="menu-banner__title">Скидка 30%</span>
+														<span class="menu-banner__text">на второй товар в чеке</span>
+													</a>
+												</div>
+											</div>
+
+											<div class="catalog-2nd-lvl__category catalog-2nd-lvl__category_shoes">
+												<a href="" class="catalog-2nd-lvl__link-title">Обувь</a>
+												<div class="catalog-2nd-lvl__menu">
+													<a href="" class="catalog-2nd-lvl__link">Ботинки</a>
+													<a href="" class="catalog-2nd-lvl__link">Валенки</a>
+													<a href="" class="catalog-2nd-lvl__link">Кеды</a>
+													<a href="" class="catalog-2nd-lvl__link">Кроссовки</a>
+													<a href="" class="catalog-2nd-lvl__link">Мокасины</a>
+													<a href="" class="catalog-2nd-lvl__link">Обувь пляжная</a>
+													<a href="" class="catalog-2nd-lvl__link">Обувь домашняя</a>
+													<a href="" class="catalog-2nd-lvl__link">Пантолеты</a>
+													<a href="" class="catalog-2nd-lvl__link">Полуботинки</a>
+													<a href="" class="catalog-2nd-lvl__link">Сандалеты</a>
+													<a href="" class="catalog-2nd-lvl__link">Сандалии</a>
+													<a href="" class="catalog-2nd-lvl__link">Слипоны</a>
+													<a href="" class="catalog-2nd-lvl__link">Туфли</a>
+													<a href="" class="catalog-2nd-lvl__link">Шлепанцы</a>
+												</div>
+											</div>
+
+											<div class="catalog-2nd-lvl__col">
+												<div class="catalog-2nd-lvl__category catalog-2nd-lvl__category_bags">
+													<a href="" class="catalog-2nd-lvl__link-title">Сумки</a>
+												</div>
+												<div class="catalog-2nd-lvl__category catalog-2nd-lvl__category_accessories">
+													<a href="" class="catalog-2nd-lvl__link-title">Аксессуары</a>
+													<div class="catalog-2nd-lvl__menu">
+														<a href="" class="catalog-2nd-lvl__link">Зонты</a>
+														<a href="" class="catalog-2nd-lvl__link">Носки</a>
+														<a href="" class="catalog-2nd-lvl__link">Перчатки</a>
+													</div>
+												</div>
+												<div class="catalog-2nd-lvl__category catalog-2nd-lvl__category_new">
+													<a href="" class="catalog-2nd-lvl__link-title">Новинки</a>
+												</div>
+												<a href="" class="catalog-2nd-lvl__link catalog-2nd-lvl__link_sale">SALE <img src="img/icons/sale.svg" alt=""></a>
+											</div>
+										</div>
+									</div>
+									<div data-submenu="333" class="catalog-2nd-lvl__block catalog-2nd-lvl__block_womens" hidden>
+										<div class="catalog-2nd-lvl__row">
+											<div class="catalog-2nd-lvl__banner">
+												<div class="menu-banner">
+													<div class="menu-banner__image-ibg">
+														<img src="img/header/banners/1.png" alt="">
+													</div>
+													<a class="menu-banner__banner-link" href="">
+														<span class="menu-banner__title">Скидка 30%</span>
+														<span class="menu-banner__text">на второй товар в чеке</span>
+													</a>
+												</div>
+											</div>
+
+											<div class="catalog-2nd-lvl__category catalog-2nd-lvl__category_shoes">
+												<a href="" class="catalog-2nd-lvl__link-title">Обувь</a>
+												<div class="catalog-2nd-lvl__menu">
+													<a href="" class="catalog-2nd-lvl__link">Балетки</a>
+													<a href="" class="catalog-2nd-lvl__link">Босоножки</a>
+													<a href="" class="catalog-2nd-lvl__link">Ботильоны</a>
+													<a href="" class="catalog-2nd-lvl__link">Ботинки</a>
+													<a href="" class="catalog-2nd-lvl__link">Валенки</a>
+													<a href="" class="catalog-2nd-lvl__link">Дутики</a>
+													<a href="" class="catalog-2nd-lvl__link">Кеды</a>
+													<a href="" class="catalog-2nd-lvl__link">Кроссовки</a>
+													<a href="" class="catalog-2nd-lvl__link">Лоферы</a>
+													<a href="" class="catalog-2nd-lvl__link">Мокасины</a>
+													<a href="" class="catalog-2nd-lvl__link">Обувь пляжная</a>
+													<a href="" class="catalog-2nd-lvl__link">Обувь домашняя</a>
+													<a href="" class="catalog-2nd-lvl__link">Оксфорды</a>
+													<a href="" class="catalog-2nd-lvl__link">Полуботинки</a>
+													<a href="" class="catalog-2nd-lvl__link">Полусапоги</a>
+													<a href="" class="catalog-2nd-lvl__link">Сабо</a>
+													<a href="" class="catalog-2nd-lvl__link">Сандалии</a>
+													<a href="" class="catalog-2nd-lvl__link">Сандалеты</a>
+													<a href="" class="catalog-2nd-lvl__link">Сапоги</a>
+													<a href="" class="catalog-2nd-lvl__link">Сланцы</a>
+													<a href="" class="catalog-2nd-lvl__link">Спипоны</a>
+													<a href="" class="catalog-2nd-lvl__link">Туфли</a>
+													<a href="" class="catalog-2nd-lvl__link">Угги</a>
+													<a href="" class="catalog-2nd-lvl__link">Шлепанцы</a>
+													<a href="" class="catalog-2nd-lvl__link">Эспадрильи</a>
+												</div>
+											</div>
+
+											<div class="catalog-2nd-lvl__col">
+												<div class="catalog-2nd-lvl__category catalog-2nd-lvl__category_bags">
+													<a href="" class="catalog-2nd-lvl__link-title">Сумки</a>
+												</div>
+												<div class="catalog-2nd-lvl__category catalog-2nd-lvl__category_accessories">
+													<a href="" class="catalog-2nd-lvl__link-title">Аксессуары</a>
+													<div class="catalog-2nd-lvl__menu">
+														<a href="" class="catalog-2nd-lvl__link">Зонты</a>
+														<a href="" class="catalog-2nd-lvl__link">Ремни</a>
+														<a href="" class="catalog-2nd-lvl__link">Перчатки и рукавицы</a>
+														<a href="" class="catalog-2nd-lvl__link">Чулочно-новочные изделия</a>
+													</div>
+												</div>
+												<div class="catalog-2nd-lvl__category catalog-2nd-lvl__category_new">
+													<a href="" class="catalog-2nd-lvl__link-title">Новинки</a>
+												</div>
+												<a href="" class="catalog-2nd-lvl__link catalog-2nd-lvl__link_sale">SALE <img src="img/icons/sale.svg" alt=""></a>
+											</div>
+										</div>
+									</div>
+									<div data-submenu="444" class="catalog-2nd-lvl__block catalog-2nd-lvl__block_care" hidden>
+										<div class="catalog-2nd-lvl__row">
+											<div class="catalog-2nd-lvl__banner">
+												<div class="menu-banner">
+													<div class="menu-banner__image-ibg">
+														<img src="img/header/banners/3.png" alt="">
+													</div>
+													<a class="menu-banner__banner-link" href="">
+														<span class="menu-banner__title">Скидка 30%</span>
+														<span class="menu-banner__text">на второй товар в чеке</span>
+													</a>
+												</div>
+											</div>
+
+											<div class="catalog-2nd-lvl__col">
+												<div class="catalog-2nd-lvl__category">
+													<a href="" class="catalog-2nd-lvl__link-title">Средства для ухода</a>
+													<div class="catalog-2nd-lvl__menu">
+														<a href="" class="catalog-2nd-lvl__link">Кремы</a>
+														<a href="" class="catalog-2nd-lvl__link">Аэрозоли</a>
+														<a href="" class="catalog-2nd-lvl__link">Дезодоранты</a>
+														<a href="" class="catalog-2nd-lvl__link">Очистители</a>
+														<a href="" class="catalog-2nd-lvl__link">Восстановители</a>
+														<a href="" class="catalog-2nd-lvl__link">Средства защиты</a>
+														<a href="" class="catalog-2nd-lvl__link">Растяжители</a>
+													</div>
+												</div>
+												<div class="catalog-2nd-lvl__category">
+													<a href="" class="catalog-2nd-lvl__link-title">Стельки и шнурки</a>
+													<div class="catalog-2nd-lvl__menu">
+														<a href="" class="catalog-2nd-lvl__link">Стельки</a>
+														<a href="" class="catalog-2nd-lvl__link">Полустельки</a>
+														<a href="" class="catalog-2nd-lvl__link">Подпяточники</a>
+														<a href="" class="catalog-2nd-lvl__link">Шнурки</a>
+													</div>
+												</div>
+												<div class="catalog-2nd-lvl__category">
+													<a href="" class="catalog-2nd-lvl__link-title">Обувные аксессуары</a>
+													<div class="catalog-2nd-lvl__menu">
+														<a href="" class="catalog-2nd-lvl__link">Щетки</a>
+														<a href="" class="catalog-2nd-lvl__link">Губки</a>
+														<a href="" class="catalog-2nd-lvl__link">Салфетки</a>
+														<a href="" class="catalog-2nd-lvl__link">Ложки для обуви</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</header>

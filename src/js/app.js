@@ -28,9 +28,9 @@ flsFunctions.isWebp();
 /* Добавление класса touch для HTML если браузер мобильный */
 // flsFunctions.addTouchClass();
 /* Добавление loaded для HTML после полной загрузки страницы */
-// flsFunctions.addLoadedClass();
+flsFunctions.addLoadedClass();
 /* Модуль для работы с меню (Бургер) */
-// flsFunctions.menuInit();
+flsFunctions.menuInit();
 /* Учет плавающей панели на мобильных устройствах при 100vh */
 // flsFunctions.fullVHfix();
 
@@ -89,12 +89,12 @@ import * as flsForms from "./files/forms/forms.js";
 
 /* Работа с полями формы */
 /* Документация: https://template.fls.guru/template-docs/rabota-s-formami.html */
-/*
+
 flsForms.formFieldsInit({
 	viewPass: false,
 	autoHeight: false
 });
-*/
+
 
 /* Oтправка формы */
 /* Документация: https://template.fls.guru/template-docs/rabota-s-formami.html */
@@ -148,7 +148,7 @@ flsForms.formFieldsInit({
 Документация плагина: https://swiperjs.com/
 Сниппет(HTML): swiper
 */
-//import "./files/sliders.js";
+import "./files/sliders.js";
 
 // ========================================================================================================================================================================================================================================================
 // Модули работы с прокруткой страницы ========================================================================================================================================================================================================================================================
@@ -166,7 +166,7 @@ flsForms.formFieldsInit({
 // Документация по работе в шаблоне: https://template.fls.guru/template-docs/modul-lenivaya-podgruzka-lazy-loading.html
 // Документация плагина: https://github.com/verlok/vanilla-lazyload
 // Сниппет(HTML):
-// import './files/scroll/lazyload.js';
+import './files/scroll/lazyload.js';
 
 // Наблюдатель за объектами c атрибутом data-watch
 // Документация: https://template.fls.guru/template-docs/modul-nabljudatel-za-poyavleniem-elementa-pri-skrolle.html

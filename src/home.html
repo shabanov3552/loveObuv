@@ -1,6 +1,101 @@
 @@include('html/_header.htm',{
-"title":"Главная"
+"title":"Главная",
+"modClass":"white"
 })
 <main class="page">
+   <div class="main-page-baner">
+      <div class="main-page-baner__container">
+         <!-- Оболочка слайдера -->
+         <div class="main-page-baner__slider swiper">
+            <!-- Двигающееся часть слайдера -->
+            <div class="main-page-baner__wrapper swiper-wrapper">
+               <!-- Слайд -->
+               <div class="main-page-baner__slide swiper-slide">
+                  <a href="" class="main-page-baner__link">
+                     <div class="main-page-baner__image-ibg main-page-baner__image-ibg_contain"><img src="@img/main-page/main-slider-1.png" alt=""></div>
+                  </a>
+               </div>
+               <div class="main-page-baner__slide swiper-slide">
+                  <a href="" class="main-page-baner__link">
+                     <div class="main-page-baner__image-ibg main-page-baner__image-ibg_contain"><img src="@img/main-page/main-slider-2.png" alt=""></div>
+                  </a>
+               </div>
+               <div class="main-page-baner__slide swiper-slide">
+                  <a href="" class="main-page-baner__link">
+                     <div class="main-page-baner__image-ibg main-page-baner__image-ibg_contain"><img src="@img/main-page/main-slider-1.png" alt=""></div>
+                  </a>
+               </div>
+            </div>
+         </div>
+         <button type="button" class="main-page-baner__swiper-button-prev">
+            <svg class="main-page-baner__svg">
+               <use xlink:href="img/icons/icons.svg#arrow-main-slider-left"></use>
+            </svg>
+         </button>
+         <button type="button" class="main-page-baner__swiper-button-next">
+            <svg class="main-page-baner__svg">
+               <use xlink:href="img/icons/icons.svg#arrow-main-slider-right"></use>
+            </svg>
+         </button>
+      </div>
+   </div>
+
+   <div class="main-page-links">
+      <div class="main-page-links__container">
+         <div class="main-page-links__item main-page-links__item_left">
+            <a href="" class="main-page-links__link">
+               <span class="main-page-links__xs-title">Коллекция</span>
+               <span class="main-page-links__s-title">для женщин</span>
+               <span class="main-page-links__title">ЛЕТО</span>
+            </a>
+            <div class="main-page-links__image-ibg"><img src="@img/main-page-links/1.png" alt=""></div>
+         </div>
+         <div class="main-page-links__item main-page-links__item_right">
+            <div class="main-page-links__image-ibg"><img src="@img/main-page-links/2.png" alt=""></div>
+            <a href="" class="main-page-links__link">
+               <span class="main-page-links__xs-title">Коллекция</span>
+               <span class="main-page-links__s-title">для мужчин</span>
+               <span class="main-page-links__title">ДЕМИ-СЕЗОН</span>
+            </a>
+         </div>
+      </div>
+   </div>
+
+   <div class="main-page-slider">
+      @@include('html/_product_slider.htm',{
+      "title":"Новинки"
+      })
+   </div>
+
+   <div class="page-sale">
+      <div class="page-sale__container">
+         <a href="" class="page-sale__link">
+            <img src="@img/main-page/sale-text.svg" alt="">
+            <img src="@img/icons/page-sale-link.svg" alt="">
+         </a>
+      </div>
+   </div>
+
+   <div class="main-page-slider">
+      @@include('html/_product_slider.htm',{
+      "title":"Хиты продаж"
+      })
+   </div>
+
+   <div class="main-page-bottom">
+      <div class="main-page-bottom__container">
+         <form action="" method="" class="form">
+            <input type="text" name="form[email]" data-error="Error" placeholder="E-mail" class="form__input">
+            <div class="form__line">
+               <label for="userMailForSendings" class="form__label">E-mail</label>
+               <input id="userMailForSendings" type="email" name="email" class="form__input">
+               <svg class="form__clear-svg">
+                  <use xlink:href="img/icons/icons.svg#svg-input_close"></use>
+               </svg>
+            </div>
+            <button type="submit" class="form__button btn-red">Подписаться на рассылку</button>
+         </form>
+      </div>
+   </div>
 </main>
 @@include('html/_footer.htm',{})

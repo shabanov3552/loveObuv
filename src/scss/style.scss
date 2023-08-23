@@ -18,8 +18,8 @@
 // ============================================================================================================================================================================================================================================================================================================================================================================================
 
 // Шрифт по умолчанию ==============================================================================================================================================================================================================================================================================
-$fontFamily: "";
-$fontSize: rem(14); // где 14(px) - размер шрифта по умолчанию из макета
+$fontFamily: "Montserrat";
+$fontSize: rem(16); // где 14(px) - размер шрифта по умолчанию из макета
 
 // Основные цвета
 $mainColor: #000; // Цвет шрифта по умолчанию
@@ -31,10 +31,10 @@ $minWidth: 320;
 // Ширина полотна (макета)
 $maxWidth: 1920;
 // Ширина ограничивающего контейнера (0 = нет ограничения)
-$maxWidthContainer: 1170;
+$maxWidthContainer: 1600;
 // Общий отступ у контейнера
 // (30 = по 15px слева и справа, 0 = нет отступа)
-$containerPadding: 30;
+$containerPadding: 20;
 
 // Ширина срабатывания первого брейкпоинта
 $containerWidth: $maxWidthContainer + $containerPadding;
@@ -108,20 +108,19 @@ body {
 
 	// Отзывчивая
 	[class*="__container"] {
-		@if ($maxWidthContainer>0) {
-			max-width: rem($containerWidth);
-			margin: 0 auto;
+		@include adaptiveValue("padding-left", 160, 107, 0, 1920, 1440);
+		@include adaptiveValue("padding-right", 160, 107, 0, 1920, 1440);
+
+		@media (max-width:$laptop) {
+			@include adaptiveValue("padding-left", 107, 83, 0, 1280, 1000);
+			@include adaptiveValue("padding-right", 107, 83, 0, 1280, 1000);
 		}
 
-		@if ($containerPadding>0) {
-			@if ($maxWidthContainer>0) {
-				padding: 0 rem(math.div($containerPadding, 2));
-			}
-
-			@else {
-				@include adaptiveValue("padding-left", math.div($containerPadding, 2), 15);
-				@include adaptiveValue("padding-right", math.div($containerPadding, 2), 15);
-			}
+		@media (max-width:$tablet) {
+			@include adaptiveValue("padding-left", 83, 31, 2, 1000, 680);
+			@include adaptiveValue("padding-right", 83, 31, 2, 1000, 680);
+			@include adaptiveValue("padding-left", 31, 10, 3, 680, 480);
+			@include adaptiveValue("padding-right", 31, 10, 3, 680, 480);
 		}
 	}
 }
