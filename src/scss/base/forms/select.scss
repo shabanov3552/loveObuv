@@ -1,7 +1,6 @@
 // <SELECT>
 // Снипет (HTML): sel
 .select {
-	min-width: 0;
 	position: relative;
 
 	// .select__body
@@ -22,10 +21,9 @@
 
 	// .select__value
 	&__value {
-		display: flex;
-		min-width: 0;
-		align-items: center;
-		height: rem(30);
+		display: grid;
+		grid-template-columns: 12px 1fr;
+		height: 100%;
 		padding: 0 rem(15);
 		gap: rem(10);
 
@@ -55,20 +53,9 @@
 		}
 	}
 
-	// .select__content
-	&__content {
-		flex: 1 1 auto;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-	}
-
 	// .select__text
 	&__text {
 		flex: 1 1 auto;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
 	}
 
 	&__input {
@@ -81,7 +68,7 @@
 	&__options {
 		color: #000;
 		position: absolute;
-		top: calc(100% - rem(1));
+		top: 29px;
 		border-radius: 0 0 4px 4px;
 		min-width: 100%;
 		left: 0;
@@ -155,4 +142,43 @@
 // Тег
 ._select-tag {
 	cursor: pointer;
+}
+
+
+.select_sort {
+	&._select-open {
+		.select__value:before {
+			transform: rotate(-180deg);
+		}
+	}
+
+	.select__title {
+		border: none;
+	}
+
+	.select__value {
+		&::before {
+			content: '';
+			align-self: stretch;
+			width: 12px;
+			height: 100%;
+			transition: all 0.3s ease 0s;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background: url(@img/icons/arrow-select.svg) center center / 12px 7px no-repeat;
+
+		}
+
+		&::after {
+			display: none;
+		}
+	}
+
+	.select__options {
+		border-radius: 4px;
+		border: 1px solid #d9d9d9;
+		top: 100%;
+	}
+
 }

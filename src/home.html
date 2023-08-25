@@ -84,13 +84,12 @@
 
    <div class="main-page-bottom">
       <div class="main-page-bottom__container">
-         <form action="" method="" class="form">
-            <input type="text" name="form[email]" data-error="Error" placeholder="E-mail" class="form__input">
+         <form action="" method="" class="form" data-parsley-validate data-parsley-trigger="change" required>
             <div class="form__line">
                <label for="userMailForSendings" class="form__label">E-mail</label>
                <input id="userMailForSendings" type="email" name="email" class="form__input">
                <svg class="form__clear-svg">
-                  <use xlink:href="img/icons/icons.svg#svg-input_close"></use>
+                  <use xlink:href="img/icons/icons.svg#input_clear"></use>
                </svg>
             </div>
             <button type="submit" class="form__button btn-red">Подписаться на рассылку</button>

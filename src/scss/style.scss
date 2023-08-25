@@ -169,6 +169,9 @@ body {
 // Подключение стилей отдельных блоков
 @import "header";
 @import "footer";
+@import "breadcrumbs";
+@import "base/pagging";
 
 // Подключение стилей отдельных страниц
 @import "home";
+@import "catalog";

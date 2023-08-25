@@ -1,10 +1,285 @@
-<div id="popup" aria-hidden="true" class="popup">
+<!-- <div id="popup" aria-hidden="true" class="popup popup_center">
 	<div class="popup__wrapper">
 		<div class="popup__content">
 			<button data-close type="button" class="popup__close">Закрыть</button>
 			<div class="popup__text">
-				Text
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum fugit quaerat itaque omnis vero tempora cupiditate consequatur. Eum soluta architecto unde quibusdam quasi quaerat assumenda! Maiores modi vel suscipit accusamus doloremque impedit, et labore cupiditate excepturi, porro amet reiciendis sed molestiae illum inventore. Deleniti blanditiis molestiae sunt voluptates placeat facilis reprehenderit natus quisquam nulla modi provident rem, totam aliquid officia distinctio quibusdam pariatur. Mollitia, ea itaque laborum iste eaque sit accusamus perspiciatis debitis provident deleniti quasi quis totam vel inventore asperiores fugiat voluptate quo voluptatum eos hic, cum, nisi quidem nemo et. Ea, alias! Nam eos porro illo temporibus soluta!
+			</div>
+		</div>
+	</div>
+</div> -->
+
+<div id="basket" aria-hidden="true" class="popup"> <!-- Добавить класс basket-empty когда корзина пустая -->
+	<div class="popup__wrapper">
+		<div class="popup__content">
+			<div class="popup__header">
+				<div class="popup__title">Корзина</div>
+				<button data-close type="button" class="popup__close">
+					<svg class="">
+						<use xlink:href="img/icons/icons.svg#close-modal"></use>
+					</svg>
+				</button>
+			</div>
+			<div class="basket">
+
+				<!-- Вставить когда корзина пустая -->
+
+				<!-- <div class="basket__center">
+					<div class="basket__empty-logo">
+						<svg class="basket__empty-icon">
+							<use xlink:href="img/icons/icons.svg#basket_empty"></use>
+						</svg>
+					</div>
+					<div class="basket__empty-text">В корзине <br>пока ничего нет</div>
+					<div class="basket__sub-text">
+						<span>Помощь в покупке</span>
+						<a href="tel:88001234567">8 800 123 45 67</a>
+					</div>
+				</div> -->
+
+				<!-- Вставить когда корзина пустая -->
+
+
+				<!-- Убрать когда корзина пустая -->
+
+				<div class="basket__cards">
+					<div class="basket-card">
+						<div class="basket-card__image">
+							<img loading="lazy" src="img/products/basket-1.png" alt="">
+						</div>
+						<div class="basket-card__center">
+							<a href="" class="basket-card__name">Туфли женские Cavaletto</a>
+							<div class="basket-card__bottom">
+								<div class="basket-card__prices">
+									<span class="basket-card__price">4 390 ₽</span>
+									<s class="basket-card__price-old">5 990 ₽</s>
+									<span class="basket-card__discont">-30%</span>
+								</div>
+								<div data-quantity class="quantity">
+									<button data-quantity-minus type="button" class="quantity__button quantity__button_minus"></button>
+									<div class="quantity__input">
+										<input data-quantity-value autocomplete="off" type="text" name="form[]" value="1">
+									</div>
+									<button data-quantity-plus type="button" class="quantity__button quantity__button_plus"></button>
+								</div>
+								<div class="basket-card__price-total">= 4 390 ₽</div>
+							</div>
+						</div>
+						<div class="basket-card__buttons">
+							<button type="button" class="basket-card__del">
+								<img src="@img/icons/icon_del.svg" alt="">
+							</button>
+							<button type="button" class="basket-card__favor">
+								<img src="@img/icons/add_favorites.svg" alt="">
+							</button>
+						</div>
+					</div>
+					<div class="basket-card">
+						<div class="basket-card__image">
+							<img loading="lazy" src="img/products/basket-3.png" alt="">
+						</div>
+						<div class="basket-card__center">
+							<a href="" class="basket-card__name">Туфли женские Cavaletto</a>
+							<div class="basket-card__bottom">
+								<div class="basket-card__prices">
+									<span class="basket-card__price">19780 ₽</span>
+									<s class="basket-card__price-old">2 800 ₽</s>
+								</div>
+								<div data-quantity class="quantity">
+									<button data-quantity-minus type="button" class="quantity__button quantity__button_minus"></button>
+									<div class="quantity__input">
+										<input data-quantity-value autocomplete="off" type="text" name="form[]" value="1">
+									</div>
+									<button data-quantity-plus type="button" class="quantity__button quantity__button_plus"></button>
+								</div>
+								<div class="basket-card__price-total">= 2980000 ₽</div>
+							</div>
+						</div>
+						<div class="basket-card__buttons">
+							<button type="button" class="basket-card__del">
+								<img src="@img/icons/icon_del.svg" alt="">
+							</button>
+							<button type="button" class="basket-card__favor">
+								<img src="@img/icons/add_favorites.svg" alt="">
+							</button>
+						</div>
+					</div>
+					<div class="basket-card">
+						<div class="basket-card__image">
+							<img loading="lazy" src="img/products/basket-2.png" alt="">
+						</div>
+						<div class="basket-card__center">
+							<a href="" class="basket-card__name">Туфли женские Madella</a>
+							<div class="basket-card__bottom">
+								<div class="basket-card__prices">
+									<span class="basket-card__price">5 590 ₽</span>
+								</div>
+								<div data-quantity class="quantity">
+									<button data-quantity-minus type="button" class="quantity__button quantity__button_minus"></button>
+									<div class="quantity__input">
+										<input data-quantity-value autocomplete="off" type="text" name="form[]" value="1">
+									</div>
+									<button data-quantity-plus type="button" class="quantity__button quantity__button_plus"></button>
+								</div>
+								<div class="basket-card__price-total">= 2980000 ₽</div>
+							</div>
+						</div>
+						<div class="basket-card__buttons">
+							<button type="button" class="basket-card__del">
+								<img src="@img/icons/icon_del.svg" alt="">
+							</button>
+							<button type="button" class="basket-card__favor">
+								<img src="@img/icons/add_favorites.svg" alt="">
+							</button>
+						</div>
+					</div>
+					<div class="basket-card">
+						<div class="basket-card__image">
+							<img loading="lazy" src="img/products/basket-1.png" alt="">
+						</div>
+						<div class="basket-card__center">
+							<a href="" class="basket-card__name">Туфли женские Cavaletto</a>
+							<div class="basket-card__bottom">
+								<div class="basket-card__prices">
+									<span class="basket-card__price">4 390 ₽</span>
+									<s class="basket-card__price-old">5 990 ₽</s>
+									<span class="basket-card__discont">-30%</span>
+								</div>
+								<div data-quantity class="quantity">
+									<button data-quantity-minus type="button" class="quantity__button quantity__button_minus"></button>
+									<div class="quantity__input">
+										<input data-quantity-value autocomplete="off" type="text" name="form[]" value="1">
+									</div>
+									<button data-quantity-plus type="button" class="quantity__button quantity__button_plus"></button>
+								</div>
+								<div class="basket-card__price-total">= 4 390 ₽</div>
+							</div>
+						</div>
+						<div class="basket-card__buttons">
+							<button type="button" class="basket-card__del">
+								<img src="@img/icons/icon_del.svg" alt="">
+							</button>
+							<button type="button" class="basket-card__favor">
+								<img src="@img/icons/add_favorites.svg" alt="">
+							</button>
+						</div>
+					</div>
+					<div class="basket-card">
+						<div class="basket-card__image">
+							<img loading="lazy" src="img/products/basket-3.png" alt="">
+						</div>
+						<div class="basket-card__center">
+							<a href="" class="basket-card__name">Туфли женские Cavaletto</a>
+							<div class="basket-card__bottom">
+								<div class="basket-card__prices">
+									<span class="basket-card__price">19780 ₽</span>
+									<s class="basket-card__price-old">2 800 ₽</s>
+								</div>
+								<div data-quantity class="quantity">
+									<button data-quantity-minus type="button" class="quantity__button quantity__button_minus"></button>
+									<div class="quantity__input">
+										<input data-quantity-value autocomplete="off" type="text" name="form[]" value="1">
+									</div>
+									<button data-quantity-plus type="button" class="quantity__button quantity__button_plus"></button>
+								</div>
+								<div class="basket-card__price-total">= 2980000 ₽</div>
+							</div>
+						</div>
+						<div class="basket-card__buttons">
+							<button type="button" class="basket-card__del">
+								<img src="@img/icons/icon_del.svg" alt="">
+							</button>
+							<button type="button" class="basket-card__favor">
+								<img src="@img/icons/add_favorites.svg" alt="">
+							</button>
+						</div>
+					</div>
+					<div class="basket-card">
+						<div class="basket-card__image">
+							<img loading="lazy" src="img/products/basket-2.png" alt="">
+						</div>
+						<div class="basket-card__center">
+							<a href="" class="basket-card__name">Туфли женские Madella</a>
+							<div class="basket-card__bottom">
+								<div class="basket-card__prices">
+									<span class="basket-card__price">5 590 ₽</span>
+								</div>
+								<div data-quantity class="quantity">
+									<button data-quantity-minus type="button" class="quantity__button quantity__button_minus"></button>
+									<div class="quantity__input">
+										<input data-quantity-value autocomplete="off" type="text" name="form[]" value="1">
+									</div>
+									<button data-quantity-plus type="button" class="quantity__button quantity__button_plus"></button>
+								</div>
+								<div class="basket-card__price-total">= 2980000 ₽</div>
+							</div>
+						</div>
+						<div class="basket-card__buttons">
+							<button type="button" class="basket-card__del">
+								<img src="@img/icons/icon_del.svg" alt="">
+							</button>
+							<button type="button" class="basket-card__favor">
+								<img src="@img/icons/add_favorites.svg" alt="">
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="basket__info basket-price">
+					<div class="basket-price__wrapper">
+						<div class="basket-price__row">
+							<div class="basket-price__name">Стоимость:</div>
+							<div class="basket-price__cost">9 980 ₽</div>
+						</div>
+						<div class="basket-price__row">
+							<div class="basket-price__name">Скидка</div>
+							<div class="basket-price__cost">-180 ₽</div>
+						</div>
+						<div class="basket-price__row">
+							<div class="basket-price__name">Доставка</div>
+							<div class="basket-price__text">Доступные способы доставки можно выбрать при формлении заказа</div>
+						</div>
+						<div class="basket-price__row">
+							<div class="basket-price__name">Итог:</div>
+							<div class="basket-price__cost">9 800 ₽</div>
+						</div>
+						<button type="submit" class="basket-price__button btn-red">Оформить заказ</button>
+					</div>
+				</div>
+
+				<!-- Убрать когда корзина пустая -->
 			</div>
 		</div>
 	</div>
 </div>
+
+<!-- Пример пустой корзины -->
+<div id="basket" aria-hidden="true" class="popup basket-empty">
+	<div class="popup__wrapper">
+		<div class="popup__content">
+			<div class="popup__header">
+				<button data-close type="button" class="popup__close">
+					<svg class="">
+						<use xlink:href="img/icons/icons.svg#close-modal"></use>
+					</svg>
+				</button>
+			</div>
+			<div class="basket">
+
+				<div class="basket__center">
+					<div class="basket__empty-logo">
+						<svg class="basket__empty-icon">
+							<use xlink:href="img/icons/icons.svg#basket_empty"></use>
+						</svg>
+					</div>
+					<div class="basket__empty-text">В корзине <br>пока ничего нет</div>
+					<div class="basket__sub-text">
+						<span>Помощь в покупке</span>
+						<a href="tel:88001234567">8 800 123 45 67</a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Пример пустой корзины -->
