@@ -1,9 +1,5 @@
 (() => {
     var __webpack_modules__ = {
-        807: module => {
-            var canUseDOM = !!(typeof window !== "undefined" && window.document && window.document.createElement);
-            module.exports = canUseDOM;
-        },
         125: function(module) {
             /*!
  * dist/inputmask.min
@@ -3246,375 +3242,6 @@
                     }(), n;
                 }();
             }));
-        },
-        732: function(module) {
-            !function(n, t) {
-                true ? module.exports = t() : 0;
-            }(0, (function() {
-                "use strict";
-                function n() {
-                    return n = Object.assign || function(n) {
-                        for (var t = 1; t < arguments.length; t++) {
-                            var e = arguments[t];
-                            for (var i in e) Object.prototype.hasOwnProperty.call(e, i) && (n[i] = e[i]);
-                        }
-                        return n;
-                    }, n.apply(this, arguments);
-                }
-                var t = "undefined" != typeof window, e = t && !("onscroll" in window) || "undefined" != typeof navigator && /(gle|ing|ro)bot|crawl|spider/i.test(navigator.userAgent), i = t && "IntersectionObserver" in window, o = t && "classList" in document.createElement("p"), a = t && window.devicePixelRatio > 1, r = {
-                    elements_selector: ".lazy",
-                    container: e || t ? document : null,
-                    threshold: 300,
-                    thresholds: null,
-                    data_src: "src",
-                    data_srcset: "srcset",
-                    data_sizes: "sizes",
-                    data_bg: "bg",
-                    data_bg_hidpi: "bg-hidpi",
-                    data_bg_multi: "bg-multi",
-                    data_bg_multi_hidpi: "bg-multi-hidpi",
-                    data_bg_set: "bg-set",
-                    data_poster: "poster",
-                    class_applied: "applied",
-                    class_loading: "loading",
-                    class_loaded: "loaded",
-                    class_error: "error",
-                    class_entered: "entered",
-                    class_exited: "exited",
-                    unobserve_completed: !0,
-                    unobserve_entered: !1,
-                    cancel_on_exit: !0,
-                    callback_enter: null,
-                    callback_exit: null,
-                    callback_applied: null,
-                    callback_loading: null,
-                    callback_loaded: null,
-                    callback_error: null,
-                    callback_finish: null,
-                    callback_cancel: null,
-                    use_native: !1,
-                    restore_on_error: !1
-                }, c = function(t) {
-                    return n({}, r, t);
-                }, l = function(n, t) {
-                    var e, i = "LazyLoad::Initialized", o = new n(t);
-                    try {
-                        e = new CustomEvent(i, {
-                            detail: {
-                                instance: o
-                            }
-                        });
-                    } catch (n) {
-                        (e = document.createEvent("CustomEvent")).initCustomEvent(i, !1, !1, {
-                            instance: o
-                        });
-                    }
-                    window.dispatchEvent(e);
-                }, u = "src", s = "srcset", d = "sizes", f = "poster", _ = "llOriginalAttrs", g = "data", v = "loading", b = "loaded", m = "applied", p = "error", h = "native", E = "data-", I = "ll-status", y = function(n, t) {
-                    return n.getAttribute(E + t);
-                }, k = function(n) {
-                    return y(n, I);
-                }, w = function(n, t) {
-                    return function(n, t, e) {
-                        var i = "data-ll-status";
-                        null !== e ? n.setAttribute(i, e) : n.removeAttribute(i);
-                    }(n, 0, t);
-                }, A = function(n) {
-                    return w(n, null);
-                }, L = function(n) {
-                    return null === k(n);
-                }, O = function(n) {
-                    return k(n) === h;
-                }, x = [ v, b, m, p ], C = function(n, t, e, i) {
-                    n && (void 0 === i ? void 0 === e ? n(t) : n(t, e) : n(t, e, i));
-                }, N = function(n, t) {
-                    o ? n.classList.add(t) : n.className += (n.className ? " " : "") + t;
-                }, M = function(n, t) {
-                    o ? n.classList.remove(t) : n.className = n.className.replace(new RegExp("(^|\\s+)" + t + "(\\s+|$)"), " ").replace(/^\s+/, "").replace(/\s+$/, "");
-                }, z = function(n) {
-                    return n.llTempImage;
-                }, T = function(n, t) {
-                    if (t) {
-                        var e = t._observer;
-                        e && e.unobserve(n);
-                    }
-                }, R = function(n, t) {
-                    n && (n.loadingCount += t);
-                }, G = function(n, t) {
-                    n && (n.toLoadCount = t);
-                }, j = function(n) {
-                    for (var t, e = [], i = 0; t = n.children[i]; i += 1) "SOURCE" === t.tagName && e.push(t);
-                    return e;
-                }, D = function(n, t) {
-                    var e = n.parentNode;
-                    e && "PICTURE" === e.tagName && j(e).forEach(t);
-                }, H = function(n, t) {
-                    j(n).forEach(t);
-                }, V = [ u ], F = [ u, f ], B = [ u, s, d ], J = [ g ], P = function(n) {
-                    return !!n[_];
-                }, S = function(n) {
-                    return n[_];
-                }, U = function(n) {
-                    return delete n[_];
-                }, $ = function(n, t) {
-                    if (!P(n)) {
-                        var e = {};
-                        t.forEach((function(t) {
-                            e[t] = n.getAttribute(t);
-                        })), n[_] = e;
-                    }
-                }, q = function(n, t) {
-                    if (P(n)) {
-                        var e = S(n);
-                        t.forEach((function(t) {
-                            !function(n, t, e) {
-                                e ? n.setAttribute(t, e) : n.removeAttribute(t);
-                            }(n, t, e[t]);
-                        }));
-                    }
-                }, K = function(n, t, e) {
-                    N(n, t.class_applied), w(n, m), e && (t.unobserve_completed && T(n, t), C(t.callback_applied, n, e));
-                }, Q = function(n, t, e) {
-                    N(n, t.class_loading), w(n, v), e && (R(e, 1), C(t.callback_loading, n, e));
-                }, W = function(n, t, e) {
-                    e && n.setAttribute(t, e);
-                }, X = function(n, t) {
-                    W(n, d, y(n, t.data_sizes)), W(n, s, y(n, t.data_srcset)), W(n, u, y(n, t.data_src));
-                }, Y = {
-                    IMG: function(n, t) {
-                        D(n, (function(n) {
-                            $(n, B), X(n, t);
-                        })), $(n, B), X(n, t);
-                    },
-                    IFRAME: function(n, t) {
-                        $(n, V), W(n, u, y(n, t.data_src));
-                    },
-                    VIDEO: function(n, t) {
-                        H(n, (function(n) {
-                            $(n, V), W(n, u, y(n, t.data_src));
-                        })), $(n, F), W(n, f, y(n, t.data_poster)), W(n, u, y(n, t.data_src)), n.load();
-                    },
-                    OBJECT: function(n, t) {
-                        $(n, J), W(n, g, y(n, t.data_src));
-                    }
-                }, Z = [ "IMG", "IFRAME", "VIDEO", "OBJECT" ], nn = function(n, t) {
-                    !t || function(n) {
-                        return n.loadingCount > 0;
-                    }(t) || function(n) {
-                        return n.toLoadCount > 0;
-                    }(t) || C(n.callback_finish, t);
-                }, tn = function(n, t, e) {
-                    n.addEventListener(t, e), n.llEvLisnrs[t] = e;
-                }, en = function(n, t, e) {
-                    n.removeEventListener(t, e);
-                }, on = function(n) {
-                    return !!n.llEvLisnrs;
-                }, an = function(n) {
-                    if (on(n)) {
-                        var t = n.llEvLisnrs;
-                        for (var e in t) {
-                            var i = t[e];
-                            en(n, e, i);
-                        }
-                        delete n.llEvLisnrs;
-                    }
-                }, rn = function(n, t, e) {
-                    !function(n) {
-                        delete n.llTempImage;
-                    }(n), R(e, -1), function(n) {
-                        n && (n.toLoadCount -= 1);
-                    }(e), M(n, t.class_loading), t.unobserve_completed && T(n, e);
-                }, cn = function(n, t, e) {
-                    var i = z(n) || n;
-                    on(i) || function(n, t, e) {
-                        on(n) || (n.llEvLisnrs = {});
-                        var i = "VIDEO" === n.tagName ? "loadeddata" : "load";
-                        tn(n, i, t), tn(n, "error", e);
-                    }(i, (function(o) {
-                        !function(n, t, e, i) {
-                            var o = O(t);
-                            rn(t, e, i), N(t, e.class_loaded), w(t, b), C(e.callback_loaded, t, i), o || nn(e, i);
-                        }(0, n, t, e), an(i);
-                    }), (function(o) {
-                        !function(n, t, e, i) {
-                            var o = O(t);
-                            rn(t, e, i), N(t, e.class_error), w(t, p), C(e.callback_error, t, i), e.restore_on_error && q(t, B), 
-                            o || nn(e, i);
-                        }(0, n, t, e), an(i);
-                    }));
-                }, ln = function(n, t, e) {
-                    !function(n) {
-                        return Z.indexOf(n.tagName) > -1;
-                    }(n) ? function(n, t, e) {
-                        !function(n) {
-                            n.llTempImage = document.createElement("IMG");
-                        }(n), cn(n, t, e), function(n) {
-                            P(n) || (n[_] = {
-                                backgroundImage: n.style.backgroundImage
-                            });
-                        }(n), function(n, t, e) {
-                            var i = y(n, t.data_bg), o = y(n, t.data_bg_hidpi), r = a && o ? o : i;
-                            r && (n.style.backgroundImage = 'url("'.concat(r, '")'), z(n).setAttribute(u, r), 
-                            Q(n, t, e));
-                        }(n, t, e), function(n, t, e) {
-                            var i = y(n, t.data_bg_multi), o = y(n, t.data_bg_multi_hidpi), r = a && o ? o : i;
-                            r && (n.style.backgroundImage = r, K(n, t, e));
-                        }(n, t, e), function(n, t, e) {
-                            var i = y(n, t.data_bg_set);
-                            if (i) {
-                                var o = i.split("|"), a = o.map((function(n) {
-                                    return "image-set(".concat(n, ")");
-                                }));
-                                n.style.backgroundImage = a.join(), "" === n.style.backgroundImage && (a = o.map((function(n) {
-                                    return "-webkit-image-set(".concat(n, ")");
-                                })), n.style.backgroundImage = a.join()), K(n, t, e);
-                            }
-                        }(n, t, e);
-                    }(n, t, e) : function(n, t, e) {
-                        cn(n, t, e), function(n, t, e) {
-                            var i = Y[n.tagName];
-                            i && (i(n, t), Q(n, t, e));
-                        }(n, t, e);
-                    }(n, t, e);
-                }, un = function(n) {
-                    n.removeAttribute(u), n.removeAttribute(s), n.removeAttribute(d);
-                }, sn = function(n) {
-                    D(n, (function(n) {
-                        q(n, B);
-                    })), q(n, B);
-                }, dn = {
-                    IMG: sn,
-                    IFRAME: function(n) {
-                        q(n, V);
-                    },
-                    VIDEO: function(n) {
-                        H(n, (function(n) {
-                            q(n, V);
-                        })), q(n, F), n.load();
-                    },
-                    OBJECT: function(n) {
-                        q(n, J);
-                    }
-                }, fn = function(n, t) {
-                    (function(n) {
-                        var t = dn[n.tagName];
-                        t ? t(n) : function(n) {
-                            if (P(n)) {
-                                var t = S(n);
-                                n.style.backgroundImage = t.backgroundImage;
-                            }
-                        }(n);
-                    })(n), function(n, t) {
-                        L(n) || O(n) || (M(n, t.class_entered), M(n, t.class_exited), M(n, t.class_applied), 
-                        M(n, t.class_loading), M(n, t.class_loaded), M(n, t.class_error));
-                    }(n, t), A(n), U(n);
-                }, _n = [ "IMG", "IFRAME", "VIDEO" ], gn = function(n) {
-                    return n.use_native && "loading" in HTMLImageElement.prototype;
-                }, vn = function(n, t, e) {
-                    n.forEach((function(n) {
-                        return function(n) {
-                            return n.isIntersecting || n.intersectionRatio > 0;
-                        }(n) ? function(n, t, e, i) {
-                            var o = function(n) {
-                                return x.indexOf(k(n)) >= 0;
-                            }(n);
-                            w(n, "entered"), N(n, e.class_entered), M(n, e.class_exited), function(n, t, e) {
-                                t.unobserve_entered && T(n, e);
-                            }(n, e, i), C(e.callback_enter, n, t, i), o || ln(n, e, i);
-                        }(n.target, n, t, e) : function(n, t, e, i) {
-                            L(n) || (N(n, e.class_exited), function(n, t, e, i) {
-                                e.cancel_on_exit && function(n) {
-                                    return k(n) === v;
-                                }(n) && "IMG" === n.tagName && (an(n), function(n) {
-                                    D(n, (function(n) {
-                                        un(n);
-                                    })), un(n);
-                                }(n), sn(n), M(n, e.class_loading), R(i, -1), A(n), C(e.callback_cancel, n, t, i));
-                            }(n, t, e, i), C(e.callback_exit, n, t, i));
-                        }(n.target, n, t, e);
-                    }));
-                }, bn = function(n) {
-                    return Array.prototype.slice.call(n);
-                }, mn = function(n) {
-                    return n.container.querySelectorAll(n.elements_selector);
-                }, pn = function(n) {
-                    return function(n) {
-                        return k(n) === p;
-                    }(n);
-                }, hn = function(n, t) {
-                    return function(n) {
-                        return bn(n).filter(L);
-                    }(n || mn(t));
-                }, En = function(n, e) {
-                    var o = c(n);
-                    this._settings = o, this.loadingCount = 0, function(n, t) {
-                        i && !gn(n) && (t._observer = new IntersectionObserver((function(e) {
-                            vn(e, n, t);
-                        }), function(n) {
-                            return {
-                                root: n.container === document ? null : n.container,
-                                rootMargin: n.thresholds || n.threshold + "px"
-                            };
-                        }(n)));
-                    }(o, this), function(n, e) {
-                        t && (e._onlineHandler = function() {
-                            !function(n, t) {
-                                var e;
-                                (e = mn(n), bn(e).filter(pn)).forEach((function(t) {
-                                    M(t, n.class_error), A(t);
-                                })), t.update();
-                            }(n, e);
-                        }, window.addEventListener("online", e._onlineHandler));
-                    }(o, this), this.update(e);
-                };
-                return En.prototype = {
-                    update: function(n) {
-                        var t, o, a = this._settings, r = hn(n, a);
-                        G(this, r.length), !e && i ? gn(a) ? function(n, t, e) {
-                            n.forEach((function(n) {
-                                -1 !== _n.indexOf(n.tagName) && function(n, t, e) {
-                                    n.setAttribute("loading", "lazy"), cn(n, t, e), function(n, t) {
-                                        var e = Y[n.tagName];
-                                        e && e(n, t);
-                                    }(n, t), w(n, h);
-                                }(n, t, e);
-                            })), G(e, 0);
-                        }(r, a, this) : (o = r, function(n) {
-                            n.disconnect();
-                        }(t = this._observer), function(n, t) {
-                            t.forEach((function(t) {
-                                n.observe(t);
-                            }));
-                        }(t, o)) : this.loadAll(r);
-                    },
-                    destroy: function() {
-                        this._observer && this._observer.disconnect(), t && window.removeEventListener("online", this._onlineHandler), 
-                        mn(this._settings).forEach((function(n) {
-                            U(n);
-                        })), delete this._observer, delete this._settings, delete this._onlineHandler, delete this.loadingCount, 
-                        delete this.toLoadCount;
-                    },
-                    loadAll: function(n) {
-                        var t = this, e = this._settings;
-                        hn(n, e).forEach((function(n) {
-                            T(n, t), ln(n, e, t);
-                        }));
-                    },
-                    restoreAll: function() {
-                        var n = this._settings;
-                        mn(n).forEach((function(t) {
-                            fn(t, n);
-                        }));
-                    }
-                }, En.load = function(n, t) {
-                    var e = c(t);
-                    ln(n, e);
-                }, En.resetStatus = function(n) {
-                    A(n);
-                }, t && function(n, t) {
-                    if (t) if (t.length) for (var e, i = 0; e = t[i]; i += 1) l(n, e); else l(n, t);
-                }(En, window.lazyLoadOptions), En;
-            }));
         }
     };
     var __webpack_module_cache__ = {};
@@ -3643,12 +3270,39 @@
                 document.documentElement.classList.add(className);
             }));
         }
+        let isMobile = {
+            Android: function() {
+                return navigator.userAgent.match(/Android/i);
+            },
+            BlackBerry: function() {
+                return navigator.userAgent.match(/BlackBerry/i);
+            },
+            iOS: function() {
+                return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+            },
+            Opera: function() {
+                return navigator.userAgent.match(/Opera Mini/i);
+            },
+            Windows: function() {
+                return navigator.userAgent.match(/IEMobile/i);
+            },
+            any: function() {
+                return isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows();
+            }
+        };
         function addLoadedClass() {
             if (!document.documentElement.classList.contains("loading")) window.addEventListener("load", (function() {
                 setTimeout((function() {
                     document.documentElement.classList.add("loaded");
                 }), 0);
             }));
+        }
+        function functions_getHash() {
+            if (location.hash) return location.hash.replace("#", "");
+        }
+        function setHash(hash) {
+            hash = hash ? `#${hash}` : window.location.href.split("#")[0];
+            history.pushState("", "", hash);
         }
         let _slideUp = (target, duration = 500, showmore = 0) => {
             if (!target.classList.contains("_slide")) {
@@ -3757,6 +3411,183 @@
                 }), delay);
             }
         };
+        function spollers() {
+            const spollersArray = document.querySelectorAll("[data-spollers]");
+            if (spollersArray.length > 0) {
+                const spollersRegular = Array.from(spollersArray).filter((function(item, index, self) {
+                    return !item.dataset.spollers.split(",")[0];
+                }));
+                if (spollersRegular.length) initSpollers(spollersRegular);
+                let mdQueriesArray = dataMediaQueries(spollersArray, "spollers");
+                if (mdQueriesArray && mdQueriesArray.length) mdQueriesArray.forEach((mdQueriesItem => {
+                    mdQueriesItem.matchMedia.addEventListener("change", (function() {
+                        initSpollers(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
+                    }));
+                    initSpollers(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
+                }));
+                function initSpollers(spollersArray, matchMedia = false) {
+                    spollersArray.forEach((spollersBlock => {
+                        spollersBlock = matchMedia ? spollersBlock.item : spollersBlock;
+                        if (matchMedia.matches || !matchMedia) {
+                            spollersBlock.classList.add("_spoller-init");
+                            initSpollerBody(spollersBlock);
+                            spollersBlock.addEventListener("click", setSpollerAction);
+                        } else {
+                            spollersBlock.classList.remove("_spoller-init");
+                            initSpollerBody(spollersBlock, false);
+                            spollersBlock.removeEventListener("click", setSpollerAction);
+                        }
+                    }));
+                }
+                function initSpollerBody(spollersBlock, hideSpollerBody = true) {
+                    let spollerTitles = spollersBlock.querySelectorAll("[data-spoller]");
+                    if (spollerTitles.length) {
+                        spollerTitles = Array.from(spollerTitles).filter((item => item.closest("[data-spollers]") === spollersBlock));
+                        spollerTitles.forEach((spollerTitle => {
+                            if (hideSpollerBody) {
+                                spollerTitle.removeAttribute("tabindex");
+                                if (!spollerTitle.classList.contains("_spoller-active")) spollerTitle.nextElementSibling.hidden = true;
+                            } else {
+                                spollerTitle.setAttribute("tabindex", "-1");
+                                spollerTitle.nextElementSibling.hidden = false;
+                            }
+                        }));
+                    }
+                }
+                function setSpollerAction(e) {
+                    const el = e.target;
+                    if (el.closest("[data-spoller]")) {
+                        const spollerTitle = el.closest("[data-spoller]");
+                        const spollersBlock = spollerTitle.closest("[data-spollers]");
+                        const oneSpoller = spollersBlock.hasAttribute("data-one-spoller");
+                        const spollerSpeed = spollersBlock.dataset.spollersSpeed ? parseInt(spollersBlock.dataset.spollersSpeed) : 500;
+                        if (!spollersBlock.querySelectorAll("._slide").length) {
+                            if (oneSpoller && !spollerTitle.classList.contains("_spoller-active")) hideSpollersBody(spollersBlock);
+                            spollerTitle.classList.toggle("_spoller-active");
+                            _slideToggle(spollerTitle.nextElementSibling, spollerSpeed);
+                        }
+                        e.preventDefault();
+                    }
+                }
+                function hideSpollersBody(spollersBlock) {
+                    const spollerActiveTitle = spollersBlock.querySelector("[data-spoller]._spoller-active");
+                    const spollerSpeed = spollersBlock.dataset.spollersSpeed ? parseInt(spollersBlock.dataset.spollersSpeed) : 500;
+                    if (spollerActiveTitle && !spollersBlock.querySelectorAll("._slide").length) {
+                        spollerActiveTitle.classList.remove("_spoller-active");
+                        _slideUp(spollerActiveTitle.nextElementSibling, spollerSpeed);
+                    }
+                }
+                const spollersClose = document.querySelectorAll("[data-spoller-close]");
+                if (spollersClose.length) document.addEventListener("click", (function(e) {
+                    const el = e.target;
+                    if (!el.closest("[data-spollers]")) spollersClose.forEach((spollerClose => {
+                        const spollersBlock = spollerClose.closest("[data-spollers]");
+                        if (spollersBlock.classList.contains("_spoller-init")) {
+                            const spollerSpeed = spollersBlock.dataset.spollersSpeed ? parseInt(spollersBlock.dataset.spollersSpeed) : 500;
+                            spollerClose.classList.remove("_spoller-active");
+                            _slideUp(spollerClose.nextElementSibling, spollerSpeed);
+                        }
+                    }));
+                }));
+            }
+        }
+        function tabs() {
+            const tabs = document.querySelectorAll("[data-tabs]");
+            let tabsActiveHash = [];
+            if (tabs.length > 0) {
+                const hash = functions_getHash();
+                if (hash && hash.startsWith("tab-")) tabsActiveHash = hash.replace("tab-", "").split("-");
+                tabs.forEach(((tabsBlock, index) => {
+                    tabsBlock.classList.add("_tab-init");
+                    tabsBlock.setAttribute("data-tabs-index", index);
+                    tabsBlock.addEventListener("click", setTabsAction);
+                    initTabs(tabsBlock);
+                }));
+                let mdQueriesArray = dataMediaQueries(tabs, "tabs");
+                if (mdQueriesArray && mdQueriesArray.length) mdQueriesArray.forEach((mdQueriesItem => {
+                    mdQueriesItem.matchMedia.addEventListener("change", (function() {
+                        setTitlePosition(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
+                    }));
+                    setTitlePosition(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
+                }));
+            }
+            function setTitlePosition(tabsMediaArray, matchMedia) {
+                tabsMediaArray.forEach((tabsMediaItem => {
+                    tabsMediaItem = tabsMediaItem.item;
+                    let tabsTitles = tabsMediaItem.querySelector("[data-tabs-titles]");
+                    let tabsTitleItems = tabsMediaItem.querySelectorAll("[data-tabs-title]");
+                    let tabsContent = tabsMediaItem.querySelector("[data-tabs-body]");
+                    let tabsContentItems = tabsMediaItem.querySelectorAll("[data-tabs-item]");
+                    tabsTitleItems = Array.from(tabsTitleItems).filter((item => item.closest("[data-tabs]") === tabsMediaItem));
+                    tabsContentItems = Array.from(tabsContentItems).filter((item => item.closest("[data-tabs]") === tabsMediaItem));
+                    tabsContentItems.forEach(((tabsContentItem, index) => {
+                        if (matchMedia.matches) {
+                            tabsContent.append(tabsTitleItems[index]);
+                            tabsContent.append(tabsContentItem);
+                            tabsMediaItem.classList.add("_tab-spoller");
+                        } else {
+                            tabsTitles.append(tabsTitleItems[index]);
+                            tabsMediaItem.classList.remove("_tab-spoller");
+                        }
+                    }));
+                }));
+            }
+            function initTabs(tabsBlock) {
+                let tabsTitles = tabsBlock.querySelectorAll("[data-tabs-titles]>*");
+                let tabsContent = tabsBlock.querySelectorAll("[data-tabs-body]>*");
+                const tabsBlockIndex = tabsBlock.dataset.tabsIndex;
+                const tabsActiveHashBlock = tabsActiveHash[0] == tabsBlockIndex;
+                if (tabsActiveHashBlock) {
+                    const tabsActiveTitle = tabsBlock.querySelector("[data-tabs-titles]>._tab-active");
+                    tabsActiveTitle ? tabsActiveTitle.classList.remove("_tab-active") : null;
+                }
+                if (tabsContent.length) {
+                    tabsContent = Array.from(tabsContent).filter((item => item.closest("[data-tabs]") === tabsBlock));
+                    tabsTitles = Array.from(tabsTitles).filter((item => item.closest("[data-tabs]") === tabsBlock));
+                    tabsContent.forEach(((tabsContentItem, index) => {
+                        tabsTitles[index].setAttribute("data-tabs-title", "");
+                        tabsContentItem.setAttribute("data-tabs-item", "");
+                        if (tabsActiveHashBlock && index == tabsActiveHash[1]) tabsTitles[index].classList.add("_tab-active");
+                        tabsContentItem.hidden = !tabsTitles[index].classList.contains("_tab-active");
+                    }));
+                }
+            }
+            function setTabsStatus(tabsBlock) {
+                let tabsTitles = tabsBlock.querySelectorAll("[data-tabs-title]");
+                let tabsContent = tabsBlock.querySelectorAll("[data-tabs-item]");
+                const tabsBlockIndex = tabsBlock.dataset.tabsIndex;
+                function isTabsAnamate(tabsBlock) {
+                    if (tabsBlock.hasAttribute("data-tabs-animate")) return tabsBlock.dataset.tabsAnimate > 0 ? Number(tabsBlock.dataset.tabsAnimate) : 500;
+                }
+                const tabsBlockAnimate = isTabsAnamate(tabsBlock);
+                if (tabsContent.length > 0) {
+                    const isHash = tabsBlock.hasAttribute("data-tabs-hash");
+                    tabsContent = Array.from(tabsContent).filter((item => item.closest("[data-tabs]") === tabsBlock));
+                    tabsTitles = Array.from(tabsTitles).filter((item => item.closest("[data-tabs]") === tabsBlock));
+                    tabsContent.forEach(((tabsContentItem, index) => {
+                        if (tabsTitles[index].classList.contains("_tab-active")) {
+                            if (tabsBlockAnimate) _slideDown(tabsContentItem, tabsBlockAnimate); else tabsContentItem.hidden = false;
+                            if (isHash && !tabsContentItem.closest(".popup")) setHash(`tab-${tabsBlockIndex}-${index}`);
+                        } else if (tabsBlockAnimate) _slideUp(tabsContentItem, tabsBlockAnimate); else tabsContentItem.hidden = true;
+                    }));
+                }
+            }
+            function setTabsAction(e) {
+                const el = e.target;
+                if (el.closest("[data-tabs-title]")) {
+                    const tabTitle = el.closest("[data-tabs-title]");
+                    const tabsBlock = tabTitle.closest("[data-tabs]");
+                    if (!tabTitle.classList.contains("_tab-active") && !tabsBlock.querySelector("._slide")) {
+                        let tabActiveTitle = tabsBlock.querySelectorAll("[data-tabs-title]._tab-active");
+                        tabActiveTitle.length ? tabActiveTitle = Array.from(tabActiveTitle).filter((item => item.closest("[data-tabs]") === tabsBlock)) : null;
+                        tabActiveTitle.length ? tabActiveTitle[0].classList.remove("_tab-active") : null;
+                        tabTitle.classList.add("_tab-active");
+                        setTabsStatus(tabsBlock);
+                    }
+                    e.preventDefault();
+                }
+            }
+        }
         function menuInit() {
             if (document.querySelector(".icon-menu")) document.addEventListener("click", (function(e) {
                 if (bodyLockStatus && e.target.closest(".icon-menu")) {
@@ -3937,7 +3768,7 @@
                     closeEsc: true,
                     bodyLock: true,
                     hashSettings: {
-                        location: true,
+                        location: false,
                         goHash: true
                     },
                     on: {
@@ -3985,6 +3816,7 @@
                 };
                 this.bodyLock = false;
                 this.options.init ? this.initPopups() : null;
+                window.popup = this;
             }
             initPopups() {
                 this.popupLogging(`Проснулся`);
@@ -4161,7 +3993,8 @@
                 this.options.logging ? functions_FLS(`[Попапос]: ${message}`) : null;
             }
         }
-        modules_flsModules.popup = new Popup({});
+        let popup = new Popup({});
+        modules_flsModules.popup = popup;
         function formFieldsInit(options = {
             viewPass: false,
             autoHeight: false
@@ -6200,14 +6033,2155 @@
         rangesSlidersFilters.forEach((range => {
             rangeInit(range);
         }));
-        function ssr_window_esm_isObject(obj) {
+        function getWindow_getWindow(node) {
+            if (node == null) return window;
+            if (node.toString() !== "[object Window]") {
+                var ownerDocument = node.ownerDocument;
+                return ownerDocument ? ownerDocument.defaultView || window : window;
+            }
+            return node;
+        }
+        function isElement(node) {
+            var OwnElement = getWindow_getWindow(node).Element;
+            return node instanceof OwnElement || node instanceof Element;
+        }
+        function isHTMLElement(node) {
+            var OwnElement = getWindow_getWindow(node).HTMLElement;
+            return node instanceof OwnElement || node instanceof HTMLElement;
+        }
+        function isShadowRoot(node) {
+            if (typeof ShadowRoot === "undefined") return false;
+            var OwnElement = getWindow_getWindow(node).ShadowRoot;
+            return node instanceof OwnElement || node instanceof ShadowRoot;
+        }
+        var math_max = Math.max;
+        var math_min = Math.min;
+        var round = Math.round;
+        function getUAString() {
+            var uaData = navigator.userAgentData;
+            if (uaData != null && uaData.brands && Array.isArray(uaData.brands)) return uaData.brands.map((function(item) {
+                return item.brand + "/" + item.version;
+            })).join(" ");
+            return navigator.userAgent;
+        }
+        function isLayoutViewport() {
+            return !/^((?!chrome|android).)*safari/i.test(getUAString());
+        }
+        function getBoundingClientRect(element, includeScale, isFixedStrategy) {
+            if (includeScale === void 0) includeScale = false;
+            if (isFixedStrategy === void 0) isFixedStrategy = false;
+            var clientRect = element.getBoundingClientRect();
+            var scaleX = 1;
+            var scaleY = 1;
+            if (includeScale && isHTMLElement(element)) {
+                scaleX = element.offsetWidth > 0 ? round(clientRect.width) / element.offsetWidth || 1 : 1;
+                scaleY = element.offsetHeight > 0 ? round(clientRect.height) / element.offsetHeight || 1 : 1;
+            }
+            var _ref = isElement(element) ? getWindow_getWindow(element) : window, visualViewport = _ref.visualViewport;
+            var addVisualOffsets = !isLayoutViewport() && isFixedStrategy;
+            var x = (clientRect.left + (addVisualOffsets && visualViewport ? visualViewport.offsetLeft : 0)) / scaleX;
+            var y = (clientRect.top + (addVisualOffsets && visualViewport ? visualViewport.offsetTop : 0)) / scaleY;
+            var width = clientRect.width / scaleX;
+            var height = clientRect.height / scaleY;
+            return {
+                width,
+                height,
+                top: y,
+                right: x + width,
+                bottom: y + height,
+                left: x,
+                x,
+                y
+            };
+        }
+        function getWindowScroll(node) {
+            var win = getWindow_getWindow(node);
+            var scrollLeft = win.pageXOffset;
+            var scrollTop = win.pageYOffset;
+            return {
+                scrollLeft,
+                scrollTop
+            };
+        }
+        function getHTMLElementScroll(element) {
+            return {
+                scrollLeft: element.scrollLeft,
+                scrollTop: element.scrollTop
+            };
+        }
+        function getNodeScroll(node) {
+            if (node === getWindow_getWindow(node) || !isHTMLElement(node)) return getWindowScroll(node); else return getHTMLElementScroll(node);
+        }
+        function getNodeName(element) {
+            return element ? (element.nodeName || "").toLowerCase() : null;
+        }
+        function getDocumentElement(element) {
+            return ((isElement(element) ? element.ownerDocument : element.document) || window.document).documentElement;
+        }
+        function getWindowScrollBarX(element) {
+            return getBoundingClientRect(getDocumentElement(element)).left + getWindowScroll(element).scrollLeft;
+        }
+        function getComputedStyle_getComputedStyle(element) {
+            return getWindow_getWindow(element).getComputedStyle(element);
+        }
+        function isScrollParent(element) {
+            var _getComputedStyle = getComputedStyle_getComputedStyle(element), overflow = _getComputedStyle.overflow, overflowX = _getComputedStyle.overflowX, overflowY = _getComputedStyle.overflowY;
+            return /auto|scroll|overlay|hidden/.test(overflow + overflowY + overflowX);
+        }
+        function isElementScaled(element) {
+            var rect = element.getBoundingClientRect();
+            var scaleX = round(rect.width) / element.offsetWidth || 1;
+            var scaleY = round(rect.height) / element.offsetHeight || 1;
+            return scaleX !== 1 || scaleY !== 1;
+        }
+        function getCompositeRect(elementOrVirtualElement, offsetParent, isFixed) {
+            if (isFixed === void 0) isFixed = false;
+            var isOffsetParentAnElement = isHTMLElement(offsetParent);
+            var offsetParentIsScaled = isHTMLElement(offsetParent) && isElementScaled(offsetParent);
+            var documentElement = getDocumentElement(offsetParent);
+            var rect = getBoundingClientRect(elementOrVirtualElement, offsetParentIsScaled, isFixed);
+            var scroll = {
+                scrollLeft: 0,
+                scrollTop: 0
+            };
+            var offsets = {
+                x: 0,
+                y: 0
+            };
+            if (isOffsetParentAnElement || !isOffsetParentAnElement && !isFixed) {
+                if (getNodeName(offsetParent) !== "body" || isScrollParent(documentElement)) scroll = getNodeScroll(offsetParent);
+                if (isHTMLElement(offsetParent)) {
+                    offsets = getBoundingClientRect(offsetParent, true);
+                    offsets.x += offsetParent.clientLeft;
+                    offsets.y += offsetParent.clientTop;
+                } else if (documentElement) offsets.x = getWindowScrollBarX(documentElement);
+            }
+            return {
+                x: rect.left + scroll.scrollLeft - offsets.x,
+                y: rect.top + scroll.scrollTop - offsets.y,
+                width: rect.width,
+                height: rect.height
+            };
+        }
+        function getLayoutRect(element) {
+            var clientRect = getBoundingClientRect(element);
+            var width = element.offsetWidth;
+            var height = element.offsetHeight;
+            if (Math.abs(clientRect.width - width) <= 1) width = clientRect.width;
+            if (Math.abs(clientRect.height - height) <= 1) height = clientRect.height;
+            return {
+                x: element.offsetLeft,
+                y: element.offsetTop,
+                width,
+                height
+            };
+        }
+        function getParentNode(element) {
+            if (getNodeName(element) === "html") return element;
+            return element.assignedSlot || element.parentNode || (isShadowRoot(element) ? element.host : null) || getDocumentElement(element);
+        }
+        function getScrollParent(node) {
+            if ([ "html", "body", "#document" ].indexOf(getNodeName(node)) >= 0) return node.ownerDocument.body;
+            if (isHTMLElement(node) && isScrollParent(node)) return node;
+            return getScrollParent(getParentNode(node));
+        }
+        function listScrollParents(element, list) {
+            var _element$ownerDocumen;
+            if (list === void 0) list = [];
+            var scrollParent = getScrollParent(element);
+            var isBody = scrollParent === ((_element$ownerDocumen = element.ownerDocument) == null ? void 0 : _element$ownerDocumen.body);
+            var win = getWindow_getWindow(scrollParent);
+            var target = isBody ? [ win ].concat(win.visualViewport || [], isScrollParent(scrollParent) ? scrollParent : []) : scrollParent;
+            var updatedList = list.concat(target);
+            return isBody ? updatedList : updatedList.concat(listScrollParents(getParentNode(target)));
+        }
+        function isTableElement(element) {
+            return [ "table", "td", "th" ].indexOf(getNodeName(element)) >= 0;
+        }
+        function getTrueOffsetParent(element) {
+            if (!isHTMLElement(element) || getComputedStyle_getComputedStyle(element).position === "fixed") return null;
+            return element.offsetParent;
+        }
+        function getContainingBlock(element) {
+            var isFirefox = /firefox/i.test(getUAString());
+            var isIE = /Trident/i.test(getUAString());
+            if (isIE && isHTMLElement(element)) {
+                var elementCss = getComputedStyle_getComputedStyle(element);
+                if (elementCss.position === "fixed") return null;
+            }
+            var currentNode = getParentNode(element);
+            if (isShadowRoot(currentNode)) currentNode = currentNode.host;
+            while (isHTMLElement(currentNode) && [ "html", "body" ].indexOf(getNodeName(currentNode)) < 0) {
+                var css = getComputedStyle_getComputedStyle(currentNode);
+                if (css.transform !== "none" || css.perspective !== "none" || css.contain === "paint" || [ "transform", "perspective" ].indexOf(css.willChange) !== -1 || isFirefox && css.willChange === "filter" || isFirefox && css.filter && css.filter !== "none") return currentNode; else currentNode = currentNode.parentNode;
+            }
+            return null;
+        }
+        function getOffsetParent(element) {
+            var window = getWindow_getWindow(element);
+            var offsetParent = getTrueOffsetParent(element);
+            while (offsetParent && isTableElement(offsetParent) && getComputedStyle_getComputedStyle(offsetParent).position === "static") offsetParent = getTrueOffsetParent(offsetParent);
+            if (offsetParent && (getNodeName(offsetParent) === "html" || getNodeName(offsetParent) === "body" && getComputedStyle_getComputedStyle(offsetParent).position === "static")) return window;
+            return offsetParent || getContainingBlock(element) || window;
+        }
+        var enums_top = "top";
+        var bottom = "bottom";
+        var right = "right";
+        var left = "left";
+        var auto = "auto";
+        var basePlacements = [ enums_top, bottom, right, left ];
+        var start = "start";
+        var end = "end";
+        var clippingParents = "clippingParents";
+        var viewport = "viewport";
+        var popper = "popper";
+        var reference = "reference";
+        var variationPlacements = basePlacements.reduce((function(acc, placement) {
+            return acc.concat([ placement + "-" + start, placement + "-" + end ]);
+        }), []);
+        var enums_placements = [].concat(basePlacements, [ auto ]).reduce((function(acc, placement) {
+            return acc.concat([ placement, placement + "-" + start, placement + "-" + end ]);
+        }), []);
+        var beforeRead = "beforeRead";
+        var read = "read";
+        var afterRead = "afterRead";
+        var beforeMain = "beforeMain";
+        var main = "main";
+        var afterMain = "afterMain";
+        var beforeWrite = "beforeWrite";
+        var write = "write";
+        var afterWrite = "afterWrite";
+        var modifierPhases = [ beforeRead, read, afterRead, beforeMain, main, afterMain, beforeWrite, write, afterWrite ];
+        function order(modifiers) {
+            var map = new Map;
+            var visited = new Set;
+            var result = [];
+            modifiers.forEach((function(modifier) {
+                map.set(modifier.name, modifier);
+            }));
+            function sort(modifier) {
+                visited.add(modifier.name);
+                var requires = [].concat(modifier.requires || [], modifier.requiresIfExists || []);
+                requires.forEach((function(dep) {
+                    if (!visited.has(dep)) {
+                        var depModifier = map.get(dep);
+                        if (depModifier) sort(depModifier);
+                    }
+                }));
+                result.push(modifier);
+            }
+            modifiers.forEach((function(modifier) {
+                if (!visited.has(modifier.name)) sort(modifier);
+            }));
+            return result;
+        }
+        function orderModifiers(modifiers) {
+            var orderedModifiers = order(modifiers);
+            return modifierPhases.reduce((function(acc, phase) {
+                return acc.concat(orderedModifiers.filter((function(modifier) {
+                    return modifier.phase === phase;
+                })));
+            }), []);
+        }
+        function debounce(fn) {
+            var pending;
+            return function() {
+                if (!pending) pending = new Promise((function(resolve) {
+                    Promise.resolve().then((function() {
+                        pending = void 0;
+                        resolve(fn());
+                    }));
+                }));
+                return pending;
+            };
+        }
+        function mergeByName(modifiers) {
+            var merged = modifiers.reduce((function(merged, current) {
+                var existing = merged[current.name];
+                merged[current.name] = existing ? Object.assign({}, existing, current, {
+                    options: Object.assign({}, existing.options, current.options),
+                    data: Object.assign({}, existing.data, current.data)
+                }) : current;
+                return merged;
+            }), {});
+            return Object.keys(merged).map((function(key) {
+                return merged[key];
+            }));
+        }
+        var DEFAULT_OPTIONS = {
+            placement: "bottom",
+            modifiers: [],
+            strategy: "absolute"
+        };
+        function areValidElements() {
+            for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) args[_key] = arguments[_key];
+            return !args.some((function(element) {
+                return !(element && typeof element.getBoundingClientRect === "function");
+            }));
+        }
+        function popperGenerator(generatorOptions) {
+            if (generatorOptions === void 0) generatorOptions = {};
+            var _generatorOptions = generatorOptions, _generatorOptions$def = _generatorOptions.defaultModifiers, defaultModifiers = _generatorOptions$def === void 0 ? [] : _generatorOptions$def, _generatorOptions$def2 = _generatorOptions.defaultOptions, defaultOptions = _generatorOptions$def2 === void 0 ? DEFAULT_OPTIONS : _generatorOptions$def2;
+            return function createPopper(reference, popper, options) {
+                if (options === void 0) options = defaultOptions;
+                var state = {
+                    placement: "bottom",
+                    orderedModifiers: [],
+                    options: Object.assign({}, DEFAULT_OPTIONS, defaultOptions),
+                    modifiersData: {},
+                    elements: {
+                        reference,
+                        popper
+                    },
+                    attributes: {},
+                    styles: {}
+                };
+                var effectCleanupFns = [];
+                var isDestroyed = false;
+                var instance = {
+                    state,
+                    setOptions: function setOptions(setOptionsAction) {
+                        var options = typeof setOptionsAction === "function" ? setOptionsAction(state.options) : setOptionsAction;
+                        cleanupModifierEffects();
+                        state.options = Object.assign({}, defaultOptions, state.options, options);
+                        state.scrollParents = {
+                            reference: isElement(reference) ? listScrollParents(reference) : reference.contextElement ? listScrollParents(reference.contextElement) : [],
+                            popper: listScrollParents(popper)
+                        };
+                        var orderedModifiers = orderModifiers(mergeByName([].concat(defaultModifiers, state.options.modifiers)));
+                        state.orderedModifiers = orderedModifiers.filter((function(m) {
+                            return m.enabled;
+                        }));
+                        runModifierEffects();
+                        return instance.update();
+                    },
+                    forceUpdate: function forceUpdate() {
+                        if (isDestroyed) return;
+                        var _state$elements = state.elements, reference = _state$elements.reference, popper = _state$elements.popper;
+                        if (!areValidElements(reference, popper)) return;
+                        state.rects = {
+                            reference: getCompositeRect(reference, getOffsetParent(popper), state.options.strategy === "fixed"),
+                            popper: getLayoutRect(popper)
+                        };
+                        state.reset = false;
+                        state.placement = state.options.placement;
+                        state.orderedModifiers.forEach((function(modifier) {
+                            return state.modifiersData[modifier.name] = Object.assign({}, modifier.data);
+                        }));
+                        for (var index = 0; index < state.orderedModifiers.length; index++) {
+                            if (state.reset === true) {
+                                state.reset = false;
+                                index = -1;
+                                continue;
+                            }
+                            var _state$orderedModifie = state.orderedModifiers[index], fn = _state$orderedModifie.fn, _state$orderedModifie2 = _state$orderedModifie.options, _options = _state$orderedModifie2 === void 0 ? {} : _state$orderedModifie2, name = _state$orderedModifie.name;
+                            if (typeof fn === "function") state = fn({
+                                state,
+                                options: _options,
+                                name,
+                                instance
+                            }) || state;
+                        }
+                    },
+                    update: debounce((function() {
+                        return new Promise((function(resolve) {
+                            instance.forceUpdate();
+                            resolve(state);
+                        }));
+                    })),
+                    destroy: function destroy() {
+                        cleanupModifierEffects();
+                        isDestroyed = true;
+                    }
+                };
+                if (!areValidElements(reference, popper)) return instance;
+                instance.setOptions(options).then((function(state) {
+                    if (!isDestroyed && options.onFirstUpdate) options.onFirstUpdate(state);
+                }));
+                function runModifierEffects() {
+                    state.orderedModifiers.forEach((function(_ref) {
+                        var name = _ref.name, _ref$options = _ref.options, options = _ref$options === void 0 ? {} : _ref$options, effect = _ref.effect;
+                        if (typeof effect === "function") {
+                            var cleanupFn = effect({
+                                state,
+                                name,
+                                instance,
+                                options
+                            });
+                            var noopFn = function noopFn() {};
+                            effectCleanupFns.push(cleanupFn || noopFn);
+                        }
+                    }));
+                }
+                function cleanupModifierEffects() {
+                    effectCleanupFns.forEach((function(fn) {
+                        return fn();
+                    }));
+                    effectCleanupFns = [];
+                }
+                return instance;
+            };
+        }
+        null && popperGenerator();
+        var passive = {
+            passive: true
+        };
+        function effect(_ref) {
+            var state = _ref.state, instance = _ref.instance, options = _ref.options;
+            var _options$scroll = options.scroll, scroll = _options$scroll === void 0 ? true : _options$scroll, _options$resize = options.resize, resize = _options$resize === void 0 ? true : _options$resize;
+            var window = getWindow_getWindow(state.elements.popper);
+            var scrollParents = [].concat(state.scrollParents.reference, state.scrollParents.popper);
+            if (scroll) scrollParents.forEach((function(scrollParent) {
+                scrollParent.addEventListener("scroll", instance.update, passive);
+            }));
+            if (resize) window.addEventListener("resize", instance.update, passive);
+            return function() {
+                if (scroll) scrollParents.forEach((function(scrollParent) {
+                    scrollParent.removeEventListener("scroll", instance.update, passive);
+                }));
+                if (resize) window.removeEventListener("resize", instance.update, passive);
+            };
+        }
+        const eventListeners = {
+            name: "eventListeners",
+            enabled: true,
+            phase: "write",
+            fn: function fn() {},
+            effect,
+            data: {}
+        };
+        function getBasePlacement(placement) {
+            return placement.split("-")[0];
+        }
+        function getVariation(placement) {
+            return placement.split("-")[1];
+        }
+        function getMainAxisFromPlacement(placement) {
+            return [ "top", "bottom" ].indexOf(placement) >= 0 ? "x" : "y";
+        }
+        function computeOffsets(_ref) {
+            var reference = _ref.reference, element = _ref.element, placement = _ref.placement;
+            var basePlacement = placement ? getBasePlacement(placement) : null;
+            var variation = placement ? getVariation(placement) : null;
+            var commonX = reference.x + reference.width / 2 - element.width / 2;
+            var commonY = reference.y + reference.height / 2 - element.height / 2;
+            var offsets;
+            switch (basePlacement) {
+              case enums_top:
+                offsets = {
+                    x: commonX,
+                    y: reference.y - element.height
+                };
+                break;
+
+              case bottom:
+                offsets = {
+                    x: commonX,
+                    y: reference.y + reference.height
+                };
+                break;
+
+              case right:
+                offsets = {
+                    x: reference.x + reference.width,
+                    y: commonY
+                };
+                break;
+
+              case left:
+                offsets = {
+                    x: reference.x - element.width,
+                    y: commonY
+                };
+                break;
+
+              default:
+                offsets = {
+                    x: reference.x,
+                    y: reference.y
+                };
+            }
+            var mainAxis = basePlacement ? getMainAxisFromPlacement(basePlacement) : null;
+            if (mainAxis != null) {
+                var len = mainAxis === "y" ? "height" : "width";
+                switch (variation) {
+                  case start:
+                    offsets[mainAxis] = offsets[mainAxis] - (reference[len] / 2 - element[len] / 2);
+                    break;
+
+                  case end:
+                    offsets[mainAxis] = offsets[mainAxis] + (reference[len] / 2 - element[len] / 2);
+                    break;
+
+                  default:
+                }
+            }
+            return offsets;
+        }
+        function popperOffsets(_ref) {
+            var state = _ref.state, name = _ref.name;
+            state.modifiersData[name] = computeOffsets({
+                reference: state.rects.reference,
+                element: state.rects.popper,
+                strategy: "absolute",
+                placement: state.placement
+            });
+        }
+        const modifiers_popperOffsets = {
+            name: "popperOffsets",
+            enabled: true,
+            phase: "read",
+            fn: popperOffsets,
+            data: {}
+        };
+        var unsetSides = {
+            top: "auto",
+            right: "auto",
+            bottom: "auto",
+            left: "auto"
+        };
+        function roundOffsetsByDPR(_ref, win) {
+            var x = _ref.x, y = _ref.y;
+            var dpr = win.devicePixelRatio || 1;
+            return {
+                x: round(x * dpr) / dpr || 0,
+                y: round(y * dpr) / dpr || 0
+            };
+        }
+        function mapToStyles(_ref2) {
+            var _Object$assign2;
+            var popper = _ref2.popper, popperRect = _ref2.popperRect, placement = _ref2.placement, variation = _ref2.variation, offsets = _ref2.offsets, position = _ref2.position, gpuAcceleration = _ref2.gpuAcceleration, adaptive = _ref2.adaptive, roundOffsets = _ref2.roundOffsets, isFixed = _ref2.isFixed;
+            var _offsets$x = offsets.x, x = _offsets$x === void 0 ? 0 : _offsets$x, _offsets$y = offsets.y, y = _offsets$y === void 0 ? 0 : _offsets$y;
+            var _ref3 = typeof roundOffsets === "function" ? roundOffsets({
+                x,
+                y
+            }) : {
+                x,
+                y
+            };
+            x = _ref3.x;
+            y = _ref3.y;
+            var hasX = offsets.hasOwnProperty("x");
+            var hasY = offsets.hasOwnProperty("y");
+            var sideX = left;
+            var sideY = enums_top;
+            var win = window;
+            if (adaptive) {
+                var offsetParent = getOffsetParent(popper);
+                var heightProp = "clientHeight";
+                var widthProp = "clientWidth";
+                if (offsetParent === getWindow_getWindow(popper)) {
+                    offsetParent = getDocumentElement(popper);
+                    if (getComputedStyle_getComputedStyle(offsetParent).position !== "static" && position === "absolute") {
+                        heightProp = "scrollHeight";
+                        widthProp = "scrollWidth";
+                    }
+                }
+                offsetParent;
+                if (placement === enums_top || (placement === left || placement === right) && variation === end) {
+                    sideY = bottom;
+                    var offsetY = isFixed && offsetParent === win && win.visualViewport ? win.visualViewport.height : offsetParent[heightProp];
+                    y -= offsetY - popperRect.height;
+                    y *= gpuAcceleration ? 1 : -1;
+                }
+                if (placement === left || (placement === enums_top || placement === bottom) && variation === end) {
+                    sideX = right;
+                    var offsetX = isFixed && offsetParent === win && win.visualViewport ? win.visualViewport.width : offsetParent[widthProp];
+                    x -= offsetX - popperRect.width;
+                    x *= gpuAcceleration ? 1 : -1;
+                }
+            }
+            var commonStyles = Object.assign({
+                position
+            }, adaptive && unsetSides);
+            var _ref4 = roundOffsets === true ? roundOffsetsByDPR({
+                x,
+                y
+            }, getWindow_getWindow(popper)) : {
+                x,
+                y
+            };
+            x = _ref4.x;
+            y = _ref4.y;
+            if (gpuAcceleration) {
+                var _Object$assign;
+                return Object.assign({}, commonStyles, (_Object$assign = {}, _Object$assign[sideY] = hasY ? "0" : "", 
+                _Object$assign[sideX] = hasX ? "0" : "", _Object$assign.transform = (win.devicePixelRatio || 1) <= 1 ? "translate(" + x + "px, " + y + "px)" : "translate3d(" + x + "px, " + y + "px, 0)", 
+                _Object$assign));
+            }
+            return Object.assign({}, commonStyles, (_Object$assign2 = {}, _Object$assign2[sideY] = hasY ? y + "px" : "", 
+            _Object$assign2[sideX] = hasX ? x + "px" : "", _Object$assign2.transform = "", _Object$assign2));
+        }
+        function computeStyles(_ref5) {
+            var state = _ref5.state, options = _ref5.options;
+            var _options$gpuAccelerat = options.gpuAcceleration, gpuAcceleration = _options$gpuAccelerat === void 0 ? true : _options$gpuAccelerat, _options$adaptive = options.adaptive, adaptive = _options$adaptive === void 0 ? true : _options$adaptive, _options$roundOffsets = options.roundOffsets, roundOffsets = _options$roundOffsets === void 0 ? true : _options$roundOffsets;
+            var commonStyles = {
+                placement: getBasePlacement(state.placement),
+                variation: getVariation(state.placement),
+                popper: state.elements.popper,
+                popperRect: state.rects.popper,
+                gpuAcceleration,
+                isFixed: state.options.strategy === "fixed"
+            };
+            if (state.modifiersData.popperOffsets != null) state.styles.popper = Object.assign({}, state.styles.popper, mapToStyles(Object.assign({}, commonStyles, {
+                offsets: state.modifiersData.popperOffsets,
+                position: state.options.strategy,
+                adaptive,
+                roundOffsets
+            })));
+            if (state.modifiersData.arrow != null) state.styles.arrow = Object.assign({}, state.styles.arrow, mapToStyles(Object.assign({}, commonStyles, {
+                offsets: state.modifiersData.arrow,
+                position: "absolute",
+                adaptive: false,
+                roundOffsets
+            })));
+            state.attributes.popper = Object.assign({}, state.attributes.popper, {
+                "data-popper-placement": state.placement
+            });
+        }
+        const modifiers_computeStyles = {
+            name: "computeStyles",
+            enabled: true,
+            phase: "beforeWrite",
+            fn: computeStyles,
+            data: {}
+        };
+        function applyStyles(_ref) {
+            var state = _ref.state;
+            Object.keys(state.elements).forEach((function(name) {
+                var style = state.styles[name] || {};
+                var attributes = state.attributes[name] || {};
+                var element = state.elements[name];
+                if (!isHTMLElement(element) || !getNodeName(element)) return;
+                Object.assign(element.style, style);
+                Object.keys(attributes).forEach((function(name) {
+                    var value = attributes[name];
+                    if (value === false) element.removeAttribute(name); else element.setAttribute(name, value === true ? "" : value);
+                }));
+            }));
+        }
+        function applyStyles_effect(_ref2) {
+            var state = _ref2.state;
+            var initialStyles = {
+                popper: {
+                    position: state.options.strategy,
+                    left: "0",
+                    top: "0",
+                    margin: "0"
+                },
+                arrow: {
+                    position: "absolute"
+                },
+                reference: {}
+            };
+            Object.assign(state.elements.popper.style, initialStyles.popper);
+            state.styles = initialStyles;
+            if (state.elements.arrow) Object.assign(state.elements.arrow.style, initialStyles.arrow);
+            return function() {
+                Object.keys(state.elements).forEach((function(name) {
+                    var element = state.elements[name];
+                    var attributes = state.attributes[name] || {};
+                    var styleProperties = Object.keys(state.styles.hasOwnProperty(name) ? state.styles[name] : initialStyles[name]);
+                    var style = styleProperties.reduce((function(style, property) {
+                        style[property] = "";
+                        return style;
+                    }), {});
+                    if (!isHTMLElement(element) || !getNodeName(element)) return;
+                    Object.assign(element.style, style);
+                    Object.keys(attributes).forEach((function(attribute) {
+                        element.removeAttribute(attribute);
+                    }));
+                }));
+            };
+        }
+        const modifiers_applyStyles = {
+            name: "applyStyles",
+            enabled: true,
+            phase: "write",
+            fn: applyStyles,
+            effect: applyStyles_effect,
+            requires: [ "computeStyles" ]
+        };
+        function distanceAndSkiddingToXY(placement, rects, offset) {
+            var basePlacement = getBasePlacement(placement);
+            var invertDistance = [ left, enums_top ].indexOf(basePlacement) >= 0 ? -1 : 1;
+            var _ref = typeof offset === "function" ? offset(Object.assign({}, rects, {
+                placement
+            })) : offset, skidding = _ref[0], distance = _ref[1];
+            skidding = skidding || 0;
+            distance = (distance || 0) * invertDistance;
+            return [ left, right ].indexOf(basePlacement) >= 0 ? {
+                x: distance,
+                y: skidding
+            } : {
+                x: skidding,
+                y: distance
+            };
+        }
+        function offset_offset(_ref2) {
+            var state = _ref2.state, options = _ref2.options, name = _ref2.name;
+            var _options$offset = options.offset, offset = _options$offset === void 0 ? [ 0, 0 ] : _options$offset;
+            var data = enums_placements.reduce((function(acc, placement) {
+                acc[placement] = distanceAndSkiddingToXY(placement, state.rects, offset);
+                return acc;
+            }), {});
+            var _data$state$placement = data[state.placement], x = _data$state$placement.x, y = _data$state$placement.y;
+            if (state.modifiersData.popperOffsets != null) {
+                state.modifiersData.popperOffsets.x += x;
+                state.modifiersData.popperOffsets.y += y;
+            }
+            state.modifiersData[name] = data;
+        }
+        const modifiers_offset = {
+            name: "offset",
+            enabled: true,
+            phase: "main",
+            requires: [ "popperOffsets" ],
+            fn: offset_offset
+        };
+        var hash = {
+            left: "right",
+            right: "left",
+            bottom: "top",
+            top: "bottom"
+        };
+        function getOppositePlacement(placement) {
+            return placement.replace(/left|right|bottom|top/g, (function(matched) {
+                return hash[matched];
+            }));
+        }
+        var getOppositeVariationPlacement_hash = {
+            start: "end",
+            end: "start"
+        };
+        function getOppositeVariationPlacement(placement) {
+            return placement.replace(/start|end/g, (function(matched) {
+                return getOppositeVariationPlacement_hash[matched];
+            }));
+        }
+        function getViewportRect(element, strategy) {
+            var win = getWindow_getWindow(element);
+            var html = getDocumentElement(element);
+            var visualViewport = win.visualViewport;
+            var width = html.clientWidth;
+            var height = html.clientHeight;
+            var x = 0;
+            var y = 0;
+            if (visualViewport) {
+                width = visualViewport.width;
+                height = visualViewport.height;
+                var layoutViewport = isLayoutViewport();
+                if (layoutViewport || !layoutViewport && strategy === "fixed") {
+                    x = visualViewport.offsetLeft;
+                    y = visualViewport.offsetTop;
+                }
+            }
+            return {
+                width,
+                height,
+                x: x + getWindowScrollBarX(element),
+                y
+            };
+        }
+        function getDocumentRect(element) {
+            var _element$ownerDocumen;
+            var html = getDocumentElement(element);
+            var winScroll = getWindowScroll(element);
+            var body = (_element$ownerDocumen = element.ownerDocument) == null ? void 0 : _element$ownerDocumen.body;
+            var width = math_max(html.scrollWidth, html.clientWidth, body ? body.scrollWidth : 0, body ? body.clientWidth : 0);
+            var height = math_max(html.scrollHeight, html.clientHeight, body ? body.scrollHeight : 0, body ? body.clientHeight : 0);
+            var x = -winScroll.scrollLeft + getWindowScrollBarX(element);
+            var y = -winScroll.scrollTop;
+            if (getComputedStyle_getComputedStyle(body || html).direction === "rtl") x += math_max(html.clientWidth, body ? body.clientWidth : 0) - width;
+            return {
+                width,
+                height,
+                x,
+                y
+            };
+        }
+        function contains(parent, child) {
+            var rootNode = child.getRootNode && child.getRootNode();
+            if (parent.contains(child)) return true; else if (rootNode && isShadowRoot(rootNode)) {
+                var next = child;
+                do {
+                    if (next && parent.isSameNode(next)) return true;
+                    next = next.parentNode || next.host;
+                } while (next);
+            }
+            return false;
+        }
+        function rectToClientRect(rect) {
+            return Object.assign({}, rect, {
+                left: rect.x,
+                top: rect.y,
+                right: rect.x + rect.width,
+                bottom: rect.y + rect.height
+            });
+        }
+        function getInnerBoundingClientRect(element, strategy) {
+            var rect = getBoundingClientRect(element, false, strategy === "fixed");
+            rect.top = rect.top + element.clientTop;
+            rect.left = rect.left + element.clientLeft;
+            rect.bottom = rect.top + element.clientHeight;
+            rect.right = rect.left + element.clientWidth;
+            rect.width = element.clientWidth;
+            rect.height = element.clientHeight;
+            rect.x = rect.left;
+            rect.y = rect.top;
+            return rect;
+        }
+        function getClientRectFromMixedType(element, clippingParent, strategy) {
+            return clippingParent === viewport ? rectToClientRect(getViewportRect(element, strategy)) : isElement(clippingParent) ? getInnerBoundingClientRect(clippingParent, strategy) : rectToClientRect(getDocumentRect(getDocumentElement(element)));
+        }
+        function getClippingParents(element) {
+            var clippingParents = listScrollParents(getParentNode(element));
+            var canEscapeClipping = [ "absolute", "fixed" ].indexOf(getComputedStyle_getComputedStyle(element).position) >= 0;
+            var clipperElement = canEscapeClipping && isHTMLElement(element) ? getOffsetParent(element) : element;
+            if (!isElement(clipperElement)) return [];
+            return clippingParents.filter((function(clippingParent) {
+                return isElement(clippingParent) && contains(clippingParent, clipperElement) && getNodeName(clippingParent) !== "body";
+            }));
+        }
+        function getClippingRect(element, boundary, rootBoundary, strategy) {
+            var mainClippingParents = boundary === "clippingParents" ? getClippingParents(element) : [].concat(boundary);
+            var clippingParents = [].concat(mainClippingParents, [ rootBoundary ]);
+            var firstClippingParent = clippingParents[0];
+            var clippingRect = clippingParents.reduce((function(accRect, clippingParent) {
+                var rect = getClientRectFromMixedType(element, clippingParent, strategy);
+                accRect.top = math_max(rect.top, accRect.top);
+                accRect.right = math_min(rect.right, accRect.right);
+                accRect.bottom = math_min(rect.bottom, accRect.bottom);
+                accRect.left = math_max(rect.left, accRect.left);
+                return accRect;
+            }), getClientRectFromMixedType(element, firstClippingParent, strategy));
+            clippingRect.width = clippingRect.right - clippingRect.left;
+            clippingRect.height = clippingRect.bottom - clippingRect.top;
+            clippingRect.x = clippingRect.left;
+            clippingRect.y = clippingRect.top;
+            return clippingRect;
+        }
+        function getFreshSideObject() {
+            return {
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0
+            };
+        }
+        function mergePaddingObject(paddingObject) {
+            return Object.assign({}, getFreshSideObject(), paddingObject);
+        }
+        function expandToHashMap(value, keys) {
+            return keys.reduce((function(hashMap, key) {
+                hashMap[key] = value;
+                return hashMap;
+            }), {});
+        }
+        function detectOverflow(state, options) {
+            if (options === void 0) options = {};
+            var _options = options, _options$placement = _options.placement, placement = _options$placement === void 0 ? state.placement : _options$placement, _options$strategy = _options.strategy, strategy = _options$strategy === void 0 ? state.strategy : _options$strategy, _options$boundary = _options.boundary, boundary = _options$boundary === void 0 ? clippingParents : _options$boundary, _options$rootBoundary = _options.rootBoundary, rootBoundary = _options$rootBoundary === void 0 ? viewport : _options$rootBoundary, _options$elementConte = _options.elementContext, elementContext = _options$elementConte === void 0 ? popper : _options$elementConte, _options$altBoundary = _options.altBoundary, altBoundary = _options$altBoundary === void 0 ? false : _options$altBoundary, _options$padding = _options.padding, padding = _options$padding === void 0 ? 0 : _options$padding;
+            var paddingObject = mergePaddingObject(typeof padding !== "number" ? padding : expandToHashMap(padding, basePlacements));
+            var altContext = elementContext === popper ? reference : popper;
+            var popperRect = state.rects.popper;
+            var element = state.elements[altBoundary ? altContext : elementContext];
+            var clippingClientRect = getClippingRect(isElement(element) ? element : element.contextElement || getDocumentElement(state.elements.popper), boundary, rootBoundary, strategy);
+            var referenceClientRect = getBoundingClientRect(state.elements.reference);
+            var popperOffsets = computeOffsets({
+                reference: referenceClientRect,
+                element: popperRect,
+                strategy: "absolute",
+                placement
+            });
+            var popperClientRect = rectToClientRect(Object.assign({}, popperRect, popperOffsets));
+            var elementClientRect = elementContext === popper ? popperClientRect : referenceClientRect;
+            var overflowOffsets = {
+                top: clippingClientRect.top - elementClientRect.top + paddingObject.top,
+                bottom: elementClientRect.bottom - clippingClientRect.bottom + paddingObject.bottom,
+                left: clippingClientRect.left - elementClientRect.left + paddingObject.left,
+                right: elementClientRect.right - clippingClientRect.right + paddingObject.right
+            };
+            var offsetData = state.modifiersData.offset;
+            if (elementContext === popper && offsetData) {
+                var offset = offsetData[placement];
+                Object.keys(overflowOffsets).forEach((function(key) {
+                    var multiply = [ right, bottom ].indexOf(key) >= 0 ? 1 : -1;
+                    var axis = [ enums_top, bottom ].indexOf(key) >= 0 ? "y" : "x";
+                    overflowOffsets[key] += offset[axis] * multiply;
+                }));
+            }
+            return overflowOffsets;
+        }
+        function computeAutoPlacement(state, options) {
+            if (options === void 0) options = {};
+            var _options = options, placement = _options.placement, boundary = _options.boundary, rootBoundary = _options.rootBoundary, padding = _options.padding, flipVariations = _options.flipVariations, _options$allowedAutoP = _options.allowedAutoPlacements, allowedAutoPlacements = _options$allowedAutoP === void 0 ? enums_placements : _options$allowedAutoP;
+            var variation = getVariation(placement);
+            var placements = variation ? flipVariations ? variationPlacements : variationPlacements.filter((function(placement) {
+                return getVariation(placement) === variation;
+            })) : basePlacements;
+            var allowedPlacements = placements.filter((function(placement) {
+                return allowedAutoPlacements.indexOf(placement) >= 0;
+            }));
+            if (allowedPlacements.length === 0) allowedPlacements = placements;
+            var overflows = allowedPlacements.reduce((function(acc, placement) {
+                acc[placement] = detectOverflow(state, {
+                    placement,
+                    boundary,
+                    rootBoundary,
+                    padding
+                })[getBasePlacement(placement)];
+                return acc;
+            }), {});
+            return Object.keys(overflows).sort((function(a, b) {
+                return overflows[a] - overflows[b];
+            }));
+        }
+        function getExpandedFallbackPlacements(placement) {
+            if (getBasePlacement(placement) === auto) return [];
+            var oppositePlacement = getOppositePlacement(placement);
+            return [ getOppositeVariationPlacement(placement), oppositePlacement, getOppositeVariationPlacement(oppositePlacement) ];
+        }
+        function flip(_ref) {
+            var state = _ref.state, options = _ref.options, name = _ref.name;
+            if (state.modifiersData[name]._skip) return;
+            var _options$mainAxis = options.mainAxis, checkMainAxis = _options$mainAxis === void 0 ? true : _options$mainAxis, _options$altAxis = options.altAxis, checkAltAxis = _options$altAxis === void 0 ? true : _options$altAxis, specifiedFallbackPlacements = options.fallbackPlacements, padding = options.padding, boundary = options.boundary, rootBoundary = options.rootBoundary, altBoundary = options.altBoundary, _options$flipVariatio = options.flipVariations, flipVariations = _options$flipVariatio === void 0 ? true : _options$flipVariatio, allowedAutoPlacements = options.allowedAutoPlacements;
+            var preferredPlacement = state.options.placement;
+            var basePlacement = getBasePlacement(preferredPlacement);
+            var isBasePlacement = basePlacement === preferredPlacement;
+            var fallbackPlacements = specifiedFallbackPlacements || (isBasePlacement || !flipVariations ? [ getOppositePlacement(preferredPlacement) ] : getExpandedFallbackPlacements(preferredPlacement));
+            var placements = [ preferredPlacement ].concat(fallbackPlacements).reduce((function(acc, placement) {
+                return acc.concat(getBasePlacement(placement) === auto ? computeAutoPlacement(state, {
+                    placement,
+                    boundary,
+                    rootBoundary,
+                    padding,
+                    flipVariations,
+                    allowedAutoPlacements
+                }) : placement);
+            }), []);
+            var referenceRect = state.rects.reference;
+            var popperRect = state.rects.popper;
+            var checksMap = new Map;
+            var makeFallbackChecks = true;
+            var firstFittingPlacement = placements[0];
+            for (var i = 0; i < placements.length; i++) {
+                var placement = placements[i];
+                var _basePlacement = getBasePlacement(placement);
+                var isStartVariation = getVariation(placement) === start;
+                var isVertical = [ enums_top, bottom ].indexOf(_basePlacement) >= 0;
+                var len = isVertical ? "width" : "height";
+                var overflow = detectOverflow(state, {
+                    placement,
+                    boundary,
+                    rootBoundary,
+                    altBoundary,
+                    padding
+                });
+                var mainVariationSide = isVertical ? isStartVariation ? right : left : isStartVariation ? bottom : enums_top;
+                if (referenceRect[len] > popperRect[len]) mainVariationSide = getOppositePlacement(mainVariationSide);
+                var altVariationSide = getOppositePlacement(mainVariationSide);
+                var checks = [];
+                if (checkMainAxis) checks.push(overflow[_basePlacement] <= 0);
+                if (checkAltAxis) checks.push(overflow[mainVariationSide] <= 0, overflow[altVariationSide] <= 0);
+                if (checks.every((function(check) {
+                    return check;
+                }))) {
+                    firstFittingPlacement = placement;
+                    makeFallbackChecks = false;
+                    break;
+                }
+                checksMap.set(placement, checks);
+            }
+            if (makeFallbackChecks) {
+                var numberOfChecks = flipVariations ? 3 : 1;
+                var _loop = function _loop(_i) {
+                    var fittingPlacement = placements.find((function(placement) {
+                        var checks = checksMap.get(placement);
+                        if (checks) return checks.slice(0, _i).every((function(check) {
+                            return check;
+                        }));
+                    }));
+                    if (fittingPlacement) {
+                        firstFittingPlacement = fittingPlacement;
+                        return "break";
+                    }
+                };
+                for (var _i = numberOfChecks; _i > 0; _i--) {
+                    var _ret = _loop(_i);
+                    if (_ret === "break") break;
+                }
+            }
+            if (state.placement !== firstFittingPlacement) {
+                state.modifiersData[name]._skip = true;
+                state.placement = firstFittingPlacement;
+                state.reset = true;
+            }
+        }
+        const modifiers_flip = {
+            name: "flip",
+            enabled: true,
+            phase: "main",
+            fn: flip,
+            requiresIfExists: [ "offset" ],
+            data: {
+                _skip: false
+            }
+        };
+        function getAltAxis(axis) {
+            return axis === "x" ? "y" : "x";
+        }
+        function within(min, value, max) {
+            return math_max(min, math_min(value, max));
+        }
+        function withinMaxClamp(min, value, max) {
+            var v = within(min, value, max);
+            return v > max ? max : v;
+        }
+        function preventOverflow(_ref) {
+            var state = _ref.state, options = _ref.options, name = _ref.name;
+            var _options$mainAxis = options.mainAxis, checkMainAxis = _options$mainAxis === void 0 ? true : _options$mainAxis, _options$altAxis = options.altAxis, checkAltAxis = _options$altAxis === void 0 ? false : _options$altAxis, boundary = options.boundary, rootBoundary = options.rootBoundary, altBoundary = options.altBoundary, padding = options.padding, _options$tether = options.tether, tether = _options$tether === void 0 ? true : _options$tether, _options$tetherOffset = options.tetherOffset, tetherOffset = _options$tetherOffset === void 0 ? 0 : _options$tetherOffset;
+            var overflow = detectOverflow(state, {
+                boundary,
+                rootBoundary,
+                padding,
+                altBoundary
+            });
+            var basePlacement = getBasePlacement(state.placement);
+            var variation = getVariation(state.placement);
+            var isBasePlacement = !variation;
+            var mainAxis = getMainAxisFromPlacement(basePlacement);
+            var altAxis = getAltAxis(mainAxis);
+            var popperOffsets = state.modifiersData.popperOffsets;
+            var referenceRect = state.rects.reference;
+            var popperRect = state.rects.popper;
+            var tetherOffsetValue = typeof tetherOffset === "function" ? tetherOffset(Object.assign({}, state.rects, {
+                placement: state.placement
+            })) : tetherOffset;
+            var normalizedTetherOffsetValue = typeof tetherOffsetValue === "number" ? {
+                mainAxis: tetherOffsetValue,
+                altAxis: tetherOffsetValue
+            } : Object.assign({
+                mainAxis: 0,
+                altAxis: 0
+            }, tetherOffsetValue);
+            var offsetModifierState = state.modifiersData.offset ? state.modifiersData.offset[state.placement] : null;
+            var data = {
+                x: 0,
+                y: 0
+            };
+            if (!popperOffsets) return;
+            if (checkMainAxis) {
+                var _offsetModifierState$;
+                var mainSide = mainAxis === "y" ? enums_top : left;
+                var altSide = mainAxis === "y" ? bottom : right;
+                var len = mainAxis === "y" ? "height" : "width";
+                var offset = popperOffsets[mainAxis];
+                var min = offset + overflow[mainSide];
+                var max = offset - overflow[altSide];
+                var additive = tether ? -popperRect[len] / 2 : 0;
+                var minLen = variation === start ? referenceRect[len] : popperRect[len];
+                var maxLen = variation === start ? -popperRect[len] : -referenceRect[len];
+                var arrowElement = state.elements.arrow;
+                var arrowRect = tether && arrowElement ? getLayoutRect(arrowElement) : {
+                    width: 0,
+                    height: 0
+                };
+                var arrowPaddingObject = state.modifiersData["arrow#persistent"] ? state.modifiersData["arrow#persistent"].padding : getFreshSideObject();
+                var arrowPaddingMin = arrowPaddingObject[mainSide];
+                var arrowPaddingMax = arrowPaddingObject[altSide];
+                var arrowLen = within(0, referenceRect[len], arrowRect[len]);
+                var minOffset = isBasePlacement ? referenceRect[len] / 2 - additive - arrowLen - arrowPaddingMin - normalizedTetherOffsetValue.mainAxis : minLen - arrowLen - arrowPaddingMin - normalizedTetherOffsetValue.mainAxis;
+                var maxOffset = isBasePlacement ? -referenceRect[len] / 2 + additive + arrowLen + arrowPaddingMax + normalizedTetherOffsetValue.mainAxis : maxLen + arrowLen + arrowPaddingMax + normalizedTetherOffsetValue.mainAxis;
+                var arrowOffsetParent = state.elements.arrow && getOffsetParent(state.elements.arrow);
+                var clientOffset = arrowOffsetParent ? mainAxis === "y" ? arrowOffsetParent.clientTop || 0 : arrowOffsetParent.clientLeft || 0 : 0;
+                var offsetModifierValue = (_offsetModifierState$ = offsetModifierState == null ? void 0 : offsetModifierState[mainAxis]) != null ? _offsetModifierState$ : 0;
+                var tetherMin = offset + minOffset - offsetModifierValue - clientOffset;
+                var tetherMax = offset + maxOffset - offsetModifierValue;
+                var preventedOffset = within(tether ? math_min(min, tetherMin) : min, offset, tether ? math_max(max, tetherMax) : max);
+                popperOffsets[mainAxis] = preventedOffset;
+                data[mainAxis] = preventedOffset - offset;
+            }
+            if (checkAltAxis) {
+                var _offsetModifierState$2;
+                var _mainSide = mainAxis === "x" ? enums_top : left;
+                var _altSide = mainAxis === "x" ? bottom : right;
+                var _offset = popperOffsets[altAxis];
+                var _len = altAxis === "y" ? "height" : "width";
+                var _min = _offset + overflow[_mainSide];
+                var _max = _offset - overflow[_altSide];
+                var isOriginSide = [ enums_top, left ].indexOf(basePlacement) !== -1;
+                var _offsetModifierValue = (_offsetModifierState$2 = offsetModifierState == null ? void 0 : offsetModifierState[altAxis]) != null ? _offsetModifierState$2 : 0;
+                var _tetherMin = isOriginSide ? _min : _offset - referenceRect[_len] - popperRect[_len] - _offsetModifierValue + normalizedTetherOffsetValue.altAxis;
+                var _tetherMax = isOriginSide ? _offset + referenceRect[_len] + popperRect[_len] - _offsetModifierValue - normalizedTetherOffsetValue.altAxis : _max;
+                var _preventedOffset = tether && isOriginSide ? withinMaxClamp(_tetherMin, _offset, _tetherMax) : within(tether ? _tetherMin : _min, _offset, tether ? _tetherMax : _max);
+                popperOffsets[altAxis] = _preventedOffset;
+                data[altAxis] = _preventedOffset - _offset;
+            }
+            state.modifiersData[name] = data;
+        }
+        const modifiers_preventOverflow = {
+            name: "preventOverflow",
+            enabled: true,
+            phase: "main",
+            fn: preventOverflow,
+            requiresIfExists: [ "offset" ]
+        };
+        var toPaddingObject = function toPaddingObject(padding, state) {
+            padding = typeof padding === "function" ? padding(Object.assign({}, state.rects, {
+                placement: state.placement
+            })) : padding;
+            return mergePaddingObject(typeof padding !== "number" ? padding : expandToHashMap(padding, basePlacements));
+        };
+        function arrow(_ref) {
+            var _state$modifiersData$;
+            var state = _ref.state, name = _ref.name, options = _ref.options;
+            var arrowElement = state.elements.arrow;
+            var popperOffsets = state.modifiersData.popperOffsets;
+            var basePlacement = getBasePlacement(state.placement);
+            var axis = getMainAxisFromPlacement(basePlacement);
+            var isVertical = [ left, right ].indexOf(basePlacement) >= 0;
+            var len = isVertical ? "height" : "width";
+            if (!arrowElement || !popperOffsets) return;
+            var paddingObject = toPaddingObject(options.padding, state);
+            var arrowRect = getLayoutRect(arrowElement);
+            var minProp = axis === "y" ? enums_top : left;
+            var maxProp = axis === "y" ? bottom : right;
+            var endDiff = state.rects.reference[len] + state.rects.reference[axis] - popperOffsets[axis] - state.rects.popper[len];
+            var startDiff = popperOffsets[axis] - state.rects.reference[axis];
+            var arrowOffsetParent = getOffsetParent(arrowElement);
+            var clientSize = arrowOffsetParent ? axis === "y" ? arrowOffsetParent.clientHeight || 0 : arrowOffsetParent.clientWidth || 0 : 0;
+            var centerToReference = endDiff / 2 - startDiff / 2;
+            var min = paddingObject[minProp];
+            var max = clientSize - arrowRect[len] - paddingObject[maxProp];
+            var center = clientSize / 2 - arrowRect[len] / 2 + centerToReference;
+            var offset = within(min, center, max);
+            var axisProp = axis;
+            state.modifiersData[name] = (_state$modifiersData$ = {}, _state$modifiersData$[axisProp] = offset, 
+            _state$modifiersData$.centerOffset = offset - center, _state$modifiersData$);
+        }
+        function arrow_effect(_ref2) {
+            var state = _ref2.state, options = _ref2.options;
+            var _options$element = options.element, arrowElement = _options$element === void 0 ? "[data-popper-arrow]" : _options$element;
+            if (arrowElement == null) return;
+            if (typeof arrowElement === "string") {
+                arrowElement = state.elements.popper.querySelector(arrowElement);
+                if (!arrowElement) return;
+            }
+            if (!contains(state.elements.popper, arrowElement)) return;
+            state.elements.arrow = arrowElement;
+        }
+        const modifiers_arrow = {
+            name: "arrow",
+            enabled: true,
+            phase: "main",
+            fn: arrow,
+            effect: arrow_effect,
+            requires: [ "popperOffsets" ],
+            requiresIfExists: [ "preventOverflow" ]
+        };
+        function getSideOffsets(overflow, rect, preventedOffsets) {
+            if (preventedOffsets === void 0) preventedOffsets = {
+                x: 0,
+                y: 0
+            };
+            return {
+                top: overflow.top - rect.height - preventedOffsets.y,
+                right: overflow.right - rect.width + preventedOffsets.x,
+                bottom: overflow.bottom - rect.height + preventedOffsets.y,
+                left: overflow.left - rect.width - preventedOffsets.x
+            };
+        }
+        function isAnySideFullyClipped(overflow) {
+            return [ enums_top, right, bottom, left ].some((function(side) {
+                return overflow[side] >= 0;
+            }));
+        }
+        function hide(_ref) {
+            var state = _ref.state, name = _ref.name;
+            var referenceRect = state.rects.reference;
+            var popperRect = state.rects.popper;
+            var preventedOffsets = state.modifiersData.preventOverflow;
+            var referenceOverflow = detectOverflow(state, {
+                elementContext: "reference"
+            });
+            var popperAltOverflow = detectOverflow(state, {
+                altBoundary: true
+            });
+            var referenceClippingOffsets = getSideOffsets(referenceOverflow, referenceRect);
+            var popperEscapeOffsets = getSideOffsets(popperAltOverflow, popperRect, preventedOffsets);
+            var isReferenceHidden = isAnySideFullyClipped(referenceClippingOffsets);
+            var hasPopperEscaped = isAnySideFullyClipped(popperEscapeOffsets);
+            state.modifiersData[name] = {
+                referenceClippingOffsets,
+                popperEscapeOffsets,
+                isReferenceHidden,
+                hasPopperEscaped
+            };
+            state.attributes.popper = Object.assign({}, state.attributes.popper, {
+                "data-popper-reference-hidden": isReferenceHidden,
+                "data-popper-escaped": hasPopperEscaped
+            });
+        }
+        const modifiers_hide = {
+            name: "hide",
+            enabled: true,
+            phase: "main",
+            requiresIfExists: [ "preventOverflow" ],
+            fn: hide
+        };
+        var defaultModifiers = [ eventListeners, modifiers_popperOffsets, modifiers_computeStyles, modifiers_applyStyles, modifiers_offset, modifiers_flip, modifiers_preventOverflow, modifiers_arrow, modifiers_hide ];
+        var popper_createPopper = popperGenerator({
+            defaultModifiers
+        });
+        var BOX_CLASS = "tippy-box";
+        var CONTENT_CLASS = "tippy-content";
+        var BACKDROP_CLASS = "tippy-backdrop";
+        var ARROW_CLASS = "tippy-arrow";
+        var SVG_ARROW_CLASS = "tippy-svg-arrow";
+        var TOUCH_OPTIONS = {
+            passive: true,
+            capture: true
+        };
+        var TIPPY_DEFAULT_APPEND_TO = function TIPPY_DEFAULT_APPEND_TO() {
+            return document.body;
+        };
+        function getValueAtIndexOrReturn(value, index, defaultValue) {
+            if (Array.isArray(value)) {
+                var v = value[index];
+                return v == null ? Array.isArray(defaultValue) ? defaultValue[index] : defaultValue : v;
+            }
+            return value;
+        }
+        function isType(value, type) {
+            var str = {}.toString.call(value);
+            return str.indexOf("[object") === 0 && str.indexOf(type + "]") > -1;
+        }
+        function invokeWithArgsOrReturn(value, args) {
+            return typeof value === "function" ? value.apply(void 0, args) : value;
+        }
+        function tippy_esm_debounce(fn, ms) {
+            if (ms === 0) return fn;
+            var timeout;
+            return function(arg) {
+                clearTimeout(timeout);
+                timeout = setTimeout((function() {
+                    fn(arg);
+                }), ms);
+            };
+        }
+        function splitBySpaces(value) {
+            return value.split(/\s+/).filter(Boolean);
+        }
+        function normalizeToArray(value) {
+            return [].concat(value);
+        }
+        function pushIfUnique(arr, value) {
+            if (arr.indexOf(value) === -1) arr.push(value);
+        }
+        function tippy_esm_unique(arr) {
+            return arr.filter((function(item, index) {
+                return arr.indexOf(item) === index;
+            }));
+        }
+        function tippy_esm_getBasePlacement(placement) {
+            return placement.split("-")[0];
+        }
+        function arrayFrom(value) {
+            return [].slice.call(value);
+        }
+        function removeUndefinedProps(obj) {
+            return Object.keys(obj).reduce((function(acc, key) {
+                if (obj[key] !== void 0) acc[key] = obj[key];
+                return acc;
+            }), {});
+        }
+        function div() {
+            return document.createElement("div");
+        }
+        function tippy_esm_isElement(value) {
+            return [ "Element", "Fragment" ].some((function(type) {
+                return isType(value, type);
+            }));
+        }
+        function isNodeList(value) {
+            return isType(value, "NodeList");
+        }
+        function isMouseEvent(value) {
+            return isType(value, "MouseEvent");
+        }
+        function isReferenceElement(value) {
+            return !!(value && value._tippy && value._tippy.reference === value);
+        }
+        function getArrayOfElements(value) {
+            if (tippy_esm_isElement(value)) return [ value ];
+            if (isNodeList(value)) return arrayFrom(value);
+            if (Array.isArray(value)) return value;
+            return arrayFrom(document.querySelectorAll(value));
+        }
+        function setTransitionDuration(els, value) {
+            els.forEach((function(el) {
+                if (el) el.style.transitionDuration = value + "ms";
+            }));
+        }
+        function setVisibilityState(els, state) {
+            els.forEach((function(el) {
+                if (el) el.setAttribute("data-state", state);
+            }));
+        }
+        function getOwnerDocument(elementOrElements) {
+            var _element$ownerDocumen;
+            var _normalizeToArray = normalizeToArray(elementOrElements), element = _normalizeToArray[0];
+            return element != null && (_element$ownerDocumen = element.ownerDocument) != null && _element$ownerDocumen.body ? element.ownerDocument : document;
+        }
+        function isCursorOutsideInteractiveBorder(popperTreeData, event) {
+            var clientX = event.clientX, clientY = event.clientY;
+            return popperTreeData.every((function(_ref) {
+                var popperRect = _ref.popperRect, popperState = _ref.popperState, props = _ref.props;
+                var interactiveBorder = props.interactiveBorder;
+                var basePlacement = tippy_esm_getBasePlacement(popperState.placement);
+                var offsetData = popperState.modifiersData.offset;
+                if (!offsetData) return true;
+                var topDistance = basePlacement === "bottom" ? offsetData.top.y : 0;
+                var bottomDistance = basePlacement === "top" ? offsetData.bottom.y : 0;
+                var leftDistance = basePlacement === "right" ? offsetData.left.x : 0;
+                var rightDistance = basePlacement === "left" ? offsetData.right.x : 0;
+                var exceedsTop = popperRect.top - clientY + topDistance > interactiveBorder;
+                var exceedsBottom = clientY - popperRect.bottom - bottomDistance > interactiveBorder;
+                var exceedsLeft = popperRect.left - clientX + leftDistance > interactiveBorder;
+                var exceedsRight = clientX - popperRect.right - rightDistance > interactiveBorder;
+                return exceedsTop || exceedsBottom || exceedsLeft || exceedsRight;
+            }));
+        }
+        function updateTransitionEndListener(box, action, listener) {
+            var method = action + "EventListener";
+            [ "transitionend", "webkitTransitionEnd" ].forEach((function(event) {
+                box[method](event, listener);
+            }));
+        }
+        function actualContains(parent, child) {
+            var target = child;
+            while (target) {
+                var _target$getRootNode;
+                if (parent.contains(target)) return true;
+                target = target.getRootNode == null ? void 0 : (_target$getRootNode = target.getRootNode()) == null ? void 0 : _target$getRootNode.host;
+            }
+            return false;
+        }
+        var currentInput = {
+            isTouch: false
+        };
+        var lastMouseMoveTime = 0;
+        function onDocumentTouchStart() {
+            if (currentInput.isTouch) return;
+            currentInput.isTouch = true;
+            if (window.performance) document.addEventListener("mousemove", onDocumentMouseMove);
+        }
+        function onDocumentMouseMove() {
+            var now = performance.now();
+            if (now - lastMouseMoveTime < 20) {
+                currentInput.isTouch = false;
+                document.removeEventListener("mousemove", onDocumentMouseMove);
+            }
+            lastMouseMoveTime = now;
+        }
+        function onWindowBlur() {
+            var activeElement = document.activeElement;
+            if (isReferenceElement(activeElement)) {
+                var instance = activeElement._tippy;
+                if (activeElement.blur && !instance.state.isVisible) activeElement.blur();
+            }
+        }
+        function bindGlobalEventListeners() {
+            document.addEventListener("touchstart", onDocumentTouchStart, TOUCH_OPTIONS);
+            window.addEventListener("blur", onWindowBlur);
+        }
+        var isBrowser = typeof window !== "undefined" && typeof document !== "undefined";
+        var isIE11 = isBrowser ? !!window.msCrypto : false;
+        if (false) ;
+        var pluginProps = {
+            animateFill: false,
+            followCursor: false,
+            inlinePositioning: false,
+            sticky: false
+        };
+        var renderProps = {
+            allowHTML: false,
+            animation: "fade",
+            arrow: true,
+            content: "",
+            inertia: false,
+            maxWidth: 350,
+            role: "tooltip",
+            theme: "",
+            zIndex: 9999
+        };
+        var defaultProps = Object.assign({
+            appendTo: TIPPY_DEFAULT_APPEND_TO,
+            aria: {
+                content: "auto",
+                expanded: "auto"
+            },
+            delay: 0,
+            duration: [ 300, 250 ],
+            getReferenceClientRect: null,
+            hideOnClick: true,
+            ignoreAttributes: false,
+            interactive: false,
+            interactiveBorder: 2,
+            interactiveDebounce: 0,
+            moveTransition: "",
+            offset: [ 0, 10 ],
+            onAfterUpdate: function onAfterUpdate() {},
+            onBeforeUpdate: function onBeforeUpdate() {},
+            onCreate: function onCreate() {},
+            onDestroy: function onDestroy() {},
+            onHidden: function onHidden() {},
+            onHide: function onHide() {},
+            onMount: function onMount() {},
+            onShow: function onShow() {},
+            onShown: function onShown() {},
+            onTrigger: function onTrigger() {},
+            onUntrigger: function onUntrigger() {},
+            onClickOutside: function onClickOutside() {},
+            placement: "top",
+            plugins: [],
+            popperOptions: {},
+            render: null,
+            showOnCreate: false,
+            touch: true,
+            trigger: "mouseenter focus",
+            triggerTarget: null
+        }, pluginProps, renderProps);
+        var defaultKeys = Object.keys(defaultProps);
+        var setDefaultProps = function setDefaultProps(partialProps) {
+            if (false) ;
+            var keys = Object.keys(partialProps);
+            keys.forEach((function(key) {
+                defaultProps[key] = partialProps[key];
+            }));
+        };
+        function getExtendedPassedProps(passedProps) {
+            var plugins = passedProps.plugins || [];
+            var pluginProps = plugins.reduce((function(acc, plugin) {
+                var name = plugin.name, defaultValue = plugin.defaultValue;
+                if (name) {
+                    var _name;
+                    acc[name] = passedProps[name] !== void 0 ? passedProps[name] : (_name = defaultProps[name]) != null ? _name : defaultValue;
+                }
+                return acc;
+            }), {});
+            return Object.assign({}, passedProps, pluginProps);
+        }
+        function getDataAttributeProps(reference, plugins) {
+            var propKeys = plugins ? Object.keys(getExtendedPassedProps(Object.assign({}, defaultProps, {
+                plugins
+            }))) : defaultKeys;
+            var props = propKeys.reduce((function(acc, key) {
+                var valueAsString = (reference.getAttribute("data-tippy-" + key) || "").trim();
+                if (!valueAsString) return acc;
+                if (key === "content") acc[key] = valueAsString; else try {
+                    acc[key] = JSON.parse(valueAsString);
+                } catch (e) {
+                    acc[key] = valueAsString;
+                }
+                return acc;
+            }), {});
+            return props;
+        }
+        function evaluateProps(reference, props) {
+            var out = Object.assign({}, props, {
+                content: invokeWithArgsOrReturn(props.content, [ reference ])
+            }, props.ignoreAttributes ? {} : getDataAttributeProps(reference, props.plugins));
+            out.aria = Object.assign({}, defaultProps.aria, out.aria);
+            out.aria = {
+                expanded: out.aria.expanded === "auto" ? props.interactive : out.aria.expanded,
+                content: out.aria.content === "auto" ? props.interactive ? null : "describedby" : out.aria.content
+            };
+            return out;
+        }
+        var innerHTML = function innerHTML() {
+            return "innerHTML";
+        };
+        function dangerouslySetInnerHTML(element, html) {
+            element[innerHTML()] = html;
+        }
+        function createArrowElement(value) {
+            var arrow = div();
+            if (value === true) arrow.className = ARROW_CLASS; else {
+                arrow.className = SVG_ARROW_CLASS;
+                if (tippy_esm_isElement(value)) arrow.appendChild(value); else dangerouslySetInnerHTML(arrow, value);
+            }
+            return arrow;
+        }
+        function setContent(content, props) {
+            if (tippy_esm_isElement(props.content)) {
+                dangerouslySetInnerHTML(content, "");
+                content.appendChild(props.content);
+            } else if (typeof props.content !== "function") if (props.allowHTML) dangerouslySetInnerHTML(content, props.content); else content.textContent = props.content;
+        }
+        function getChildren(popper) {
+            var box = popper.firstElementChild;
+            var boxChildren = arrayFrom(box.children);
+            return {
+                box,
+                content: boxChildren.find((function(node) {
+                    return node.classList.contains(CONTENT_CLASS);
+                })),
+                arrow: boxChildren.find((function(node) {
+                    return node.classList.contains(ARROW_CLASS) || node.classList.contains(SVG_ARROW_CLASS);
+                })),
+                backdrop: boxChildren.find((function(node) {
+                    return node.classList.contains(BACKDROP_CLASS);
+                }))
+            };
+        }
+        function render(instance) {
+            var popper = div();
+            var box = div();
+            box.className = BOX_CLASS;
+            box.setAttribute("data-state", "hidden");
+            box.setAttribute("tabindex", "-1");
+            var content = div();
+            content.className = CONTENT_CLASS;
+            content.setAttribute("data-state", "hidden");
+            setContent(content, instance.props);
+            popper.appendChild(box);
+            box.appendChild(content);
+            onUpdate(instance.props, instance.props);
+            function onUpdate(prevProps, nextProps) {
+                var _getChildren = getChildren(popper), box = _getChildren.box, content = _getChildren.content, arrow = _getChildren.arrow;
+                if (nextProps.theme) box.setAttribute("data-theme", nextProps.theme); else box.removeAttribute("data-theme");
+                if (typeof nextProps.animation === "string") box.setAttribute("data-animation", nextProps.animation); else box.removeAttribute("data-animation");
+                if (nextProps.inertia) box.setAttribute("data-inertia", ""); else box.removeAttribute("data-inertia");
+                box.style.maxWidth = typeof nextProps.maxWidth === "number" ? nextProps.maxWidth + "px" : nextProps.maxWidth;
+                if (nextProps.role) box.setAttribute("role", nextProps.role); else box.removeAttribute("role");
+                if (prevProps.content !== nextProps.content || prevProps.allowHTML !== nextProps.allowHTML) setContent(content, instance.props);
+                if (nextProps.arrow) {
+                    if (!arrow) box.appendChild(createArrowElement(nextProps.arrow)); else if (prevProps.arrow !== nextProps.arrow) {
+                        box.removeChild(arrow);
+                        box.appendChild(createArrowElement(nextProps.arrow));
+                    }
+                } else if (arrow) box.removeChild(arrow);
+            }
+            return {
+                popper,
+                onUpdate
+            };
+        }
+        render.$$tippy = true;
+        var idCounter = 1;
+        var mouseMoveListeners = [];
+        var mountedInstances = [];
+        function createTippy(reference, passedProps) {
+            var props = evaluateProps(reference, Object.assign({}, defaultProps, getExtendedPassedProps(removeUndefinedProps(passedProps))));
+            var showTimeout;
+            var hideTimeout;
+            var scheduleHideAnimationFrame;
+            var isVisibleFromClick = false;
+            var didHideDueToDocumentMouseDown = false;
+            var didTouchMove = false;
+            var ignoreOnFirstUpdate = false;
+            var lastTriggerEvent;
+            var currentTransitionEndListener;
+            var onFirstUpdate;
+            var listeners = [];
+            var debouncedOnMouseMove = tippy_esm_debounce(onMouseMove, props.interactiveDebounce);
+            var currentTarget;
+            var id = idCounter++;
+            var popperInstance = null;
+            var plugins = tippy_esm_unique(props.plugins);
+            var state = {
+                isEnabled: true,
+                isVisible: false,
+                isDestroyed: false,
+                isMounted: false,
+                isShown: false
+            };
+            var instance = {
+                id,
+                reference,
+                popper: div(),
+                popperInstance,
+                props,
+                state,
+                plugins,
+                clearDelayTimeouts,
+                setProps,
+                setContent,
+                show,
+                hide,
+                hideWithInteractivity,
+                enable,
+                disable,
+                unmount,
+                destroy
+            };
+            if (!props.render) {
+                if (false) ;
+                return instance;
+            }
+            var _props$render = props.render(instance), popper = _props$render.popper, onUpdate = _props$render.onUpdate;
+            popper.setAttribute("data-tippy-root", "");
+            popper.id = "tippy-" + instance.id;
+            instance.popper = popper;
+            reference._tippy = instance;
+            popper._tippy = instance;
+            var pluginsHooks = plugins.map((function(plugin) {
+                return plugin.fn(instance);
+            }));
+            var hasAriaExpanded = reference.hasAttribute("aria-expanded");
+            addListeners();
+            handleAriaExpandedAttribute();
+            handleStyles();
+            invokeHook("onCreate", [ instance ]);
+            if (props.showOnCreate) scheduleShow();
+            popper.addEventListener("mouseenter", (function() {
+                if (instance.props.interactive && instance.state.isVisible) instance.clearDelayTimeouts();
+            }));
+            popper.addEventListener("mouseleave", (function() {
+                if (instance.props.interactive && instance.props.trigger.indexOf("mouseenter") >= 0) getDocument().addEventListener("mousemove", debouncedOnMouseMove);
+            }));
+            return instance;
+            function getNormalizedTouchSettings() {
+                var touch = instance.props.touch;
+                return Array.isArray(touch) ? touch : [ touch, 0 ];
+            }
+            function getIsCustomTouchBehavior() {
+                return getNormalizedTouchSettings()[0] === "hold";
+            }
+            function getIsDefaultRenderFn() {
+                var _instance$props$rende;
+                return !!((_instance$props$rende = instance.props.render) != null && _instance$props$rende.$$tippy);
+            }
+            function getCurrentTarget() {
+                return currentTarget || reference;
+            }
+            function getDocument() {
+                var parent = getCurrentTarget().parentNode;
+                return parent ? getOwnerDocument(parent) : document;
+            }
+            function getDefaultTemplateChildren() {
+                return getChildren(popper);
+            }
+            function getDelay(isShow) {
+                if (instance.state.isMounted && !instance.state.isVisible || currentInput.isTouch || lastTriggerEvent && lastTriggerEvent.type === "focus") return 0;
+                return getValueAtIndexOrReturn(instance.props.delay, isShow ? 0 : 1, defaultProps.delay);
+            }
+            function handleStyles(fromHide) {
+                if (fromHide === void 0) fromHide = false;
+                popper.style.pointerEvents = instance.props.interactive && !fromHide ? "" : "none";
+                popper.style.zIndex = "" + instance.props.zIndex;
+            }
+            function invokeHook(hook, args, shouldInvokePropsHook) {
+                if (shouldInvokePropsHook === void 0) shouldInvokePropsHook = true;
+                pluginsHooks.forEach((function(pluginHooks) {
+                    if (pluginHooks[hook]) pluginHooks[hook].apply(pluginHooks, args);
+                }));
+                if (shouldInvokePropsHook) {
+                    var _instance$props;
+                    (_instance$props = instance.props)[hook].apply(_instance$props, args);
+                }
+            }
+            function handleAriaContentAttribute() {
+                var aria = instance.props.aria;
+                if (!aria.content) return;
+                var attr = "aria-" + aria.content;
+                var id = popper.id;
+                var nodes = normalizeToArray(instance.props.triggerTarget || reference);
+                nodes.forEach((function(node) {
+                    var currentValue = node.getAttribute(attr);
+                    if (instance.state.isVisible) node.setAttribute(attr, currentValue ? currentValue + " " + id : id); else {
+                        var nextValue = currentValue && currentValue.replace(id, "").trim();
+                        if (nextValue) node.setAttribute(attr, nextValue); else node.removeAttribute(attr);
+                    }
+                }));
+            }
+            function handleAriaExpandedAttribute() {
+                if (hasAriaExpanded || !instance.props.aria.expanded) return;
+                var nodes = normalizeToArray(instance.props.triggerTarget || reference);
+                nodes.forEach((function(node) {
+                    if (instance.props.interactive) node.setAttribute("aria-expanded", instance.state.isVisible && node === getCurrentTarget() ? "true" : "false"); else node.removeAttribute("aria-expanded");
+                }));
+            }
+            function cleanupInteractiveMouseListeners() {
+                getDocument().removeEventListener("mousemove", debouncedOnMouseMove);
+                mouseMoveListeners = mouseMoveListeners.filter((function(listener) {
+                    return listener !== debouncedOnMouseMove;
+                }));
+            }
+            function onDocumentPress(event) {
+                if (currentInput.isTouch) if (didTouchMove || event.type === "mousedown") return;
+                var actualTarget = event.composedPath && event.composedPath()[0] || event.target;
+                if (instance.props.interactive && actualContains(popper, actualTarget)) return;
+                if (normalizeToArray(instance.props.triggerTarget || reference).some((function(el) {
+                    return actualContains(el, actualTarget);
+                }))) {
+                    if (currentInput.isTouch) return;
+                    if (instance.state.isVisible && instance.props.trigger.indexOf("click") >= 0) return;
+                } else invokeHook("onClickOutside", [ instance, event ]);
+                if (instance.props.hideOnClick === true) {
+                    instance.clearDelayTimeouts();
+                    instance.hide();
+                    didHideDueToDocumentMouseDown = true;
+                    setTimeout((function() {
+                        didHideDueToDocumentMouseDown = false;
+                    }));
+                    if (!instance.state.isMounted) removeDocumentPress();
+                }
+            }
+            function onTouchMove() {
+                didTouchMove = true;
+            }
+            function onTouchStart() {
+                didTouchMove = false;
+            }
+            function addDocumentPress() {
+                var doc = getDocument();
+                doc.addEventListener("mousedown", onDocumentPress, true);
+                doc.addEventListener("touchend", onDocumentPress, TOUCH_OPTIONS);
+                doc.addEventListener("touchstart", onTouchStart, TOUCH_OPTIONS);
+                doc.addEventListener("touchmove", onTouchMove, TOUCH_OPTIONS);
+            }
+            function removeDocumentPress() {
+                var doc = getDocument();
+                doc.removeEventListener("mousedown", onDocumentPress, true);
+                doc.removeEventListener("touchend", onDocumentPress, TOUCH_OPTIONS);
+                doc.removeEventListener("touchstart", onTouchStart, TOUCH_OPTIONS);
+                doc.removeEventListener("touchmove", onTouchMove, TOUCH_OPTIONS);
+            }
+            function onTransitionedOut(duration, callback) {
+                onTransitionEnd(duration, (function() {
+                    if (!instance.state.isVisible && popper.parentNode && popper.parentNode.contains(popper)) callback();
+                }));
+            }
+            function onTransitionedIn(duration, callback) {
+                onTransitionEnd(duration, callback);
+            }
+            function onTransitionEnd(duration, callback) {
+                var box = getDefaultTemplateChildren().box;
+                function listener(event) {
+                    if (event.target === box) {
+                        updateTransitionEndListener(box, "remove", listener);
+                        callback();
+                    }
+                }
+                if (duration === 0) return callback();
+                updateTransitionEndListener(box, "remove", currentTransitionEndListener);
+                updateTransitionEndListener(box, "add", listener);
+                currentTransitionEndListener = listener;
+            }
+            function on(eventType, handler, options) {
+                if (options === void 0) options = false;
+                var nodes = normalizeToArray(instance.props.triggerTarget || reference);
+                nodes.forEach((function(node) {
+                    node.addEventListener(eventType, handler, options);
+                    listeners.push({
+                        node,
+                        eventType,
+                        handler,
+                        options
+                    });
+                }));
+            }
+            function addListeners() {
+                if (getIsCustomTouchBehavior()) {
+                    on("touchstart", onTrigger, {
+                        passive: true
+                    });
+                    on("touchend", onMouseLeave, {
+                        passive: true
+                    });
+                }
+                splitBySpaces(instance.props.trigger).forEach((function(eventType) {
+                    if (eventType === "manual") return;
+                    on(eventType, onTrigger);
+                    switch (eventType) {
+                      case "mouseenter":
+                        on("mouseleave", onMouseLeave);
+                        break;
+
+                      case "focus":
+                        on(isIE11 ? "focusout" : "blur", onBlurOrFocusOut);
+                        break;
+
+                      case "focusin":
+                        on("focusout", onBlurOrFocusOut);
+                        break;
+                    }
+                }));
+            }
+            function removeListeners() {
+                listeners.forEach((function(_ref) {
+                    var node = _ref.node, eventType = _ref.eventType, handler = _ref.handler, options = _ref.options;
+                    node.removeEventListener(eventType, handler, options);
+                }));
+                listeners = [];
+            }
+            function onTrigger(event) {
+                var _lastTriggerEvent;
+                var shouldScheduleClickHide = false;
+                if (!instance.state.isEnabled || isEventListenerStopped(event) || didHideDueToDocumentMouseDown) return;
+                var wasFocused = ((_lastTriggerEvent = lastTriggerEvent) == null ? void 0 : _lastTriggerEvent.type) === "focus";
+                lastTriggerEvent = event;
+                currentTarget = event.currentTarget;
+                handleAriaExpandedAttribute();
+                if (!instance.state.isVisible && isMouseEvent(event)) mouseMoveListeners.forEach((function(listener) {
+                    return listener(event);
+                }));
+                if (event.type === "click" && (instance.props.trigger.indexOf("mouseenter") < 0 || isVisibleFromClick) && instance.props.hideOnClick !== false && instance.state.isVisible) shouldScheduleClickHide = true; else scheduleShow(event);
+                if (event.type === "click") isVisibleFromClick = !shouldScheduleClickHide;
+                if (shouldScheduleClickHide && !wasFocused) scheduleHide(event);
+            }
+            function onMouseMove(event) {
+                var target = event.target;
+                var isCursorOverReferenceOrPopper = getCurrentTarget().contains(target) || popper.contains(target);
+                if (event.type === "mousemove" && isCursorOverReferenceOrPopper) return;
+                var popperTreeData = getNestedPopperTree().concat(popper).map((function(popper) {
+                    var _instance$popperInsta;
+                    var instance = popper._tippy;
+                    var state = (_instance$popperInsta = instance.popperInstance) == null ? void 0 : _instance$popperInsta.state;
+                    if (state) return {
+                        popperRect: popper.getBoundingClientRect(),
+                        popperState: state,
+                        props
+                    };
+                    return null;
+                })).filter(Boolean);
+                if (isCursorOutsideInteractiveBorder(popperTreeData, event)) {
+                    cleanupInteractiveMouseListeners();
+                    scheduleHide(event);
+                }
+            }
+            function onMouseLeave(event) {
+                var shouldBail = isEventListenerStopped(event) || instance.props.trigger.indexOf("click") >= 0 && isVisibleFromClick;
+                if (shouldBail) return;
+                if (instance.props.interactive) {
+                    instance.hideWithInteractivity(event);
+                    return;
+                }
+                scheduleHide(event);
+            }
+            function onBlurOrFocusOut(event) {
+                if (instance.props.trigger.indexOf("focusin") < 0 && event.target !== getCurrentTarget()) return;
+                if (instance.props.interactive && event.relatedTarget && popper.contains(event.relatedTarget)) return;
+                scheduleHide(event);
+            }
+            function isEventListenerStopped(event) {
+                return currentInput.isTouch ? getIsCustomTouchBehavior() !== event.type.indexOf("touch") >= 0 : false;
+            }
+            function createPopperInstance() {
+                destroyPopperInstance();
+                var _instance$props2 = instance.props, popperOptions = _instance$props2.popperOptions, placement = _instance$props2.placement, offset = _instance$props2.offset, getReferenceClientRect = _instance$props2.getReferenceClientRect, moveTransition = _instance$props2.moveTransition;
+                var arrow = getIsDefaultRenderFn() ? getChildren(popper).arrow : null;
+                var computedReference = getReferenceClientRect ? {
+                    getBoundingClientRect: getReferenceClientRect,
+                    contextElement: getReferenceClientRect.contextElement || getCurrentTarget()
+                } : reference;
+                var tippyModifier = {
+                    name: "$$tippy",
+                    enabled: true,
+                    phase: "beforeWrite",
+                    requires: [ "computeStyles" ],
+                    fn: function fn(_ref2) {
+                        var state = _ref2.state;
+                        if (getIsDefaultRenderFn()) {
+                            var _getDefaultTemplateCh = getDefaultTemplateChildren(), box = _getDefaultTemplateCh.box;
+                            [ "placement", "reference-hidden", "escaped" ].forEach((function(attr) {
+                                if (attr === "placement") box.setAttribute("data-placement", state.placement); else if (state.attributes.popper["data-popper-" + attr]) box.setAttribute("data-" + attr, ""); else box.removeAttribute("data-" + attr);
+                            }));
+                            state.attributes.popper = {};
+                        }
+                    }
+                };
+                var modifiers = [ {
+                    name: "offset",
+                    options: {
+                        offset
+                    }
+                }, {
+                    name: "preventOverflow",
+                    options: {
+                        padding: {
+                            top: 2,
+                            bottom: 2,
+                            left: 5,
+                            right: 5
+                        }
+                    }
+                }, {
+                    name: "flip",
+                    options: {
+                        padding: 5
+                    }
+                }, {
+                    name: "computeStyles",
+                    options: {
+                        adaptive: !moveTransition
+                    }
+                }, tippyModifier ];
+                if (getIsDefaultRenderFn() && arrow) modifiers.push({
+                    name: "arrow",
+                    options: {
+                        element: arrow,
+                        padding: 3
+                    }
+                });
+                modifiers.push.apply(modifiers, (popperOptions == null ? void 0 : popperOptions.modifiers) || []);
+                instance.popperInstance = popper_createPopper(computedReference, popper, Object.assign({}, popperOptions, {
+                    placement,
+                    onFirstUpdate,
+                    modifiers
+                }));
+            }
+            function destroyPopperInstance() {
+                if (instance.popperInstance) {
+                    instance.popperInstance.destroy();
+                    instance.popperInstance = null;
+                }
+            }
+            function mount() {
+                var appendTo = instance.props.appendTo;
+                var parentNode;
+                var node = getCurrentTarget();
+                if (instance.props.interactive && appendTo === TIPPY_DEFAULT_APPEND_TO || appendTo === "parent") parentNode = node.parentNode; else parentNode = invokeWithArgsOrReturn(appendTo, [ node ]);
+                if (!parentNode.contains(popper)) parentNode.appendChild(popper);
+                instance.state.isMounted = true;
+                createPopperInstance();
+                if (false) ;
+            }
+            function getNestedPopperTree() {
+                return arrayFrom(popper.querySelectorAll("[data-tippy-root]"));
+            }
+            function scheduleShow(event) {
+                instance.clearDelayTimeouts();
+                if (event) invokeHook("onTrigger", [ instance, event ]);
+                addDocumentPress();
+                var delay = getDelay(true);
+                var _getNormalizedTouchSe = getNormalizedTouchSettings(), touchValue = _getNormalizedTouchSe[0], touchDelay = _getNormalizedTouchSe[1];
+                if (currentInput.isTouch && touchValue === "hold" && touchDelay) delay = touchDelay;
+                if (delay) showTimeout = setTimeout((function() {
+                    instance.show();
+                }), delay); else instance.show();
+            }
+            function scheduleHide(event) {
+                instance.clearDelayTimeouts();
+                invokeHook("onUntrigger", [ instance, event ]);
+                if (!instance.state.isVisible) {
+                    removeDocumentPress();
+                    return;
+                }
+                if (instance.props.trigger.indexOf("mouseenter") >= 0 && instance.props.trigger.indexOf("click") >= 0 && [ "mouseleave", "mousemove" ].indexOf(event.type) >= 0 && isVisibleFromClick) return;
+                var delay = getDelay(false);
+                if (delay) hideTimeout = setTimeout((function() {
+                    if (instance.state.isVisible) instance.hide();
+                }), delay); else scheduleHideAnimationFrame = requestAnimationFrame((function() {
+                    instance.hide();
+                }));
+            }
+            function enable() {
+                instance.state.isEnabled = true;
+            }
+            function disable() {
+                instance.hide();
+                instance.state.isEnabled = false;
+            }
+            function clearDelayTimeouts() {
+                clearTimeout(showTimeout);
+                clearTimeout(hideTimeout);
+                cancelAnimationFrame(scheduleHideAnimationFrame);
+            }
+            function setProps(partialProps) {
+                if (false) ;
+                if (instance.state.isDestroyed) return;
+                invokeHook("onBeforeUpdate", [ instance, partialProps ]);
+                removeListeners();
+                var prevProps = instance.props;
+                var nextProps = evaluateProps(reference, Object.assign({}, prevProps, removeUndefinedProps(partialProps), {
+                    ignoreAttributes: true
+                }));
+                instance.props = nextProps;
+                addListeners();
+                if (prevProps.interactiveDebounce !== nextProps.interactiveDebounce) {
+                    cleanupInteractiveMouseListeners();
+                    debouncedOnMouseMove = tippy_esm_debounce(onMouseMove, nextProps.interactiveDebounce);
+                }
+                if (prevProps.triggerTarget && !nextProps.triggerTarget) normalizeToArray(prevProps.triggerTarget).forEach((function(node) {
+                    node.removeAttribute("aria-expanded");
+                })); else if (nextProps.triggerTarget) reference.removeAttribute("aria-expanded");
+                handleAriaExpandedAttribute();
+                handleStyles();
+                if (onUpdate) onUpdate(prevProps, nextProps);
+                if (instance.popperInstance) {
+                    createPopperInstance();
+                    getNestedPopperTree().forEach((function(nestedPopper) {
+                        requestAnimationFrame(nestedPopper._tippy.popperInstance.forceUpdate);
+                    }));
+                }
+                invokeHook("onAfterUpdate", [ instance, partialProps ]);
+            }
+            function setContent(content) {
+                instance.setProps({
+                    content
+                });
+            }
+            function show() {
+                if (false) ;
+                var isAlreadyVisible = instance.state.isVisible;
+                var isDestroyed = instance.state.isDestroyed;
+                var isDisabled = !instance.state.isEnabled;
+                var isTouchAndTouchDisabled = currentInput.isTouch && !instance.props.touch;
+                var duration = getValueAtIndexOrReturn(instance.props.duration, 0, defaultProps.duration);
+                if (isAlreadyVisible || isDestroyed || isDisabled || isTouchAndTouchDisabled) return;
+                if (getCurrentTarget().hasAttribute("disabled")) return;
+                invokeHook("onShow", [ instance ], false);
+                if (instance.props.onShow(instance) === false) return;
+                instance.state.isVisible = true;
+                if (getIsDefaultRenderFn()) popper.style.visibility = "visible";
+                handleStyles();
+                addDocumentPress();
+                if (!instance.state.isMounted) popper.style.transition = "none";
+                if (getIsDefaultRenderFn()) {
+                    var _getDefaultTemplateCh2 = getDefaultTemplateChildren(), box = _getDefaultTemplateCh2.box, content = _getDefaultTemplateCh2.content;
+                    setTransitionDuration([ box, content ], 0);
+                }
+                onFirstUpdate = function onFirstUpdate() {
+                    var _instance$popperInsta2;
+                    if (!instance.state.isVisible || ignoreOnFirstUpdate) return;
+                    ignoreOnFirstUpdate = true;
+                    void popper.offsetHeight;
+                    popper.style.transition = instance.props.moveTransition;
+                    if (getIsDefaultRenderFn() && instance.props.animation) {
+                        var _getDefaultTemplateCh3 = getDefaultTemplateChildren(), _box = _getDefaultTemplateCh3.box, _content = _getDefaultTemplateCh3.content;
+                        setTransitionDuration([ _box, _content ], duration);
+                        setVisibilityState([ _box, _content ], "visible");
+                    }
+                    handleAriaContentAttribute();
+                    handleAriaExpandedAttribute();
+                    pushIfUnique(mountedInstances, instance);
+                    (_instance$popperInsta2 = instance.popperInstance) == null ? void 0 : _instance$popperInsta2.forceUpdate();
+                    invokeHook("onMount", [ instance ]);
+                    if (instance.props.animation && getIsDefaultRenderFn()) onTransitionedIn(duration, (function() {
+                        instance.state.isShown = true;
+                        invokeHook("onShown", [ instance ]);
+                    }));
+                };
+                mount();
+            }
+            function hide() {
+                if (false) ;
+                var isAlreadyHidden = !instance.state.isVisible;
+                var isDestroyed = instance.state.isDestroyed;
+                var isDisabled = !instance.state.isEnabled;
+                var duration = getValueAtIndexOrReturn(instance.props.duration, 1, defaultProps.duration);
+                if (isAlreadyHidden || isDestroyed || isDisabled) return;
+                invokeHook("onHide", [ instance ], false);
+                if (instance.props.onHide(instance) === false) return;
+                instance.state.isVisible = false;
+                instance.state.isShown = false;
+                ignoreOnFirstUpdate = false;
+                isVisibleFromClick = false;
+                if (getIsDefaultRenderFn()) popper.style.visibility = "hidden";
+                cleanupInteractiveMouseListeners();
+                removeDocumentPress();
+                handleStyles(true);
+                if (getIsDefaultRenderFn()) {
+                    var _getDefaultTemplateCh4 = getDefaultTemplateChildren(), box = _getDefaultTemplateCh4.box, content = _getDefaultTemplateCh4.content;
+                    if (instance.props.animation) {
+                        setTransitionDuration([ box, content ], duration);
+                        setVisibilityState([ box, content ], "hidden");
+                    }
+                }
+                handleAriaContentAttribute();
+                handleAriaExpandedAttribute();
+                if (instance.props.animation) {
+                    if (getIsDefaultRenderFn()) onTransitionedOut(duration, instance.unmount);
+                } else instance.unmount();
+            }
+            function hideWithInteractivity(event) {
+                if (false) ;
+                getDocument().addEventListener("mousemove", debouncedOnMouseMove);
+                pushIfUnique(mouseMoveListeners, debouncedOnMouseMove);
+                debouncedOnMouseMove(event);
+            }
+            function unmount() {
+                if (false) ;
+                if (instance.state.isVisible) instance.hide();
+                if (!instance.state.isMounted) return;
+                destroyPopperInstance();
+                getNestedPopperTree().forEach((function(nestedPopper) {
+                    nestedPopper._tippy.unmount();
+                }));
+                if (popper.parentNode) popper.parentNode.removeChild(popper);
+                mountedInstances = mountedInstances.filter((function(i) {
+                    return i !== instance;
+                }));
+                instance.state.isMounted = false;
+                invokeHook("onHidden", [ instance ]);
+            }
+            function destroy() {
+                if (false) ;
+                if (instance.state.isDestroyed) return;
+                instance.clearDelayTimeouts();
+                instance.unmount();
+                removeListeners();
+                delete reference._tippy;
+                instance.state.isDestroyed = true;
+                invokeHook("onDestroy", [ instance ]);
+            }
+        }
+        function tippy(targets, optionalProps) {
+            if (optionalProps === void 0) optionalProps = {};
+            var plugins = defaultProps.plugins.concat(optionalProps.plugins || []);
+            if (false) ;
+            bindGlobalEventListeners();
+            var passedProps = Object.assign({}, optionalProps, {
+                plugins
+            });
+            var elements = getArrayOfElements(targets);
+            if (false) ;
+            var instances = elements.reduce((function(acc, reference) {
+                var instance = reference && createTippy(reference, passedProps);
+                if (instance) acc.push(instance);
+                return acc;
+            }), []);
+            return tippy_esm_isElement(targets) ? instances[0] : instances;
+        }
+        tippy.defaultProps = defaultProps;
+        tippy.setDefaultProps = setDefaultProps;
+        tippy.currentInput = currentInput;
+        Object.assign({}, modifiers_applyStyles, {
+            effect: function effect(_ref) {
+                var state = _ref.state;
+                var initialStyles = {
+                    popper: {
+                        position: state.options.strategy,
+                        left: "0",
+                        top: "0",
+                        margin: "0"
+                    },
+                    arrow: {
+                        position: "absolute"
+                    },
+                    reference: {}
+                };
+                Object.assign(state.elements.popper.style, initialStyles.popper);
+                state.styles = initialStyles;
+                if (state.elements.arrow) Object.assign(state.elements.arrow.style, initialStyles.arrow);
+            }
+        });
+        tippy.setDefaultProps({
+            render
+        });
+        const tippy_esm = tippy;
+        modules_flsModules.tippy = tippy_esm("[data-tippy-content]", {});
+        function isObject(obj) {
             return obj !== null && typeof obj === "object" && "constructor" in obj && obj.constructor === Object;
         }
         function extend(target, src) {
             if (target === void 0) target = {};
             if (src === void 0) src = {};
             Object.keys(src).forEach((key => {
-                if (typeof target[key] === "undefined") target[key] = src[key]; else if (ssr_window_esm_isObject(src[key]) && ssr_window_esm_isObject(target[key]) && Object.keys(src[key]).length > 0) extend(target[key], src[key]);
+                if (typeof target[key] === "undefined") target[key] = src[key]; else if (isObject(src[key]) && isObject(target[key]) && Object.keys(src[key]).length > 0) extend(target[key], src[key]);
             }));
         }
         const ssrDocument = {
@@ -9291,6 +11265,149 @@
                 resume
             });
         }
+        function Thumb(_ref) {
+            let {swiper, extendParams, on} = _ref;
+            extendParams({
+                thumbs: {
+                    swiper: null,
+                    multipleActiveThumbs: true,
+                    autoScrollOffset: 0,
+                    slideThumbActiveClass: "swiper-slide-thumb-active",
+                    thumbsContainerClass: "swiper-thumbs"
+                }
+            });
+            let initialized = false;
+            let swiperCreated = false;
+            swiper.thumbs = {
+                swiper: null
+            };
+            function onThumbClick() {
+                const thumbsSwiper = swiper.thumbs.swiper;
+                if (!thumbsSwiper || thumbsSwiper.destroyed) return;
+                const clickedIndex = thumbsSwiper.clickedIndex;
+                const clickedSlide = thumbsSwiper.clickedSlide;
+                if (clickedSlide && clickedSlide.classList.contains(swiper.params.thumbs.slideThumbActiveClass)) return;
+                if (typeof clickedIndex === "undefined" || clickedIndex === null) return;
+                let slideToIndex;
+                if (thumbsSwiper.params.loop) slideToIndex = parseInt(thumbsSwiper.clickedSlide.getAttribute("data-swiper-slide-index"), 10); else slideToIndex = clickedIndex;
+                if (swiper.params.loop) swiper.slideToLoop(slideToIndex); else swiper.slideTo(slideToIndex);
+            }
+            function init() {
+                const {thumbs: thumbsParams} = swiper.params;
+                if (initialized) return false;
+                initialized = true;
+                const SwiperClass = swiper.constructor;
+                if (thumbsParams.swiper instanceof SwiperClass) {
+                    swiper.thumbs.swiper = thumbsParams.swiper;
+                    Object.assign(swiper.thumbs.swiper.originalParams, {
+                        watchSlidesProgress: true,
+                        slideToClickedSlide: false
+                    });
+                    Object.assign(swiper.thumbs.swiper.params, {
+                        watchSlidesProgress: true,
+                        slideToClickedSlide: false
+                    });
+                    swiper.thumbs.swiper.update();
+                } else if (utils_isObject(thumbsParams.swiper)) {
+                    const thumbsSwiperParams = Object.assign({}, thumbsParams.swiper);
+                    Object.assign(thumbsSwiperParams, {
+                        watchSlidesProgress: true,
+                        slideToClickedSlide: false
+                    });
+                    swiper.thumbs.swiper = new SwiperClass(thumbsSwiperParams);
+                    swiperCreated = true;
+                }
+                swiper.thumbs.swiper.el.classList.add(swiper.params.thumbs.thumbsContainerClass);
+                swiper.thumbs.swiper.on("tap", onThumbClick);
+                return true;
+            }
+            function update(initial) {
+                const thumbsSwiper = swiper.thumbs.swiper;
+                if (!thumbsSwiper || thumbsSwiper.destroyed) return;
+                const slidesPerView = thumbsSwiper.params.slidesPerView === "auto" ? thumbsSwiper.slidesPerViewDynamic() : thumbsSwiper.params.slidesPerView;
+                let thumbsToActivate = 1;
+                const thumbActiveClass = swiper.params.thumbs.slideThumbActiveClass;
+                if (swiper.params.slidesPerView > 1 && !swiper.params.centeredSlides) thumbsToActivate = swiper.params.slidesPerView;
+                if (!swiper.params.thumbs.multipleActiveThumbs) thumbsToActivate = 1;
+                thumbsToActivate = Math.floor(thumbsToActivate);
+                thumbsSwiper.slides.forEach((slideEl => slideEl.classList.remove(thumbActiveClass)));
+                if (thumbsSwiper.params.loop || thumbsSwiper.params.virtual && thumbsSwiper.params.virtual.enabled) for (let i = 0; i < thumbsToActivate; i += 1) utils_elementChildren(thumbsSwiper.slidesEl, `[data-swiper-slide-index="${swiper.realIndex + i}"]`).forEach((slideEl => {
+                    slideEl.classList.add(thumbActiveClass);
+                })); else for (let i = 0; i < thumbsToActivate; i += 1) if (thumbsSwiper.slides[swiper.realIndex + i]) thumbsSwiper.slides[swiper.realIndex + i].classList.add(thumbActiveClass);
+                const autoScrollOffset = swiper.params.thumbs.autoScrollOffset;
+                const useOffset = autoScrollOffset && !thumbsSwiper.params.loop;
+                if (swiper.realIndex !== thumbsSwiper.realIndex || useOffset) {
+                    const currentThumbsIndex = thumbsSwiper.activeIndex;
+                    let newThumbsIndex;
+                    let direction;
+                    if (thumbsSwiper.params.loop) {
+                        const newThumbsSlide = thumbsSwiper.slides.filter((slideEl => slideEl.getAttribute("data-swiper-slide-index") === `${swiper.realIndex}`))[0];
+                        newThumbsIndex = thumbsSwiper.slides.indexOf(newThumbsSlide);
+                        direction = swiper.activeIndex > swiper.previousIndex ? "next" : "prev";
+                    } else {
+                        newThumbsIndex = swiper.realIndex;
+                        direction = newThumbsIndex > swiper.previousIndex ? "next" : "prev";
+                    }
+                    if (useOffset) newThumbsIndex += direction === "next" ? autoScrollOffset : -1 * autoScrollOffset;
+                    if (thumbsSwiper.visibleSlidesIndexes && thumbsSwiper.visibleSlidesIndexes.indexOf(newThumbsIndex) < 0) {
+                        if (thumbsSwiper.params.centeredSlides) if (newThumbsIndex > currentThumbsIndex) newThumbsIndex = newThumbsIndex - Math.floor(slidesPerView / 2) + 1; else newThumbsIndex = newThumbsIndex + Math.floor(slidesPerView / 2) - 1; else if (newThumbsIndex > currentThumbsIndex && thumbsSwiper.params.slidesPerGroup === 1) ;
+                        thumbsSwiper.slideTo(newThumbsIndex, initial ? 0 : void 0);
+                    }
+                }
+            }
+            on("beforeInit", (() => {
+                const {thumbs} = swiper.params;
+                if (!thumbs || !thumbs.swiper) return;
+                if (typeof thumbs.swiper === "string" || thumbs.swiper instanceof HTMLElement) {
+                    const document = ssr_window_esm_getDocument();
+                    const getThumbsElementAndInit = () => {
+                        const thumbsElement = typeof thumbs.swiper === "string" ? document.querySelector(thumbs.swiper) : thumbs.swiper;
+                        if (thumbsElement && thumbsElement.swiper) {
+                            thumbs.swiper = thumbsElement.swiper;
+                            init();
+                            update(true);
+                        } else if (thumbsElement) {
+                            const onThumbsSwiper = e => {
+                                thumbs.swiper = e.detail[0];
+                                thumbsElement.removeEventListener("init", onThumbsSwiper);
+                                init();
+                                update(true);
+                                thumbs.swiper.update();
+                                swiper.update();
+                            };
+                            thumbsElement.addEventListener("init", onThumbsSwiper);
+                        }
+                        return thumbsElement;
+                    };
+                    const watchForThumbsToAppear = () => {
+                        if (swiper.destroyed) return;
+                        const thumbsElement = getThumbsElementAndInit();
+                        if (!thumbsElement) requestAnimationFrame(watchForThumbsToAppear);
+                    };
+                    requestAnimationFrame(watchForThumbsToAppear);
+                } else {
+                    init();
+                    update(true);
+                }
+            }));
+            on("slideChange update resize observerUpdate", (() => {
+                update();
+            }));
+            on("setTransition", ((_s, duration) => {
+                const thumbsSwiper = swiper.thumbs.swiper;
+                if (!thumbsSwiper || thumbsSwiper.destroyed) return;
+                thumbsSwiper.setTransition(duration);
+            }));
+            on("beforeDestroy", (() => {
+                const thumbsSwiper = swiper.thumbs.swiper;
+                if (!thumbsSwiper || thumbsSwiper.destroyed) return;
+                if (swiperCreated) thumbsSwiper.destroy();
+            }));
+            Object.assign(swiper.thumbs, {
+                init,
+                update
+            });
+        }
         function initSliders() {
             if (document.querySelector(".s")) new swiper_core_Swiper(".s", {
                 modules: [ Navigation ],
@@ -9417,971 +11534,105 @@
                     count++;
                 }));
             }
+            if (document.querySelector(".main-prod__slider")) {
+                let mainProdSlider = new swiper_core_Swiper(".main-prod__slider", {
+                    modules: [ Navigation, Thumb ],
+                    observer: true,
+                    observeParents: true,
+                    slidesPerView: 1,
+                    spaceBetween: 0,
+                    speed: 800,
+                    lazy: true,
+                    navigation: {
+                        prevEl: ".slider-prod__nav-btn.swiper-button-prev",
+                        nextEl: ".slider-prod__nav-btn.swiper-button-next"
+                    },
+                    thumbs: {
+                        swiper: {
+                            el: ".mini-prod__slider",
+                            direction: "vertical",
+                            slidesPerView: 4,
+                            spaceBetween: 12,
+                            lazy: true,
+                            grabCursor: true,
+                            breakpoints: {
+                                320: {
+                                    direction: "horizontal",
+                                    slidesPerView: "auto",
+                                    spaceBetween: 0
+                                },
+                                767.98: {
+                                    direction: "vertical",
+                                    slidesPerView: 4,
+                                    spaceBetween: 12
+                                }
+                            }
+                        }
+                    }
+                });
+                mainProdSlider.slides.forEach(((element, index) => {
+                    const vidos = element.querySelector("video");
+                    if (vidos) {
+                        vidos.closest(".main-prod__slide").classList.add("video-slide");
+                        mainProdSlider.thumbs.swiper.slides[index].classList.add("video-slide");
+                    }
+                }));
+            }
         }
         window.addEventListener("load", (function(e) {
             initSliders();
         }));
-        var can_use_dom = __webpack_require__(807);
-        function isObject_isObject(value) {
-            var type = typeof value;
-            return value != null && (type == "object" || type == "function");
-        }
-        const lodash_es_isObject = isObject_isObject;
-        var freeGlobal = typeof global == "object" && global && global.Object === Object && global;
-        const _freeGlobal = freeGlobal;
-        var freeSelf = typeof self == "object" && self && self.Object === Object && self;
-        var root = _freeGlobal || freeSelf || Function("return this")();
-        const _root = root;
-        var now_now = function() {
-            return _root.Date.now();
-        };
-        const lodash_es_now = now_now;
-        var reWhitespace = /\s/;
-        function trimmedEndIndex(string) {
-            var index = string.length;
-            while (index-- && reWhitespace.test(string.charAt(index))) ;
-            return index;
-        }
-        const _trimmedEndIndex = trimmedEndIndex;
-        var reTrimStart = /^\s+/;
-        function baseTrim(string) {
-            return string ? string.slice(0, _trimmedEndIndex(string) + 1).replace(reTrimStart, "") : string;
-        }
-        const _baseTrim = baseTrim;
-        var Symbol = _root.Symbol;
-        const _Symbol = Symbol;
-        var objectProto = Object.prototype;
-        var _getRawTag_hasOwnProperty = objectProto.hasOwnProperty;
-        var nativeObjectToString = objectProto.toString;
-        var symToStringTag = _Symbol ? _Symbol.toStringTag : void 0;
-        function getRawTag(value) {
-            var isOwn = _getRawTag_hasOwnProperty.call(value, symToStringTag), tag = value[symToStringTag];
-            try {
-                value[symToStringTag] = void 0;
-                var unmasked = true;
-            } catch (e) {}
-            var result = nativeObjectToString.call(value);
-            if (unmasked) if (isOwn) value[symToStringTag] = tag; else delete value[symToStringTag];
-            return result;
-        }
-        const _getRawTag = getRawTag;
-        var _objectToString_objectProto = Object.prototype;
-        var _objectToString_nativeObjectToString = _objectToString_objectProto.toString;
-        function objectToString(value) {
-            return _objectToString_nativeObjectToString.call(value);
-        }
-        const _objectToString = objectToString;
-        var nullTag = "[object Null]", undefinedTag = "[object Undefined]";
-        var _baseGetTag_symToStringTag = _Symbol ? _Symbol.toStringTag : void 0;
-        function baseGetTag(value) {
-            if (value == null) return value === void 0 ? undefinedTag : nullTag;
-            return _baseGetTag_symToStringTag && _baseGetTag_symToStringTag in Object(value) ? _getRawTag(value) : _objectToString(value);
-        }
-        const _baseGetTag = baseGetTag;
-        function isObjectLike(value) {
-            return value != null && typeof value == "object";
-        }
-        const lodash_es_isObjectLike = isObjectLike;
-        var symbolTag = "[object Symbol]";
-        function isSymbol(value) {
-            return typeof value == "symbol" || lodash_es_isObjectLike(value) && _baseGetTag(value) == symbolTag;
-        }
-        const lodash_es_isSymbol = isSymbol;
-        var NAN = 0 / 0;
-        var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
-        var reIsBinary = /^0b[01]+$/i;
-        var reIsOctal = /^0o[0-7]+$/i;
-        var freeParseInt = parseInt;
-        function toNumber(value) {
-            if (typeof value == "number") return value;
-            if (lodash_es_isSymbol(value)) return NAN;
-            if (lodash_es_isObject(value)) {
-                var other = typeof value.valueOf == "function" ? value.valueOf() : value;
-                value = lodash_es_isObject(other) ? other + "" : other;
-            }
-            if (typeof value != "string") return value === 0 ? value : +value;
-            value = _baseTrim(value);
-            var isBinary = reIsBinary.test(value);
-            return isBinary || reIsOctal.test(value) ? freeParseInt(value.slice(2), isBinary ? 2 : 8) : reIsBadHex.test(value) ? NAN : +value;
-        }
-        const lodash_es_toNumber = toNumber;
-        var FUNC_ERROR_TEXT = "Expected a function";
-        var nativeMax = Math.max, nativeMin = Math.min;
-        function debounce(func, wait, options) {
-            var lastArgs, lastThis, maxWait, result, timerId, lastCallTime, lastInvokeTime = 0, leading = false, maxing = false, trailing = true;
-            if (typeof func != "function") throw new TypeError(FUNC_ERROR_TEXT);
-            wait = lodash_es_toNumber(wait) || 0;
-            if (lodash_es_isObject(options)) {
-                leading = !!options.leading;
-                maxing = "maxWait" in options;
-                maxWait = maxing ? nativeMax(lodash_es_toNumber(options.maxWait) || 0, wait) : maxWait;
-                trailing = "trailing" in options ? !!options.trailing : trailing;
-            }
-            function invokeFunc(time) {
-                var args = lastArgs, thisArg = lastThis;
-                lastArgs = lastThis = void 0;
-                lastInvokeTime = time;
-                result = func.apply(thisArg, args);
-                return result;
-            }
-            function leadingEdge(time) {
-                lastInvokeTime = time;
-                timerId = setTimeout(timerExpired, wait);
-                return leading ? invokeFunc(time) : result;
-            }
-            function remainingWait(time) {
-                var timeSinceLastCall = time - lastCallTime, timeSinceLastInvoke = time - lastInvokeTime, timeWaiting = wait - timeSinceLastCall;
-                return maxing ? nativeMin(timeWaiting, maxWait - timeSinceLastInvoke) : timeWaiting;
-            }
-            function shouldInvoke(time) {
-                var timeSinceLastCall = time - lastCallTime, timeSinceLastInvoke = time - lastInvokeTime;
-                return lastCallTime === void 0 || timeSinceLastCall >= wait || timeSinceLastCall < 0 || maxing && timeSinceLastInvoke >= maxWait;
-            }
-            function timerExpired() {
-                var time = lodash_es_now();
-                if (shouldInvoke(time)) return trailingEdge(time);
-                timerId = setTimeout(timerExpired, remainingWait(time));
-            }
-            function trailingEdge(time) {
-                timerId = void 0;
-                if (trailing && lastArgs) return invokeFunc(time);
-                lastArgs = lastThis = void 0;
-                return result;
-            }
-            function cancel() {
-                if (timerId !== void 0) clearTimeout(timerId);
-                lastInvokeTime = 0;
-                lastArgs = lastCallTime = lastThis = timerId = void 0;
-            }
-            function flush() {
-                return timerId === void 0 ? result : trailingEdge(lodash_es_now());
-            }
-            function debounced() {
-                var time = lodash_es_now(), isInvoking = shouldInvoke(time);
-                lastArgs = arguments;
-                lastThis = this;
-                lastCallTime = time;
-                if (isInvoking) {
-                    if (timerId === void 0) return leadingEdge(lastCallTime);
-                    if (maxing) {
-                        clearTimeout(timerId);
-                        timerId = setTimeout(timerExpired, wait);
-                        return invokeFunc(lastCallTime);
-                    }
-                }
-                if (timerId === void 0) timerId = setTimeout(timerExpired, wait);
-                return result;
-            }
-            debounced.cancel = cancel;
-            debounced.flush = flush;
-            return debounced;
-        }
-        const lodash_es_debounce = debounce;
-        var throttle_FUNC_ERROR_TEXT = "Expected a function";
-        function throttle(func, wait, options) {
-            var leading = true, trailing = true;
-            if (typeof func != "function") throw new TypeError(throttle_FUNC_ERROR_TEXT);
-            if (lodash_es_isObject(options)) {
-                leading = "leading" in options ? !!options.leading : leading;
-                trailing = "trailing" in options ? !!options.trailing : trailing;
-            }
-            return lodash_es_debounce(func, wait, {
-                leading,
-                maxWait: wait,
-                trailing
-            });
-        }
-        const lodash_es_throttle = throttle;
-        var __assign = function() {
-            __assign = Object.assign || function __assign(t) {
-                for (var s, i = 1, n = arguments.length; i < n; i++) {
-                    s = arguments[i];
-                    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-                }
-                return t;
-            };
-            return __assign.apply(this, arguments);
-        };
-        var cachedScrollbarWidth = null;
-        var cachedDevicePixelRatio = null;
-        if (can_use_dom) window.addEventListener("resize", (function() {
-            if (cachedDevicePixelRatio !== window.devicePixelRatio) {
-                cachedDevicePixelRatio = window.devicePixelRatio;
-                cachedScrollbarWidth = null;
-            }
-        }));
-        function scrollbarWidth() {
-            if (cachedScrollbarWidth === null) {
-                if (typeof document === "undefined") {
-                    cachedScrollbarWidth = 0;
-                    return cachedScrollbarWidth;
-                }
-                var body = document.body;
-                var box = document.createElement("div");
-                box.classList.add("simplebar-hide-scrollbar");
-                body.appendChild(box);
-                var width = box.getBoundingClientRect().right;
-                body.removeChild(box);
-                cachedScrollbarWidth = width;
-            }
-            return cachedScrollbarWidth;
-        }
-        function getElementWindow$1(element) {
-            if (!element || !element.ownerDocument || !element.ownerDocument.defaultView) return window;
-            return element.ownerDocument.defaultView;
-        }
-        function getElementDocument$1(element) {
-            if (!element || !element.ownerDocument) return document;
-            return element.ownerDocument;
-        }
-        var getOptions$1 = function(obj) {
-            var initialObj = {};
-            var options = Array.prototype.reduce.call(obj, (function(acc, attribute) {
-                var option = attribute.name.match(/data-simplebar-(.+)/);
-                if (option) {
-                    var key = option[1].replace(/\W+(.)/g, (function(_, chr) {
-                        return chr.toUpperCase();
-                    }));
-                    switch (attribute.value) {
-                      case "true":
-                        acc[key] = true;
-                        break;
-
-                      case "false":
-                        acc[key] = false;
-                        break;
-
-                      case void 0:
-                        acc[key] = true;
-                        break;
-
-                      default:
-                        acc[key] = attribute.value;
-                    }
-                }
-                return acc;
-            }), initialObj);
-            return options;
-        };
-        function addClasses$1(el, classes) {
-            var _a;
-            if (!el) return;
-            (_a = el.classList).add.apply(_a, classes.split(" "));
-        }
-        function removeClasses$1(el, classes) {
-            if (!el) return;
-            classes.split(" ").forEach((function(className) {
-                el.classList.remove(className);
-            }));
-        }
-        function classNamesToQuery$1(classNames) {
-            return ".".concat(classNames.split(" ").join("."));
-        }
-        var helpers = Object.freeze({
-            __proto__: null,
-            getElementWindow: getElementWindow$1,
-            getElementDocument: getElementDocument$1,
-            getOptions: getOptions$1,
-            addClasses: addClasses$1,
-            removeClasses: removeClasses$1,
-            classNamesToQuery: classNamesToQuery$1
-        });
-        var getElementWindow = getElementWindow$1, getElementDocument = getElementDocument$1, getOptions = getOptions$1, dist_addClasses = addClasses$1, dist_removeClasses = removeClasses$1, classNamesToQuery = classNamesToQuery$1;
-        var SimpleBarCore = function() {
-            function SimpleBarCore(element, options) {
-                if (options === void 0) options = {};
-                var _this = this;
-                this.removePreventClickId = null;
-                this.minScrollbarWidth = 20;
-                this.stopScrollDelay = 175;
-                this.isScrolling = false;
-                this.isMouseEntering = false;
-                this.scrollXTicking = false;
-                this.scrollYTicking = false;
-                this.wrapperEl = null;
-                this.contentWrapperEl = null;
-                this.contentEl = null;
-                this.offsetEl = null;
-                this.maskEl = null;
-                this.placeholderEl = null;
-                this.heightAutoObserverWrapperEl = null;
-                this.heightAutoObserverEl = null;
-                this.rtlHelpers = null;
-                this.scrollbarWidth = 0;
-                this.resizeObserver = null;
-                this.mutationObserver = null;
-                this.elStyles = null;
-                this.isRtl = null;
-                this.mouseX = 0;
-                this.mouseY = 0;
-                this.onMouseMove = function() {};
-                this.onWindowResize = function() {};
-                this.onStopScrolling = function() {};
-                this.onMouseEntered = function() {};
-                this.onScroll = function() {
-                    var elWindow = getElementWindow(_this.el);
-                    if (!_this.scrollXTicking) {
-                        elWindow.requestAnimationFrame(_this.scrollX);
-                        _this.scrollXTicking = true;
-                    }
-                    if (!_this.scrollYTicking) {
-                        elWindow.requestAnimationFrame(_this.scrollY);
-                        _this.scrollYTicking = true;
-                    }
-                    if (!_this.isScrolling) {
-                        _this.isScrolling = true;
-                        dist_addClasses(_this.el, _this.classNames.scrolling);
-                    }
-                    _this.showScrollbar("x");
-                    _this.showScrollbar("y");
-                    _this.onStopScrolling();
-                };
-                this.scrollX = function() {
-                    if (_this.axis.x.isOverflowing) _this.positionScrollbar("x");
-                    _this.scrollXTicking = false;
-                };
-                this.scrollY = function() {
-                    if (_this.axis.y.isOverflowing) _this.positionScrollbar("y");
-                    _this.scrollYTicking = false;
-                };
-                this._onStopScrolling = function() {
-                    dist_removeClasses(_this.el, _this.classNames.scrolling);
-                    if (_this.options.autoHide) {
-                        _this.hideScrollbar("x");
-                        _this.hideScrollbar("y");
-                    }
-                    _this.isScrolling = false;
-                };
-                this.onMouseEnter = function() {
-                    if (!_this.isMouseEntering) {
-                        dist_addClasses(_this.el, _this.classNames.mouseEntered);
-                        _this.showScrollbar("x");
-                        _this.showScrollbar("y");
-                        _this.isMouseEntering = true;
-                    }
-                    _this.onMouseEntered();
-                };
-                this._onMouseEntered = function() {
-                    dist_removeClasses(_this.el, _this.classNames.mouseEntered);
-                    if (_this.options.autoHide) {
-                        _this.hideScrollbar("x");
-                        _this.hideScrollbar("y");
-                    }
-                    _this.isMouseEntering = false;
-                };
-                this._onMouseMove = function(e) {
-                    _this.mouseX = e.clientX;
-                    _this.mouseY = e.clientY;
-                    if (_this.axis.x.isOverflowing || _this.axis.x.forceVisible) _this.onMouseMoveForAxis("x");
-                    if (_this.axis.y.isOverflowing || _this.axis.y.forceVisible) _this.onMouseMoveForAxis("y");
-                };
-                this.onMouseLeave = function() {
-                    _this.onMouseMove.cancel();
-                    if (_this.axis.x.isOverflowing || _this.axis.x.forceVisible) _this.onMouseLeaveForAxis("x");
-                    if (_this.axis.y.isOverflowing || _this.axis.y.forceVisible) _this.onMouseLeaveForAxis("y");
-                    _this.mouseX = -1;
-                    _this.mouseY = -1;
-                };
-                this._onWindowResize = function() {
-                    _this.scrollbarWidth = _this.getScrollbarWidth();
-                    _this.hideNativeScrollbar();
-                };
-                this.onPointerEvent = function(e) {
-                    if (!_this.axis.x.track.el || !_this.axis.y.track.el || !_this.axis.x.scrollbar.el || !_this.axis.y.scrollbar.el) return;
-                    var isWithinTrackXBounds, isWithinTrackYBounds;
-                    _this.axis.x.track.rect = _this.axis.x.track.el.getBoundingClientRect();
-                    _this.axis.y.track.rect = _this.axis.y.track.el.getBoundingClientRect();
-                    if (_this.axis.x.isOverflowing || _this.axis.x.forceVisible) isWithinTrackXBounds = _this.isWithinBounds(_this.axis.x.track.rect);
-                    if (_this.axis.y.isOverflowing || _this.axis.y.forceVisible) isWithinTrackYBounds = _this.isWithinBounds(_this.axis.y.track.rect);
-                    if (isWithinTrackXBounds || isWithinTrackYBounds) {
-                        e.stopPropagation();
-                        if (e.type === "pointerdown" && e.pointerType !== "touch") {
-                            if (isWithinTrackXBounds) {
-                                _this.axis.x.scrollbar.rect = _this.axis.x.scrollbar.el.getBoundingClientRect();
-                                if (_this.isWithinBounds(_this.axis.x.scrollbar.rect)) _this.onDragStart(e, "x"); else _this.onTrackClick(e, "x");
-                            }
-                            if (isWithinTrackYBounds) {
-                                _this.axis.y.scrollbar.rect = _this.axis.y.scrollbar.el.getBoundingClientRect();
-                                if (_this.isWithinBounds(_this.axis.y.scrollbar.rect)) _this.onDragStart(e, "y"); else _this.onTrackClick(e, "y");
-                            }
-                        }
-                    }
-                };
-                this.drag = function(e) {
-                    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
-                    if (!_this.draggedAxis || !_this.contentWrapperEl) return;
-                    var eventOffset;
-                    var track = _this.axis[_this.draggedAxis].track;
-                    var trackSize = (_b = (_a = track.rect) === null || _a === void 0 ? void 0 : _a[_this.axis[_this.draggedAxis].sizeAttr]) !== null && _b !== void 0 ? _b : 0;
-                    var scrollbar = _this.axis[_this.draggedAxis].scrollbar;
-                    var contentSize = (_d = (_c = _this.contentWrapperEl) === null || _c === void 0 ? void 0 : _c[_this.axis[_this.draggedAxis].scrollSizeAttr]) !== null && _d !== void 0 ? _d : 0;
-                    var hostSize = parseInt((_f = (_e = _this.elStyles) === null || _e === void 0 ? void 0 : _e[_this.axis[_this.draggedAxis].sizeAttr]) !== null && _f !== void 0 ? _f : "0px", 10);
-                    e.preventDefault();
-                    e.stopPropagation();
-                    if (_this.draggedAxis === "y") eventOffset = e.pageY; else eventOffset = e.pageX;
-                    var dragPos = eventOffset - ((_h = (_g = track.rect) === null || _g === void 0 ? void 0 : _g[_this.axis[_this.draggedAxis].offsetAttr]) !== null && _h !== void 0 ? _h : 0) - _this.axis[_this.draggedAxis].dragOffset;
-                    dragPos = _this.draggedAxis === "x" && _this.isRtl ? ((_k = (_j = track.rect) === null || _j === void 0 ? void 0 : _j[_this.axis[_this.draggedAxis].sizeAttr]) !== null && _k !== void 0 ? _k : 0) - scrollbar.size - dragPos : dragPos;
-                    var dragPerc = dragPos / (trackSize - scrollbar.size);
-                    var scrollPos = dragPerc * (contentSize - hostSize);
-                    if (_this.draggedAxis === "x" && _this.isRtl) scrollPos = ((_l = SimpleBarCore.getRtlHelpers()) === null || _l === void 0 ? void 0 : _l.isScrollingToNegative) ? -scrollPos : scrollPos;
-                    _this.contentWrapperEl[_this.axis[_this.draggedAxis].scrollOffsetAttr] = scrollPos;
-                };
-                this.onEndDrag = function(e) {
-                    var elDocument = getElementDocument(_this.el);
-                    var elWindow = getElementWindow(_this.el);
-                    e.preventDefault();
-                    e.stopPropagation();
-                    dist_removeClasses(_this.el, _this.classNames.dragging);
-                    elDocument.removeEventListener("mousemove", _this.drag, true);
-                    elDocument.removeEventListener("mouseup", _this.onEndDrag, true);
-                    _this.removePreventClickId = elWindow.setTimeout((function() {
-                        elDocument.removeEventListener("click", _this.preventClick, true);
-                        elDocument.removeEventListener("dblclick", _this.preventClick, true);
-                        _this.removePreventClickId = null;
-                    }));
-                };
-                this.preventClick = function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                };
-                this.el = element;
-                this.options = __assign(__assign({}, SimpleBarCore.defaultOptions), options);
-                this.classNames = __assign(__assign({}, SimpleBarCore.defaultOptions.classNames), options.classNames);
-                this.axis = {
-                    x: {
-                        scrollOffsetAttr: "scrollLeft",
-                        sizeAttr: "width",
-                        scrollSizeAttr: "scrollWidth",
-                        offsetSizeAttr: "offsetWidth",
-                        offsetAttr: "left",
-                        overflowAttr: "overflowX",
-                        dragOffset: 0,
-                        isOverflowing: true,
-                        forceVisible: false,
-                        track: {
-                            size: null,
-                            el: null,
-                            rect: null,
-                            isVisible: false
-                        },
-                        scrollbar: {
-                            size: null,
-                            el: null,
-                            rect: null,
-                            isVisible: false
-                        }
-                    },
-                    y: {
-                        scrollOffsetAttr: "scrollTop",
-                        sizeAttr: "height",
-                        scrollSizeAttr: "scrollHeight",
-                        offsetSizeAttr: "offsetHeight",
-                        offsetAttr: "top",
-                        overflowAttr: "overflowY",
-                        dragOffset: 0,
-                        isOverflowing: true,
-                        forceVisible: false,
-                        track: {
-                            size: null,
-                            el: null,
-                            rect: null,
-                            isVisible: false
-                        },
-                        scrollbar: {
-                            size: null,
-                            el: null,
-                            rect: null,
-                            isVisible: false
-                        }
-                    }
-                };
-                if (typeof this.el !== "object" || !this.el.nodeName) throw new Error("Argument passed to SimpleBar must be an HTML element instead of ".concat(this.el));
-                this.onMouseMove = lodash_es_throttle(this._onMouseMove, 64);
-                this.onWindowResize = lodash_es_debounce(this._onWindowResize, 64, {
-                    leading: true
-                });
-                this.onStopScrolling = lodash_es_debounce(this._onStopScrolling, this.stopScrollDelay);
-                this.onMouseEntered = lodash_es_debounce(this._onMouseEntered, this.stopScrollDelay);
-                this.init();
-            }
-            SimpleBarCore.getRtlHelpers = function() {
-                if (SimpleBarCore.rtlHelpers) return SimpleBarCore.rtlHelpers;
-                var dummyDiv = document.createElement("div");
-                dummyDiv.innerHTML = '<div class="simplebar-dummy-scrollbar-size"><div></div></div>';
-                var scrollbarDummyEl = dummyDiv.firstElementChild;
-                var dummyChild = scrollbarDummyEl === null || scrollbarDummyEl === void 0 ? void 0 : scrollbarDummyEl.firstElementChild;
-                if (!dummyChild) return null;
-                document.body.appendChild(scrollbarDummyEl);
-                scrollbarDummyEl.scrollLeft = 0;
-                var dummyContainerOffset = SimpleBarCore.getOffset(scrollbarDummyEl);
-                var dummyChildOffset = SimpleBarCore.getOffset(dummyChild);
-                scrollbarDummyEl.scrollLeft = -999;
-                var dummyChildOffsetAfterScroll = SimpleBarCore.getOffset(dummyChild);
-                document.body.removeChild(scrollbarDummyEl);
-                SimpleBarCore.rtlHelpers = {
-                    isScrollOriginAtZero: dummyContainerOffset.left !== dummyChildOffset.left,
-                    isScrollingToNegative: dummyChildOffset.left !== dummyChildOffsetAfterScroll.left
-                };
-                return SimpleBarCore.rtlHelpers;
-            };
-            SimpleBarCore.prototype.getScrollbarWidth = function() {
-                try {
-                    if (this.contentWrapperEl && getComputedStyle(this.contentWrapperEl, "::-webkit-scrollbar").display === "none" || "scrollbarWidth" in document.documentElement.style || "-ms-overflow-style" in document.documentElement.style) return 0; else return scrollbarWidth();
-                } catch (e) {
-                    return scrollbarWidth();
-                }
-            };
-            SimpleBarCore.getOffset = function(el) {
-                var rect = el.getBoundingClientRect();
-                var elDocument = getElementDocument(el);
-                var elWindow = getElementWindow(el);
-                return {
-                    top: rect.top + (elWindow.pageYOffset || elDocument.documentElement.scrollTop),
-                    left: rect.left + (elWindow.pageXOffset || elDocument.documentElement.scrollLeft)
-                };
-            };
-            SimpleBarCore.prototype.init = function() {
-                if (can_use_dom) {
-                    this.initDOM();
-                    this.rtlHelpers = SimpleBarCore.getRtlHelpers();
-                    this.scrollbarWidth = this.getScrollbarWidth();
-                    this.recalculate();
-                    this.initListeners();
-                }
-            };
-            SimpleBarCore.prototype.initDOM = function() {
-                var _a, _b;
-                this.wrapperEl = this.el.querySelector(classNamesToQuery(this.classNames.wrapper));
-                this.contentWrapperEl = this.options.scrollableNode || this.el.querySelector(classNamesToQuery(this.classNames.contentWrapper));
-                this.contentEl = this.options.contentNode || this.el.querySelector(classNamesToQuery(this.classNames.contentEl));
-                this.offsetEl = this.el.querySelector(classNamesToQuery(this.classNames.offset));
-                this.maskEl = this.el.querySelector(classNamesToQuery(this.classNames.mask));
-                this.placeholderEl = this.findChild(this.wrapperEl, classNamesToQuery(this.classNames.placeholder));
-                this.heightAutoObserverWrapperEl = this.el.querySelector(classNamesToQuery(this.classNames.heightAutoObserverWrapperEl));
-                this.heightAutoObserverEl = this.el.querySelector(classNamesToQuery(this.classNames.heightAutoObserverEl));
-                this.axis.x.track.el = this.findChild(this.el, "".concat(classNamesToQuery(this.classNames.track)).concat(classNamesToQuery(this.classNames.horizontal)));
-                this.axis.y.track.el = this.findChild(this.el, "".concat(classNamesToQuery(this.classNames.track)).concat(classNamesToQuery(this.classNames.vertical)));
-                this.axis.x.scrollbar.el = ((_a = this.axis.x.track.el) === null || _a === void 0 ? void 0 : _a.querySelector(classNamesToQuery(this.classNames.scrollbar))) || null;
-                this.axis.y.scrollbar.el = ((_b = this.axis.y.track.el) === null || _b === void 0 ? void 0 : _b.querySelector(classNamesToQuery(this.classNames.scrollbar))) || null;
-                if (!this.options.autoHide) {
-                    dist_addClasses(this.axis.x.scrollbar.el, this.classNames.visible);
-                    dist_addClasses(this.axis.y.scrollbar.el, this.classNames.visible);
-                }
-            };
-            SimpleBarCore.prototype.initListeners = function() {
-                var _this = this;
-                var _a;
-                var elWindow = getElementWindow(this.el);
-                this.el.addEventListener("mouseenter", this.onMouseEnter);
-                this.el.addEventListener("pointerdown", this.onPointerEvent, true);
-                this.el.addEventListener("mousemove", this.onMouseMove);
-                this.el.addEventListener("mouseleave", this.onMouseLeave);
-                (_a = this.contentWrapperEl) === null || _a === void 0 ? void 0 : _a.addEventListener("scroll", this.onScroll);
-                elWindow.addEventListener("resize", this.onWindowResize);
-                if (!this.contentEl) return;
-                if (window.ResizeObserver) {
-                    var resizeObserverStarted_1 = false;
-                    var resizeObserver = elWindow.ResizeObserver || ResizeObserver;
-                    this.resizeObserver = new resizeObserver((function() {
-                        if (!resizeObserverStarted_1) return;
-                        elWindow.requestAnimationFrame((function() {
-                            _this.recalculate();
-                        }));
-                    }));
-                    this.resizeObserver.observe(this.el);
-                    this.resizeObserver.observe(this.contentEl);
-                    elWindow.requestAnimationFrame((function() {
-                        resizeObserverStarted_1 = true;
-                    }));
-                }
-                this.mutationObserver = new elWindow.MutationObserver((function() {
-                    elWindow.requestAnimationFrame((function() {
-                        _this.recalculate();
-                    }));
-                }));
-                this.mutationObserver.observe(this.contentEl, {
-                    childList: true,
-                    subtree: true,
-                    characterData: true
-                });
-            };
-            SimpleBarCore.prototype.recalculate = function() {
-                if (!this.heightAutoObserverEl || !this.contentEl || !this.contentWrapperEl || !this.wrapperEl || !this.placeholderEl) return;
-                var elWindow = getElementWindow(this.el);
-                this.elStyles = elWindow.getComputedStyle(this.el);
-                this.isRtl = this.elStyles.direction === "rtl";
-                var contentElOffsetWidth = this.contentEl.offsetWidth;
-                var isHeightAuto = this.heightAutoObserverEl.offsetHeight <= 1;
-                var isWidthAuto = this.heightAutoObserverEl.offsetWidth <= 1 || contentElOffsetWidth > 0;
-                var contentWrapperElOffsetWidth = this.contentWrapperEl.offsetWidth;
-                var elOverflowX = this.elStyles.overflowX;
-                var elOverflowY = this.elStyles.overflowY;
-                this.contentEl.style.padding = "".concat(this.elStyles.paddingTop, " ").concat(this.elStyles.paddingRight, " ").concat(this.elStyles.paddingBottom, " ").concat(this.elStyles.paddingLeft);
-                this.wrapperEl.style.margin = "-".concat(this.elStyles.paddingTop, " -").concat(this.elStyles.paddingRight, " -").concat(this.elStyles.paddingBottom, " -").concat(this.elStyles.paddingLeft);
-                var contentElScrollHeight = this.contentEl.scrollHeight;
-                var contentElScrollWidth = this.contentEl.scrollWidth;
-                this.contentWrapperEl.style.height = isHeightAuto ? "auto" : "100%";
-                this.placeholderEl.style.width = isWidthAuto ? "".concat(contentElOffsetWidth || contentElScrollWidth, "px") : "auto";
-                this.placeholderEl.style.height = "".concat(contentElScrollHeight, "px");
-                var contentWrapperElOffsetHeight = this.contentWrapperEl.offsetHeight;
-                this.axis.x.isOverflowing = contentElOffsetWidth !== 0 && contentElScrollWidth > contentElOffsetWidth;
-                this.axis.y.isOverflowing = contentElScrollHeight > contentWrapperElOffsetHeight;
-                this.axis.x.isOverflowing = elOverflowX === "hidden" ? false : this.axis.x.isOverflowing;
-                this.axis.y.isOverflowing = elOverflowY === "hidden" ? false : this.axis.y.isOverflowing;
-                this.axis.x.forceVisible = this.options.forceVisible === "x" || this.options.forceVisible === true;
-                this.axis.y.forceVisible = this.options.forceVisible === "y" || this.options.forceVisible === true;
-                this.hideNativeScrollbar();
-                var offsetForXScrollbar = this.axis.x.isOverflowing ? this.scrollbarWidth : 0;
-                var offsetForYScrollbar = this.axis.y.isOverflowing ? this.scrollbarWidth : 0;
-                this.axis.x.isOverflowing = this.axis.x.isOverflowing && contentElScrollWidth > contentWrapperElOffsetWidth - offsetForYScrollbar;
-                this.axis.y.isOverflowing = this.axis.y.isOverflowing && contentElScrollHeight > contentWrapperElOffsetHeight - offsetForXScrollbar;
-                this.axis.x.scrollbar.size = this.getScrollbarSize("x");
-                this.axis.y.scrollbar.size = this.getScrollbarSize("y");
-                if (this.axis.x.scrollbar.el) this.axis.x.scrollbar.el.style.width = "".concat(this.axis.x.scrollbar.size, "px");
-                if (this.axis.y.scrollbar.el) this.axis.y.scrollbar.el.style.height = "".concat(this.axis.y.scrollbar.size, "px");
-                this.positionScrollbar("x");
-                this.positionScrollbar("y");
-                this.toggleTrackVisibility("x");
-                this.toggleTrackVisibility("y");
-            };
-            SimpleBarCore.prototype.getScrollbarSize = function(axis) {
-                var _a, _b;
-                if (axis === void 0) axis = "y";
-                if (!this.axis[axis].isOverflowing || !this.contentEl) return 0;
-                var contentSize = this.contentEl[this.axis[axis].scrollSizeAttr];
-                var trackSize = (_b = (_a = this.axis[axis].track.el) === null || _a === void 0 ? void 0 : _a[this.axis[axis].offsetSizeAttr]) !== null && _b !== void 0 ? _b : 0;
-                var scrollbarRatio = trackSize / contentSize;
-                var scrollbarSize;
-                scrollbarSize = Math.max(~~(scrollbarRatio * trackSize), this.options.scrollbarMinSize);
-                if (this.options.scrollbarMaxSize) scrollbarSize = Math.min(scrollbarSize, this.options.scrollbarMaxSize);
-                return scrollbarSize;
-            };
-            SimpleBarCore.prototype.positionScrollbar = function(axis) {
-                var _a, _b, _c;
-                if (axis === void 0) axis = "y";
-                var scrollbar = this.axis[axis].scrollbar;
-                if (!this.axis[axis].isOverflowing || !this.contentWrapperEl || !scrollbar.el || !this.elStyles) return;
-                var contentSize = this.contentWrapperEl[this.axis[axis].scrollSizeAttr];
-                var trackSize = ((_a = this.axis[axis].track.el) === null || _a === void 0 ? void 0 : _a[this.axis[axis].offsetSizeAttr]) || 0;
-                var hostSize = parseInt(this.elStyles[this.axis[axis].sizeAttr], 10);
-                var scrollOffset = this.contentWrapperEl[this.axis[axis].scrollOffsetAttr];
-                scrollOffset = axis === "x" && this.isRtl && ((_b = SimpleBarCore.getRtlHelpers()) === null || _b === void 0 ? void 0 : _b.isScrollOriginAtZero) ? -scrollOffset : scrollOffset;
-                if (axis === "x" && this.isRtl) scrollOffset = ((_c = SimpleBarCore.getRtlHelpers()) === null || _c === void 0 ? void 0 : _c.isScrollingToNegative) ? scrollOffset : -scrollOffset;
-                var scrollPourcent = scrollOffset / (contentSize - hostSize);
-                var handleOffset = ~~((trackSize - scrollbar.size) * scrollPourcent);
-                handleOffset = axis === "x" && this.isRtl ? -handleOffset + (trackSize - scrollbar.size) : handleOffset;
-                scrollbar.el.style.transform = axis === "x" ? "translate3d(".concat(handleOffset, "px, 0, 0)") : "translate3d(0, ".concat(handleOffset, "px, 0)");
-            };
-            SimpleBarCore.prototype.toggleTrackVisibility = function(axis) {
-                if (axis === void 0) axis = "y";
-                var track = this.axis[axis].track.el;
-                var scrollbar = this.axis[axis].scrollbar.el;
-                if (!track || !scrollbar || !this.contentWrapperEl) return;
-                if (this.axis[axis].isOverflowing || this.axis[axis].forceVisible) {
-                    track.style.visibility = "visible";
-                    this.contentWrapperEl.style[this.axis[axis].overflowAttr] = "scroll";
-                    this.el.classList.add("".concat(this.classNames.scrollable, "-").concat(axis));
-                } else {
-                    track.style.visibility = "hidden";
-                    this.contentWrapperEl.style[this.axis[axis].overflowAttr] = "hidden";
-                    this.el.classList.remove("".concat(this.classNames.scrollable, "-").concat(axis));
-                }
-                if (this.axis[axis].isOverflowing) scrollbar.style.display = "block"; else scrollbar.style.display = "none";
-            };
-            SimpleBarCore.prototype.showScrollbar = function(axis) {
-                if (axis === void 0) axis = "y";
-                if (this.axis[axis].isOverflowing && !this.axis[axis].scrollbar.isVisible) {
-                    dist_addClasses(this.axis[axis].scrollbar.el, this.classNames.visible);
-                    this.axis[axis].scrollbar.isVisible = true;
-                }
-            };
-            SimpleBarCore.prototype.hideScrollbar = function(axis) {
-                if (axis === void 0) axis = "y";
-                if (this.axis[axis].isOverflowing && this.axis[axis].scrollbar.isVisible) {
-                    dist_removeClasses(this.axis[axis].scrollbar.el, this.classNames.visible);
-                    this.axis[axis].scrollbar.isVisible = false;
-                }
-            };
-            SimpleBarCore.prototype.hideNativeScrollbar = function() {
-                if (!this.offsetEl) return;
-                this.offsetEl.style[this.isRtl ? "left" : "right"] = this.axis.y.isOverflowing || this.axis.y.forceVisible ? "-".concat(this.scrollbarWidth, "px") : "0px";
-                this.offsetEl.style.bottom = this.axis.x.isOverflowing || this.axis.x.forceVisible ? "-".concat(this.scrollbarWidth, "px") : "0px";
-            };
-            SimpleBarCore.prototype.onMouseMoveForAxis = function(axis) {
-                if (axis === void 0) axis = "y";
-                var currentAxis = this.axis[axis];
-                if (!currentAxis.track.el || !currentAxis.scrollbar.el) return;
-                currentAxis.track.rect = currentAxis.track.el.getBoundingClientRect();
-                currentAxis.scrollbar.rect = currentAxis.scrollbar.el.getBoundingClientRect();
-                if (this.isWithinBounds(currentAxis.track.rect)) {
-                    this.showScrollbar(axis);
-                    dist_addClasses(currentAxis.track.el, this.classNames.hover);
-                    if (this.isWithinBounds(currentAxis.scrollbar.rect)) dist_addClasses(currentAxis.scrollbar.el, this.classNames.hover); else dist_removeClasses(currentAxis.scrollbar.el, this.classNames.hover);
-                } else {
-                    dist_removeClasses(currentAxis.track.el, this.classNames.hover);
-                    if (this.options.autoHide) this.hideScrollbar(axis);
-                }
-            };
-            SimpleBarCore.prototype.onMouseLeaveForAxis = function(axis) {
-                if (axis === void 0) axis = "y";
-                dist_removeClasses(this.axis[axis].track.el, this.classNames.hover);
-                dist_removeClasses(this.axis[axis].scrollbar.el, this.classNames.hover);
-                if (this.options.autoHide) this.hideScrollbar(axis);
-            };
-            SimpleBarCore.prototype.onDragStart = function(e, axis) {
-                var _a;
-                if (axis === void 0) axis = "y";
-                var elDocument = getElementDocument(this.el);
-                var elWindow = getElementWindow(this.el);
-                var scrollbar = this.axis[axis].scrollbar;
-                var eventOffset = axis === "y" ? e.pageY : e.pageX;
-                this.axis[axis].dragOffset = eventOffset - (((_a = scrollbar.rect) === null || _a === void 0 ? void 0 : _a[this.axis[axis].offsetAttr]) || 0);
-                this.draggedAxis = axis;
-                dist_addClasses(this.el, this.classNames.dragging);
-                elDocument.addEventListener("mousemove", this.drag, true);
-                elDocument.addEventListener("mouseup", this.onEndDrag, true);
-                if (this.removePreventClickId === null) {
-                    elDocument.addEventListener("click", this.preventClick, true);
-                    elDocument.addEventListener("dblclick", this.preventClick, true);
-                } else {
-                    elWindow.clearTimeout(this.removePreventClickId);
-                    this.removePreventClickId = null;
-                }
-            };
-            SimpleBarCore.prototype.onTrackClick = function(e, axis) {
-                var _this = this;
-                var _a, _b, _c, _d;
-                if (axis === void 0) axis = "y";
-                var currentAxis = this.axis[axis];
-                if (!this.options.clickOnTrack || !currentAxis.scrollbar.el || !this.contentWrapperEl) return;
-                e.preventDefault();
-                var elWindow = getElementWindow(this.el);
-                this.axis[axis].scrollbar.rect = currentAxis.scrollbar.el.getBoundingClientRect();
-                var scrollbar = this.axis[axis].scrollbar;
-                var scrollbarOffset = (_b = (_a = scrollbar.rect) === null || _a === void 0 ? void 0 : _a[this.axis[axis].offsetAttr]) !== null && _b !== void 0 ? _b : 0;
-                var hostSize = parseInt((_d = (_c = this.elStyles) === null || _c === void 0 ? void 0 : _c[this.axis[axis].sizeAttr]) !== null && _d !== void 0 ? _d : "0px", 10);
-                var scrolled = this.contentWrapperEl[this.axis[axis].scrollOffsetAttr];
-                var t = axis === "y" ? this.mouseY - scrollbarOffset : this.mouseX - scrollbarOffset;
-                var dir = t < 0 ? -1 : 1;
-                var scrollSize = dir === -1 ? scrolled - hostSize : scrolled + hostSize;
-                var speed = 40;
-                var scrollTo = function() {
-                    if (!_this.contentWrapperEl) return;
-                    if (dir === -1) {
-                        if (scrolled > scrollSize) {
-                            scrolled -= speed;
-                            _this.contentWrapperEl[_this.axis[axis].scrollOffsetAttr] = scrolled;
-                            elWindow.requestAnimationFrame(scrollTo);
-                        }
-                    } else if (scrolled < scrollSize) {
-                        scrolled += speed;
-                        _this.contentWrapperEl[_this.axis[axis].scrollOffsetAttr] = scrolled;
-                        elWindow.requestAnimationFrame(scrollTo);
-                    }
-                };
-                scrollTo();
-            };
-            SimpleBarCore.prototype.getContentElement = function() {
-                return this.contentEl;
-            };
-            SimpleBarCore.prototype.getScrollElement = function() {
-                return this.contentWrapperEl;
-            };
-            SimpleBarCore.prototype.removeListeners = function() {
-                var elWindow = getElementWindow(this.el);
-                this.el.removeEventListener("mouseenter", this.onMouseEnter);
-                this.el.removeEventListener("pointerdown", this.onPointerEvent, true);
-                this.el.removeEventListener("mousemove", this.onMouseMove);
-                this.el.removeEventListener("mouseleave", this.onMouseLeave);
-                if (this.contentWrapperEl) this.contentWrapperEl.removeEventListener("scroll", this.onScroll);
-                elWindow.removeEventListener("resize", this.onWindowResize);
-                if (this.mutationObserver) this.mutationObserver.disconnect();
-                if (this.resizeObserver) this.resizeObserver.disconnect();
-                this.onMouseMove.cancel();
-                this.onWindowResize.cancel();
-                this.onStopScrolling.cancel();
-                this.onMouseEntered.cancel();
-            };
-            SimpleBarCore.prototype.unMount = function() {
-                this.removeListeners();
-            };
-            SimpleBarCore.prototype.isWithinBounds = function(bbox) {
-                return this.mouseX >= bbox.left && this.mouseX <= bbox.left + bbox.width && this.mouseY >= bbox.top && this.mouseY <= bbox.top + bbox.height;
-            };
-            SimpleBarCore.prototype.findChild = function(el, query) {
-                var matches = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
-                return Array.prototype.filter.call(el.children, (function(child) {
-                    return matches.call(child, query);
-                }))[0];
-            };
-            SimpleBarCore.rtlHelpers = null;
-            SimpleBarCore.defaultOptions = {
-                forceVisible: false,
-                clickOnTrack: true,
-                scrollbarMinSize: 25,
-                scrollbarMaxSize: 0,
-                ariaLabel: "scrollable content",
-                classNames: {
-                    contentEl: "simplebar-content",
-                    contentWrapper: "simplebar-content-wrapper",
-                    offset: "simplebar-offset",
-                    mask: "simplebar-mask",
-                    wrapper: "simplebar-wrapper",
-                    placeholder: "simplebar-placeholder",
-                    scrollbar: "simplebar-scrollbar",
-                    track: "simplebar-track",
-                    heightAutoObserverWrapperEl: "simplebar-height-auto-observer-wrapper",
-                    heightAutoObserverEl: "simplebar-height-auto-observer",
-                    visible: "simplebar-visible",
-                    horizontal: "simplebar-horizontal",
-                    vertical: "simplebar-vertical",
-                    hover: "simplebar-hover",
-                    dragging: "simplebar-dragging",
-                    scrolling: "simplebar-scrolling",
-                    scrollable: "simplebar-scrollable",
-                    mouseEntered: "simplebar-mouse-entered"
-                },
-                scrollableNode: null,
-                contentNode: null,
-                autoHide: true
-            };
-            SimpleBarCore.getOptions = getOptions;
-            SimpleBarCore.helpers = helpers;
-            return SimpleBarCore;
-        }();
-        var extendStatics = function(d, b) {
-            extendStatics = Object.setPrototypeOf || {
-                __proto__: []
-            } instanceof Array && function(d, b) {
-                d.__proto__ = b;
-            } || function(d, b) {
-                for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p];
-            };
-            return extendStatics(d, b);
-        };
-        function __extends(d, b) {
-            if (typeof b !== "function" && b !== null) throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-            extendStatics(d, b);
-            function __() {
-                this.constructor = d;
-            }
-            d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __);
-        }
-        var _a = SimpleBarCore.helpers, dist_getOptions = _a.getOptions, simplebar_dist_addClasses = _a.addClasses;
-        var SimpleBar = function(_super) {
-            __extends(SimpleBar, _super);
-            function SimpleBar() {
-                var args = [];
-                for (var _i = 0; _i < arguments.length; _i++) args[_i] = arguments[_i];
-                var _this = _super.apply(this, args) || this;
-                SimpleBar.instances.set(args[0], _this);
-                return _this;
-            }
-            SimpleBar.initDOMLoadedElements = function() {
-                document.removeEventListener("DOMContentLoaded", this.initDOMLoadedElements);
-                window.removeEventListener("load", this.initDOMLoadedElements);
-                Array.prototype.forEach.call(document.querySelectorAll("[data-simplebar]"), (function(el) {
-                    if (el.getAttribute("data-simplebar") !== "init" && !SimpleBar.instances.has(el)) new SimpleBar(el, dist_getOptions(el.attributes));
-                }));
-            };
-            SimpleBar.removeObserver = function() {
-                var _a;
-                (_a = SimpleBar.globalObserver) === null || _a === void 0 ? void 0 : _a.disconnect();
-            };
-            SimpleBar.prototype.initDOM = function() {
-                var _this = this;
-                var _a, _b, _c;
-                if (!Array.prototype.filter.call(this.el.children, (function(child) {
-                    return child.classList.contains(_this.classNames.wrapper);
-                })).length) {
-                    this.wrapperEl = document.createElement("div");
-                    this.contentWrapperEl = document.createElement("div");
-                    this.offsetEl = document.createElement("div");
-                    this.maskEl = document.createElement("div");
-                    this.contentEl = document.createElement("div");
-                    this.placeholderEl = document.createElement("div");
-                    this.heightAutoObserverWrapperEl = document.createElement("div");
-                    this.heightAutoObserverEl = document.createElement("div");
-                    simplebar_dist_addClasses(this.wrapperEl, this.classNames.wrapper);
-                    simplebar_dist_addClasses(this.contentWrapperEl, this.classNames.contentWrapper);
-                    simplebar_dist_addClasses(this.offsetEl, this.classNames.offset);
-                    simplebar_dist_addClasses(this.maskEl, this.classNames.mask);
-                    simplebar_dist_addClasses(this.contentEl, this.classNames.contentEl);
-                    simplebar_dist_addClasses(this.placeholderEl, this.classNames.placeholder);
-                    simplebar_dist_addClasses(this.heightAutoObserverWrapperEl, this.classNames.heightAutoObserverWrapperEl);
-                    simplebar_dist_addClasses(this.heightAutoObserverEl, this.classNames.heightAutoObserverEl);
-                    while (this.el.firstChild) this.contentEl.appendChild(this.el.firstChild);
-                    this.contentWrapperEl.appendChild(this.contentEl);
-                    this.offsetEl.appendChild(this.contentWrapperEl);
-                    this.maskEl.appendChild(this.offsetEl);
-                    this.heightAutoObserverWrapperEl.appendChild(this.heightAutoObserverEl);
-                    this.wrapperEl.appendChild(this.heightAutoObserverWrapperEl);
-                    this.wrapperEl.appendChild(this.maskEl);
-                    this.wrapperEl.appendChild(this.placeholderEl);
-                    this.el.appendChild(this.wrapperEl);
-                    (_a = this.contentWrapperEl) === null || _a === void 0 ? void 0 : _a.setAttribute("tabindex", "0");
-                    (_b = this.contentWrapperEl) === null || _b === void 0 ? void 0 : _b.setAttribute("role", "region");
-                    (_c = this.contentWrapperEl) === null || _c === void 0 ? void 0 : _c.setAttribute("aria-label", this.options.ariaLabel);
-                }
-                if (!this.axis.x.track.el || !this.axis.y.track.el) {
-                    var track = document.createElement("div");
-                    var scrollbar = document.createElement("div");
-                    simplebar_dist_addClasses(track, this.classNames.track);
-                    simplebar_dist_addClasses(scrollbar, this.classNames.scrollbar);
-                    track.appendChild(scrollbar);
-                    this.axis.x.track.el = track.cloneNode(true);
-                    simplebar_dist_addClasses(this.axis.x.track.el, this.classNames.horizontal);
-                    this.axis.y.track.el = track.cloneNode(true);
-                    simplebar_dist_addClasses(this.axis.y.track.el, this.classNames.vertical);
-                    this.el.appendChild(this.axis.x.track.el);
-                    this.el.appendChild(this.axis.y.track.el);
-                }
-                SimpleBarCore.prototype.initDOM.call(this);
-                this.el.setAttribute("data-simplebar", "init");
-            };
-            SimpleBar.prototype.unMount = function() {
-                SimpleBarCore.prototype.unMount.call(this);
-                SimpleBar.instances["delete"](this.el);
-            };
-            SimpleBar.initHtmlApi = function() {
-                this.initDOMLoadedElements = this.initDOMLoadedElements.bind(this);
-                if (typeof MutationObserver !== "undefined") {
-                    this.globalObserver = new MutationObserver(SimpleBar.handleMutations);
-                    this.globalObserver.observe(document, {
-                        childList: true,
-                        subtree: true
-                    });
-                }
-                if (document.readyState === "complete" || document.readyState !== "loading" && !document.documentElement.doScroll) window.setTimeout(this.initDOMLoadedElements); else {
-                    document.addEventListener("DOMContentLoaded", this.initDOMLoadedElements);
-                    window.addEventListener("load", this.initDOMLoadedElements);
-                }
-            };
-            SimpleBar.handleMutations = function(mutations) {
-                mutations.forEach((function(mutation) {
-                    mutation.addedNodes.forEach((function(addedNode) {
-                        if (addedNode.nodeType === 1) if (addedNode.hasAttribute("data-simplebar")) !SimpleBar.instances.has(addedNode) && document.documentElement.contains(addedNode) && new SimpleBar(addedNode, dist_getOptions(addedNode.attributes)); else addedNode.querySelectorAll("[data-simplebar]").forEach((function(el) {
-                            if (el.getAttribute("data-simplebar") !== "init" && !SimpleBar.instances.has(el) && document.documentElement.contains(el)) new SimpleBar(el, dist_getOptions(el.attributes));
-                        }));
-                    }));
-                    mutation.removedNodes.forEach((function(removedNode) {
-                        if (removedNode.nodeType === 1) if (removedNode.getAttribute("data-simplebar") === "init") SimpleBar.instances.has(removedNode) && !document.documentElement.contains(removedNode) && SimpleBar.instances.get(removedNode).unMount(); else Array.prototype.forEach.call(removedNode.querySelectorAll('[data-simplebar="init"]'), (function(el) {
-                            SimpleBar.instances.has(el) && !document.documentElement.contains(el) && SimpleBar.instances.get(el).unMount();
-                        }));
-                    }));
-                }));
-            };
-            SimpleBar.instances = new WeakMap;
-            return SimpleBar;
-        }(SimpleBarCore);
-        if (can_use_dom) SimpleBar.initHtmlApi();
-        var lazyload_min = __webpack_require__(732);
-        new lazyload_min({
-            elements_selector: "[data-src],[data-srcset]",
-            class_loaded: "_lazy-loaded",
-            use_native: true
-        });
         let addWindowScrollEvent = false;
+        function stickyBlock() {
+            addWindowScrollEvent = true;
+            function stickyBlockInit() {
+                const stickyParents = document.querySelectorAll("[data-sticky]");
+                if (stickyParents.length) stickyParents.forEach((stickyParent => {
+                    let stickyConfig = {
+                        media: stickyParent.dataset.sticky ? parseInt(stickyParent.dataset.sticky) : null,
+                        top: stickyParent.dataset.stickyTop ? parseInt(stickyParent.dataset.stickyTop) : 0,
+                        bottom: stickyParent.dataset.stickyBottom ? parseInt(stickyParent.dataset.stickyBottom) : 0,
+                        header: stickyParent.hasAttribute("data-sticky-header") ? document.querySelector("header.header").offsetHeight : 0
+                    };
+                    stickyBlockItem(stickyParent, stickyConfig);
+                }));
+            }
+            function stickyBlockItem(stickyParent, stickyConfig) {
+                const stickyBlockItem = stickyParent.querySelector("[data-sticky-item]");
+                const headerHeight = stickyConfig.header;
+                const offsetTop = headerHeight + stickyConfig.top;
+                const startPoint = stickyBlockItem.getBoundingClientRect().top + scrollY - offsetTop;
+                document.addEventListener("windowScroll", stickyBlockActions);
+                function stickyBlockActions(e) {
+                    const endPoint = stickyParent.offsetHeight + stickyParent.getBoundingClientRect().top + scrollY - (offsetTop + stickyBlockItem.offsetHeight + stickyConfig.bottom);
+                    let stickyItemValues = {
+                        position: "relative",
+                        bottom: "auto",
+                        top: "0px",
+                        left: "0px",
+                        width: "auto"
+                    };
+                    if (!stickyConfig.media || stickyConfig.media < window.innerWidth) if (offsetTop + stickyConfig.bottom + stickyBlockItem.offsetHeight < window.innerHeight) if (scrollY >= startPoint && scrollY <= endPoint) {
+                        stickyItemValues.position = `fixed`;
+                        stickyItemValues.bottom = `auto`;
+                        stickyItemValues.top = `${offsetTop}px`;
+                        stickyItemValues.left = `${stickyBlockItem.getBoundingClientRect().left}px`;
+                        stickyItemValues.width = `${stickyBlockItem.offsetWidth}px`;
+                    } else if (scrollY >= endPoint) {
+                        stickyItemValues.position = `absolute`;
+                        stickyItemValues.bottom = `${stickyConfig.bottom}px`;
+                        stickyItemValues.top = `auto`;
+                        stickyItemValues.left = `0px`;
+                        stickyItemValues.width = `${stickyBlockItem.offsetWidth}px`;
+                    }
+                    stickyBlockType(stickyBlockItem, stickyItemValues);
+                }
+            }
+            function stickyBlockType(stickyBlockItem, stickyItemValues) {
+                stickyBlockItem.style.cssText = `position:${stickyItemValues.position};bottom:${stickyItemValues.bottom};top:${stickyItemValues.top};left:${stickyItemValues.left};width:${stickyItemValues.width};`;
+            }
+            stickyBlockInit();
+        }
         setTimeout((() => {
             if (addWindowScrollEvent) {
                 let windowScroll = new Event("windowScroll");
@@ -10390,6 +11641,4699 @@
                 }));
             }
         }), 0);
+        const t = (t, e = 1e4) => (t = parseFloat(t + "") || 0, Math.round((t + Number.EPSILON) * e) / e), e = function(t) {
+            if (!(t && t instanceof Element && t.offsetParent)) return !1;
+            const e = t.scrollHeight > t.clientHeight, i = window.getComputedStyle(t).overflowY, n = -1 !== i.indexOf("hidden"), s = -1 !== i.indexOf("visible");
+            return e && !n && !s;
+        }, i = function(t, n = void 0) {
+            return !(!t || t === document.body || n && t === n) && (e(t) ? t : i(t.parentElement, n));
+        }, n = function(t) {
+            var e = (new DOMParser).parseFromString(t, "text/html").body;
+            if (e.childElementCount > 1) {
+                for (var i = document.createElement("div"); e.firstChild; ) i.appendChild(e.firstChild);
+                return i;
+            }
+            return e.firstChild;
+        }, s = t => `${t || ""}`.split(" ").filter((t => !!t)), o = (t, e, i) => {
+            s(e).forEach((e => {
+                t && t.classList.toggle(e, i || !1);
+            }));
+        };
+        class a {
+            constructor(t) {
+                Object.defineProperty(this, "pageX", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: void 0
+                }), Object.defineProperty(this, "pageY", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: void 0
+                }), Object.defineProperty(this, "clientX", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: void 0
+                }), Object.defineProperty(this, "clientY", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: void 0
+                }), Object.defineProperty(this, "id", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: void 0
+                }), Object.defineProperty(this, "time", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: void 0
+                }), Object.defineProperty(this, "nativePointer", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: void 0
+                }), this.nativePointer = t, this.pageX = t.pageX, this.pageY = t.pageY, this.clientX = t.clientX, 
+                this.clientY = t.clientY, this.id = self.Touch && t instanceof Touch ? t.identifier : -1, 
+                this.time = Date.now();
+            }
+        }
+        const r = {
+            passive: !1
+        };
+        class l {
+            constructor(t, {start: e = (() => !0), move: i = (() => {}), end: n = (() => {})}) {
+                Object.defineProperty(this, "element", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: void 0
+                }), Object.defineProperty(this, "startCallback", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: void 0
+                }), Object.defineProperty(this, "moveCallback", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: void 0
+                }), Object.defineProperty(this, "endCallback", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: void 0
+                }), Object.defineProperty(this, "currentPointers", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: []
+                }), Object.defineProperty(this, "startPointers", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: []
+                }), this.element = t, this.startCallback = e, this.moveCallback = i, this.endCallback = n;
+                for (const t of [ "onPointerStart", "onTouchStart", "onMove", "onTouchEnd", "onPointerEnd", "onWindowBlur" ]) this[t] = this[t].bind(this);
+                this.element.addEventListener("mousedown", this.onPointerStart, r), this.element.addEventListener("touchstart", this.onTouchStart, r), 
+                this.element.addEventListener("touchmove", this.onMove, r), this.element.addEventListener("touchend", this.onTouchEnd), 
+                this.element.addEventListener("touchcancel", this.onTouchEnd);
+            }
+            onPointerStart(t) {
+                if (!t.buttons || 0 !== t.button) return;
+                const e = new a(t);
+                this.currentPointers.some((t => t.id === e.id)) || this.triggerPointerStart(e, t) && (window.addEventListener("mousemove", this.onMove), 
+                window.addEventListener("mouseup", this.onPointerEnd), window.addEventListener("blur", this.onWindowBlur));
+            }
+            onTouchStart(t) {
+                for (const e of Array.from(t.changedTouches || [])) this.triggerPointerStart(new a(e), t);
+                window.addEventListener("blur", this.onWindowBlur);
+            }
+            onMove(t) {
+                const e = this.currentPointers.slice(), i = "changedTouches" in t ? Array.from(t.changedTouches || []).map((t => new a(t))) : [ new a(t) ], n = [];
+                for (const t of i) {
+                    const e = this.currentPointers.findIndex((e => e.id === t.id));
+                    e < 0 || (n.push(t), this.currentPointers[e] = t);
+                }
+                n.length && this.moveCallback(t, this.currentPointers.slice(), e);
+            }
+            onPointerEnd(t) {
+                t.buttons > 0 && 0 !== t.button || (this.triggerPointerEnd(t, new a(t)), window.removeEventListener("mousemove", this.onMove), 
+                window.removeEventListener("mouseup", this.onPointerEnd), window.removeEventListener("blur", this.onWindowBlur));
+            }
+            onTouchEnd(t) {
+                for (const e of Array.from(t.changedTouches || [])) this.triggerPointerEnd(t, new a(e));
+            }
+            triggerPointerStart(t, e) {
+                return !!this.startCallback(e, t, this.currentPointers.slice()) && (this.currentPointers.push(t), 
+                this.startPointers.push(t), !0);
+            }
+            triggerPointerEnd(t, e) {
+                const i = this.currentPointers.findIndex((t => t.id === e.id));
+                i < 0 || (this.currentPointers.splice(i, 1), this.startPointers.splice(i, 1), this.endCallback(t, e, this.currentPointers.slice()));
+            }
+            onWindowBlur() {
+                this.clear();
+            }
+            clear() {
+                for (;this.currentPointers.length; ) {
+                    const t = this.currentPointers[this.currentPointers.length - 1];
+                    this.currentPointers.splice(this.currentPointers.length - 1, 1), this.startPointers.splice(this.currentPointers.length - 1, 1), 
+                    this.endCallback(new Event("touchend", {
+                        bubbles: !0,
+                        cancelable: !0,
+                        clientX: t.clientX,
+                        clientY: t.clientY
+                    }), t, this.currentPointers.slice());
+                }
+            }
+            stop() {
+                this.element.removeEventListener("mousedown", this.onPointerStart, r), this.element.removeEventListener("touchstart", this.onTouchStart, r), 
+                this.element.removeEventListener("touchmove", this.onMove, r), this.element.removeEventListener("touchend", this.onTouchEnd), 
+                this.element.removeEventListener("touchcancel", this.onTouchEnd), window.removeEventListener("mousemove", this.onMove), 
+                window.removeEventListener("mouseup", this.onPointerEnd), window.removeEventListener("blur", this.onWindowBlur);
+            }
+        }
+        function c(t, e) {
+            return e ? Math.sqrt(Math.pow(e.clientX - t.clientX, 2) + Math.pow(e.clientY - t.clientY, 2)) : 0;
+        }
+        function h(t, e) {
+            return e ? {
+                clientX: (t.clientX + e.clientX) / 2,
+                clientY: (t.clientY + e.clientY) / 2
+            } : t;
+        }
+        const d = t => "object" == typeof t && null !== t && t.constructor === Object && "[object Object]" === Object.prototype.toString.call(t), u = (t, ...e) => {
+            const i = e.length;
+            for (let n = 0; n < i; n++) {
+                const i = e[n] || {};
+                Object.entries(i).forEach((([e, i]) => {
+                    const n = Array.isArray(i) ? [] : {};
+                    t[e] || Object.assign(t, {
+                        [e]: n
+                    }), d(i) ? Object.assign(t[e], u(n, i)) : Array.isArray(i) ? Object.assign(t, {
+                        [e]: [ ...i ]
+                    }) : Object.assign(t, {
+                        [e]: i
+                    });
+                }));
+            }
+            return t;
+        }, p = function(t, e) {
+            return t.split(".").reduce(((t, e) => "object" == typeof t ? t[e] : void 0), e);
+        };
+        class f {
+            constructor(t = {}) {
+                Object.defineProperty(this, "options", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: t
+                }), Object.defineProperty(this, "events", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: new Map
+                }), this.setOptions(t);
+                for (const t of Object.getOwnPropertyNames(Object.getPrototypeOf(this))) t.startsWith("on") && "function" == typeof this[t] && (this[t] = this[t].bind(this));
+            }
+            setOptions(t) {
+                this.options = t ? u({}, this.constructor.defaults, t) : {};
+                for (const [t, e] of Object.entries(this.option("on") || {})) this.on(t, e);
+            }
+            option(t, ...e) {
+                let i = p(t, this.options);
+                return i && "function" == typeof i && (i = i.call(this, this, ...e)), i;
+            }
+            optionFor(t, e, i, ...n) {
+                let s = p(e, t);
+                var o;
+                "string" != typeof (o = s) || isNaN(o) || isNaN(parseFloat(o)) || (s = parseFloat(s)), 
+                "true" === s && (s = !0), "false" === s && (s = !1), s && "function" == typeof s && (s = s.call(this, this, t, ...n));
+                let a = p(e, this.options);
+                return a && "function" == typeof a ? s = a.call(this, this, t, ...n, s) : void 0 === s && (s = a), 
+                void 0 === s ? i : s;
+            }
+            cn(t) {
+                const e = this.options.classes;
+                return e && e[t] || "";
+            }
+            localize(t, e = []) {
+                t = String(t).replace(/\{\{(\w+).?(\w+)?\}\}/g, ((t, e, i) => {
+                    let n = "";
+                    return i ? n = this.option(`${e[0] + e.toLowerCase().substring(1)}.l10n.${i}`) : e && (n = this.option(`l10n.${e}`)), 
+                    n || (n = t), n;
+                }));
+                for (let i = 0; i < e.length; i++) t = t.split(e[i][0]).join(e[i][1]);
+                return t = t.replace(/\{\{(.*?)\}\}/g, ((t, e) => e));
+            }
+            on(t, e) {
+                let i = [];
+                "string" == typeof t ? i = t.split(" ") : Array.isArray(t) && (i = t), this.events || (this.events = new Map), 
+                i.forEach((t => {
+                    let i = this.events.get(t);
+                    i || (this.events.set(t, []), i = []), i.includes(e) || i.push(e), this.events.set(t, i);
+                }));
+            }
+            off(t, e) {
+                let i = [];
+                "string" == typeof t ? i = t.split(" ") : Array.isArray(t) && (i = t), i.forEach((t => {
+                    const i = this.events.get(t);
+                    if (Array.isArray(i)) {
+                        const t = i.indexOf(e);
+                        t > -1 && i.splice(t, 1);
+                    }
+                }));
+            }
+            emit(t, ...e) {
+                [ ...this.events.get(t) || [] ].forEach((t => t(this, ...e))), "*" !== t && this.emit("*", t, ...e);
+            }
+        }
+        Object.defineProperty(f, "version", {
+            enumerable: !0,
+            configurable: !0,
+            writable: !0,
+            value: "5.0.22"
+        }), Object.defineProperty(f, "defaults", {
+            enumerable: !0,
+            configurable: !0,
+            writable: !0,
+            value: {}
+        });
+        class m extends f {
+            constructor(t = {}) {
+                super(t), Object.defineProperty(this, "plugins", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: {}
+                });
+            }
+            attachPlugins(t = {}) {
+                const e = new Map;
+                for (const [i, n] of Object.entries(t)) {
+                    const t = this.option(i), s = this.plugins[i];
+                    s || !1 === t ? s && !1 === t && (s.detach(), delete this.plugins[i]) : e.set(i, new n(this, t || {}));
+                }
+                for (const [t, i] of e) this.plugins[t] = i, i.attach();
+                this.emit("attachPlugins");
+            }
+            detachPlugins(t) {
+                t = t || Object.keys(this.plugins);
+                for (const e of t) {
+                    const t = this.plugins[e];
+                    t && t.detach(), delete this.plugins[e];
+                }
+                return this.emit("detachPlugins"), this;
+            }
+        }
+        var g;
+        !function(t) {
+            t[t.Init = 0] = "Init", t[t.Error = 1] = "Error", t[t.Ready = 2] = "Ready", t[t.Panning = 3] = "Panning", 
+            t[t.Mousemove = 4] = "Mousemove", t[t.Destroy = 5] = "Destroy";
+        }(g || (g = {}));
+        const b = [ "a", "b", "c", "d", "e", "f" ], v = {
+            PANUP: "Move up",
+            PANDOWN: "Move down",
+            PANLEFT: "Move left",
+            PANRIGHT: "Move right",
+            ZOOMIN: "Zoom in",
+            ZOOMOUT: "Zoom out",
+            TOGGLEZOOM: "Toggle zoom level",
+            TOGGLE1TO1: "Toggle zoom level",
+            ITERATEZOOM: "Toggle zoom level",
+            ROTATECCW: "Rotate counterclockwise",
+            ROTATECW: "Rotate clockwise",
+            FLIPX: "Flip horizontally",
+            FLIPY: "Flip vertically",
+            FITX: "Fit horizontally",
+            FITY: "Fit vertically",
+            RESET: "Reset",
+            TOGGLEFS: "Toggle fullscreen"
+        }, y = {
+            content: null,
+            width: "auto",
+            height: "auto",
+            panMode: "drag",
+            touch: !0,
+            dragMinThreshold: 3,
+            lockAxis: !1,
+            mouseMoveFactor: 1,
+            mouseMoveFriction: .12,
+            zoom: !0,
+            pinchToZoom: !0,
+            panOnlyZoomed: "auto",
+            minScale: 1,
+            maxScale: 2,
+            friction: .25,
+            dragFriction: .35,
+            decelFriction: .05,
+            click: "toggleZoom",
+            dblClick: !1,
+            wheel: "zoom",
+            wheelLimit: 7,
+            spinner: !0,
+            bounds: "auto",
+            infinite: !1,
+            rubberband: !0,
+            bounce: !0,
+            maxVelocity: 75,
+            transformParent: !1,
+            classes: {
+                content: "f-panzoom__content",
+                isLoading: "is-loading",
+                canZoomIn: "can-zoom_in",
+                canZoomOut: "can-zoom_out",
+                isDraggable: "is-draggable",
+                isDragging: "is-dragging",
+                inFullscreen: "in-fullscreen",
+                htmlHasFullscreen: "with-panzoom-in-fullscreen"
+            },
+            l10n: v
+        }, w = '<div class="f-spinner"><svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="20"></circle><circle cx="25" cy="25" r="20"></circle></svg></div>', x = t => t && null !== t && t instanceof Element && "nodeType" in t, E = (t, e) => {
+            t && s(e).forEach((e => {
+                t.classList.remove(e);
+            }));
+        }, S = (t, e) => {
+            t && s(e).forEach((e => {
+                t.classList.add(e);
+            }));
+        }, P = {
+            a: 1,
+            b: 0,
+            c: 0,
+            d: 1,
+            e: 0,
+            f: 0
+        }, C = 1e5, M = 1e3, T = "mousemove", O = "drag", A = "content";
+        let z = null, L = null;
+        class R extends m {
+            get isTouchDevice() {
+                return null === L && (L = window.matchMedia("(hover: none)").matches), L;
+            }
+            get isMobile() {
+                return null === z && (z = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)), 
+                z;
+            }
+            get panMode() {
+                return this.options.panMode !== T || this.isTouchDevice ? O : T;
+            }
+            get panOnlyZoomed() {
+                const t = this.options.panOnlyZoomed;
+                return "auto" === t ? this.isTouchDevice : t;
+            }
+            get isInfinite() {
+                return this.option("infinite");
+            }
+            get angle() {
+                return 180 * Math.atan2(this.current.b, this.current.a) / Math.PI || 0;
+            }
+            get targetAngle() {
+                return 180 * Math.atan2(this.target.b, this.target.a) / Math.PI || 0;
+            }
+            get scale() {
+                const {a: t, b: e} = this.current;
+                return Math.sqrt(t * t + e * e) || 1;
+            }
+            get targetScale() {
+                const {a: t, b: e} = this.target;
+                return Math.sqrt(t * t + e * e) || 1;
+            }
+            get minScale() {
+                return this.option("minScale") || 1;
+            }
+            get fullScale() {
+                const {contentRect: t} = this;
+                return t.fullWidth / t.fitWidth || 1;
+            }
+            get maxScale() {
+                return this.fullScale * (this.option("maxScale") || 1) || 1;
+            }
+            get coverScale() {
+                const {containerRect: t, contentRect: e} = this, i = Math.max(t.height / e.fitHeight, t.width / e.fitWidth) || 1;
+                return Math.min(this.fullScale, i);
+            }
+            get isScaling() {
+                return Math.abs(this.targetScale - this.scale) > 1e-5 && !this.isResting;
+            }
+            get isContentLoading() {
+                const t = this.content;
+                return !!(t && t instanceof HTMLImageElement) && !t.complete;
+            }
+            get isResting() {
+                if (this.isBouncingX || this.isBouncingY) return !1;
+                for (const t of b) {
+                    const e = "e" == t || "f" === t ? .001 : 1e-5;
+                    if (Math.abs(this.target[t] - this.current[t]) > e) return !1;
+                }
+                return !(!this.ignoreBounds && !this.checkBounds().inBounds);
+            }
+            constructor(t, e = {}, i = {}) {
+                var s;
+                if (super(e), Object.defineProperty(this, "pointerTracker", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: null
+                }), Object.defineProperty(this, "resizeObserver", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: null
+                }), Object.defineProperty(this, "updateTimer", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: null
+                }), Object.defineProperty(this, "clickTimer", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: null
+                }), Object.defineProperty(this, "rAF", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: null
+                }), Object.defineProperty(this, "isTicking", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: !1
+                }), Object.defineProperty(this, "friction", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: 0
+                }), Object.defineProperty(this, "ignoreBounds", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: !1
+                }), Object.defineProperty(this, "isBouncingX", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: !1
+                }), Object.defineProperty(this, "isBouncingY", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: !1
+                }), Object.defineProperty(this, "clicks", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: 0
+                }), Object.defineProperty(this, "trackingPoints", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: []
+                }), Object.defineProperty(this, "pwt", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: 0
+                }), Object.defineProperty(this, "cwd", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: 0
+                }), Object.defineProperty(this, "pmme", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: void 0
+                }), Object.defineProperty(this, "state", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: g.Init
+                }), Object.defineProperty(this, "isDragging", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: !1
+                }), Object.defineProperty(this, "container", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: void 0
+                }), Object.defineProperty(this, "content", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: void 0
+                }), Object.defineProperty(this, "spinner", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: null
+                }), Object.defineProperty(this, "containerRect", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: {
+                        width: 0,
+                        height: 0,
+                        innerWidth: 0,
+                        innerHeight: 0
+                    }
+                }), Object.defineProperty(this, "contentRect", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: {
+                        top: 0,
+                        right: 0,
+                        bottom: 0,
+                        left: 0,
+                        fullWidth: 0,
+                        fullHeight: 0,
+                        fitWidth: 0,
+                        fitHeight: 0,
+                        width: 0,
+                        height: 0
+                    }
+                }), Object.defineProperty(this, "dragStart", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: {
+                        x: 0,
+                        y: 0,
+                        top: 0,
+                        left: 0,
+                        time: 0
+                    }
+                }), Object.defineProperty(this, "dragOffset", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: {
+                        x: 0,
+                        y: 0,
+                        time: 0
+                    }
+                }), Object.defineProperty(this, "current", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: Object.assign({}, P)
+                }), Object.defineProperty(this, "target", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: Object.assign({}, P)
+                }), Object.defineProperty(this, "velocity", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: {
+                        a: 0,
+                        b: 0,
+                        c: 0,
+                        d: 0,
+                        e: 0,
+                        f: 0
+                    }
+                }), Object.defineProperty(this, "lockedAxis", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: !1
+                }), !t) throw new Error("Container Element Not Found");
+                this.container = t, this.initContent(), this.attachPlugins(Object.assign(Object.assign({}, R.Plugins), i)), 
+                this.emit("init");
+                const o = this.content;
+                if (o.addEventListener("load", this.onLoad), o.addEventListener("error", this.onError), 
+                this.isContentLoading) {
+                    if (this.option("spinner")) {
+                        t.classList.add(this.cn("isLoading"));
+                        const e = n(w);
+                        !t.contains(o) || o.parentElement instanceof HTMLPictureElement ? this.spinner = t.appendChild(e) : this.spinner = (null === (s = o.parentElement) || void 0 === s ? void 0 : s.insertBefore(e, o)) || null;
+                    }
+                    this.emit("beforeLoad");
+                } else queueMicrotask((() => {
+                    this.enable();
+                }));
+            }
+            initContent() {
+                const {container: t} = this, e = this.cn(A);
+                let i = this.option(A) || t.querySelector(`.${e}`);
+                if (i || (i = t.querySelector("img,picture") || t.firstElementChild, i && S(i, e)), 
+                i instanceof HTMLPictureElement && (i = i.querySelector("img")), !i) throw new Error("No content found");
+                this.content = i;
+            }
+            onLoad() {
+                this.spinner && (this.spinner.remove(), this.spinner = null), this.option("spinner") && this.container.classList.remove(this.cn("isLoading")), 
+                this.emit("afterLoad"), this.state === g.Init ? this.enable() : this.updateMetrics();
+            }
+            onError() {
+                this.state !== g.Destroy && (this.spinner && (this.spinner.remove(), this.spinner = null), 
+                this.stop(), this.detachEvents(), this.state = g.Error, this.emit("error"));
+            }
+            attachObserver() {
+                var t;
+                const e = () => Math.abs(this.containerRect.width - this.container.getBoundingClientRect().width) > .1 || Math.abs(this.containerRect.height - this.container.getBoundingClientRect().height) > .1;
+                this.resizeObserver || void 0 === window.ResizeObserver || (this.resizeObserver = new ResizeObserver((() => {
+                    this.updateTimer || (e() ? (this.onResize(), this.isMobile && (this.updateTimer = setTimeout((() => {
+                        e() && this.onResize(), this.updateTimer = null;
+                    }), 500))) : this.updateTimer && (clearTimeout(this.updateTimer), this.updateTimer = null));
+                }))), null === (t = this.resizeObserver) || void 0 === t || t.observe(this.container);
+            }
+            detachObserver() {
+                var t;
+                null === (t = this.resizeObserver) || void 0 === t || t.disconnect();
+            }
+            attachEvents() {
+                const {container: t} = this;
+                t.addEventListener("click", this.onClick, {
+                    passive: !1,
+                    capture: !1
+                }), t.addEventListener("wheel", this.onWheel, {
+                    passive: !1
+                }), this.pointerTracker = new l(t, {
+                    start: this.onPointerDown,
+                    move: this.onPointerMove,
+                    end: this.onPointerUp
+                }), document.addEventListener(T, this.onMouseMove);
+            }
+            detachEvents() {
+                var t;
+                const {container: e} = this;
+                e.removeEventListener("click", this.onClick, {
+                    passive: !1,
+                    capture: !1
+                }), e.removeEventListener("wheel", this.onWheel, {
+                    passive: !1
+                }), null === (t = this.pointerTracker) || void 0 === t || t.stop(), this.pointerTracker = null, 
+                document.removeEventListener(T, this.onMouseMove), document.removeEventListener("keydown", this.onKeydown, !0), 
+                this.clickTimer && (clearTimeout(this.clickTimer), this.clickTimer = null), this.updateTimer && (clearTimeout(this.updateTimer), 
+                this.updateTimer = null);
+            }
+            animate() {
+                const t = this.friction;
+                this.setTargetForce();
+                const e = this.option("maxVelocity");
+                for (const i of b) t ? (this.velocity[i] *= 1 - t, e && !this.isScaling && (this.velocity[i] = Math.max(Math.min(this.velocity[i], e), -1 * e)), 
+                this.current[i] += this.velocity[i]) : this.current[i] = this.target[i];
+                this.setTransform(), this.setEdgeForce(), !this.isResting || this.isDragging ? this.rAF = requestAnimationFrame((() => this.animate())) : this.stop("current");
+            }
+            setTargetForce() {
+                for (const t of b) "e" === t && this.isBouncingX || "f" === t && this.isBouncingY || (this.velocity[t] = (1 / (1 - this.friction) - 1) * (this.target[t] - this.current[t]));
+            }
+            checkBounds(t = 0, e = 0) {
+                const {current: i} = this, n = i.e + t, s = i.f + e, o = this.getBounds(), {x: a, y: r} = o, l = a.min, c = a.max, h = r.min, d = r.max;
+                let u = 0, p = 0;
+                return l !== 1 / 0 && n < l ? u = l - n : c !== 1 / 0 && n > c && (u = c - n), h !== 1 / 0 && s < h ? p = h - s : d !== 1 / 0 && s > d && (p = d - s), 
+                Math.abs(u) < .001 && (u = 0), Math.abs(p) < .001 && (p = 0), Object.assign(Object.assign({}, o), {
+                    xDiff: u,
+                    yDiff: p,
+                    inBounds: !u && !p
+                });
+            }
+            clampTargetBounds() {
+                const {target: t} = this, {x: e, y: i} = this.getBounds();
+                e.min !== 1 / 0 && (t.e = Math.max(t.e, e.min)), e.max !== 1 / 0 && (t.e = Math.min(t.e, e.max)), 
+                i.min !== 1 / 0 && (t.f = Math.max(t.f, i.min)), i.max !== 1 / 0 && (t.f = Math.min(t.f, i.max));
+            }
+            calculateContentDim(t = this.current) {
+                const {content: e, contentRect: i} = this, {fitWidth: n, fitHeight: s, fullWidth: o, fullHeight: a} = i;
+                let r = o, l = a;
+                if (this.option("zoom") || 0 !== this.angle) {
+                    const i = !(e instanceof HTMLImageElement) && ("none" === window.getComputedStyle(e).maxWidth || "none" === window.getComputedStyle(e).maxHeight), c = i ? o : n, h = i ? a : s, d = this.getMatrix(t), u = new DOMPoint(0, 0).matrixTransform(d), p = new DOMPoint(0 + c, 0).matrixTransform(d), f = new DOMPoint(0 + c, 0 + h).matrixTransform(d), m = new DOMPoint(0, 0 + h).matrixTransform(d), g = Math.abs(f.x - u.x), b = Math.abs(f.y - u.y), v = Math.abs(m.x - p.x), y = Math.abs(m.y - p.y);
+                    r = Math.max(g, v), l = Math.max(b, y);
+                }
+                return {
+                    contentWidth: r,
+                    contentHeight: l
+                };
+            }
+            setEdgeForce() {
+                if (this.ignoreBounds || this.isDragging || this.panMode === T || this.targetScale < this.scale) return this.isBouncingX = !1, 
+                void (this.isBouncingY = !1);
+                const {target: t} = this, {x: e, y: i, xDiff: n, yDiff: s} = this.checkBounds();
+                const o = this.option("maxVelocity");
+                let a = this.velocity.e, r = this.velocity.f;
+                0 !== n ? (this.isBouncingX = !0, n * a <= 0 ? a += .14 * n : (a = .14 * n, e.min !== 1 / 0 && (this.target.e = Math.max(t.e, e.min)), 
+                e.max !== 1 / 0 && (this.target.e = Math.min(t.e, e.max))), o && (a = Math.max(Math.min(a, o), -1 * o))) : this.isBouncingX = !1, 
+                0 !== s ? (this.isBouncingY = !0, s * r <= 0 ? r += .14 * s : (r = .14 * s, i.min !== 1 / 0 && (this.target.f = Math.max(t.f, i.min)), 
+                i.max !== 1 / 0 && (this.target.f = Math.min(t.f, i.max))), o && (r = Math.max(Math.min(r, o), -1 * o))) : this.isBouncingY = !1, 
+                this.isBouncingX && (this.velocity.e = a), this.isBouncingY && (this.velocity.f = r);
+            }
+            enable() {
+                const {content: t} = this, e = new DOMMatrixReadOnly(window.getComputedStyle(t).transform);
+                for (const t of b) this.current[t] = this.target[t] = e[t];
+                this.updateMetrics(), this.attachObserver(), this.attachEvents(), this.state = g.Ready, 
+                this.emit("ready");
+            }
+            onClick(t) {
+                var e;
+                this.isDragging && (null === (e = this.pointerTracker) || void 0 === e || e.clear(), 
+                this.trackingPoints = [], this.startDecelAnim());
+                const i = t.target;
+                if (!i || t.defaultPrevented) return;
+                if (i && i.hasAttribute("disabled")) return t.preventDefault(), void t.stopPropagation();
+                if ((() => {
+                    const t = window.getSelection();
+                    return t && "Range" === t.type;
+                })() && !i.closest("button")) return;
+                const n = i.closest("[data-panzoom-action]"), s = i.closest("[data-panzoom-change]"), o = n || s, a = o && x(o) ? o.dataset : null;
+                if (a) {
+                    const e = a.panzoomChange, i = a.panzoomAction;
+                    if ((e || i) && t.preventDefault(), e) {
+                        let t = {};
+                        try {
+                            t = JSON.parse(e);
+                        } catch (t) {
+                            console && console.warn("The given data was not valid JSON");
+                        }
+                        return void this.applyChange(t);
+                    }
+                    if (i) return void (this[i] && this[i]());
+                }
+                if (Math.abs(this.dragOffset.x) > 3 || Math.abs(this.dragOffset.y) > 3) return t.preventDefault(), 
+                void t.stopPropagation();
+                const r = this.content.getBoundingClientRect();
+                if (this.dragStart.time && !this.canZoomOut() && (Math.abs(r.x - this.dragStart.x) > 2 || Math.abs(r.y - this.dragStart.y) > 2)) return;
+                this.dragStart.time = 0;
+                const l = e => {
+                    this.option("zoom") && e && "string" == typeof e && /(iterateZoom)|(toggle(Zoom|Full|Cover|Max)|(zoomTo(Fit|Cover|Max)))/.test(e) && "function" == typeof this[e] && (t.preventDefault(), 
+                    this[e]({
+                        event: t
+                    }));
+                }, c = this.option("click", t), h = this.option("dblClick", t);
+                h ? (this.clicks++, 1 == this.clicks && (this.clickTimer = setTimeout((() => {
+                    1 === this.clicks ? (this.emit("click", t), !t.defaultPrevented && c && l(c)) : (this.emit("dblClick", t), 
+                    t.defaultPrevented || l(h)), this.clicks = 0, this.clickTimer = null;
+                }), 350))) : (this.emit("click", t), !t.defaultPrevented && c && l(c));
+            }
+            addTrackingPoint(t) {
+                const e = this.trackingPoints.filter((t => t.time > Date.now() - 100));
+                e.push(t), this.trackingPoints = e;
+            }
+            onPointerDown(t, e, i) {
+                var n;
+                if (!1 === this.option("touch", t)) return !1;
+                this.pwt = 0, this.dragOffset = {
+                    x: 0,
+                    y: 0,
+                    time: 0
+                }, this.trackingPoints = [];
+                const s = this.content.getBoundingClientRect();
+                if (this.dragStart = {
+                    x: s.x,
+                    y: s.y,
+                    top: s.top,
+                    left: s.left,
+                    time: Date.now()
+                }, this.clickTimer) return !1;
+                if (this.panMode === T && this.targetScale > 1) return t.preventDefault(), t.stopPropagation(), 
+                !1;
+                const o = t.composedPath()[0];
+                if (!i.length) {
+                    if ([ "TEXTAREA", "OPTION", "INPUT", "SELECT", "VIDEO", "IFRAME" ].includes(o.nodeName) || o.closest("[contenteditable]") || o.closest("[data-selectable]") || o.closest("[data-draggable]") || o.closest("[data-clickable]") || o.closest("[data-panzoom-change]") || o.closest("[data-panzoom-action]")) return !1;
+                    null === (n = window.getSelection()) || void 0 === n || n.removeAllRanges();
+                }
+                if ("mousedown" === t.type) [ "A", "BUTTON" ].includes(o.nodeName) || t.preventDefault(); else if (Math.abs(this.velocity.a) > .3) return !1;
+                return this.target.e = this.current.e, this.target.f = this.current.f, this.stop(), 
+                this.isDragging || (this.isDragging = !0, this.addTrackingPoint(e), this.emit("touchStart", t)), 
+                !0;
+            }
+            onPointerMove(e, n, s) {
+                if (!1 === this.option("touch", e)) return;
+                if (!this.isDragging) return;
+                if (n.length < 2 && this.panOnlyZoomed && t(this.targetScale) <= t(this.minScale)) return;
+                if (this.emit("touchMove", e), e.defaultPrevented) return;
+                this.addTrackingPoint(n[0]);
+                const {content: o} = this, a = h(s[0], s[1]), r = h(n[0], n[1]);
+                let l = 0, d = 0;
+                if (n.length > 1) {
+                    const t = o.getBoundingClientRect();
+                    l = a.clientX - t.left - .5 * t.width, d = a.clientY - t.top - .5 * t.height;
+                }
+                const u = c(s[0], s[1]), p = c(n[0], n[1]);
+                let f = u ? p / u : 1, m = r.clientX - a.clientX, g = r.clientY - a.clientY;
+                this.dragOffset.x += m, this.dragOffset.y += g, this.dragOffset.time = Date.now() - this.dragStart.time;
+                let b = t(this.targetScale) === t(this.minScale) && this.option("lockAxis");
+                if (b && !this.lockedAxis) if ("xy" === b || "y" === b || "touchmove" === e.type) {
+                    if (Math.abs(this.dragOffset.x) < 6 && Math.abs(this.dragOffset.y) < 6) return void e.preventDefault();
+                    const t = Math.abs(180 * Math.atan2(this.dragOffset.y, this.dragOffset.x) / Math.PI);
+                    this.lockedAxis = t > 45 && t < 135 ? "y" : "x", this.dragOffset.x = 0, this.dragOffset.y = 0, 
+                    m = 0, g = 0;
+                } else this.lockedAxis = b;
+                if (i(e.target, this.content) && (b = "x", this.dragOffset.y = 0), b && "xy" !== b && this.lockedAxis !== b && t(this.targetScale) === t(this.minScale)) return;
+                e.cancelable && e.preventDefault(), this.container.classList.add(this.cn("isDragging"));
+                const v = this.checkBounds(m, g);
+                this.option("rubberband") ? ("x" !== this.isInfinite && (v.xDiff > 0 && m < 0 || v.xDiff < 0 && m > 0) && (m *= Math.max(0, .5 - Math.abs(.75 / this.contentRect.fitWidth * v.xDiff))), 
+                "y" !== this.isInfinite && (v.yDiff > 0 && g < 0 || v.yDiff < 0 && g > 0) && (g *= Math.max(0, .5 - Math.abs(.75 / this.contentRect.fitHeight * v.yDiff)))) : (v.xDiff && (m = 0), 
+                v.yDiff && (g = 0));
+                const y = this.targetScale, w = this.minScale, x = this.maxScale;
+                y < .5 * w && (f = Math.max(f, w)), y > 1.5 * x && (f = Math.min(f, x)), "y" === this.lockedAxis && t(y) === t(w) && (m = 0), 
+                "x" === this.lockedAxis && t(y) === t(w) && (g = 0), this.applyChange({
+                    originX: l,
+                    originY: d,
+                    panX: m,
+                    panY: g,
+                    scale: f,
+                    friction: this.option("dragFriction"),
+                    ignoreBounds: !0
+                });
+            }
+            onPointerUp(t, e, n) {
+                if (n.length) return this.dragOffset.x = 0, this.dragOffset.y = 0, void (this.trackingPoints = []);
+                this.container.classList.remove(this.cn("isDragging")), this.isDragging && (this.addTrackingPoint(e), 
+                this.panOnlyZoomed && this.contentRect.width - this.contentRect.fitWidth < 1 && this.contentRect.height - this.contentRect.fitHeight < 1 && (this.trackingPoints = []), 
+                i(t.target, this.content) && "y" === this.lockedAxis && (this.trackingPoints = []), 
+                this.emit("touchEnd", t), this.isDragging = !1, this.lockedAxis = !1, this.state !== g.Destroy && (t.defaultPrevented || this.startDecelAnim()));
+            }
+            startDecelAnim() {
+                var e;
+                const i = this.isScaling;
+                this.rAF && (cancelAnimationFrame(this.rAF), this.rAF = null), this.isBouncingX = !1, 
+                this.isBouncingY = !1;
+                for (const t of b) this.velocity[t] = 0;
+                this.target.e = this.current.e, this.target.f = this.current.f, E(this.container, "is-scaling"), 
+                E(this.container, "is-animating"), this.isTicking = !1;
+                const {trackingPoints: n} = this, s = n[0], o = n[n.length - 1];
+                let a = 0, r = 0, l = 0;
+                o && s && (a = o.clientX - s.clientX, r = o.clientY - s.clientY, l = o.time - s.time);
+                const c = (null === (e = window.visualViewport) || void 0 === e ? void 0 : e.scale) || 1;
+                1 !== c && (a *= c, r *= c);
+                let h = 0, d = 0, u = 0, p = 0, f = this.option("decelFriction");
+                const m = this.targetScale;
+                if (l > 0) {
+                    u = Math.abs(a) > 3 ? a / (l / 30) : 0, p = Math.abs(r) > 3 ? r / (l / 30) : 0;
+                    const t = this.option("maxVelocity");
+                    t && (u = Math.max(Math.min(u, t), -1 * t), p = Math.max(Math.min(p, t), -1 * t));
+                }
+                u && (h = u / (1 / (1 - f) - 1)), p && (d = p / (1 / (1 - f) - 1)), ("y" === this.option("lockAxis") || "xy" === this.option("lockAxis") && "y" === this.lockedAxis && t(m) === this.minScale) && (h = u = 0), 
+                ("x" === this.option("lockAxis") || "xy" === this.option("lockAxis") && "x" === this.lockedAxis && t(m) === this.minScale) && (d = p = 0);
+                const g = this.dragOffset.x, v = this.dragOffset.y, y = this.option("dragMinThreshold") || 0;
+                Math.abs(g) < y && Math.abs(v) < y && (h = d = 0, u = p = 0), (m < this.minScale - 1e-5 || m > this.maxScale + 1e-5 || i && !h && !d) && (f = .35), 
+                this.applyChange({
+                    panX: h,
+                    panY: d,
+                    friction: f
+                }), this.emit("decel", u, p, g, v);
+            }
+            onWheel(t) {
+                var e = [ -t.deltaX || 0, -t.deltaY || 0, -t.detail || 0 ].reduce((function(t, e) {
+                    return Math.abs(e) > Math.abs(t) ? e : t;
+                }));
+                const i = Math.max(-1, Math.min(1, e));
+                if (this.emit("wheel", t, i), this.panMode === T) return;
+                if (t.defaultPrevented) return;
+                const n = this.option("wheel");
+                "pan" === n ? (t.preventDefault(), this.panOnlyZoomed && !this.canZoomOut() || this.applyChange({
+                    panX: 2 * -t.deltaX,
+                    panY: 2 * -t.deltaY,
+                    bounce: !1
+                })) : "zoom" === n && !1 !== this.option("zoom") && this.zoomWithWheel(t);
+            }
+            onMouseMove(t) {
+                this.panWithMouse(t);
+            }
+            onKeydown(t) {
+                "Escape" === t.key && this.toggleFS();
+            }
+            onResize() {
+                this.updateMetrics(), this.checkBounds().inBounds || this.requestTick();
+            }
+            setTransform() {
+                this.emit("beforeTransform");
+                const {current: e, target: i, content: n, contentRect: s} = this, o = Object.assign({}, P);
+                for (const n of b) {
+                    const s = "e" == n || "f" === n ? M : C;
+                    o[n] = t(e[n], s), Math.abs(i[n] - e[n]) < ("e" == n || "f" === n ? .51 : .001) && (e[n] = i[n]);
+                }
+                let {a, b: r, c: l, d: c, e: h, f: d} = o, u = `matrix(${a}, ${r}, ${l}, ${c}, ${h}, ${d})`, p = n.parentElement instanceof HTMLPictureElement ? n.parentElement : n;
+                if (this.option("transformParent") && (p = p.parentElement || p), p.style.transform === u) return;
+                p.style.transform = u;
+                const {contentWidth: f, contentHeight: m} = this.calculateContentDim();
+                s.width = f, s.height = m, this.emit("afterTransform");
+            }
+            updateMetrics(e = !1) {
+                var i;
+                if (!this || this.state === g.Destroy) return;
+                if (this.isContentLoading) return;
+                const n = Math.max(1, (null === (i = window.visualViewport) || void 0 === i ? void 0 : i.scale) || 1), {container: s, content: o} = this, a = o instanceof HTMLImageElement, r = s.getBoundingClientRect(), l = getComputedStyle(this.container);
+                let c = r.width * n, h = r.height * n;
+                const d = parseFloat(l.paddingTop) + parseFloat(l.paddingBottom), u = c - (parseFloat(l.paddingLeft) + parseFloat(l.paddingRight)), p = h - d;
+                this.containerRect = {
+                    width: c,
+                    height: h,
+                    innerWidth: u,
+                    innerHeight: p
+                };
+                let f = this.option("width") || "auto", m = this.option("height") || "auto";
+                "auto" === f && (f = parseFloat(o.dataset.width || "") || (t => {
+                    let e = 0;
+                    return e = t instanceof HTMLImageElement ? t.naturalWidth : t instanceof SVGElement ? t.width.baseVal.value : Math.max(t.offsetWidth, t.scrollWidth), 
+                    e || 0;
+                })(o)), "auto" === m && (m = parseFloat(o.dataset.height || "") || (t => {
+                    let e = 0;
+                    return e = t instanceof HTMLImageElement ? t.naturalHeight : t instanceof SVGElement ? t.height.baseVal.value : Math.max(t.offsetHeight, t.scrollHeight), 
+                    e || 0;
+                })(o));
+                let b = o.parentElement instanceof HTMLPictureElement ? o.parentElement : o;
+                this.option("transformParent") && (b = b.parentElement || b);
+                const v = b.getAttribute("style") || "";
+                b.style.setProperty("transform", "none", "important"), a && (b.style.width = "", 
+                b.style.height = ""), b.offsetHeight;
+                const y = o.getBoundingClientRect();
+                let w = y.width * n, x = y.height * n, E = 0, S = 0;
+                a && (Math.abs(f - w) > 1 || Math.abs(m - x) > 1) && ({width: w, height: x, top: E, left: S} = ((t, e, i, n) => {
+                    const s = i / n;
+                    return s > t / e ? (i = t, n = t / s) : (i = e * s, n = e), {
+                        width: i,
+                        height: n,
+                        top: .5 * (e - n),
+                        left: .5 * (t - i)
+                    };
+                })(w, x, f, m)), this.contentRect = Object.assign(Object.assign({}, this.contentRect), {
+                    top: y.top - r.top + E,
+                    bottom: r.bottom - y.bottom + E,
+                    left: y.left - r.left + S,
+                    right: r.right - y.right + S,
+                    fitWidth: w,
+                    fitHeight: x,
+                    width: w,
+                    height: x,
+                    fullWidth: f,
+                    fullHeight: m
+                }), b.style.cssText = v, a && (b.style.width = `${w}px`, b.style.height = `${x}px`), 
+                this.setTransform(), !0 !== e && this.emit("refresh"), this.ignoreBounds || (t(this.targetScale) < t(this.minScale) ? this.zoomTo(this.minScale, {
+                    friction: 0
+                }) : this.targetScale > this.maxScale ? this.zoomTo(this.maxScale, {
+                    friction: 0
+                }) : this.state === g.Init || this.checkBounds().inBounds || this.requestTick()), 
+                this.updateControls();
+            }
+            getBounds() {
+                const e = this.option("bounds");
+                if ("auto" !== e) return e;
+                const {contentWidth: i, contentHeight: n} = this.calculateContentDim(this.target);
+                let s = 0, o = 0, a = 0, r = 0;
+                const l = this.option("infinite");
+                if (!0 === l || this.lockedAxis && l === this.lockedAxis) s = -1 / 0, a = 1 / 0, 
+                o = -1 / 0, r = 1 / 0; else {
+                    let {containerRect: e, contentRect: l} = this, c = t(this.contentRect.fitWidth * this.targetScale, M), h = t(this.contentRect.fitHeight * this.targetScale, M), {innerWidth: d, innerHeight: u} = e;
+                    if (this.containerRect.width === c && (d = e.width), this.containerRect.width === h && (u = e.height), 
+                    i > d) {
+                        a = .5 * (i - d), s = -1 * a;
+                        let t = .5 * (l.right - l.left);
+                        s += t, a += t;
+                    }
+                    if (this.contentRect.fitWidth > d && i < d && (s -= .5 * (this.contentRect.fitWidth - d), 
+                    a -= .5 * (this.contentRect.fitWidth - d)), n > u) {
+                        r = .5 * (n - u), o = -1 * r;
+                        let t = .5 * (l.bottom - l.top);
+                        o += t, r += t;
+                    }
+                    this.contentRect.fitHeight > u && n < u && (s -= .5 * (this.contentRect.fitHeight - u), 
+                    a -= .5 * (this.contentRect.fitHeight - u));
+                }
+                return {
+                    x: {
+                        min: s,
+                        max: a
+                    },
+                    y: {
+                        min: o,
+                        max: r
+                    }
+                };
+            }
+            updateControls() {
+                const e = this, i = e.container, {panMode: n, contentRect: s, fullScale: a, targetScale: r, coverScale: l, maxScale: c, minScale: h} = e;
+                let d = {
+                    toggleMax: r - h < .5 * (c - h) ? c : h,
+                    toggleCover: r - h < .5 * (l - h) ? l : h,
+                    toggleZoom: r - h < .5 * (a - h) ? a : h
+                }[e.option("click") || ""] || h, u = e.canZoomIn(), p = e.canZoomOut(), f = n === O && !!this.option("touch"), m = p && f;
+                f && (t(r) < t(h) && !this.panOnlyZoomed && (m = !0), (t(s.width, 1) > t(s.fitWidth, 1) || t(s.height, 1) > t(s.fitHeight, 1)) && (m = !0)), 
+                t(s.width * r, 1) < t(s.fitWidth, 1) && (m = !1), n === T && (m = !1);
+                let g = u && t(d) > t(r), b = !g && !m && p && t(d) < t(r);
+                o(i, this.cn("canZoomIn"), g), o(i, this.cn("canZoomOut"), b), o(i, this.cn("isDraggable"), m);
+                for (const t of i.querySelectorAll('[data-panzoom-action="zoomIn"]')) u ? (t.removeAttribute("disabled"), 
+                t.removeAttribute("tabindex")) : (t.setAttribute("disabled", ""), t.setAttribute("tabindex", "-1"));
+                for (const t of i.querySelectorAll('[data-panzoom-action="zoomOut"]')) p ? (t.removeAttribute("disabled"), 
+                t.removeAttribute("tabindex")) : (t.setAttribute("disabled", ""), t.setAttribute("tabindex", "-1"));
+                for (const t of i.querySelectorAll('[data-panzoom-action="toggleZoom"],[data-panzoom-action="iterateZoom"]')) {
+                    u || p ? (t.removeAttribute("disabled"), t.removeAttribute("tabindex")) : (t.setAttribute("disabled", ""), 
+                    t.setAttribute("tabindex", "-1"));
+                    const e = t.querySelector("g");
+                    e && (e.style.display = u ? "" : "none");
+                }
+            }
+            panTo({x: t = this.target.e, y: e = this.target.f, scale: i = this.targetScale, friction: n = this.option("friction"), angle: s = 0, originX: o = 0, originY: a = 0, flipX: r = !1, flipY: l = !1, ignoreBounds: c = !1}) {
+                this.state !== g.Destroy && this.applyChange({
+                    panX: t - this.target.e,
+                    panY: e - this.target.f,
+                    scale: i / this.targetScale,
+                    angle: s,
+                    originX: o,
+                    originY: a,
+                    friction: n,
+                    flipX: r,
+                    flipY: l,
+                    ignoreBounds: c
+                });
+            }
+            applyChange({panX: e = 0, panY: i = 0, scale: n = 1, angle: s = 0, originX: o = -this.current.e, originY: a = -this.current.f, friction: r = this.option("friction"), flipX: l = !1, flipY: c = !1, ignoreBounds: h = !1, bounce: d = this.option("bounce")}) {
+                if (this.state === g.Destroy) return;
+                this.rAF && (cancelAnimationFrame(this.rAF), this.rAF = null), this.friction = r || 0, 
+                this.ignoreBounds = h;
+                const {current: u} = this, p = u.e, f = u.f, m = this.getMatrix(this.target);
+                let v = (new DOMMatrix).translate(p, f).translate(o, a).translate(e, i);
+                if (this.option("zoom")) {
+                    if (!h) {
+                        const t = this.targetScale, e = this.minScale, i = this.maxScale;
+                        t * n < e && (n = e / t), t * n > i && (n = i / t);
+                    }
+                    v = v.scale(n);
+                }
+                v = v.translate(-o, -a).translate(-p, -f).multiply(m), s && (v = v.rotate(s)), l && (v = v.scale(-1, 1)), 
+                c && (v = v.scale(1, -1));
+                for (const e of b) "e" !== e && "f" !== e && (v[e] > this.minScale + 1e-5 || v[e] < this.minScale - 1e-5) ? this.target[e] = v[e] : this.target[e] = t(v[e], M);
+                (this.targetScale < this.scale || Math.abs(n - 1) > .1 || this.panMode === T || !1 === d) && !h && this.clampTargetBounds(), 
+                this.isResting || (this.state = g.Panning, this.requestTick());
+            }
+            stop(t = !1) {
+                if (this.state === g.Init || this.state === g.Destroy) return;
+                const e = this.isTicking;
+                this.rAF && (cancelAnimationFrame(this.rAF), this.rAF = null), this.isBouncingX = !1, 
+                this.isBouncingY = !1;
+                for (const e of b) this.velocity[e] = 0, "current" === t ? this.current[e] = this.target[e] : "target" === t && (this.target[e] = this.current[e]);
+                this.setTransform(), E(this.container, "is-scaling"), E(this.container, "is-animating"), 
+                this.isTicking = !1, this.state = g.Ready, e && (this.emit("endAnimation"), this.updateControls());
+            }
+            requestTick() {
+                this.isTicking || (this.emit("startAnimation"), this.updateControls(), S(this.container, "is-animating"), 
+                this.isScaling && S(this.container, "is-scaling")), this.isTicking = !0, this.rAF || (this.rAF = requestAnimationFrame((() => this.animate())));
+            }
+            panWithMouse(e, i = this.option("mouseMoveFriction")) {
+                if (this.pmme = e, this.panMode !== T || !e) return;
+                if (t(this.targetScale) <= t(this.minScale)) return;
+                this.emit("mouseMove", e);
+                const {container: n, containerRect: s, contentRect: o} = this, a = s.width, r = s.height, l = n.getBoundingClientRect(), c = (e.clientX || 0) - l.left, h = (e.clientY || 0) - l.top;
+                let {contentWidth: d, contentHeight: u} = this.calculateContentDim(this.target);
+                const p = this.option("mouseMoveFactor");
+                p > 1 && (d !== a && (d *= p), u !== r && (u *= p));
+                let f = .5 * (d - a) - c / a * 100 / 100 * (d - a);
+                f += .5 * (o.right - o.left);
+                let m = .5 * (u - r) - h / r * 100 / 100 * (u - r);
+                m += .5 * (o.bottom - o.top), this.applyChange({
+                    panX: f - this.target.e,
+                    panY: m - this.target.f,
+                    friction: i
+                });
+            }
+            zoomWithWheel(e) {
+                if (this.state === g.Destroy || this.state === g.Init) return;
+                const i = Date.now();
+                if (i - this.pwt < 45) return void e.preventDefault();
+                this.pwt = i;
+                var n = [ -e.deltaX || 0, -e.deltaY || 0, -e.detail || 0 ].reduce((function(t, e) {
+                    return Math.abs(e) > Math.abs(t) ? e : t;
+                }));
+                const s = Math.max(-1, Math.min(1, n)), {targetScale: o, maxScale: a, minScale: r} = this;
+                let l = o * (100 + 45 * s) / 100;
+                t(l) < t(r) && t(o) <= t(r) ? (this.cwd += Math.abs(s), l = r) : t(l) > t(a) && t(o) >= t(a) ? (this.cwd += Math.abs(s), 
+                l = a) : (this.cwd = 0, l = Math.max(Math.min(l, a), r)), this.cwd > this.option("wheelLimit") || (e.preventDefault(), 
+                t(l) !== t(o) && this.zoomTo(l, {
+                    event: e
+                }));
+            }
+            canZoomIn() {
+                return this.option("zoom") && (t(this.contentRect.width, 1) < t(this.contentRect.fitWidth, 1) || t(this.targetScale) < t(this.maxScale));
+            }
+            canZoomOut() {
+                return this.option("zoom") && t(this.targetScale) > t(this.minScale);
+            }
+            zoomIn(t = 1.25, e) {
+                this.zoomTo(this.targetScale * t, e);
+            }
+            zoomOut(t = .8, e) {
+                this.zoomTo(this.targetScale * t, e);
+            }
+            zoomToFit(t) {
+                this.zoomTo("fit", t);
+            }
+            zoomToCover(t) {
+                this.zoomTo("cover", t);
+            }
+            zoomToFull(t) {
+                this.zoomTo("full", t);
+            }
+            zoomToMax(t) {
+                this.zoomTo("max", t);
+            }
+            toggleZoom(t) {
+                this.zoomTo(this.targetScale - this.minScale < .5 * (this.fullScale - this.minScale) ? "full" : "fit", t);
+            }
+            toggleMax(t) {
+                this.zoomTo(this.targetScale - this.minScale < .5 * (this.maxScale - this.minScale) ? "max" : "fit", t);
+            }
+            toggleCover(t) {
+                this.zoomTo(this.targetScale - this.minScale < .5 * (this.coverScale - this.minScale) ? "cover" : "fit", t);
+            }
+            iterateZoom(t) {
+                this.zoomTo("next", t);
+            }
+            zoomTo(t = 1, {friction: e = "auto", originX: i = "auto", originY: n = "auto", event: s} = {}) {
+                if (this.isContentLoading || this.state === g.Destroy) return;
+                const {targetScale: o} = this;
+                this.stop();
+                let a = 1;
+                if (this.panMode === T && (s = this.pmme || s), s || "auto" === i || "auto" === n) {
+                    const t = this.content.getBoundingClientRect(), e = this.container.getBoundingClientRect(), o = s ? s.clientX : e.left + .5 * e.width, a = s ? s.clientY : e.top + .5 * e.height;
+                    i = o - t.left - .5 * t.width, n = a - t.top - .5 * t.height;
+                }
+                const r = this.fullScale, l = this.maxScale;
+                let c = this.coverScale;
+                "number" == typeof t ? a = t / o : ("next" === t && (r - c < .2 && (c = r), t = o < r - 1e-5 ? "full" : o < l - 1e-5 ? "max" : "fit"), 
+                a = "full" === t ? r / o || 1 : "cover" === t ? c / o || 1 : "max" === t ? l / o || 1 : 1 / o || 1), 
+                e = "auto" === e ? a > 1 ? .15 : .25 : e, this.applyChange({
+                    scale: a,
+                    originX: i,
+                    originY: n,
+                    friction: e
+                }), s && this.panMode === T && this.panWithMouse(s, e);
+            }
+            rotateCCW() {
+                this.applyChange({
+                    angle: -90
+                });
+            }
+            rotateCW() {
+                this.applyChange({
+                    angle: 90
+                });
+            }
+            flipX() {
+                this.applyChange({
+                    flipX: !0
+                });
+            }
+            flipY() {
+                this.applyChange({
+                    flipY: !0
+                });
+            }
+            fitX() {
+                this.stop("target");
+                const {containerRect: t, contentRect: e, target: i} = this;
+                this.applyChange({
+                    panX: .5 * t.width - (e.left + .5 * e.fitWidth) - i.e,
+                    panY: .5 * t.height - (e.top + .5 * e.fitHeight) - i.f,
+                    scale: t.width / e.fitWidth / this.targetScale,
+                    originX: 0,
+                    originY: 0,
+                    ignoreBounds: !0
+                });
+            }
+            fitY() {
+                this.stop("target");
+                const {containerRect: t, contentRect: e, target: i} = this;
+                this.applyChange({
+                    panX: .5 * t.width - (e.left + .5 * e.fitWidth) - i.e,
+                    panY: .5 * t.innerHeight - (e.top + .5 * e.fitHeight) - i.f,
+                    scale: t.height / e.fitHeight / this.targetScale,
+                    originX: 0,
+                    originY: 0,
+                    ignoreBounds: !0
+                });
+            }
+            toggleFS() {
+                const {container: t} = this, e = this.cn("inFullscreen"), i = this.cn("htmlHasFullscreen");
+                t.classList.toggle(e);
+                const n = t.classList.contains(e);
+                n ? (document.documentElement.classList.add(i), document.addEventListener("keydown", this.onKeydown, !0)) : (document.documentElement.classList.remove(i), 
+                document.removeEventListener("keydown", this.onKeydown, !0)), this.updateMetrics(), 
+                this.emit(n ? "enterFS" : "exitFS");
+            }
+            getMatrix(t = this.current) {
+                const {a: e, b: i, c: n, d: s, e: o, f: a} = t;
+                return new DOMMatrix([ e, i, n, s, o, a ]);
+            }
+            reset(t) {
+                if (this.state !== g.Init && this.state !== g.Destroy) {
+                    this.stop("current");
+                    for (const t of b) this.target[t] = P[t];
+                    this.target.a = this.minScale, this.target.d = this.minScale, this.clampTargetBounds(), 
+                    this.isResting || (this.friction = void 0 === t ? this.option("friction") : t, this.state = g.Panning, 
+                    this.requestTick());
+                }
+            }
+            destroy() {
+                this.stop(), this.state = g.Destroy, this.detachEvents(), this.detachObserver();
+                const {container: t, content: e} = this, i = this.option("classes") || {};
+                for (const e of Object.values(i)) t.classList.remove(e + "");
+                e && (e.removeEventListener("load", this.onLoad), e.removeEventListener("error", this.onError)), 
+                this.detachPlugins();
+            }
+        }
+        Object.defineProperty(R, "defaults", {
+            enumerable: !0,
+            configurable: !0,
+            writable: !0,
+            value: y
+        }), Object.defineProperty(R, "Plugins", {
+            enumerable: !0,
+            configurable: !0,
+            writable: !0,
+            value: {}
+        });
+        const k = function(t, e) {
+            let i = !0;
+            return (...n) => {
+                i && (i = !1, t(...n), setTimeout((() => {
+                    i = !0;
+                }), e));
+            };
+        }, I = (t, e) => {
+            let i = [];
+            return t.childNodes.forEach((t => {
+                t.nodeType !== Node.ELEMENT_NODE || e && !t.matches(e) || i.push(t);
+            })), i;
+        }, D = {
+            viewport: null,
+            track: null,
+            enabled: !0,
+            slides: [],
+            axis: "x",
+            transition: "fade",
+            preload: 1,
+            slidesPerPage: "auto",
+            initialPage: 0,
+            friction: .12,
+            Panzoom: {
+                decelFriction: .12
+            },
+            center: !0,
+            infinite: !0,
+            fill: !0,
+            dragFree: !1,
+            adaptiveHeight: !1,
+            direction: "ltr",
+            classes: {
+                container: "f-carousel",
+                viewport: "f-carousel__viewport",
+                track: "f-carousel__track",
+                slide: "f-carousel__slide",
+                isLTR: "is-ltr",
+                isRTL: "is-rtl",
+                isHorizontal: "is-horizontal",
+                isVertical: "is-vertical",
+                inTransition: "in-transition",
+                isSelected: "is-selected"
+            },
+            l10n: {
+                NEXT: "Next slide",
+                PREV: "Previous slide",
+                GOTO: "Go to slide #%d"
+            }
+        };
+        var F;
+        !function(t) {
+            t[t.Init = 0] = "Init", t[t.Ready = 1] = "Ready", t[t.Destroy = 2] = "Destroy";
+        }(F || (F = {}));
+        const j = t => {
+            if ("string" == typeof t || t instanceof HTMLElement) t = {
+                html: t
+            }; else {
+                const e = t.thumb;
+                void 0 !== e && ("string" == typeof e && (t.thumbSrc = e), e instanceof HTMLImageElement && (t.thumbEl = e, 
+                t.thumbElSrc = e.src, t.thumbSrc = e.src), delete t.thumb);
+            }
+            return Object.assign({
+                html: "",
+                el: null,
+                isDom: !1,
+                class: "",
+                customClass: "",
+                index: -1,
+                dim: 0,
+                gap: 0,
+                pos: 0,
+                transition: !1
+            }, t);
+        }, H = (t = {}) => Object.assign({
+            index: -1,
+            slides: [],
+            dim: 0,
+            pos: -1
+        }, t);
+        class B extends f {
+            constructor(t, e) {
+                super(e), Object.defineProperty(this, "instance", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: t
+                });
+            }
+            attach() {}
+            detach() {}
+        }
+        const N = {
+            classes: {
+                list: "f-carousel__dots",
+                isDynamic: "is-dynamic",
+                hasDots: "has-dots",
+                dot: "f-carousel__dot",
+                isBeforePrev: "is-before-prev",
+                isPrev: "is-prev",
+                isCurrent: "is-current",
+                isNext: "is-next",
+                isAfterNext: "is-after-next"
+            },
+            dotTpl: '<button type="button" data-carousel-page="%i" aria-label="{{GOTO}}"><span class="f-carousel__dot" aria-hidden="true"></span></button>',
+            dynamicFrom: 11,
+            maxCount: 1 / 0,
+            minCount: 2
+        };
+        class _ extends B {
+            constructor() {
+                super(...arguments), Object.defineProperty(this, "isDynamic", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: !1
+                }), Object.defineProperty(this, "list", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: null
+                });
+            }
+            onRefresh() {
+                this.refresh();
+            }
+            build() {
+                let t = this.list;
+                return t || (t = document.createElement("ul"), S(t, this.cn("list")), t.setAttribute("role", "tablist"), 
+                this.instance.container.appendChild(t), S(this.instance.container, this.cn("hasDots")), 
+                this.list = t), t;
+            }
+            refresh() {
+                var t;
+                const e = this.instance.pages.length, i = Math.min(2, this.option("minCount")), n = Math.max(2e3, this.option("maxCount")), s = this.option("dynamicFrom");
+                if (e < i || e > n) return void this.cleanup();
+                const a = "number" == typeof s && e > 5 && e >= s, r = !this.list || this.isDynamic !== a || this.list.children.length !== e;
+                r && this.cleanup();
+                const l = this.build();
+                if (o(l, this.cn("isDynamic"), !!a), r) for (let t = 0; t < e; t++) l.append(this.createItem(t));
+                let c, h = 0;
+                for (const e of [ ...l.children ]) {
+                    const i = h === this.instance.page;
+                    i && (c = e), o(e, this.cn("isCurrent"), i), null === (t = e.children[0]) || void 0 === t || t.setAttribute("aria-selected", i ? "true" : "false");
+                    for (const t of [ "isBeforePrev", "isPrev", "isNext", "isAfterNext" ]) E(e, this.cn(t));
+                    h++;
+                }
+                if (c = c || l.firstChild, a && c) {
+                    const t = c.previousElementSibling, e = t && t.previousElementSibling;
+                    S(t, this.cn("isPrev")), S(e, this.cn("isBeforePrev"));
+                    const i = c.nextElementSibling, n = i && i.nextElementSibling;
+                    S(i, this.cn("isNext")), S(n, this.cn("isAfterNext"));
+                }
+                this.isDynamic = a;
+            }
+            createItem(t = 0) {
+                var e;
+                const i = document.createElement("li");
+                i.setAttribute("role", "presentation");
+                const s = n(this.instance.localize(this.option("dotTpl"), [ [ "%d", t + 1 ] ]).replace(/\%i/g, t + ""));
+                return i.appendChild(s), null === (e = i.children[0]) || void 0 === e || e.setAttribute("role", "tab"), 
+                i;
+            }
+            cleanup() {
+                this.list && (this.list.remove(), this.list = null), this.isDynamic = !1, E(this.instance.container, this.cn("hasDots"));
+            }
+            attach() {
+                this.instance.on([ "refresh", "change" ], this.onRefresh);
+            }
+            detach() {
+                this.instance.off([ "refresh", "change" ], this.onRefresh), this.cleanup();
+            }
+        }
+        Object.defineProperty(_, "defaults", {
+            enumerable: !0,
+            configurable: !0,
+            writable: !0,
+            value: N
+        });
+        const W = "disabled", $ = "next", X = "prev";
+        class Y extends B {
+            constructor() {
+                super(...arguments), Object.defineProperty(this, "container", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: null
+                }), Object.defineProperty(this, "prev", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: null
+                }), Object.defineProperty(this, "next", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: null
+                });
+            }
+            onRefresh() {
+                const t = this.instance, e = t.pages.length, i = t.page;
+                if (e < 2) return void this.cleanup();
+                this.build();
+                let n = this.prev, s = this.next;
+                n && s && (n.removeAttribute(W), s.removeAttribute(W), t.isInfinite || (i <= 0 && n.setAttribute(W, ""), 
+                i >= e - 1 && s.setAttribute(W, "")));
+            }
+            createButton(t) {
+                const e = this.instance, i = document.createElement("button");
+                i.setAttribute("tabindex", "0"), i.setAttribute("title", e.localize(`{{${t.toUpperCase()}}}`)), 
+                S(i, this.cn("button") + " " + this.cn(t === $ ? "isNext" : "isPrev"));
+                const n = e.isRTL ? t === $ ? X : $ : t;
+                var s;
+                return i.innerHTML = e.localize(this.option(`${n}Tpl`)), i.dataset[`carousel${s = t, 
+                s ? s.match("^[a-z]") ? s.charAt(0).toUpperCase() + s.substring(1) : s : ""}`] = "true", 
+                i;
+            }
+            build() {
+                let t = this.container;
+                t || (this.container = t = document.createElement("div"), S(t, this.cn("container")), 
+                this.instance.container.appendChild(t)), this.next || (this.next = t.appendChild(this.createButton($))), 
+                this.prev || (this.prev = t.appendChild(this.createButton(X)));
+            }
+            cleanup() {
+                this.prev && this.prev.remove(), this.next && this.next.remove(), this.container && this.container.remove(), 
+                this.prev = null, this.next = null, this.container = null;
+            }
+            attach() {
+                this.instance.on([ "refresh", "change" ], this.onRefresh);
+            }
+            detach() {
+                this.instance.off([ "refresh", "change" ], this.onRefresh), this.cleanup();
+            }
+        }
+        Object.defineProperty(Y, "defaults", {
+            enumerable: !0,
+            configurable: !0,
+            writable: !0,
+            value: {
+                classes: {
+                    container: "f-carousel__nav",
+                    button: "f-button",
+                    isNext: "is-next",
+                    isPrev: "is-prev"
+                },
+                nextTpl: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" tabindex="-1"><path d="M9 3l9 9-9 9"/></svg>',
+                prevTpl: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" tabindex="-1"><path d="M15 3l-9 9 9 9"/></svg>'
+            }
+        });
+        class q extends B {
+            constructor() {
+                super(...arguments), Object.defineProperty(this, "selectedIndex", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: null
+                }), Object.defineProperty(this, "target", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: null
+                }), Object.defineProperty(this, "nav", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: null
+                });
+            }
+            addAsTargetFor(t) {
+                this.target = this.instance, this.nav = t, this.attachEvents();
+            }
+            addAsNavFor(t) {
+                this.nav = this.instance, this.target = t, this.attachEvents();
+            }
+            attachEvents() {
+                this.nav && this.target && (this.nav.options.initialSlide = this.target.options.initialPage, 
+                this.nav.on("ready", this.onNavReady), this.nav.state === F.Ready && this.onNavReady(this.nav), 
+                this.target.on("ready", this.onTargetReady), this.target.state === F.Ready && this.onTargetReady(this.target));
+            }
+            onNavReady(t) {
+                t.on("createSlide", this.onNavCreateSlide), t.on("Panzoom.click", this.onNavClick), 
+                t.on("Panzoom.touchEnd", this.onNavTouch), this.onTargetChange();
+            }
+            onTargetReady(t) {
+                t.on("change", this.onTargetChange), t.on("Panzoom.refresh", this.onTargetChange), 
+                this.onTargetChange();
+            }
+            onNavClick(t, e, i) {
+                this.onNavTouch(t, t.panzoom, i);
+            }
+            onNavTouch(t, e, i) {
+                var n, s;
+                if (Math.abs(e.dragOffset.x) > 3 || Math.abs(e.dragOffset.y) > 3) return;
+                const o = i.target, {nav: a, target: r} = this;
+                if (!a || !r || !o) return;
+                const l = o.closest("[data-index]");
+                if (i.stopPropagation(), i.preventDefault(), !l) return;
+                const c = parseInt(l.dataset.index || "", 10) || 0, h = r.getPageForSlide(c), d = a.getPageForSlide(c);
+                a.slideTo(d), r.slideTo(h, {
+                    friction: (null === (s = null === (n = this.nav) || void 0 === n ? void 0 : n.plugins) || void 0 === s ? void 0 : s.Sync.option("friction")) || 0
+                }), this.markSelectedSlide(c);
+            }
+            onNavCreateSlide(t, e) {
+                e.index === this.selectedIndex && this.markSelectedSlide(e.index);
+            }
+            onTargetChange() {
+                const {target: t, nav: e} = this;
+                if (!t || !e) return;
+                if (e.state !== F.Ready || t.state !== F.Ready) return;
+                const i = t.pages[t.page].slides[0].index, n = e.getPageForSlide(i);
+                this.markSelectedSlide(i), e.slideTo(n);
+            }
+            markSelectedSlide(t) {
+                const e = this.nav;
+                e && e.state === F.Ready && (this.selectedIndex = t, [ ...e.slides ].map((e => {
+                    e.el && e.el.classList[e.index === t ? "add" : "remove"]("is-nav-selected");
+                })));
+            }
+            attach() {
+                const t = this;
+                let e = t.options.target, i = t.options.nav;
+                e ? t.addAsNavFor(e) : i && t.addAsTargetFor(i);
+            }
+            detach() {
+                const t = this, e = t.nav, i = t.target;
+                e && (e.off("ready", t.onNavReady), e.off("createSlide", t.onNavCreateSlide), e.off("Panzoom.click", t.onNavClick), 
+                e.off("Panzoom.touchEnd", t.onNavTouch)), t.nav = null, i && (i.off("ready", t.onTargetReady), 
+                i.off("refresh", t.onTargetChange), i.off("change", t.onTargetChange)), t.target = null;
+            }
+        }
+        Object.defineProperty(q, "defaults", {
+            enumerable: !0,
+            configurable: !0,
+            writable: !0,
+            value: {
+                friction: .35
+            }
+        });
+        const V = {
+            Navigation: Y,
+            Dots: _,
+            Sync: q
+        };
+        class Z extends m {
+            get axis() {
+                return this.isHorizontal ? "e" : "f";
+            }
+            get isEnabled() {
+                return this.state === F.Ready;
+            }
+            get isInfinite() {
+                let t = !1;
+                const {contentDim: e, viewportDim: i, pages: n, slides: s} = this;
+                return n.length >= 2 && e + s[0].dim >= i && (t = this.option("infinite")), t;
+            }
+            get isRTL() {
+                return "rtl" === this.option("direction");
+            }
+            get isHorizontal() {
+                return "x" === this.option("axis");
+            }
+            constructor(t, e = {}, i = {}) {
+                if (super(), Object.defineProperty(this, "userOptions", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: {}
+                }), Object.defineProperty(this, "userPlugins", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: {}
+                }), Object.defineProperty(this, "bp", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: ""
+                }), Object.defineProperty(this, "lp", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: 0
+                }), Object.defineProperty(this, "state", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: F.Init
+                }), Object.defineProperty(this, "page", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: 0
+                }), Object.defineProperty(this, "prevPage", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: null
+                }), Object.defineProperty(this, "container", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: void 0
+                }), Object.defineProperty(this, "viewport", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: null
+                }), Object.defineProperty(this, "track", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: null
+                }), Object.defineProperty(this, "slides", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: []
+                }), Object.defineProperty(this, "pages", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: []
+                }), Object.defineProperty(this, "panzoom", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: null
+                }), Object.defineProperty(this, "inTransition", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: new Set
+                }), Object.defineProperty(this, "contentDim", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: 0
+                }), Object.defineProperty(this, "viewportDim", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: 0
+                }), "string" == typeof t && (t = document.querySelector(t)), !t || !x(t)) throw new Error("No Element found");
+                this.container = t, this.slideNext = k(this.slideNext.bind(this), 150), this.slidePrev = k(this.slidePrev.bind(this), 150), 
+                this.userOptions = e, this.userPlugins = i, queueMicrotask((() => {
+                    this.processOptions();
+                }));
+            }
+            processOptions() {
+                const t = u({}, Z.defaults, this.userOptions);
+                let e = "";
+                const i = t.breakpoints;
+                if (i && d(i)) for (const [n, s] of Object.entries(i)) window.matchMedia(n).matches && d(s) && (e += n, 
+                u(t, s));
+                e === this.bp && this.state !== F.Init || (this.bp = e, this.state === F.Ready && (t.initialSlide = this.pages[this.page].slides[0].index), 
+                this.state !== F.Init && this.destroy(), super.setOptions(t), !1 === this.option("enabled") ? this.attachEvents() : setTimeout((() => {
+                    this.init();
+                }), 0));
+            }
+            init() {
+                this.state = F.Init, this.emit("init"), this.attachPlugins(Object.assign(Object.assign({}, Z.Plugins), this.userPlugins)), 
+                this.initLayout(), this.initSlides(), this.updateMetrics(), this.setInitialPosition(), 
+                this.initPanzoom(), this.attachEvents(), this.state = F.Ready, this.emit("ready");
+            }
+            initLayout() {
+                const {container: t} = this, e = this.option("classes");
+                S(t, this.cn("container")), o(t, e.isLTR, !this.isRTL), o(t, e.isRTL, this.isRTL), 
+                o(t, e.isVertical, !this.isHorizontal), o(t, e.isHorizontal, this.isHorizontal);
+                let i = this.option("viewport") || t.querySelector(`.${e.viewport}`);
+                i || (i = document.createElement("div"), S(i, e.viewport), i.append(...I(t, `.${e.slide}`)), 
+                t.prepend(i));
+                let n = this.option("track") || t.querySelector(`.${e.track}`);
+                n || (n = document.createElement("div"), S(n, e.track), n.append(...Array.from(i.childNodes))), 
+                n.setAttribute("aria-live", "polite"), i.contains(n) || i.prepend(n), this.viewport = i, 
+                this.track = n, this.emit("initLayout");
+            }
+            initSlides() {
+                const {track: t} = this;
+                if (t) {
+                    this.slides = [], [ ...I(t, `.${this.cn("slide")}`) ].forEach((t => {
+                        if (x(t)) {
+                            const e = j({
+                                el: t,
+                                isDom: !0,
+                                index: this.slides.length
+                            });
+                            this.slides.push(e), this.emit("initSlide", e, this.slides.length);
+                        }
+                    }));
+                    for (let t of this.option("slides", [])) {
+                        const e = j(t);
+                        e.index = this.slides.length, this.slides.push(e), this.emit("initSlide", e, this.slides.length);
+                    }
+                    this.emit("initSlides");
+                }
+            }
+            setInitialPage() {
+                let t = 0;
+                const e = this.option("initialSlide");
+                t = "number" == typeof e ? this.getPageForSlide(e) : parseInt(this.option("initialPage", 0) + "", 10) || 0, 
+                this.page = t;
+            }
+            setInitialPosition() {
+                if (!this.track || !this.pages.length) return;
+                const t = this.isHorizontal;
+                let e = this.page;
+                this.pages[e] || (this.page = e = 0);
+                const i = this.pages[e].pos * (this.isRTL && t ? 1 : -1), n = t ? `${i}px` : "0", s = t ? "0" : `${i}px`;
+                this.track.style.transform = `translate3d(${n}, ${s}, 0) scale(1)`, this.option("adaptiveHeight") && this.setViewportHeight();
+            }
+            initPanzoom() {
+                this.panzoom && (this.panzoom.destroy(), this.panzoom = null);
+                const t = this.option("Panzoom") || {};
+                this.panzoom = new R(this.viewport, u({}, {
+                    content: this.track,
+                    zoom: !1,
+                    panOnlyZoomed: !1,
+                    lockAxis: this.isHorizontal ? "x" : "y",
+                    infinite: this.isInfinite,
+                    click: !1,
+                    dblClick: !1,
+                    touch: t => !(this.pages.length < 2 && !t.options.infinite),
+                    bounds: () => this.getBounds(),
+                    maxVelocity: t => Math.abs(t.target[this.axis] - t.current[this.axis]) < 2 * this.viewportDim ? 100 : 0
+                }, t)), this.panzoom.on("*", ((t, e, ...i) => {
+                    this.emit(`Panzoom.${e}`, t, ...i);
+                })), this.panzoom.on("decel", this.onDecel), this.panzoom.on("refresh", this.onRefresh), 
+                this.panzoom.on("beforeTransform", this.onBeforeTransform), this.panzoom.on("endAnimation", this.onEndAnimation);
+            }
+            attachEvents() {
+                const t = this.container;
+                t && (t.addEventListener("click", this.onClick, {
+                    passive: !1,
+                    capture: !1
+                }), t.addEventListener("slideTo", this.onSlideTo)), window.addEventListener("resize", this.onResize);
+            }
+            createPages() {
+                let t = [];
+                const {contentDim: e, viewportDim: i} = this;
+                let n = this.option("slidesPerPage");
+                ("number" != typeof n || e <= i) && (n = 1 / 0);
+                let s = 0, o = 0, a = 0;
+                for (const e of this.slides) (!t.length || o + e.dim > i || a === n) && (t.push(H()), 
+                s = t.length - 1, o = 0, a = 0), t[s].slides.push(e), o += e.dim + e.gap, a++;
+                return t;
+            }
+            processPages() {
+                const e = this.pages, {contentDim: i, viewportDim: n} = this, s = this.option("center"), o = this.option("fill"), a = o && s && i > n && !this.isInfinite;
+                if (e.forEach(((t, e) => {
+                    t.index = e, t.pos = t.slides[0].pos, t.dim = 0;
+                    for (const [e, i] of t.slides.entries()) t.dim += i.dim, e < t.slides.length - 1 && (t.dim += i.gap);
+                    a && t.pos + .5 * t.dim < .5 * n ? t.pos = 0 : a && t.pos + .5 * t.dim >= i - .5 * n ? t.pos = i - n : s && (t.pos += -.5 * (n - t.dim));
+                })), e.forEach(((e, s) => {
+                    o && !this.isInfinite && i > n && (e.pos = Math.max(e.pos, 0), e.pos = Math.min(e.pos, i - n)), 
+                    e.pos = t(e.pos, 1e3), e.dim = t(e.dim, 1e3), Math.abs(e.pos) <= .1 && (e.pos = 0);
+                })), this.isInfinite) return e;
+                const r = [];
+                let l;
+                return e.forEach((t => {
+                    const e = Object.assign({}, t);
+                    l && e.pos === l.pos ? (l.dim += e.dim, l.slides = [ ...l.slides, ...e.slides ]) : (e.index = r.length, 
+                    l = e, r.push(e));
+                })), r;
+            }
+            getPageFromIndex(t = 0) {
+                const e = this.pages.length;
+                let i;
+                return t = parseInt((t || 0).toString()) || 0, i = this.isInfinite ? (t % e + e) % e : Math.max(Math.min(t, e - 1), 0), 
+                i;
+            }
+            getSlideMetrics(e) {
+                var i, n;
+                const s = this.isHorizontal ? "width" : "height";
+                let o = 0, a = 0, r = e.el;
+                const l = r && !r.parentNode;
+                if (r ? o = parseFloat(r.dataset[s] || "") || 0 : (r = document.createElement("div"), 
+                r.style.visibility = "hidden", (this.track || document.body).prepend(r)), S(r, this.cn("slide") + " " + e.class + " " + e.customClass), 
+                o) r.style[s] = `${o}px`, r.style["width" === s ? "height" : "width"] = ""; else {
+                    l && (this.track || document.body).prepend(r);
+                    const t = Math.max(1, (null === (i = window.visualViewport) || void 0 === i ? void 0 : i.scale) || 1);
+                    o = r.getBoundingClientRect()[s] * t;
+                }
+                const c = getComputedStyle(r);
+                return "content-box" === c.boxSizing && (this.isHorizontal ? (o += parseFloat(c.paddingLeft) || 0, 
+                o += parseFloat(c.paddingRight) || 0) : (o += parseFloat(c.paddingTop) || 0, o += parseFloat(c.paddingBottom) || 0)), 
+                a = parseFloat(c[this.isHorizontal ? "marginRight" : "marginBottom"]) || 0, l ? null === (n = r.parentElement) || void 0 === n || n.removeChild(r) : e.el || r.remove(), 
+                {
+                    dim: t(o, 1e3),
+                    gap: t(a, 1e3)
+                };
+            }
+            getBounds() {
+                const {isInfinite: t, isRTL: e, isHorizontal: i, pages: n} = this;
+                let s = {
+                    min: 0,
+                    max: 0
+                };
+                if (t) s = {
+                    min: -1 / 0,
+                    max: 1 / 0
+                }; else if (n.length) {
+                    const t = n[0].pos, o = n[n.length - 1].pos;
+                    s = e && i ? {
+                        min: t,
+                        max: o
+                    } : {
+                        min: -1 * o,
+                        max: -1 * t
+                    };
+                }
+                return {
+                    x: i ? s : {
+                        min: 0,
+                        max: 0
+                    },
+                    y: i ? {
+                        min: 0,
+                        max: 0
+                    } : s
+                };
+            }
+            repositionSlides() {
+                let e, {isHorizontal: i, isRTL: n, isInfinite: s, viewport: o, viewportDim: a, contentDim: r, page: l, pages: c, slides: h, panzoom: d} = this, u = 0, p = 0, f = 0, m = 0;
+                d ? m = -1 * d.current[this.axis] : c[l] && (m = c[l].pos || 0), e = i ? n ? "right" : "left" : "top", 
+                n && i && (m *= -1);
+                for (const i of h) i.el ? ("top" === e ? (i.el.style.right = "", i.el.style.left = "") : i.el.style.top = "", 
+                i.index !== u ? i.el.style[e] = 0 === p ? "" : `${t(p, 1e3)}px` : i.el.style[e] = "", 
+                f += i.dim + i.gap, u++) : p += i.dim + i.gap;
+                if (s && f && o) {
+                    let n = getComputedStyle(o), s = "padding", l = i ? "Right" : "Bottom", c = parseFloat(n[s + (i ? "Left" : "Top")]);
+                    m -= c, a += c, a += parseFloat(n[s + l]);
+                    for (const i of h) i.el && (t(i.pos) < t(a) && t(i.pos + i.dim + i.gap) < t(m) && t(m) > t(r - a) && (i.el.style[e] = `${t(p + f, 1e3)}px`), 
+                    t(i.pos + i.gap) >= t(r - a) && t(i.pos) > t(m + a) && t(m) < t(a) && (i.el.style[e] = `-${t(f, 1e3)}px`));
+                }
+                let g, b, v = [ ...this.inTransition ];
+                if (v.length > 1 && (g = c[v[0]], b = c[v[1]]), g && b) {
+                    let i = 0;
+                    for (const n of h) n.el ? this.inTransition.has(n.index) && g.slides.indexOf(n) < 0 && (n.el.style[e] = `${t(i + (g.pos - b.pos), 1e3)}px`) : i += n.dim + n.gap;
+                }
+            }
+            createSlideEl(t) {
+                const {track: e, slides: i} = this;
+                if (!e || !t) return;
+                if (t.el && t.el.parentNode) return;
+                const n = t.el || document.createElement("div");
+                S(n, this.cn("slide")), S(n, t.class), S(n, t.customClass);
+                const s = t.html;
+                s && (s instanceof HTMLElement ? n.appendChild(s) : n.innerHTML = t.html + "");
+                const o = [];
+                i.forEach(((t, e) => {
+                    t.el && o.push(e);
+                }));
+                const a = t.index;
+                let r = null;
+                if (o.length) r = i[o.reduce(((t, e) => Math.abs(e - a) < Math.abs(t - a) ? e : t))];
+                const l = r && r.el && r.el.parentNode ? r.index < t.index ? r.el.nextSibling : r.el : null;
+                e.insertBefore(n, e.contains(l) ? l : null), t.el = n, this.emit("createSlide", t);
+            }
+            removeSlideEl(t, e = !1) {
+                const i = t.el;
+                if (!i || !i.parentNode) return;
+                if (E(i, this.cn("isSelected")), t.isDom && !e) return i.removeAttribute("aria-hidden"), 
+                i.removeAttribute("data-index"), E(i, this.cn("isSelected")), void (i.style.left = "");
+                this.emit("removeSlide", t);
+                const n = new CustomEvent("animationend");
+                i.dispatchEvent(n), t.el && (t.el.remove(), t.el = null);
+            }
+            transitionTo(t = 0, e = this.option("transition")) {
+                if (!e) return !1;
+                const {pages: i, panzoom: n} = this;
+                t = parseInt((t || 0).toString()) || 0;
+                const s = this.getPageFromIndex(t);
+                if (!n || !i[s] || i.length < 2 || Math.abs(i[this.page].slides[0].dim - this.viewportDim) > 1) return !1;
+                const o = t > this.page ? 1 : -1, a = this.pages[s].pos * (this.isRTL ? 1 : -1);
+                if (this.page === s && Math.abs(a - n.target[this.axis]) < 1) return !1;
+                this.clearTransitions();
+                const r = n.isResting;
+                S(this.container, this.cn("inTransition"));
+                const l = this.pages[this.page].slides[0], c = this.pages[s].slides[0];
+                this.inTransition.add(c.index), this.createSlideEl(c);
+                let h = l.el, d = c.el;
+                r || "slide" === e || (e = "fadeFast", h = null);
+                const u = this.isRTL ? "next" : "prev", p = this.isRTL ? "prev" : "next";
+                return h && (this.inTransition.add(l.index), l.transition = e, h.addEventListener("animationend", this.onAnimationEnd), 
+                h.classList.add(`f-${e}Out`, `to-${o > 0 ? p : u}`)), d && (c.transition = e, d.addEventListener("animationend", this.onAnimationEnd), 
+                d.classList.add(`f-${e}In`, `from-${o > 0 ? u : p}`)), n.panTo({
+                    x: this.isHorizontal ? a : 0,
+                    y: this.isHorizontal ? 0 : a,
+                    friction: 0
+                }), this.onChange(s), !0;
+            }
+            manageSlideVisiblity() {
+                const t = new Set, e = new Set, i = this.getVisibleSlides(parseFloat(this.option("preload", 0) + "") || 0);
+                for (const n of this.slides) i.has(n) ? t.add(n) : e.add(n);
+                for (const e of this.inTransition) t.add(this.slides[e]);
+                for (const e of t) this.createSlideEl(e), this.lazyLoadSlide(e);
+                for (const i of e) t.has(i) || this.removeSlideEl(i);
+                this.markSelectedSlides(), this.repositionSlides();
+            }
+            markSelectedSlides() {
+                if (!this.pages[this.page] || !this.pages[this.page].slides) return;
+                const t = "aria-hidden";
+                let e = this.cn("isSelected");
+                if (e) for (const i of this.slides) i.el && (i.el.dataset.index = `${i.index}`, 
+                this.pages[this.page].slides.includes(i) ? (i.el.classList.contains(e) || (S(i.el, e), 
+                this.emit("selectSlide", i)), i.el.removeAttribute(t)) : (i.el.classList.contains(e) && (E(i.el, e), 
+                this.emit("unselectSlide", i)), i.el.setAttribute(t, "true")));
+            }
+            flipInfiniteTrack() {
+                const t = this.panzoom;
+                if (!t || !this.isInfinite) return;
+                const e = "x" === this.option("axis") ? "e" : "f", {viewportDim: i, contentDim: n} = this;
+                let s = t.current[e], o = t.target[e] - s, a = 0, r = .5 * i, l = n;
+                this.isRTL && this.isHorizontal ? (s < -r && (a = -1, s += l), s > l - r && (a = 1, 
+                s -= l)) : (s > r && (a = 1, s -= l), s < -l + r && (a = -1, s += l)), a && (t.current[e] = s, 
+                t.target[e] = s + o);
+            }
+            lazyLoadSlide(t) {
+                const e = this, i = t && t.el;
+                if (!i) return;
+                const s = new Set, o = "f-fadeIn";
+                i.querySelectorAll("[data-lazy-srcset]").forEach((t => {
+                    t instanceof HTMLImageElement && s.add(t);
+                }));
+                let a = Array.from(i.querySelectorAll("[data-lazy-src]"));
+                i.dataset.lazySrc && a.push(i), a.map((t => {
+                    t instanceof HTMLImageElement ? s.add(t) : x(t) && (t.style.backgroundImage = `url('${t.dataset.lazySrc || ""}')`, 
+                    delete t.dataset.lazySrc);
+                }));
+                const r = (t, i, n) => {
+                    n && (n.remove(), n = null), i.complete && (i.classList.add(o), setTimeout((() => {
+                        i.classList.remove(o);
+                    }), 350), i.style.display = ""), this.option("adaptiveHeight") && t.el && this.pages[this.page].slides.indexOf(t) > -1 && (e.updateMetrics(), 
+                    e.setViewportHeight()), this.emit("load", t);
+                };
+                for (const e of s) {
+                    let i = null;
+                    e.src = e.dataset.lazySrcset || e.dataset.lazySrc || "", delete e.dataset.lazySrc, 
+                    delete e.dataset.lazySrcset, e.style.display = "none", e.addEventListener("error", (() => {
+                        r(t, e, i);
+                    })), e.addEventListener("load", (() => {
+                        r(t, e, i);
+                    })), setTimeout((() => {
+                        e.parentNode && t.el && (e.complete ? r(t, e, i) : (i = n(w), e.parentNode.insertBefore(i, e)));
+                    }), 300);
+                }
+            }
+            onAnimationEnd(t) {
+                var e;
+                const i = t.target, n = i ? parseInt(i.dataset.index || "", 10) || 0 : -1, s = this.slides[n], o = t.animationName;
+                if (!i || !s || !o) return;
+                const a = !!this.inTransition.has(n) && s.transition;
+                a && o.substring(0, a.length + 2) === `f-${a}` && this.inTransition.delete(n), this.inTransition.size || this.clearTransitions(), 
+                n === this.page && (null === (e = this.panzoom) || void 0 === e ? void 0 : e.isResting) && this.emit("settle");
+            }
+            onDecel(t, e = 0, i = 0, n = 0, s = 0) {
+                const {isRTL: o, isHorizontal: a, axis: r, pages: l} = this, c = l.length, h = Math.abs(Math.atan2(i, e) / (Math.PI / 180));
+                let d = 0;
+                if (d = h > 45 && h < 135 ? a ? 0 : i : a ? e : 0, !c) return;
+                const u = this.option("dragFree");
+                let p = this.page, f = o && a ? 1 : -1;
+                const m = t.target[r] * f, g = t.current[r] * f;
+                let {pageIndex: b} = this.getPageFromPosition(m), {pageIndex: v} = this.getPageFromPosition(g);
+                u ? this.onChange(b) : (Math.abs(d) > 5 ? (l[p].dim < document.documentElement["client" + (this.isHorizontal ? "Width" : "Height")] - 1 && (p = v), 
+                p = o && a ? d < 0 ? p - 1 : p + 1 : d < 0 ? p + 1 : p - 1) : p = 0 === n && 0 === s ? p : v, 
+                this.slideTo(p, {
+                    transition: !1,
+                    friction: t.option("decelFriction")
+                }));
+            }
+            onClick(t) {
+                const e = t.target, i = e && x(e) ? e.dataset : null;
+                let n, s;
+                i && (void 0 !== i.carouselPage ? (s = "slideTo", n = i.carouselPage) : void 0 !== i.carouselNext ? s = "slideNext" : void 0 !== i.carouselPrev && (s = "slidePrev")), 
+                s ? (t.preventDefault(), t.stopPropagation(), e && !e.hasAttribute("disabled") && this[s](n)) : this.emit("click", t);
+            }
+            onSlideTo(t) {
+                const e = t.detail || 0;
+                this.slideTo(this.getPageForSlide(e), {
+                    friction: 0
+                });
+            }
+            onChange(t, e = 0) {
+                const i = this.page;
+                this.prevPage = i, this.page = t, this.option("adaptiveHeight") && this.setViewportHeight(), 
+                t !== i && (this.markSelectedSlides(), this.emit("change", t, i, e));
+            }
+            onRefresh() {
+                let t = this.contentDim, e = this.viewportDim;
+                this.updateMetrics(), this.contentDim === t && this.viewportDim === e || this.slideTo(this.page, {
+                    friction: 0,
+                    transition: !1
+                });
+            }
+            onResize() {
+                this.option("breakpoints") && this.processOptions();
+            }
+            onBeforeTransform(t) {
+                this.lp !== t.current[this.axis] && (this.flipInfiniteTrack(), this.manageSlideVisiblity()), 
+                this.lp = t.current.e;
+            }
+            onEndAnimation() {
+                this.inTransition.size || this.emit("settle");
+            }
+            reInit(t = null, e = null) {
+                this.destroy(), this.state = F.Init, this.userOptions = t || this.userOptions, this.userPlugins = e || this.userPlugins, 
+                this.processOptions();
+            }
+            slideTo(t = 0, {friction: e = this.option("friction"), transition: i = this.option("transition")} = {}) {
+                if (this.state === F.Destroy) return;
+                const {axis: n, isHorizontal: s, isRTL: o, pages: a, panzoom: r} = this, l = a.length, c = o && s ? 1 : -1;
+                if (!r || !l) return;
+                if (this.transitionTo(t, i)) return;
+                const h = this.getPageFromIndex(t);
+                let d = a[h].pos;
+                if (this.isInfinite) {
+                    const e = this.contentDim, i = r.target[n] * c;
+                    if (2 === l) d += e * Math.floor(parseFloat(t + "") / 2); else {
+                        const t = i;
+                        d = [ d, d - e, d + e ].reduce((function(e, i) {
+                            return Math.abs(i - t) < Math.abs(e - t) ? i : e;
+                        }));
+                    }
+                }
+                d *= c, Math.abs(r.target[n] - d) < .1 || (r.panTo({
+                    x: s ? d : 0,
+                    y: s ? 0 : d,
+                    friction: e
+                }), this.onChange(h));
+            }
+            slideToClosest(t) {
+                if (this.panzoom) {
+                    const {pageIndex: e} = this.getPageFromPosition(this.panzoom.current[this.isHorizontal ? "e" : "f"]);
+                    this.slideTo(e, t);
+                }
+            }
+            slideNext() {
+                this.slideTo(this.page + 1);
+            }
+            slidePrev() {
+                this.slideTo(this.page - 1);
+            }
+            clearTransitions() {
+                this.inTransition.clear(), E(this.container, this.cn("inTransition"));
+                const t = [ "to-prev", "to-next", "from-prev", "from-next" ];
+                for (const e of this.slides) {
+                    const i = e.el;
+                    if (i) {
+                        i.removeEventListener("animationend", this.onAnimationEnd), i.classList.remove(...t);
+                        const n = e.transition;
+                        n && i.classList.remove(`f-${n}Out`, `f-${n}In`);
+                    }
+                }
+                this.manageSlideVisiblity();
+            }
+            prependSlide(t) {
+                var e, i;
+                let n = Array.isArray(t) ? t : [ t ];
+                for (const t of n.reverse()) this.slides.unshift(j(t));
+                for (let t = 0; t < this.slides.length; t++) this.slides[t].index = t;
+                const s = (null === (e = this.pages[this.page]) || void 0 === e ? void 0 : e.pos) || 0;
+                this.page += n.length, this.updateMetrics();
+                const o = (null === (i = this.pages[this.page]) || void 0 === i ? void 0 : i.pos) || 0;
+                if (this.panzoom) {
+                    const t = this.isRTL ? s - o : o - s;
+                    this.panzoom.target.e -= t, this.panzoom.current.e -= t, this.panzoom.requestTick();
+                }
+            }
+            appendSlide(t) {
+                let e = Array.isArray(t) ? t : [ t ];
+                for (const t of e) {
+                    const e = j(t);
+                    e.index = this.slides.length, this.slides.push(e), this.emit("initSlide", e, this.slides.length);
+                }
+                this.updateMetrics();
+            }
+            removeSlide(t) {
+                const e = this.slides.length;
+                t = (t % e + e) % e, this.removeSlideEl(this.slides[t], !0), this.slides.splice(t, 1);
+                for (let t = 0; t < this.slides.length; t++) this.slides[t].index = t;
+                this.updateMetrics(), this.slideTo(this.page, {
+                    friction: 0,
+                    transition: !1
+                });
+            }
+            updateMetrics() {
+                const {panzoom: e, viewport: i, track: n, isHorizontal: s} = this;
+                if (!n) return;
+                const o = s ? "width" : "height", a = s ? "offsetWidth" : "offsetHeight";
+                if (i) {
+                    let e = Math.max(i[a], t(i.getBoundingClientRect()[o], 1e3)), n = getComputedStyle(i), r = "padding", l = s ? "Right" : "Bottom";
+                    e -= parseFloat(n[r + (s ? "Left" : "Top")]) + parseFloat(n[r + l]), this.viewportDim = e;
+                }
+                let r, l = this.pages.length, c = 0;
+                for (const [e, i] of this.slides.entries()) {
+                    let n = 0, s = 0;
+                    !i.el && r ? (n = r.dim, s = r.gap) : (({dim: n, gap: s} = this.getSlideMetrics(i)), 
+                    r = i), n = t(n, 1e3), s = t(s, 1e3), i.dim = n, i.gap = s, i.pos = c, c += n, (this.isInfinite || e < this.slides.length - 1) && (c += s);
+                }
+                const h = this.contentDim;
+                c = t(c, 1e3), this.contentDim = c, e && (e.contentRect[o] = c, e.contentRect["e" === this.axis ? "fullWidth" : "fullHeight"] = c), 
+                this.pages = this.createPages(), this.pages = this.processPages(), this.state === F.Init && this.setInitialPage(), 
+                this.page = Math.max(0, Math.min(this.page, this.pages.length - 1)), e && l === this.pages.length && Math.abs(c - h) > .5 && (e.target[this.axis] = -1 * this.pages[this.page].pos, 
+                e.current[this.axis] = -1 * this.pages[this.page].pos, e.stop()), this.manageSlideVisiblity(), 
+                this.emit("refresh");
+            }
+            getProgress(e, i = !1) {
+                void 0 === e && (e = this.page);
+                const n = this, s = n.panzoom, o = n.pages[e] || 0;
+                if (!o || !s) return 0;
+                let a = -1 * s.current.e, r = n.contentDim;
+                var l = [ t((a - o.pos) / (1 * o.dim), 1e3), t((a + r - o.pos) / (1 * o.dim), 1e3), t((a - r - o.pos) / (1 * o.dim), 1e3) ].reduce((function(t, e) {
+                    return Math.abs(e) < Math.abs(t) ? e : t;
+                }));
+                return i ? l : Math.max(-1, Math.min(1, l));
+            }
+            setViewportHeight() {
+                const {page: t, pages: e, viewport: i, isHorizontal: n} = this;
+                if (!i || !e[t]) return;
+                let s = 0;
+                n && this.track && (this.track.style.height = "auto", e[t].slides.forEach((t => {
+                    t.el && (s = Math.max(s, t.el.offsetHeight));
+                }))), i.style.height = s ? `${s}px` : "";
+            }
+            getPageForSlide(t) {
+                for (const e of this.pages) for (const i of e.slides) if (i.index === t) return e.index;
+                return -1;
+            }
+            getVisibleSlides(t = 0) {
+                var e;
+                const i = new Set;
+                let {contentDim: n, viewportDim: s, pages: o, page: a} = this;
+                n = n + (null === (e = this.slides[this.slides.length - 1]) || void 0 === e ? void 0 : e.gap) || 0;
+                let r = 0;
+                r = this.panzoom ? -1 * this.panzoom.current[this.axis] : o[a] && o[a].pos || 0, 
+                this.isInfinite && (r -= Math.floor(r / n) * n), this.isRTL && this.isHorizontal && (r *= -1);
+                const l = r - s * t, c = r + s * (t + 1), h = this.isInfinite ? [ -1, 0, 1 ] : [ 0 ];
+                for (const t of this.slides) for (const e of h) {
+                    const s = t.pos + e * n, o = t.pos + t.dim + t.gap + e * n;
+                    s < c && o > l && i.add(t);
+                }
+                return i;
+            }
+            getPageFromPosition(t) {
+                const {viewportDim: e, contentDim: i} = this, n = this.pages.length, s = this.slides.length, o = this.slides[s - 1];
+                let a = 0, r = 0, l = 0;
+                const c = this.option("center");
+                c && (t += .5 * e), this.isInfinite || (t = Math.max(this.slides[0].pos, Math.min(t, o.pos)));
+                const h = i + o.gap;
+                l = Math.floor(t / h) || 0, t -= l * h;
+                let d = o, u = this.slides.find((e => {
+                    const i = t + (d && !c ? .5 * d.dim : 0);
+                    return d = e, e.pos <= i && e.pos + e.dim + e.gap > i;
+                }));
+                return u || (u = o), r = this.getPageForSlide(u.index), a = r + l * n, {
+                    page: a,
+                    pageIndex: r
+                };
+            }
+            destroy() {
+                if ([ F.Destroy ].includes(this.state)) return;
+                this.state = F.Destroy;
+                const {container: t, viewport: e, track: i, slides: n, panzoom: s} = this, o = this.option("classes");
+                t.removeEventListener("click", this.onClick, {
+                    passive: !1,
+                    capture: !1
+                }), t.removeEventListener("slideTo", this.onSlideTo), window.removeEventListener("resize", this.onResize), 
+                s && (s.destroy(), this.panzoom = null), n && n.forEach((t => {
+                    this.removeSlideEl(t);
+                })), this.detachPlugins(), e && e.offsetParent && i && i.offsetParent && e.replaceWith(...i.childNodes);
+                for (const [e, i] of Object.entries(o)) "container" !== e && i && t.classList.remove(i);
+                this.track = null, this.viewport = null, this.page = 0, this.slides = [];
+                const a = this.events.get("ready");
+                this.events = new Map, a && this.events.set("ready", a);
+            }
+        }
+        Object.defineProperty(Z, "Panzoom", {
+            enumerable: !0,
+            configurable: !0,
+            writable: !0,
+            value: R
+        }), Object.defineProperty(Z, "defaults", {
+            enumerable: !0,
+            configurable: !0,
+            writable: !0,
+            value: D
+        }), Object.defineProperty(Z, "Plugins", {
+            enumerable: !0,
+            configurable: !0,
+            writable: !0,
+            value: V
+        });
+        const U = function(t) {
+            const e = window.pageYOffset, i = window.pageYOffset + window.innerHeight;
+            if (!x(t)) return 0;
+            const n = t.getBoundingClientRect(), s = n.y + window.pageYOffset, o = n.y + n.height + window.pageYOffset;
+            if (e > o || i < s) return 0;
+            if (e < s && i > o) return 100;
+            if (s < e && o > i) return 100;
+            let a = n.height;
+            s < e && (a -= window.pageYOffset - s), o > i && (a -= o - i);
+            const r = a / window.innerHeight * 100;
+            return Math.round(r);
+        }, G = !("undefined" == typeof window || !window.document || !window.document.createElement);
+        let K;
+        const J = [ "a[href]", "area[href]", 'input:not([disabled]):not([type="hidden"]):not([aria-hidden])', "select:not([disabled]):not([aria-hidden])", "textarea:not([disabled]):not([aria-hidden])", "button:not([disabled]):not([aria-hidden]):not(.fancybox-focus-guard)", "iframe", "object", "embed", "video", "audio", "[contenteditable]", '[tabindex]:not([tabindex^="-"]):not([disabled]):not([aria-hidden])' ].join(","), Q = t => {
+            if (t && G) {
+                void 0 === K && document.createElement("div").focus({
+                    get preventScroll() {
+                        return K = !0, !1;
+                    }
+                });
+                try {
+                    if (K) t.focus({
+                        preventScroll: !0
+                    }); else {
+                        const e = window.pageXOffset || document.body.scrollTop, i = window.pageYOffset || document.body.scrollLeft;
+                        t.focus(), document.body.scrollTo({
+                            top: e,
+                            left: i,
+                            behavior: "auto"
+                        });
+                    }
+                } catch (t) {}
+            }
+        }, tt = {
+            dragToClose: !0,
+            hideScrollbar: !0,
+            Carousel: {
+                classes: {
+                    container: "fancybox__carousel",
+                    viewport: "fancybox__viewport",
+                    track: "fancybox__track",
+                    slide: "fancybox__slide"
+                }
+            },
+            contentClick: "toggleZoom",
+            contentDblClick: !1,
+            backdropClick: "close",
+            animated: !0,
+            idle: 3500,
+            showClass: "f-zoomInUp",
+            hideClass: "f-fadeOut",
+            commonCaption: !1,
+            parentEl: null,
+            startIndex: 0,
+            l10n: Object.assign(Object.assign({}, v), {
+                CLOSE: "Close",
+                NEXT: "Next",
+                PREV: "Previous",
+                MODAL: "You can close this modal content with the ESC key",
+                ERROR: "Something Went Wrong, Please Try Again Later",
+                IMAGE_ERROR: "Image Not Found",
+                ELEMENT_NOT_FOUND: "HTML Element Not Found",
+                AJAX_NOT_FOUND: "Error Loading AJAX : Not Found",
+                AJAX_FORBIDDEN: "Error Loading AJAX : Forbidden",
+                IFRAME_ERROR: "Error Loading Page",
+                TOGGLE_ZOOM: "Toggle zoom level",
+                TOGGLE_THUMBS: "Toggle thumbnails",
+                TOGGLE_SLIDESHOW: "Toggle slideshow",
+                TOGGLE_FULLSCREEN: "Toggle full-screen mode",
+                DOWNLOAD: "Download"
+            }),
+            tpl: {
+                closeButton: '<button data-fancybox-close class="f-button is-close-btn" title="{{CLOSE}}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" tabindex="-1"><path d="M20 20L4 4m16 0L4 20"/></svg></button>',
+                main: '<div class="fancybox__container" role="dialog" aria-modal="true" aria-label="{{MODAL}}" tabindex="-1">\n    <div class="fancybox__backdrop"></div>\n    <div class="fancybox__carousel"></div>\n    <div class="fancybox__footer"></div>\n  </div>'
+            },
+            groupAll: !1,
+            groupAttr: "data-fancybox",
+            defaultType: "image",
+            defaultDisplay: "block",
+            autoFocus: !0,
+            trapFocus: !0,
+            placeFocusBack: !0,
+            closeButton: "auto",
+            keyboard: {
+                Escape: "close",
+                Delete: "close",
+                Backspace: "close",
+                PageUp: "next",
+                PageDown: "prev",
+                ArrowUp: "prev",
+                ArrowDown: "next",
+                ArrowRight: "next",
+                ArrowLeft: "prev"
+            },
+            Fullscreen: {
+                autoStart: !1
+            },
+            compact: () => window.matchMedia("(max-width: 578px), (max-height: 578px)").matches,
+            wheel: "zoom"
+        };
+        var et, it;
+        !function(t) {
+            t[t.Init = 0] = "Init", t[t.Ready = 1] = "Ready", t[t.Closing = 2] = "Closing", 
+            t[t.CustomClosing = 3] = "CustomClosing", t[t.Destroy = 4] = "Destroy";
+        }(et || (et = {})), function(t) {
+            t[t.Loading = 0] = "Loading", t[t.Opening = 1] = "Opening", t[t.Ready = 2] = "Ready", 
+            t[t.Closing = 3] = "Closing";
+        }(it || (it = {}));
+        const nt = () => {
+            queueMicrotask((() => {
+                (() => {
+                    const {slug: t, index: e} = st.parseURL(), i = _t.getInstance();
+                    if (i && !1 !== i.option("Hash")) {
+                        const n = i.carousel;
+                        if (t && n) {
+                            for (let e of n.slides) if (e.slug && e.slug === t) return n.slideTo(e.index);
+                            if (t === i.option("slug")) return n.slideTo(e - 1);
+                            const s = i.getSlide(), o = s && s.triggerEl && s.triggerEl.dataset;
+                            if (o && o.fancybox === t) return n.slideTo(e - 1);
+                        }
+                        st.hasSilentClose = !0, i.close();
+                    }
+                    st.startFromUrl();
+                })();
+            }));
+        };
+        class st extends B {
+            constructor() {
+                super(...arguments), Object.defineProperty(this, "origHash", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: ""
+                }), Object.defineProperty(this, "timer", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: null
+                });
+            }
+            onChange() {
+                const t = this.instance, e = t.carousel;
+                this.timer && clearTimeout(this.timer);
+                const i = t.getSlide();
+                if (!e || !i) return;
+                const n = t.isOpeningSlide(i), s = new URL(document.URL).hash;
+                let o, a = i.slug || void 0, r = i.triggerEl || void 0;
+                o = a || this.instance.option("slug"), !o && r && r.dataset && (o = r.dataset.fancybox);
+                let l = "";
+                o && "true" !== o && (l = "#" + o + (!a && e.slides.length > 1 ? "-" + (i.index + 1) : "")), 
+                n && (this.origHash = s !== l ? s : ""), l && s !== l && (this.timer = setTimeout((() => {
+                    try {
+                        t.state === et.Ready && window.history[n ? "pushState" : "replaceState"]({}, document.title, window.location.pathname + window.location.search + l);
+                    } catch (t) {}
+                }), 300));
+            }
+            onClose() {
+                if (this.timer && clearTimeout(this.timer), !0 !== st.hasSilentClose) try {
+                    window.history.replaceState({}, document.title, window.location.pathname + window.location.search + (this.origHash || ""));
+                } catch (t) {}
+            }
+            attach() {
+                const t = this.instance;
+                t.on("Carousel.ready", this.onChange), t.on("Carousel.change", this.onChange), t.on("close", this.onClose);
+            }
+            detach() {
+                const t = this.instance;
+                t.off("Carousel.ready", this.onChange), t.off("Carousel.change", this.onChange), 
+                t.off("close", this.onClose);
+            }
+            static parseURL() {
+                const t = window.location.hash.slice(1), e = t.split("-"), i = e[e.length - 1], n = i && /^\+?\d+$/.test(i) && parseInt(e.pop() || "1", 10) || 1;
+                return {
+                    hash: t,
+                    slug: e.join("-"),
+                    index: n
+                };
+            }
+            static startFromUrl() {
+                if (st.hasSilentClose = !1, _t.getInstance() || !1 === _t.defaults.Hash) return;
+                const {hash: t, slug: e, index: i} = st.parseURL();
+                if (!e) return;
+                let n = document.querySelector(`[data-slug="${t}"]`);
+                if (n && n.dispatchEvent(new CustomEvent("click", {
+                    bubbles: !0,
+                    cancelable: !0
+                })), _t.getInstance()) return;
+                const s = document.querySelectorAll(`[data-fancybox="${e}"]`);
+                s.length && (n = s[i - 1], n && n.dispatchEvent(new CustomEvent("click", {
+                    bubbles: !0,
+                    cancelable: !0
+                })));
+            }
+            static destroy() {
+                window.removeEventListener("hashchange", nt, !1);
+            }
+        }
+        function ot() {
+            window.addEventListener("hashchange", nt, !1), setTimeout((() => {
+                st.startFromUrl();
+            }), 500);
+        }
+        Object.defineProperty(st, "defaults", {
+            enumerable: !0,
+            configurable: !0,
+            writable: !0,
+            value: {}
+        }), Object.defineProperty(st, "hasSilentClose", {
+            enumerable: !0,
+            configurable: !0,
+            writable: !0,
+            value: !1
+        }), G && (/complete|interactive|loaded/.test(document.readyState) ? ot() : document.addEventListener("DOMContentLoaded", ot));
+        class at extends B {
+            onCreateSlide(t, e, i) {
+                const n = this.instance.optionFor(i, "src") || "";
+                i.el && "image" === i.type && "string" == typeof n && this.setImage(i, n);
+            }
+            onRemoveSlide(t, e, i) {
+                i.panzoom && i.panzoom.destroy(), i.panzoom = void 0, i.imageEl = void 0;
+            }
+            onChange(t, e, i, n) {
+                for (const t of e.slides) {
+                    const e = t.panzoom;
+                    e && t.index !== i && e.reset(.35);
+                }
+            }
+            onClose() {
+                var t;
+                const e = this.instance, i = e.container, n = e.getSlide();
+                if (!i || !i.parentElement || !n) return;
+                const {el: s, contentEl: o, panzoom: a} = n, r = n.thumbElSrc;
+                if (!s || !r || !o || !a || a.isContentLoading || a.state === g.Init || a.state === g.Destroy) return;
+                a.updateMetrics();
+                let l = this.getZoomInfo(n);
+                if (!l) return;
+                this.instance.state = et.CustomClosing, i.classList.remove("is-zooming-in"), i.classList.add("is-zooming-out"), 
+                o.style.backgroundImage = `url('${r}')`;
+                const c = i.getBoundingClientRect();
+                1 === ((null === (t = window.visualViewport) || void 0 === t ? void 0 : t.scale) || 1) && Object.assign(i.style, {
+                    position: "absolute",
+                    top: `${window.pageYOffset}px`,
+                    left: `${window.pageXOffset}px`,
+                    bottom: "auto",
+                    right: "auto",
+                    width: `${c.width}px`,
+                    height: `${c.height}px`,
+                    overflow: "hidden"
+                });
+                const {x: h, y: d, scale: u, opacity: p} = l;
+                if (p) {
+                    const t = ((t, e, i, n) => {
+                        const s = e - t, o = n - i;
+                        return e => i + ((e - t) / s * o || 0);
+                    })(a.scale, u, 1, 0);
+                    a.on("afterTransform", (() => {
+                        o.style.opacity = t(a.scale) + "";
+                    }));
+                }
+                a.on("endAnimation", (() => {
+                    e.destroy();
+                })), a.target.a = u, a.target.b = 0, a.target.c = 0, a.target.d = u, a.panTo({
+                    x: h,
+                    y: d,
+                    scale: u,
+                    friction: p ? .2 : .33,
+                    ignoreBounds: !0
+                }), a.isResting && e.destroy();
+            }
+            setImage(t, e) {
+                const i = this.instance;
+                t.src = e, this.process(t, e).then((e => {
+                    var n;
+                    const s = t.contentEl, o = t.imageEl, a = t.thumbElSrc;
+                    if (i.isClosing() || !s || !o) return;
+                    s.offsetHeight;
+                    const r = !!i.isOpeningSlide(t) && this.getZoomInfo(t);
+                    if (this.option("protected")) {
+                        null === (n = t.el) || void 0 === n || n.addEventListener("contextmenu", (t => {
+                            t.preventDefault();
+                        }));
+                        const e = document.createElement("div");
+                        S(e, "fancybox-protected"), s.appendChild(e);
+                    }
+                    if (a && r) {
+                        const n = e.contentRect, o = Math.max(n.fullWidth, n.fullHeight);
+                        let c = null;
+                        !r.opacity && o > 1200 && (c = document.createElement("img"), S(c, "fancybox-ghost"), 
+                        c.src = a, s.appendChild(c));
+                        const h = () => {
+                            c && (S(c, "f-fadeFastOut"), setTimeout((() => {
+                                c && (c.remove(), c = null);
+                            }), 200));
+                        };
+                        (l = a, new Promise(((t, e) => {
+                            const i = new Image;
+                            i.onload = t, i.onerror = e, i.src = l;
+                        }))).then((() => {
+                            t.state = it.Opening, this.instance.emit("reveal", t), this.zoomIn(t).then((() => {
+                                h(), this.instance.done(t);
+                            }), (() => {
+                                i.hideLoading(t);
+                            })), c && setTimeout((() => {
+                                h();
+                            }), o > 2500 ? 800 : 200);
+                        }), (() => {
+                            i.hideLoading(t), i.revealContent(t);
+                        }));
+                    } else {
+                        const n = this.optionFor(t, "initialSize"), s = this.optionFor(t, "zoom"), o = {
+                            event: i.prevMouseMoveEvent || i.options.event,
+                            friction: s ? .12 : 0
+                        };
+                        let a = i.optionFor(t, "showClass") || void 0, r = !0;
+                        i.isOpeningSlide(t) && ("full" === n ? e.zoomToFull(o) : "cover" === n ? e.zoomToCover(o) : "max" === n ? e.zoomToMax(o) : r = !1, 
+                        e.stop("current")), r && a && (a = e.isDragging ? "f-fadeIn" : ""), i.revealContent(t, a);
+                    }
+                    var l;
+                }), (() => {
+                    i.setError(t, "{{IMAGE_ERROR}}");
+                }));
+            }
+            process(t, e) {
+                return new Promise(((i, s) => {
+                    var o;
+                    const a = this.instance, r = t.el;
+                    a.clearContent(t), a.showLoading(t);
+                    let l = this.optionFor(t, "content");
+                    if ("string" == typeof l && (l = n(l)), !l || !x(l)) {
+                        if (l = document.createElement("img"), l instanceof HTMLImageElement) {
+                            let i = "", n = t.caption;
+                            i = "string" == typeof n && n ? n.replace(/<[^>]+>/gi, "").substring(0, 1e3) : `Image ${t.index + 1} of ${null === (o = a.carousel) || void 0 === o ? void 0 : o.pages.length}`, 
+                            l.src = e || "", l.alt = i, l.draggable = !1, t.srcset && l.setAttribute("srcset", t.srcset);
+                        }
+                        t.sizes && l.setAttribute("sizes", t.sizes);
+                    }
+                    l.classList.add("fancybox-image"), t.imageEl = l, a.setContent(t, l, !1);
+                    t.panzoom = new R(r, u({
+                        transformParent: !0
+                    }, this.option("Panzoom") || {}, {
+                        content: l,
+                        width: a.optionFor(t, "width", "auto"),
+                        height: a.optionFor(t, "height", "auto"),
+                        wheel: () => {
+                            const t = a.option("wheel");
+                            return ("zoom" === t || "pan" == t) && t;
+                        },
+                        click: (e, i) => {
+                            var n, s;
+                            if (a.isCompact || a.isClosing()) return !1;
+                            if (t.index !== (null === (n = a.getSlide()) || void 0 === n ? void 0 : n.index)) return !1;
+                            if (i) {
+                                const t = i.composedPath()[0];
+                                if ([ "A", "BUTTON", "TEXTAREA", "OPTION", "INPUT", "SELECT", "VIDEO" ].includes(t.nodeName)) return !1;
+                            }
+                            let o = !i || i.target && (null === (s = t.contentEl) || void 0 === s ? void 0 : s.contains(i.target));
+                            return a.option(o ? "contentClick" : "backdropClick") || !1;
+                        },
+                        dblClick: () => a.isCompact ? "toggleZoom" : a.option("contentDblClick") || !1,
+                        spinner: !1,
+                        panOnlyZoomed: !0,
+                        wheelLimit: 1 / 0,
+                        on: {
+                            ready: t => {
+                                i(t);
+                            },
+                            error: () => {
+                                s();
+                            },
+                            destroy: () => {
+                                s();
+                            }
+                        }
+                    }));
+                }));
+            }
+            zoomIn(t) {
+                return new Promise(((e, i) => {
+                    const n = this.instance, s = n.container, {panzoom: o, contentEl: a, el: r} = t;
+                    o && o.updateMetrics();
+                    const l = this.getZoomInfo(t);
+                    if (!(l && r && a && o && s)) return void i();
+                    const {x: c, y: h, scale: d, opacity: u} = l, p = () => {
+                        t.state !== it.Closing && (u && (a.style.opacity = Math.max(Math.min(1, 1 - (1 - o.scale) / (1 - d)), 0) + ""), 
+                        o.scale >= 1 && o.scale > o.targetScale - .1 && e(o));
+                    }, f = t => {
+                        E(s, "is-zooming-in"), t.scale < .99 || t.scale > 1.01 || (a.style.opacity = "", 
+                        t.off("endAnimation", f), t.off("touchStart", f), t.off("afterTransform", p), e(t));
+                    };
+                    o.on("endAnimation", f), o.on("touchStart", f), o.on("afterTransform", p), o.on([ "error", "destroy" ], (() => {
+                        i();
+                    })), o.panTo({
+                        x: c,
+                        y: h,
+                        scale: d,
+                        friction: 0,
+                        ignoreBounds: !0
+                    }), o.stop("current");
+                    const m = {
+                        event: "mousemove" === o.panMode ? n.prevMouseMoveEvent || n.options.event : void 0
+                    }, g = this.optionFor(t, "initialSize");
+                    S(s, "is-zooming-in"), n.hideLoading(t), "full" === g ? o.zoomToFull(m) : "cover" === g ? o.zoomToCover(m) : "max" === g ? o.zoomToMax(m) : o.reset(.172);
+                }));
+            }
+            getZoomInfo(t) {
+                var e;
+                const {el: i, imageEl: n, thumbEl: s, panzoom: o} = t;
+                if (!i || !n || !s || !o || U(s) < 3 || !this.optionFor(t, "zoom") || this.instance.state === et.Destroy) return !1;
+                if (1 !== ((null === (e = window.visualViewport) || void 0 === e ? void 0 : e.scale) || 1)) return !1;
+                let {top: a, left: r, width: l, height: c} = s.getBoundingClientRect(), {top: h, left: d, fitWidth: u, fitHeight: p} = o.contentRect;
+                if (!(l && c && u && p)) return !1;
+                const f = o.container.getBoundingClientRect();
+                d += f.left, h += f.top;
+                const m = -1 * (d + .5 * u - (r + .5 * l)), g = -1 * (h + .5 * p - (a + .5 * c)), b = l / u;
+                let v = this.option("zoomOpacity") || !1;
+                return "auto" === v && (v = Math.abs(l / c - u / p) > .1), {
+                    x: m,
+                    y: g,
+                    scale: b,
+                    opacity: v
+                };
+            }
+            attach() {
+                const t = this, e = t.instance;
+                e.on("Carousel.change", t.onChange), e.on("Carousel.createSlide", t.onCreateSlide), 
+                e.on("Carousel.removeSlide", t.onRemoveSlide), e.on("close", t.onClose);
+            }
+            detach() {
+                const t = this, e = t.instance;
+                e.off("Carousel.change", t.onChange), e.off("Carousel.createSlide", t.onCreateSlide), 
+                e.off("Carousel.removeSlide", t.onRemoveSlide), e.off("close", t.onClose);
+            }
+        }
+        Object.defineProperty(at, "defaults", {
+            enumerable: !0,
+            configurable: !0,
+            writable: !0,
+            value: {
+                initialSize: "fit",
+                Panzoom: {
+                    maxScale: 1
+                },
+                protected: !1,
+                zoom: !0,
+                zoomOpacity: "auto"
+            }
+        }), "function" == typeof SuppressedError && SuppressedError;
+        const rt = (t, e = {}) => {
+            const i = new URL(t), n = new URLSearchParams(i.search), s = new URLSearchParams;
+            for (const [t, i] of [ ...n, ...Object.entries(e) ]) {
+                let e = i.toString();
+                "t" === t ? s.set("start", parseInt(e).toString()) : s.set(t, e);
+            }
+            let o = s.toString(), a = t.match(/#t=((.*)?\d+s)/);
+            return a && (o += `#t=${a[1]}`), o;
+        }, lt = {
+            ajax: null,
+            autoSize: !0,
+            iframeAttr: {
+                allow: "autoplay; fullscreen",
+                scrolling: "auto"
+            },
+            preload: !0,
+            videoAutoplay: !0,
+            videoRatio: 16 / 9,
+            videoTpl: '<video class="fancybox__html5video" playsinline controls controlsList="nodownload" poster="{{poster}}">\n  <source src="{{src}}" type="{{format}}" />Sorry, your browser doesn\'t support embedded videos.</video>',
+            videoFormat: "",
+            vimeo: {
+                byline: 1,
+                color: "00adef",
+                controls: 1,
+                dnt: 1,
+                muted: 0
+            },
+            youtube: {
+                controls: 1,
+                enablejsapi: 1,
+                nocookie: 1,
+                rel: 0,
+                fs: 1
+            }
+        }, ct = [ "image", "html", "ajax", "inline", "clone", "iframe", "map", "pdf", "html5video", "youtube", "vimeo", "video" ];
+        class ht extends B {
+            onInitSlide(t, e, i) {
+                this.processType(i);
+            }
+            onCreateSlide(t, e, i) {
+                this.setContent(i);
+            }
+            onRemoveSlide(t, e, i) {
+                i.xhr && (i.xhr.abort(), i.xhr = null);
+                const n = i.iframeEl;
+                n && (n.onload = n.onerror = null, n.src = "//about:blank", i.iframeEl = null);
+                const s = i.contentEl, o = i.placeholderEl;
+                if ("inline" === i.type && s && o) s.classList.remove("fancybox__content"), "none" !== s.style.display && (s.style.display = "none"), 
+                o.parentNode && o.parentNode.insertBefore(s, o), o.remove(), i.contentEl = void 0, 
+                i.placeholderEl = void 0; else for (;i.el && i.el.firstChild; ) i.el.removeChild(i.el.firstChild);
+            }
+            onSelectSlide(t, e, i) {
+                i.state === it.Ready && this.playVideo();
+            }
+            onUnselectSlide(t, e, i) {
+                var n, s;
+                if ("html5video" === i.type) {
+                    try {
+                        null === (s = null === (n = i.el) || void 0 === n ? void 0 : n.querySelector("video")) || void 0 === s || s.pause();
+                    } catch (t) {}
+                    return;
+                }
+                let o;
+                "vimeo" === i.type ? o = {
+                    method: "pause",
+                    value: "true"
+                } : "youtube" === i.type && (o = {
+                    event: "command",
+                    func: "pauseVideo"
+                }), o && i.iframeEl && i.iframeEl.contentWindow && i.iframeEl.contentWindow.postMessage(JSON.stringify(o), "*"), 
+                i.poller && clearTimeout(i.poller);
+            }
+            onDone(t, e) {
+                t.isCurrentSlide(e) && !t.isClosing() && this.playVideo();
+            }
+            onRefresh(t, e) {
+                e.slides.forEach((t => {
+                    t.el && (this.setAspectRatio(t), this.resizeIframe(t));
+                }));
+            }
+            onMessage(t) {
+                try {
+                    let e = JSON.parse(t.data);
+                    if ("https://player.vimeo.com" === t.origin) {
+                        if ("ready" === e.event) for (let e of Array.from(document.getElementsByClassName("fancybox__iframe"))) e instanceof HTMLIFrameElement && e.contentWindow === t.source && (e.dataset.ready = "true");
+                    } else if (t.origin.match(/^https:\/\/(www.)?youtube(-nocookie)?.com$/) && "onReady" === e.event) {
+                        const t = document.getElementById(e.id);
+                        t && (t.dataset.ready = "true");
+                    }
+                } catch (t) {}
+            }
+            loadAjaxContent(t) {
+                const e = this.instance.optionFor(t, "src") || "";
+                this.instance.showLoading(t);
+                const i = this.instance, n = new XMLHttpRequest;
+                i.showLoading(t), n.onreadystatechange = function() {
+                    n.readyState === XMLHttpRequest.DONE && i.state === et.Ready && (i.hideLoading(t), 
+                    200 === n.status ? i.setContent(t, n.responseText) : i.setError(t, 404 === n.status ? "{{AJAX_NOT_FOUND}}" : "{{AJAX_FORBIDDEN}}"));
+                };
+                const s = t.ajax || null;
+                n.open(s ? "POST" : "GET", e + ""), n.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"), 
+                n.setRequestHeader("X-Requested-With", "XMLHttpRequest"), n.send(s), t.xhr = n;
+            }
+            setInlineContent(t) {
+                let e = null;
+                if (x(t.src)) e = t.src; else if ("string" == typeof t.src) {
+                    const i = t.src.split("#", 2).pop();
+                    e = i ? document.getElementById(i) : null;
+                }
+                if (e) {
+                    if ("clone" === t.type || e.closest(".fancybox__slide")) {
+                        e = e.cloneNode(!0);
+                        const i = e.dataset.animationName;
+                        i && (e.classList.remove(i), delete e.dataset.animationName);
+                        let n = e.getAttribute("id");
+                        n = n ? `${n}--clone` : `clone-${this.instance.id}-${t.index}`, e.setAttribute("id", n);
+                    } else if (e.parentNode) {
+                        const i = document.createElement("div");
+                        i.classList.add("fancybox-placeholder"), e.parentNode.insertBefore(i, e), t.placeholderEl = i;
+                    }
+                    this.instance.setContent(t, e);
+                } else this.instance.setError(t, "{{ELEMENT_NOT_FOUND}}");
+            }
+            setIframeContent(t) {
+                const {src: e, el: i} = t;
+                if (!e || "string" != typeof e || !i) return;
+                i.classList.add("is-loading");
+                const n = this.instance, s = document.createElement("iframe");
+                s.className = "fancybox__iframe", s.setAttribute("id", `fancybox__iframe_${n.id}_${t.index}`);
+                for (const [e, i] of Object.entries(this.optionFor(t, "iframeAttr") || {})) s.setAttribute(e, i);
+                s.onerror = () => {
+                    n.setError(t, "{{IFRAME_ERROR}}");
+                }, t.iframeEl = s;
+                const o = this.optionFor(t, "preload");
+                if ("iframe" !== t.type || !1 === o) return s.setAttribute("src", t.src + ""), n.setContent(t, s, !1), 
+                this.resizeIframe(t), void n.revealContent(t);
+                n.showLoading(t), s.onload = () => {
+                    if (!s.src.length) return;
+                    const e = "true" !== s.dataset.ready;
+                    s.dataset.ready = "true", this.resizeIframe(t), e ? n.revealContent(t) : n.hideLoading(t);
+                }, s.setAttribute("src", e), n.setContent(t, s, !1);
+            }
+            resizeIframe(t) {
+                const e = t.iframeEl, i = null == e ? void 0 : e.parentElement;
+                if (!e || !i) return;
+                let n = t.autoSize, s = t.width || 0, o = t.height || 0;
+                s && o && (n = !1);
+                const a = i && i.style;
+                if (!1 !== t.preload && !1 !== n && a) try {
+                    const t = window.getComputedStyle(i), n = parseFloat(t.paddingLeft) + parseFloat(t.paddingRight), r = parseFloat(t.paddingTop) + parseFloat(t.paddingBottom), l = e.contentWindow;
+                    if (l) {
+                        const t = l.document, e = t.getElementsByTagName("html")[0], i = t.body;
+                        a.width = "", i.style.overflow = "hidden", s = s || e.scrollWidth + n, a.width = `${s}px`, 
+                        i.style.overflow = "", a.flex = "0 0 auto", a.height = `${i.scrollHeight}px`, o = e.scrollHeight + r;
+                    }
+                } catch (t) {}
+                if (s || o) {
+                    const t = {
+                        flex: "0 1 auto",
+                        width: "",
+                        height: ""
+                    };
+                    s && (t.width = `${s}px`), o && (t.height = `${o}px`), Object.assign(a, t);
+                }
+            }
+            playVideo() {
+                const t = this.instance.getSlide();
+                if (!t) return;
+                const {el: e} = t;
+                if (!e || !e.offsetParent) return;
+                if (!this.optionFor(t, "videoAutoplay")) return;
+                if ("html5video" === t.type) try {
+                    const t = e.querySelector("video");
+                    if (t) {
+                        const e = t.play();
+                        void 0 !== e && e.then((() => {})).catch((e => {
+                            t.muted = !0, t.play();
+                        }));
+                    }
+                } catch (t) {}
+                if ("youtube" !== t.type && "vimeo" !== t.type) return;
+                const i = () => {
+                    if (t.iframeEl && t.iframeEl.contentWindow) {
+                        let e;
+                        if ("true" === t.iframeEl.dataset.ready) return e = "youtube" === t.type ? {
+                            event: "command",
+                            func: "playVideo"
+                        } : {
+                            method: "play",
+                            value: "true"
+                        }, e && t.iframeEl.contentWindow.postMessage(JSON.stringify(e), "*"), void (t.poller = void 0);
+                        "youtube" === t.type && (e = {
+                            event: "listening",
+                            id: t.iframeEl.getAttribute("id")
+                        }, t.iframeEl.contentWindow.postMessage(JSON.stringify(e), "*"));
+                    }
+                    t.poller = setTimeout(i, 250);
+                };
+                i();
+            }
+            processType(t) {
+                if (t.html) return t.type = "html", t.src = t.html, void (t.html = "");
+                const e = this.instance.optionFor(t, "src", "");
+                if (!e || "string" != typeof e) return;
+                let i = t.type, n = null;
+                if (n = e.match(/(youtube\.com|youtu\.be|youtube\-nocookie\.com)\/(?:watch\?(?:.*&)?v=|v\/|u\/|shorts\/|embed\/?)?(videoseries\?list=(?:.*)|[\w-]{11}|\?listType=(?:.*)&list=(?:.*))(?:.*)/i)) {
+                    const s = this.optionFor(t, "youtube"), {nocookie: o} = s, a = function(t, e) {
+                        var i = {};
+                        for (var n in t) Object.prototype.hasOwnProperty.call(t, n) && e.indexOf(n) < 0 && (i[n] = t[n]);
+                        if (null != t && "function" == typeof Object.getOwnPropertySymbols) {
+                            var s = 0;
+                            for (n = Object.getOwnPropertySymbols(t); s < n.length; s++) e.indexOf(n[s]) < 0 && Object.prototype.propertyIsEnumerable.call(t, n[s]) && (i[n[s]] = t[n[s]]);
+                        }
+                        return i;
+                    }(s, [ "nocookie" ]), r = `www.youtube${o ? "-nocookie" : ""}.com`, l = rt(e, a), c = encodeURIComponent(n[2]);
+                    t.videoId = c, t.src = `https://${r}/embed/${c}?${l}`, t.thumbSrc = t.thumbSrc || `https://i.ytimg.com/vi/${c}/mqdefault.jpg`, 
+                    i = "youtube";
+                } else if (n = e.match(/^.+vimeo.com\/(?:\/)?([\d]+)((\/|\?h=)([a-z0-9]+))?(.*)?/)) {
+                    const s = rt(e, this.optionFor(t, "vimeo")), o = encodeURIComponent(n[1]), a = n[4] || "";
+                    t.videoId = o, t.src = `https://player.vimeo.com/video/${o}?${a ? `h=${a}${s ? "&" : ""}` : ""}${s}`, 
+                    i = "vimeo";
+                }
+                if (!i && t.triggerEl) {
+                    const e = t.triggerEl.dataset.type;
+                    ct.includes(e) && (i = e);
+                }
+                i || "string" == typeof e && ("#" === e.charAt(0) ? i = "inline" : (n = e.match(/\.(mp4|mov|ogv|webm)((\?|#).*)?$/i)) ? (i = "html5video", 
+                t.videoFormat = t.videoFormat || "video/" + ("ogv" === n[1] ? "ogg" : n[1])) : e.match(/(^data:image\/[a-z0-9+\/=]*,)|(\.(jp(e|g|eg)|gif|png|bmp|webp|svg|ico)((\?|#).*)?$)/i) ? i = "image" : e.match(/\.(pdf)((\?|#).*)?$/i) ? i = "pdf" : (n = e.match(/(?:maps\.)?google\.([a-z]{2,3}(?:\.[a-z]{2})?)\/(?:(?:(?:maps\/(?:place\/(?:.*)\/)?\@(.*),(\d+.?\d+?)z))|(?:\?ll=))(.*)?/i)) ? (t.src = `https://maps.google.${n[1]}/?ll=${(n[2] ? n[2] + "&z=" + Math.floor(parseFloat(n[3])) + (n[4] ? n[4].replace(/^\//, "&") : "") : n[4] + "").replace(/\?/, "&")}&output=${n[4] && n[4].indexOf("layer=c") > 0 ? "svembed" : "embed"}`, 
+                i = "map") : (n = e.match(/(?:maps\.)?google\.([a-z]{2,3}(?:\.[a-z]{2})?)\/(?:maps\/search\/)(.*)/i)) && (t.src = `https://maps.google.${n[1]}/maps?q=${n[2].replace("query=", "q=").replace("api=1", "")}&output=embed`, 
+                i = "map")), i = i || this.instance.option("defaultType"), t.type = i, "image" === i && (t.thumbSrc = t.thumbSrc || t.src);
+            }
+            setContent(t) {
+                const e = this.instance.optionFor(t, "src") || "";
+                if (t && t.type && e) {
+                    switch (t.type) {
+                      case "html":
+                        this.instance.setContent(t, e);
+                        break;
+
+                      case "html5video":
+                        const i = this.option("videoTpl");
+                        i && this.instance.setContent(t, i.replace(/\{\{src\}\}/gi, e + "").replace(/\{\{format\}\}/gi, this.optionFor(t, "videoFormat") || "").replace(/\{\{poster\}\}/gi, t.poster || t.thumbSrc || ""));
+                        break;
+
+                      case "inline":
+                      case "clone":
+                        this.setInlineContent(t);
+                        break;
+
+                      case "ajax":
+                        this.loadAjaxContent(t);
+                        break;
+
+                      case "pdf":
+                      case "map":
+                      case "youtube":
+                      case "vimeo":
+                        t.preload = !1;
+
+                      case "iframe":
+                        this.setIframeContent(t);
+                    }
+                    this.setAspectRatio(t);
+                }
+            }
+            setAspectRatio(t) {
+                var e;
+                const i = t.width || 0, n = t.height || 0;
+                if (i && n) return;
+                const s = t.contentEl, o = this.optionFor(t, "videoRatio"), a = null === (e = t.el) || void 0 === e ? void 0 : e.getBoundingClientRect();
+                if (!(s && a && o && 1 !== o && t.type && [ "video", "youtube", "vimeo", "html5video" ].includes(t.type))) return;
+                const r = a.width, l = a.height;
+                s.style.aspectRatio = o + "", s.style.width = r / l > o ? "auto" : "", s.style.height = r / l > o ? "" : "auto";
+            }
+            attach() {
+                const t = this, e = t.instance;
+                e.on("Carousel.initSlide", t.onInitSlide), e.on("Carousel.createSlide", t.onCreateSlide), 
+                e.on("Carousel.removeSlide", t.onRemoveSlide), e.on("Carousel.selectSlide", t.onSelectSlide), 
+                e.on("Carousel.unselectSlide", t.onUnselectSlide), e.on("Carousel.Panzoom.refresh", t.onRefresh), 
+                e.on("done", t.onDone), window.addEventListener("message", t.onMessage);
+            }
+            detach() {
+                const t = this, e = t.instance;
+                e.off("Carousel.initSlide", t.onInitSlide), e.off("Carousel.createSlide", t.onCreateSlide), 
+                e.off("Carousel.removeSlide", t.onRemoveSlide), e.off("Carousel.selectSlide", t.onSelectSlide), 
+                e.off("Carousel.unselectSlide", t.onUnselectSlide), e.off("Carousel.Panzoom.refresh", t.onRefresh), 
+                e.off("done", t.onDone), window.removeEventListener("message", t.onMessage);
+            }
+        }
+        Object.defineProperty(ht, "defaults", {
+            enumerable: !0,
+            configurable: !0,
+            writable: !0,
+            value: lt
+        });
+        const dt = "play", ut = "pause", pt = "ready";
+        class ft extends B {
+            constructor() {
+                super(...arguments), Object.defineProperty(this, "state", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: pt
+                }), Object.defineProperty(this, "inHover", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: !1
+                }), Object.defineProperty(this, "timer", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: null
+                }), Object.defineProperty(this, "progressBar", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: null
+                });
+            }
+            get isActive() {
+                return this.state !== pt;
+            }
+            onReady(t) {
+                this.option("autoStart") && (t.isInfinite || t.page < t.pages.length - 1) && this.start();
+            }
+            onChange() {
+                var t;
+                (null === (t = this.instance.panzoom) || void 0 === t ? void 0 : t.isResting) || (this.removeProgressBar(), 
+                this.pause());
+            }
+            onSettle() {
+                this.resume();
+            }
+            onVisibilityChange() {
+                "visible" === document.visibilityState ? this.resume() : this.pause();
+            }
+            onMouseEnter() {
+                this.inHover = !0, this.pause();
+            }
+            onMouseLeave() {
+                var t;
+                this.inHover = !1, (null === (t = this.instance.panzoom) || void 0 === t ? void 0 : t.isResting) && this.resume();
+            }
+            onTimerEnd() {
+                const t = this.instance;
+                "play" === this.state && (t.isInfinite || t.page !== t.pages.length - 1 ? t.slideNext() : t.slideTo(0));
+            }
+            removeProgressBar() {
+                this.progressBar && (this.progressBar.remove(), this.progressBar = null);
+            }
+            createProgressBar() {
+                var t;
+                if (!this.option("showProgress")) return null;
+                this.removeProgressBar();
+                const e = this.instance, i = (null === (t = e.pages[e.page]) || void 0 === t ? void 0 : t.slides) || [];
+                let n = this.option("progressParentEl");
+                if (n || (n = (1 === i.length ? i[0].el : null) || e.viewport), !n) return null;
+                const s = document.createElement("div");
+                return S(s, "f-progress"), n.prepend(s), this.progressBar = s, s.offsetHeight, s;
+            }
+            set() {
+                const t = this, e = t.instance;
+                if (e.pages.length < 2) return;
+                if (t.timer) return;
+                const i = t.option("timeout");
+                t.state = dt, S(e.container, "has-autoplay");
+                let n = t.createProgressBar();
+                n && (n.style.transitionDuration = `${i}ms`, n.style.transform = "scaleX(1)"), t.timer = setTimeout((() => {
+                    t.timer = null, t.inHover || t.onTimerEnd();
+                }), i), t.emit("set");
+            }
+            clear() {
+                const t = this;
+                t.timer && (clearTimeout(t.timer), t.timer = null), t.removeProgressBar();
+            }
+            start() {
+                const t = this;
+                if (t.set(), t.state !== pt) {
+                    if (t.option("pauseOnHover")) {
+                        const e = t.instance.container;
+                        e.addEventListener("mouseenter", t.onMouseEnter, !1), e.addEventListener("mouseleave", t.onMouseLeave, !1);
+                    }
+                    document.addEventListener("visibilitychange", t.onVisibilityChange, !1), t.emit("start");
+                }
+            }
+            stop() {
+                const t = this, e = t.state, i = t.instance.container;
+                t.clear(), t.state = pt, i.removeEventListener("mouseenter", t.onMouseEnter, !1), 
+                i.removeEventListener("mouseleave", t.onMouseLeave, !1), document.removeEventListener("visibilitychange", t.onVisibilityChange, !1), 
+                E(i, "has-autoplay"), e !== pt && t.emit("stop");
+            }
+            pause() {
+                const t = this;
+                t.state === dt && (t.state = ut, t.clear(), t.emit(ut));
+            }
+            resume() {
+                const t = this, e = t.instance;
+                if (e.isInfinite || e.page !== e.pages.length - 1) if (t.state !== dt) {
+                    if (t.state === ut && !t.inHover) {
+                        const e = new Event("resume", {
+                            bubbles: !0,
+                            cancelable: !0
+                        });
+                        t.emit("resume", e), e.defaultPrevented || t.set();
+                    }
+                } else t.set(); else t.stop();
+            }
+            toggle() {
+                this.state === dt || this.state === ut ? this.stop() : this.start();
+            }
+            attach() {
+                const t = this, e = t.instance;
+                e.on("ready", t.onReady), e.on("Panzoom.startAnimation", t.onChange), e.on("Panzoom.endAnimation", t.onSettle), 
+                e.on("Panzoom.touchMove", t.onChange);
+            }
+            detach() {
+                const t = this, e = t.instance;
+                e.off("ready", t.onReady), e.off("Panzoom.startAnimation", t.onChange), e.off("Panzoom.endAnimation", t.onSettle), 
+                e.off("Panzoom.touchMove", t.onChange), t.stop();
+            }
+        }
+        Object.defineProperty(ft, "defaults", {
+            enumerable: !0,
+            configurable: !0,
+            writable: !0,
+            value: {
+                autoStart: !0,
+                pauseOnHover: !0,
+                progressParentEl: null,
+                showProgress: !0,
+                timeout: 3e3
+            }
+        });
+        class mt extends B {
+            constructor() {
+                super(...arguments), Object.defineProperty(this, "ref", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: null
+                });
+            }
+            onPrepare(t) {
+                const e = t.carousel;
+                if (!e) return;
+                const i = t.container;
+                i && (e.options.Autoplay = u({
+                    autoStart: !1
+                }, this.option("Autoplay") || {}, {
+                    pauseOnHover: !1,
+                    timeout: this.option("timeout"),
+                    progressParentEl: () => this.option("progressParentEl") || null,
+                    on: {
+                        start: () => {
+                            t.emit("startSlideshow");
+                        },
+                        set: e => {
+                            var n;
+                            i.classList.add("has-slideshow"), (null === (n = t.getSlide()) || void 0 === n ? void 0 : n.state) !== it.Ready && e.pause();
+                        },
+                        stop: () => {
+                            i.classList.remove("has-slideshow"), t.isCompact || t.endIdle(), t.emit("endSlideshow");
+                        },
+                        resume: (e, i) => {
+                            var n, s, o;
+                            !i || !i.cancelable || (null === (n = t.getSlide()) || void 0 === n ? void 0 : n.state) === it.Ready && (null === (o = null === (s = t.carousel) || void 0 === s ? void 0 : s.panzoom) || void 0 === o ? void 0 : o.isResting) || i.preventDefault();
+                        }
+                    }
+                }), e.attachPlugins({
+                    Autoplay: ft
+                }), this.ref = e.plugins.Autoplay);
+            }
+            onReady(t) {
+                const e = t.carousel, i = this.ref;
+                e && i && this.option("playOnStart") && (e.isInfinite || e.page < e.pages.length - 1) && i.start();
+            }
+            onDone(t, e) {
+                const i = this.ref;
+                if (!i) return;
+                const n = e.panzoom;
+                n && n.on("startAnimation", (() => {
+                    t.isCurrentSlide(e) && i.stop();
+                })), t.isCurrentSlide(e) && i.resume();
+            }
+            onKeydown(t, e) {
+                var i;
+                const n = this.ref;
+                n && e === this.option("key") && "BUTTON" !== (null === (i = document.activeElement) || void 0 === i ? void 0 : i.nodeName) && n.toggle();
+            }
+            attach() {
+                const t = this, e = t.instance;
+                e.on("Carousel.init", t.onPrepare), e.on("Carousel.ready", t.onReady), e.on("done", t.onDone), 
+                e.on("keydown", t.onKeydown);
+            }
+            detach() {
+                const t = this, e = t.instance;
+                e.off("Carousel.init", t.onPrepare), e.off("Carousel.ready", t.onReady), e.off("done", t.onDone), 
+                e.off("keydown", t.onKeydown);
+            }
+        }
+        Object.defineProperty(mt, "defaults", {
+            enumerable: !0,
+            configurable: !0,
+            writable: !0,
+            value: {
+                key: " ",
+                playOnStart: !1,
+                progressParentEl: t => {
+                    var e;
+                    return (null === (e = t.instance.container) || void 0 === e ? void 0 : e.querySelector(".fancybox__toolbar [data-fancybox-toggle-slideshow]")) || t.instance.container;
+                },
+                timeout: 3e3
+            }
+        });
+        const gt = {
+            classes: {
+                container: "f-thumbs f-carousel__thumbs",
+                viewport: "f-thumbs__viewport",
+                track: "f-thumbs__track",
+                slide: "f-thumbs__slide",
+                isResting: "is-resting",
+                isSelected: "is-selected",
+                isLoading: "is-loading",
+                hasThumbs: "has-thumbs"
+            },
+            minCount: 2,
+            parentEl: null,
+            thumbTpl: '<button class="f-thumbs__slide__button" tabindex="0" type="button" aria-label="{{GOTO}}" data-carousel-index="%i"><img class="f-thumbs__slide__img" data-lazy-src="{{%s}}" alt="" /></button>',
+            type: "modern"
+        };
+        var bt;
+        !function(t) {
+            t[t.Init = 0] = "Init", t[t.Ready = 1] = "Ready", t[t.Hidden = 2] = "Hidden", t[t.Disabled = 3] = "Disabled";
+        }(bt || (bt = {}));
+        let vt = class extends B {
+            constructor() {
+                super(...arguments), Object.defineProperty(this, "type", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: "modern"
+                }), Object.defineProperty(this, "container", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: null
+                }), Object.defineProperty(this, "track", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: null
+                }), Object.defineProperty(this, "carousel", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: null
+                }), Object.defineProperty(this, "panzoom", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: null
+                }), Object.defineProperty(this, "thumbWidth", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: 0
+                }), Object.defineProperty(this, "thumbClipWidth", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: 0
+                }), Object.defineProperty(this, "thumbHeight", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: 0
+                }), Object.defineProperty(this, "thumbGap", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: 0
+                }), Object.defineProperty(this, "thumbExtraGap", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: 0
+                }), Object.defineProperty(this, "shouldCenter", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: !0
+                }), Object.defineProperty(this, "state", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: bt.Init
+                });
+            }
+            formatThumb(t, e) {
+                return this.instance.localize(e, [ [ "%i", t.index ], [ "%d", t.index + 1 ], [ "%s", t.thumbSrc || "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" ] ]);
+            }
+            getSlides() {
+                const t = [], e = this.option("thumbTpl") || "";
+                if (e) for (const i of this.instance.slides || []) {
+                    let n = "";
+                    i.type && (n = `for-${i.type}`, i.type && [ "video", "youtube", "vimeo", "html5video" ].includes(i.type) && (n += " for-video")), 
+                    t.push({
+                        html: this.formatThumb(i, e),
+                        customClass: n
+                    });
+                }
+                return t;
+            }
+            onInitSlide(t, e) {
+                const i = e.el;
+                i && (e.thumbSrc = i.dataset.thumbSrc || e.thumbSrc || "", e.thumbClipWidth = parseFloat(i.dataset.thumbClipWidth || "") || e.thumbClipWidth || 0, 
+                e.thumbHeight = parseFloat(i.dataset.thumbHeight || "") || e.thumbHeight || 0);
+            }
+            onInitSlides() {
+                this.state === bt.Init && this.build();
+            }
+            onRefreshM() {
+                this.refreshModern();
+            }
+            onChangeM() {
+                "modern" === this.type && (this.shouldCenter = !0, this.centerModern());
+            }
+            onClickModern(t) {
+                t.preventDefault(), t.stopPropagation();
+                const e = this.instance, i = e.page, n = t => {
+                    if (t) {
+                        const e = t.closest("[data-carousel-index]");
+                        if (e) return parseInt(e.dataset.carouselIndex || "", 10) || 0;
+                    }
+                    return -1;
+                }, s = (t, e) => {
+                    const i = document.elementFromPoint(t, e);
+                    return i ? n(i) : -1;
+                };
+                let o = n(t.target);
+                o < 0 && (o = s(t.clientX + this.thumbGap, t.clientY), o === i && (o = i - 1)), 
+                o < 0 && (o = s(t.clientX - this.thumbGap, t.clientY), o === i && (o = i + 1)), 
+                o < 0 && (o = (e => {
+                    let n = s(t.clientX - e, t.clientY), a = s(t.clientX + e, t.clientY);
+                    return o < 0 && n === i && (o = i + 1), o < 0 && a === i && (o = i - 1), o;
+                })(this.thumbExtraGap)), o === i ? this.centerModern() : o > -1 && o < e.pages.length && e.slideTo(o);
+            }
+            onTransformM() {
+                if ("modern" !== this.type) return;
+                const {instance: t, container: e, track: i} = this, n = t.panzoom;
+                if (!(e && i && n && this.panzoom)) return;
+                o(e, this.cn("isResting"), n.state !== g.Init && n.isResting);
+                const s = this.thumbGap, a = this.thumbExtraGap, r = this.thumbClipWidth;
+                let l = 0, c = 0, h = 0;
+                for (const e of t.slides) {
+                    let i = e.index, n = e.thumbSlideEl;
+                    if (!n) continue;
+                    o(n, this.cn("isSelected"), i === t.page), c = 1 - Math.abs(t.getProgress(i)), n.style.setProperty("--progress", c ? c + "" : "");
+                    const d = .5 * ((e.thumbWidth || 0) - r);
+                    l += s, l += d, c && (l -= c * (d + a)), n.style.setProperty("--shift", l - s + ""), 
+                    l += d, c && (l -= c * (d + a)), l -= s, 0 === i && (h = a * c);
+                }
+                i && (i.style.setProperty("--left", h + ""), i.style.setProperty("--width", l + h + s + a * c + "")), 
+                this.shouldCenter && this.centerModern();
+            }
+            buildClassic() {
+                const {container: t, track: e} = this, i = this.getSlides();
+                if (!t || !e || !i) return;
+                const n = new this.instance.constructor(t, u({
+                    track: e,
+                    infinite: !1,
+                    center: !0,
+                    fill: !0,
+                    dragFree: !0,
+                    slidesPerPage: 1,
+                    transition: !1,
+                    Dots: !1,
+                    Navigation: !1,
+                    classes: {
+                        container: "f-thumbs",
+                        viewport: "f-thumbs__viewport",
+                        track: "f-thumbs__track",
+                        slide: "f-thumbs__slide"
+                    }
+                }, this.option("Carousel") || {}, {
+                    Sync: {
+                        target: this.instance
+                    },
+                    slides: i
+                }));
+                this.carousel = n, this.track = e, n.on("ready", (() => {
+                    this.emit("ready");
+                })), n.on("createSlide", ((t, e) => {
+                    this.emit("createSlide", e, e.el);
+                }));
+            }
+            buildModern() {
+                if ("modern" !== this.type) return;
+                const {container: t, track: e, instance: i} = this, s = this.option("thumbTpl") || "";
+                if (!t || !e || !s) return;
+                t.addEventListener("keydown", (() => {
+                    E(t, "is-using-mouse");
+                })), S(t, "is-horizontal"), this.updateModern();
+                for (const t of i.slides || []) {
+                    const i = document.createElement("div");
+                    if (S(i, this.cn("slide")), t.type) {
+                        let e = `for-${t.type}`;
+                        [ "video", "youtube", "vimeo", "html5video" ].includes(t.type) && (e += " for-video"), 
+                        S(i, e);
+                    }
+                    i.appendChild(n(this.formatThumb(t, s))), this.emit("createSlide", t, i), t.thumbSlideEl = i, 
+                    e.appendChild(i), this.resizeModernSlide(t);
+                }
+                const o = new i.constructor.Panzoom(t, {
+                    content: e,
+                    lockAxis: "x",
+                    zoom: !1,
+                    panOnlyZoomed: !1,
+                    bounds: () => {
+                        let t = 0, e = 0, n = i.slides[0], s = i.slides[i.slides.length - 1], o = i.slides[i.page];
+                        return n && s && o && (e = -1 * this.getModernThumbPos(0), 0 !== i.page && (e += .5 * (n.thumbWidth || 0)), 
+                        t = -1 * this.getModernThumbPos(i.slides.length - 1), i.page !== i.slides.length - 1 && (t += (s.thumbWidth || 0) - (o.thumbWidth || 0) - .5 * (s.thumbWidth || 0))), 
+                        {
+                            x: {
+                                min: t,
+                                max: e
+                            },
+                            y: {
+                                min: 0,
+                                max: 0
+                            }
+                        };
+                    }
+                });
+                o.on("touchStart", ((t, e) => {
+                    this.shouldCenter = !1, S(this.container, "is-using-mouse");
+                })), o.on("click", ((t, e) => this.onClickModern(e))), o.on("ready", (() => {
+                    this.centerModern(), this.emit("ready");
+                })), o.on([ "afterTransform", "refresh" ], (t => {
+                    this.lazyLoadModern();
+                })), this.panzoom = o, this.refreshModern();
+            }
+            updateModern() {
+                if ("modern" !== this.type) return;
+                const {container: t} = this;
+                t && (this.thumbGap = parseFloat(getComputedStyle(t).getPropertyValue("--f-thumb-gap")) || 0, 
+                this.thumbExtraGap = parseFloat(getComputedStyle(t).getPropertyValue("--f-thumb-extra-gap")) || 0, 
+                this.thumbWidth = parseFloat(getComputedStyle(t).getPropertyValue("--f-thumb-width")) || 40, 
+                this.thumbClipWidth = parseFloat(getComputedStyle(t).getPropertyValue("--f-thumb-clip-width")) || 40, 
+                this.thumbHeight = parseFloat(getComputedStyle(t).getPropertyValue("--f-thumb-height")) || 40);
+            }
+            refreshModern() {
+                var t;
+                if ("modern" === this.type) {
+                    this.updateModern();
+                    for (const t of this.instance.slides || []) this.resizeModernSlide(t);
+                    this.onTransformM(), null === (t = this.panzoom) || void 0 === t || t.updateMetrics(!0), 
+                    this.centerModern(0);
+                }
+            }
+            centerModern(e) {
+                const i = this.instance, {container: n, panzoom: s} = this;
+                if (!n || !s || s.state === g.Init) return;
+                const o = i.page;
+                let a = this.getModernThumbPos(o), r = a;
+                for (let t = i.page - 3; t < i.page + 3; t++) {
+                    if (t < 0 || t > i.pages.length - 1 || t === i.page) continue;
+                    const e = 1 - Math.abs(i.getProgress(t));
+                    e > 0 && e < 1 && (r += e * (this.getModernThumbPos(t) - a));
+                }
+                let l = 100;
+                void 0 === e && (e = .2, i.inTransition.size > 0 && (e = .12), Math.abs(-1 * s.current.e - r) > s.containerRect.width && (e = .5, 
+                l = 0)), s.options.maxVelocity = l, s.applyChange({
+                    panX: t(-1 * r - s.target.e, 1e3),
+                    friction: null === i.prevPage ? 0 : e
+                });
+            }
+            lazyLoadModern() {
+                const {instance: t, panzoom: e} = this;
+                if (!e) return;
+                const i = -1 * e.current.e || 0;
+                let s = this.getModernThumbPos(t.page);
+                if (e.state !== g.Init || 0 === s) for (const s of t.slides || []) {
+                    const t = s.thumbSlideEl;
+                    if (!t) continue;
+                    const o = t.querySelector("img[data-lazy-src]"), a = s.index, r = this.getModernThumbPos(a), l = i - .5 * e.containerRect.innerWidth, c = l + e.containerRect.innerWidth;
+                    if (!o || r < l || r > c) continue;
+                    let h = o.dataset.lazySrc;
+                    if (!h || !h.length) continue;
+                    if (delete o.dataset.lazySrc, o.src = h, o.complete) continue;
+                    S(t, this.cn("isLoading"));
+                    const d = n(w);
+                    t.appendChild(d), o.addEventListener("load", (() => {
+                        t.offsetParent && (t.classList.remove(this.cn("isLoading")), d.remove());
+                    }), !1);
+                }
+            }
+            resizeModernSlide(t) {
+                if ("modern" !== this.type) return;
+                if (!t.thumbSlideEl) return;
+                const e = t.thumbClipWidth && t.thumbHeight ? Math.round(this.thumbHeight * (t.thumbClipWidth / t.thumbHeight)) : this.thumbWidth;
+                t.thumbWidth = e;
+            }
+            getModernThumbPos(e) {
+                const i = this.instance.slides[e], n = this.panzoom;
+                if (!n || !n.contentRect.fitWidth) return 0;
+                let s = n.containerRect.innerWidth, o = n.contentRect.width;
+                2 === this.instance.slides.length && (e -= 1, o = 2 * this.thumbClipWidth);
+                let a = e * (this.thumbClipWidth + this.thumbGap) + this.thumbExtraGap + .5 * (i.thumbWidth || 0);
+                return a -= o > s ? .5 * s : .5 * o, t(a || 0, 1);
+            }
+            build() {
+                const t = this.instance, e = t.container, i = this.option("minCount") || 0;
+                if (i) {
+                    let e = 0;
+                    for (const i of t.slides || []) i.thumbSrc && e++;
+                    if (e < i) return this.cleanup(), void (this.state = bt.Disabled);
+                }
+                const n = this.option("type");
+                if ([ "modern", "classic" ].indexOf(n) < 0) return void (this.state = bt.Disabled);
+                this.type = n;
+                const s = document.createElement("div");
+                S(s, this.cn("container")), S(s, `is-${n}`);
+                const o = this.option("parentEl");
+                o ? o.appendChild(s) : e.after(s), this.container = s, S(e, this.cn("hasThumbs"));
+                const a = document.createElement("div");
+                S(a, this.cn("track")), s.appendChild(a), this.track = a, "classic" === n ? this.buildClassic() : this.buildModern(), 
+                this.state = bt.Ready;
+            }
+            cleanup() {
+                this.carousel && this.carousel.destroy(), this.carousel = null, this.panzoom && this.panzoom.destroy(), 
+                this.panzoom = null, this.container && this.container.remove(), this.container = null, 
+                this.track = null, this.state = bt.Init, E(this.instance.container, this.cn("hasThumbs"));
+            }
+            attach() {
+                const t = this, e = t.instance;
+                e.on("initSlide", t.onInitSlide), e.state === F.Init ? e.on("initSlides", t.onInitSlides) : t.onInitSlides(), 
+                e.on("Panzoom.afterTransform", t.onTransformM), e.on("Panzoom.refresh", t.onRefreshM), 
+                e.on("change", t.onChangeM);
+            }
+            detach() {
+                const t = this, e = t.instance;
+                e.off("initSlide", t.onInitSlide), e.off("initSlides", t.onInitSlides), e.off("Panzoom.afterTransform", t.onTransformM), 
+                e.off("Panzoom.refresh", t.onRefreshM), e.off("change", t.onChangeM), t.cleanup();
+            }
+        };
+        Object.defineProperty(vt, "defaults", {
+            enumerable: !0,
+            configurable: !0,
+            writable: !0,
+            value: gt
+        });
+        const yt = Object.assign(Object.assign({}, gt), {
+            key: "t",
+            showOnStart: !0,
+            parentEl: null
+        }), wt = "is-masked", xt = "aria-hidden";
+        class Et extends B {
+            constructor() {
+                super(...arguments), Object.defineProperty(this, "ref", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: null
+                }), Object.defineProperty(this, "hidden", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: !1
+                });
+            }
+            get isEnabled() {
+                const t = this.ref;
+                return t && t.state !== bt.Disabled;
+            }
+            get isHidden() {
+                return this.hidden;
+            }
+            onInit() {
+                var t;
+                const e = this, i = e.instance, n = i.carousel;
+                if (e.ref || !n) return;
+                const s = e.option("parentEl") || i.footer || i.container;
+                if (!s) return;
+                const o = u({}, e.options, {
+                    parentEl: s,
+                    classes: {
+                        container: "f-thumbs fancybox__thumbs"
+                    },
+                    Carousel: {
+                        Sync: {
+                            friction: i.option("Carousel.friction") || 0
+                        }
+                    },
+                    on: {
+                        ready: t => {
+                            const i = t.container;
+                            i && this.hidden && (e.refresh(), i.style.transition = "none", e.hide(), i.offsetHeight, 
+                            queueMicrotask((() => {
+                                i.style.transition = "", e.show();
+                            })));
+                        }
+                    }
+                });
+                o.Carousel = o.Carousel || {}, o.Carousel.on = u((null === (t = e.options.Carousel) || void 0 === t ? void 0 : t.on) || {}, {
+                    click: (t, e) => {
+                        e.stopPropagation();
+                    }
+                }), n.options.Thumbs = o, n.attachPlugins({
+                    Thumbs: vt
+                }), e.ref = n.plugins.Thumbs, e.option("showOnStart") || (e.ref.state = bt.Hidden, 
+                e.hidden = !0);
+            }
+            onResize() {
+                var t;
+                const e = null === (t = this.ref) || void 0 === t ? void 0 : t.container;
+                e && (e.style.maxHeight = "");
+            }
+            onKeydown(t, e) {
+                const i = this.option("key");
+                i && i === e && this.toggle();
+            }
+            toggle() {
+                const t = this.ref;
+                t && t.state !== bt.Disabled && (t.state !== bt.Hidden ? this.hidden ? this.show() : this.hide() : t.build());
+            }
+            show() {
+                const t = this.ref, e = t && t.state !== bt.Disabled && t.container;
+                e && (this.refresh(), e.offsetHeight, e.removeAttribute(xt), e.classList.remove(wt), 
+                this.hidden = !1);
+            }
+            hide() {
+                const t = this.ref, e = t && t.container;
+                e && (this.refresh(), e.offsetHeight, e.classList.add(wt), e.setAttribute(xt, "true")), 
+                this.hidden = !0;
+            }
+            refresh() {
+                const t = this.ref;
+                if (!t || t.state === bt.Disabled) return;
+                const e = t.container, i = (null == e ? void 0 : e.firstChild) || null;
+                e && i && i.childNodes.length && (e.style.maxHeight = `${i.getBoundingClientRect().height}px`);
+            }
+            attach() {
+                const t = this, e = t.instance;
+                e.state === et.Init ? e.on("Carousel.init", t.onInit) : t.onInit(), e.on("resize", t.onResize), 
+                e.on("keydown", t.onKeydown);
+            }
+            detach() {
+                var t;
+                const e = this, i = e.instance;
+                i.off("Carousel.init", e.onInit), i.off("resize", e.onResize), i.off("keydown", e.onKeydown), 
+                null === (t = i.carousel) || void 0 === t || t.detachPlugins([ "Thumbs" ]), e.ref = null;
+            }
+        }
+        Object.defineProperty(Et, "defaults", {
+            enumerable: !0,
+            configurable: !0,
+            writable: !0,
+            value: yt
+        });
+        const St = {
+            panLeft: {
+                icon: '<svg><path d="M5 12h14M5 12l6 6M5 12l6-6"/></svg>',
+                change: {
+                    panX: -100
+                }
+            },
+            panRight: {
+                icon: '<svg><path d="M5 12h14M13 18l6-6M13 6l6 6"/></svg>',
+                change: {
+                    panX: 100
+                }
+            },
+            panUp: {
+                icon: '<svg><path d="M12 5v14M18 11l-6-6M6 11l6-6"/></svg>',
+                change: {
+                    panY: -100
+                }
+            },
+            panDown: {
+                icon: '<svg><path d="M12 5v14M18 13l-6 6M6 13l6 6"/></svg>',
+                change: {
+                    panY: 100
+                }
+            },
+            zoomIn: {
+                icon: '<svg><circle cx="11" cy="11" r="7.5"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>',
+                action: "zoomIn"
+            },
+            zoomOut: {
+                icon: '<svg><circle cx="11" cy="11" r="7.5"/><path d="m21 21-4.35-4.35M8 11h6"/></svg>',
+                action: "zoomOut"
+            },
+            toggle1to1: {
+                icon: '<svg><path d="M3.51 3.07c5.74.02 11.48-.02 17.22.02 1.37.1 2.34 1.64 2.18 3.13 0 4.08.02 8.16 0 12.23-.1 1.54-1.47 2.64-2.79 2.46-5.61-.01-11.24.02-16.86-.01-1.36-.12-2.33-1.65-2.17-3.14 0-4.07-.02-8.16 0-12.23.1-1.36 1.22-2.48 2.42-2.46Z"/><path d="M5.65 8.54h1.49v6.92m8.94-6.92h1.49v6.92M11.5 9.4v.02m0 5.18v0"/></svg>',
+                action: "toggleZoom"
+            },
+            toggleZoom: {
+                icon: '<svg><g><line x1="11" y1="8" x2="11" y2="14"></line></g><circle cx="11" cy="11" r="7.5"/><path d="m21 21-4.35-4.35M8 11h6"/></svg>',
+                action: "toggleZoom"
+            },
+            iterateZoom: {
+                icon: '<svg><g><line x1="11" y1="8" x2="11" y2="14"></line></g><circle cx="11" cy="11" r="7.5"/><path d="m21 21-4.35-4.35M8 11h6"/></svg>',
+                action: "iterateZoom"
+            },
+            rotateCCW: {
+                icon: '<svg><path d="M15 4.55a8 8 0 0 0-6 14.9M9 15v5H4M18.37 7.16v.01M13 19.94v.01M16.84 18.37v.01M19.37 15.1v.01M19.94 11v.01"/></svg>',
+                action: "rotateCCW"
+            },
+            rotateCW: {
+                icon: '<svg><path d="M9 4.55a8 8 0 0 1 6 14.9M15 15v5h5M5.63 7.16v.01M4.06 11v.01M4.63 15.1v.01M7.16 18.37v.01M11 19.94v.01"/></svg>',
+                action: "rotateCW"
+            },
+            flipX: {
+                icon: '<svg style="stroke-width: 1.3"><path d="M12 3v18M16 7v10h5L16 7M8 7v10H3L8 7"/></svg>',
+                action: "flipX"
+            },
+            flipY: {
+                icon: '<svg style="stroke-width: 1.3"><path d="M3 12h18M7 16h10L7 21v-5M7 8h10L7 3v5"/></svg>',
+                action: "flipY"
+            },
+            fitX: {
+                icon: '<svg><path d="M4 12V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6M10 18H3M21 18h-7M6 15l-3 3 3 3M18 15l3 3-3 3"/></svg>',
+                action: "fitX"
+            },
+            fitY: {
+                icon: '<svg><path d="M12 20H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h6M18 14v7M18 3v7M15 18l3 3 3-3M15 6l3-3 3 3"/></svg>',
+                action: "fitY"
+            },
+            reset: {
+                icon: '<svg><path d="M20 11A8.1 8.1 0 0 0 4.5 9M4 5v4h4M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4"/></svg>',
+                action: "reset"
+            },
+            toggleFS: {
+                icon: '<svg><g><path d="M14.5 9.5 21 3m0 0h-6m6 0v6M3 21l6.5-6.5M3 21v-6m0 6h6"/></g><g><path d="m14 10 7-7m-7 7h6m-6 0V4M3 21l7-7m0 0v6m0-6H4"/></g></svg>',
+                action: "toggleFS"
+            }
+        };
+        var Pt;
+        !function(t) {
+            t[t.Init = 0] = "Init", t[t.Ready = 1] = "Ready", t[t.Disabled = 2] = "Disabled";
+        }(Pt || (Pt = {}));
+        const Ct = {
+            absolute: "auto",
+            display: {
+                left: [ "infobar" ],
+                middle: [],
+                right: [ "iterateZoom", "slideshow", "fullscreen", "thumbs", "close" ]
+            },
+            enabled: "auto",
+            items: {
+                infobar: {
+                    tpl: '<div class="fancybox__infobar" tabindex="-1"><span data-fancybox-current-index></span>/<span data-fancybox-count></span></div>'
+                },
+                download: {
+                    tpl: '<a class="f-button" title="{{DOWNLOAD}}" data-fancybox-download href="javasript:;"><svg><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2M7 11l5 5 5-5M12 4v12"/></svg></a>'
+                },
+                prev: {
+                    tpl: '<button class="f-button" title="{{PREV}}" data-fancybox-prev><svg><path d="m15 6-6 6 6 6"/></svg></button>'
+                },
+                next: {
+                    tpl: '<button class="f-button" title="{{NEXT}}" data-fancybox-next><svg><path d="m9 6 6 6-6 6"/></svg></button>'
+                },
+                slideshow: {
+                    tpl: '<button class="f-button" title="{{TOGGLE_SLIDESHOW}}" data-fancybox-toggle-slideshow><svg><g><path d="M8 4v16l13 -8z"></path></g><g><path d="M8 4v15M17 4v15"/></g></svg></button>'
+                },
+                fullscreen: {
+                    tpl: '<button class="f-button" title="{{TOGGLE_FULLSCREEN}}" data-fancybox-toggle-fullscreen><svg><g><path d="M4 8V6a2 2 0 0 1 2-2h2M4 16v2a2 2 0 0 0 2 2h2M16 4h2a2 2 0 0 1 2 2v2M16 20h2a2 2 0 0 0 2-2v-2"/></g><g><path d="M15 19v-2a2 2 0 0 1 2-2h2M15 5v2a2 2 0 0 0 2 2h2M5 15h2a2 2 0 0 1 2 2v2M5 9h2a2 2 0 0 0 2-2V5"/></g></svg></button>'
+                },
+                thumbs: {
+                    tpl: '<button class="f-button" title="{{TOGGLE_THUMBS}}" data-fancybox-toggle-thumbs><svg><circle cx="5.5" cy="5.5" r="1"/><circle cx="12" cy="5.5" r="1"/><circle cx="18.5" cy="5.5" r="1"/><circle cx="5.5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="18.5" cy="12" r="1"/><circle cx="5.5" cy="18.5" r="1"/><circle cx="12" cy="18.5" r="1"/><circle cx="18.5" cy="18.5" r="1"/></svg></button>'
+                },
+                close: {
+                    tpl: '<button class="f-button" title="{{CLOSE}}" data-fancybox-close><svg><path d="m19.5 4.5-15 15M4.5 4.5l15 15"/></svg></button>'
+                }
+            },
+            parentEl: null
+        }, Mt = {
+            tabindex: "-1",
+            width: "24",
+            height: "24",
+            viewBox: "0 0 24 24",
+            xmlns: "http://www.w3.org/2000/svg"
+        };
+        class Tt extends B {
+            constructor() {
+                super(...arguments), Object.defineProperty(this, "state", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: Pt.Init
+                }), Object.defineProperty(this, "container", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: null
+                });
+            }
+            onReady(t) {
+                var e;
+                if (!t.carousel) return;
+                let i = this.option("display"), n = this.option("absolute"), s = this.option("enabled");
+                if ("auto" === s) {
+                    const t = this.instance.carousel;
+                    let e = 0;
+                    if (t) for (const i of t.slides) (i.panzoom || "image" === i.type) && e++;
+                    e || (s = !1);
+                }
+                s || (i = void 0);
+                let o = 0;
+                const a = {
+                    left: [],
+                    middle: [],
+                    right: []
+                };
+                if (i) for (const t of [ "left", "middle", "right" ]) for (const n of i[t]) {
+                    const i = this.createEl(n);
+                    i && (null === (e = a[t]) || void 0 === e || e.push(i), o++);
+                }
+                let r = null;
+                if (o && (r = this.createContainer()), r) {
+                    for (const [t, e] of Object.entries(a)) {
+                        const i = document.createElement("div");
+                        S(i, "fancybox__toolbar__column is-" + t);
+                        for (const t of e) i.appendChild(t);
+                        "auto" !== n || "middle" !== t || e.length || (n = !0), r.appendChild(i);
+                    }
+                    !0 === n && S(r, "is-absolute"), this.state = Pt.Ready, this.onRefresh();
+                } else this.state = Pt.Disabled;
+            }
+            onClick(t) {
+                var e, i;
+                const n = this.instance, s = n.getSlide(), o = null == s ? void 0 : s.panzoom, a = t.target, r = a && x(a) ? a.dataset : null;
+                if (!r) return;
+                if (void 0 !== r.fancyboxToggleThumbs) return t.preventDefault(), t.stopPropagation(), 
+                void (null === (e = n.plugins.Thumbs) || void 0 === e || e.toggle());
+                if (void 0 !== r.fancyboxToggleFullscreen) return t.preventDefault(), t.stopPropagation(), 
+                void this.instance.toggleFullscreen();
+                if (void 0 !== r.fancyboxToggleSlideshow) {
+                    t.preventDefault(), t.stopPropagation();
+                    const e = null === (i = n.carousel) || void 0 === i ? void 0 : i.plugins.Autoplay;
+                    let s = e.isActive;
+                    return o && "mousemove" === o.panMode && !s && o.reset(), void (s ? e.stop() : e.start());
+                }
+                const l = r.panzoomAction, c = r.panzoomChange;
+                if ((c || l) && (t.preventDefault(), t.stopPropagation()), c) {
+                    let t = {};
+                    try {
+                        t = JSON.parse(c);
+                    } catch (t) {}
+                    o && o.applyChange(t);
+                } else l && o && o[l] && o[l]();
+            }
+            onChange() {
+                this.onRefresh();
+            }
+            onRefresh() {
+                if (this.instance.isClosing()) return;
+                const t = this.container;
+                if (!t) return;
+                const e = this.instance.getSlide();
+                if (!e || e.state !== it.Ready) return;
+                const i = e && !e.error && e.panzoom;
+                for (const e of t.querySelectorAll("[data-panzoom-action]")) i ? (e.removeAttribute("disabled"), 
+                e.removeAttribute("tabindex")) : (e.setAttribute("disabled", ""), e.setAttribute("tabindex", "-1"));
+                let n = i && i.canZoomIn(), s = i && i.canZoomOut();
+                for (const e of t.querySelectorAll('[data-panzoom-action="zoomIn"]')) n ? (e.removeAttribute("disabled"), 
+                e.removeAttribute("tabindex")) : (e.setAttribute("disabled", ""), e.setAttribute("tabindex", "-1"));
+                for (const e of t.querySelectorAll('[data-panzoom-action="zoomOut"]')) s ? (e.removeAttribute("disabled"), 
+                e.removeAttribute("tabindex")) : (e.setAttribute("disabled", ""), e.setAttribute("tabindex", "-1"));
+                for (const e of t.querySelectorAll('[data-panzoom-action="toggleZoom"],[data-panzoom-action="iterateZoom"]')) {
+                    s || n ? (e.removeAttribute("disabled"), e.removeAttribute("tabindex")) : (e.setAttribute("disabled", ""), 
+                    e.setAttribute("tabindex", "-1"));
+                    const t = e.querySelector("g");
+                    t && (t.style.display = n ? "" : "none");
+                }
+            }
+            onDone(t, e) {
+                var i;
+                null === (i = e.panzoom) || void 0 === i || i.on("afterTransform", (() => {
+                    this.instance.isCurrentSlide(e) && this.onRefresh();
+                })), this.instance.isCurrentSlide(e) && this.onRefresh();
+            }
+            createContainer() {
+                const t = this.instance.container;
+                if (!t) return null;
+                const e = this.option("parentEl") || t, i = document.createElement("div");
+                return S(i, "fancybox__toolbar"), e.prepend(i), i.addEventListener("click", this.onClick, {
+                    passive: !1,
+                    capture: !0
+                }), t && S(t, "has-toolbar"), this.container = i, i;
+            }
+            createEl(t) {
+                const e = this.instance, i = e.carousel;
+                if (!i) return null;
+                if ("toggleFS" === t) return null;
+                if ("fullscreen" === t && !e.fsAPI) return null;
+                let s = null;
+                const o = i.slides.length || 0;
+                let a = 0, r = 0;
+                for (const t of i.slides) (t.panzoom || "image" === t.type) && a++, ("image" === t.type || t.downloadSrc) && r++;
+                if (o < 2 && [ "infobar", "prev", "next" ].includes(t)) return s;
+                if (void 0 !== St[t] && !a) return null;
+                if ("download" === t && !r) return null;
+                if ("thumbs" === t) {
+                    const t = e.plugins.Thumbs;
+                    if (!t || !t.isEnabled) return null;
+                }
+                if ("slideshow" === t) if (!i.plugins.Autoplay || o < 2) return null;
+                if (void 0 !== St[t]) {
+                    const e = St[t];
+                    s = document.createElement("button"), s.setAttribute("title", this.instance.localize(`{{${t.toUpperCase()}}}`)), 
+                    S(s, "f-button"), e.action && (s.dataset.panzoomAction = e.action), e.change && (s.dataset.panzoomChange = JSON.stringify(e.change)), 
+                    s.appendChild(n(this.instance.localize(e.icon)));
+                } else {
+                    const e = (this.option("items") || [])[t];
+                    e && (s = n(this.instance.localize(e.tpl)), "function" == typeof e.click && s.addEventListener("click", (t => {
+                        t.preventDefault(), t.stopPropagation(), "function" == typeof e.click && e.click.call(this, this, t);
+                    })));
+                }
+                const l = null == s ? void 0 : s.querySelector("svg");
+                if (l) for (const [t, e] of Object.entries(Mt)) l.getAttribute(t) || l.setAttribute(t, String(e));
+                return s;
+            }
+            removeContainer() {
+                const t = this.container;
+                t && t.remove(), this.container = null, this.state = Pt.Disabled;
+                const e = this.instance.container;
+                e && E(e, "has-toolbar");
+            }
+            attach() {
+                const t = this, e = t.instance;
+                e.on("Carousel.initSlides", t.onReady), e.on("done", t.onDone), e.on("reveal", t.onChange), 
+                e.on("Carousel.change", t.onChange), t.onReady(t.instance);
+            }
+            detach() {
+                const t = this, e = t.instance;
+                e.off("Carousel.initSlides", t.onReady), e.off("done", t.onDone), e.off("reveal", t.onChange), 
+                e.off("Carousel.change", t.onChange), t.removeContainer();
+            }
+        }
+        Object.defineProperty(Tt, "defaults", {
+            enumerable: !0,
+            configurable: !0,
+            writable: !0,
+            value: Ct
+        });
+        const Ot = {
+            Hash: st,
+            Html: ht,
+            Images: at,
+            Slideshow: mt,
+            Thumbs: Et,
+            Toolbar: Tt
+        }, At = "with-fancybox", zt = "hide-scrollbar", Lt = "--fancybox-scrollbar-compensate", Rt = "--fancybox-body-margin", kt = "is-animated", It = "is-compact", Dt = "is-loading", Ft = function() {
+            var t = window.getSelection();
+            return t && "Range" === t.type;
+        };
+        let jt = null, Ht = null;
+        const Bt = new Map;
+        let Nt = 0;
+        class _t extends m {
+            get isIdle() {
+                return this.idle;
+            }
+            get isCompact() {
+                return this.option("compact");
+            }
+            constructor(t = [], e = {}, i = {}) {
+                super(e), Object.defineProperty(this, "userSlides", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: []
+                }), Object.defineProperty(this, "userPlugins", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: {}
+                }), Object.defineProperty(this, "idle", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: !1
+                }), Object.defineProperty(this, "idleTimer", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: null
+                }), Object.defineProperty(this, "clickTimer", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: null
+                }), Object.defineProperty(this, "pwt", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: 0
+                }), Object.defineProperty(this, "ignoreFocusChange", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: !1
+                }), Object.defineProperty(this, "state", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: et.Init
+                }), Object.defineProperty(this, "id", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: 0
+                }), Object.defineProperty(this, "container", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: null
+                }), Object.defineProperty(this, "footer", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: null
+                }), Object.defineProperty(this, "caption", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: null
+                }), Object.defineProperty(this, "carousel", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: null
+                }), Object.defineProperty(this, "lastFocus", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: null
+                }), Object.defineProperty(this, "prevMouseMoveEvent", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: void 0
+                }), Object.defineProperty(this, "fsAPI", {
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                    value: void 0
+                }), this.fsAPI = (() => {
+                    let t, e = "", i = "", n = "";
+                    return document.fullscreenEnabled ? (e = "requestFullscreen", i = "exitFullscreen", 
+                    n = "fullscreenElement") : document.webkitFullscreenEnabled && (e = "webkitRequestFullscreen", 
+                    i = "webkitExitFullscreen", n = "webkitFullscreenElement"), e && (t = {
+                        request: function(t) {
+                            return "webkitRequestFullscreen" === e ? t[e](Element.ALLOW_KEYBOARD_INPUT) : t[e]();
+                        },
+                        exit: function() {
+                            return document[n] && document[i]();
+                        },
+                        isFullscreen: function() {
+                            return document[n];
+                        }
+                    }), t;
+                })(), this.id = e.id || ++Nt, Bt.set(this.id, this), this.userSlides = t, this.userPlugins = i, 
+                queueMicrotask((() => {
+                    this.init();
+                }));
+            }
+            init() {
+                if (this.state === et.Destroy) return;
+                this.state = et.Init, this.attachPlugins(Object.assign(Object.assign({}, _t.Plugins), this.userPlugins)), 
+                this.emit("init"), !0 === this.option("hideScrollbar") && (() => {
+                    if (!G) return;
+                    const t = document.body;
+                    if (t.classList.contains(zt)) return;
+                    let e = window.innerWidth - document.documentElement.getBoundingClientRect().width;
+                    e < 0 && (e = 0);
+                    const i = t.currentStyle || window.getComputedStyle(t), n = parseFloat(i.marginRight);
+                    document.documentElement.style.setProperty(Lt, `${e}px`), n && t.style.setProperty(Rt, `${n}px`), 
+                    t.classList.add(zt);
+                })(), this.initLayout(), this.scale();
+                const t = () => {
+                    this.initCarousel(this.userSlides), this.state = et.Ready, this.attachEvents(), 
+                    this.emit("ready"), setTimeout((() => {
+                        this.container && this.container.setAttribute("aria-hidden", "false");
+                    }), 16);
+                }, e = this.fsAPI;
+                this.option("Fullscreen.autoStart") && e && !e.isFullscreen() ? e.request(this.container).then((() => t())).catch((() => t())) : t();
+            }
+            initLayout() {
+                var t, e;
+                const i = this.option("parentEl") || document.body, s = n(this.localize(this.option("tpl.main") || ""));
+                s && (s.setAttribute("id", `fancybox-${this.id}`), s.setAttribute("aria-label", this.localize("{{MODAL}}")), 
+                s.classList.toggle(It, this.isCompact), S(s, this.option("mainClass") || ""), this.container = s, 
+                this.footer = s.querySelector(".fancybox__footer"), i.appendChild(s), S(document.documentElement, At), 
+                jt && Ht || (jt = document.createElement("span"), S(jt, "fancybox-focus-guard"), 
+                jt.setAttribute("tabindex", "0"), jt.setAttribute("aria-hidden", "true"), jt.setAttribute("aria-label", "Focus guard"), 
+                Ht = jt.cloneNode(), null === (t = s.parentElement) || void 0 === t || t.insertBefore(jt, s), 
+                null === (e = s.parentElement) || void 0 === e || e.append(Ht)), this.option("animated") && (S(s, kt), 
+                setTimeout((() => {
+                    this.isClosing() || E(s, kt);
+                }), 350)), this.emit("initLayout"));
+            }
+            initCarousel(t) {
+                const i = this.container;
+                if (!i) return;
+                const n = i.querySelector(".fancybox__carousel");
+                if (!n) return;
+                const s = this.carousel = new Z(n, u({}, {
+                    slides: t,
+                    transition: "fade",
+                    Panzoom: {
+                        lockAxis: this.option("dragToClose") ? "xy" : "x",
+                        infinite: !!this.option("dragToClose") && "y"
+                    },
+                    Dots: !1,
+                    Navigation: {
+                        classes: {
+                            container: "fancybox__nav",
+                            button: "f-button",
+                            isNext: "is-next",
+                            isPrev: "is-prev"
+                        }
+                    },
+                    initialPage: this.option("startIndex"),
+                    l10n: this.option("l10n")
+                }, this.option("Carousel") || {}));
+                s.on("*", ((t, e, ...i) => {
+                    this.emit(`Carousel.${e}`, t, ...i);
+                })), s.on([ "ready", "change" ], (() => {
+                    var t;
+                    const e = this.getSlide();
+                    e && (null === (t = e.panzoom) || void 0 === t || t.updateControls()), this.manageCaption(e);
+                })), this.on("Carousel.removeSlide", ((t, e, i) => {
+                    i.contentEl && (i.contentEl.remove(), i.contentEl = void 0);
+                    const n = i.el;
+                    n && (E(n, "has-error"), E(n, "has-unknown"), E(n, `has-${i.type || "unknown"}`)), 
+                    i.closeBtnEl && i.closeBtnEl.remove(), i.closeBtnEl = void 0, i.captionEl && i.captionEl.remove(), 
+                    i.captionEl = void 0, i.spinnerEl && i.spinnerEl.remove(), i.spinnerEl = void 0, 
+                    i.state = void 0;
+                })), s.on("Panzoom.touchStart", (() => {
+                    var t, e;
+                    this.isCompact || this.endIdle(), (null === (t = document.activeElement) || void 0 === t ? void 0 : t.closest(".f-thumbs")) && (null === (e = this.container) || void 0 === e || e.focus());
+                })), s.on("settle", (() => {
+                    this.idleTimer || this.isCompact || !this.option("idle") || this.setIdle(), this.option("autoFocus") && !this.isClosing && this.checkFocus();
+                })), this.option("dragToClose") && (s.on("Panzoom.afterTransform", ((t, i) => {
+                    const n = this.getSlide();
+                    if (n && e(n.el)) return;
+                    const s = this.container;
+                    if (s) {
+                        const t = Math.abs(i.current.f), e = t < 1 ? "" : Math.max(.5, Math.min(1, 1 - t / i.contentRect.fitHeight * 1.5));
+                        s.style.setProperty("--fancybox-ts", e ? "0s" : ""), s.style.setProperty("--fancybox-opacity", e + "");
+                    }
+                })), s.on("Panzoom.touchEnd", ((t, i, n) => {
+                    var s;
+                    const o = this.getSlide();
+                    if (o && e(o.el)) return;
+                    if (i.isMobile && document.activeElement && -1 !== [ "TEXTAREA", "INPUT" ].indexOf(null === (s = document.activeElement) || void 0 === s ? void 0 : s.nodeName)) return;
+                    const a = Math.abs(i.dragOffset.y);
+                    "y" === i.lockedAxis && (a >= 200 || a >= 50 && i.dragOffset.time < 300) && (n && n.cancelable && n.preventDefault(), 
+                    this.close(n, "f-throwOut" + (i.current.f < 0 ? "Up" : "Down")));
+                }))), s.on("change", (t => {
+                    var e;
+                    let i = null === (e = this.getSlide()) || void 0 === e ? void 0 : e.triggerEl;
+                    if (i) {
+                        const e = new CustomEvent("slideTo", {
+                            bubbles: !0,
+                            cancelable: !0,
+                            detail: t.page
+                        });
+                        i.dispatchEvent(e);
+                    }
+                })), s.on([ "refresh", "change" ], (t => {
+                    const e = this.container;
+                    if (!e) return;
+                    for (const i of e.querySelectorAll("[data-fancybox-current-index]")) i.innerHTML = t.page + 1;
+                    for (const i of e.querySelectorAll("[data-fancybox-count]")) i.innerHTML = t.pages.length;
+                    if (!t.isInfinite) {
+                        for (const i of e.querySelectorAll("[data-fancybox-next]")) t.page < t.pages.length - 1 ? (i.removeAttribute("disabled"), 
+                        i.removeAttribute("tabindex")) : (i.setAttribute("disabled", ""), i.setAttribute("tabindex", "-1"));
+                        for (const i of e.querySelectorAll("[data-fancybox-prev]")) t.page > 0 ? (i.removeAttribute("disabled"), 
+                        i.removeAttribute("tabindex")) : (i.setAttribute("disabled", ""), i.setAttribute("tabindex", "-1"));
+                    }
+                    const i = this.getSlide();
+                    if (!i) return;
+                    let n = i.downloadSrc || "";
+                    n || "image" !== i.type || i.error || "string" != typeof i.src || (n = i.src);
+                    const s = "disabled", o = "tabindex", a = "download", r = "href";
+                    for (const t of e.querySelectorAll("[data-fancybox-download]")) {
+                        const e = i.downloadFilename;
+                        n ? (t.removeAttribute(s), t.removeAttribute(o), t.setAttribute(r, n), t.setAttribute(a, e || n), 
+                        t.setAttribute("target", "_blank")) : (t.setAttribute(s, ""), t.setAttribute(o, "-1"), 
+                        t.removeAttribute(r), t.removeAttribute(a));
+                    }
+                })), this.emit("initCarousel");
+            }
+            attachEvents() {
+                const t = this, e = t.container;
+                if (!e) return;
+                e.addEventListener("click", t.onClick, {
+                    passive: !1,
+                    capture: !1
+                }), e.addEventListener("wheel", t.onWheel, {
+                    passive: !1,
+                    capture: !1
+                }), document.addEventListener("keydown", t.onKeydown, {
+                    passive: !1,
+                    capture: !0
+                }), document.addEventListener("visibilitychange", t.onVisibilityChange, !1), document.addEventListener("mousemove", t.onMousemove), 
+                t.option("trapFocus") && document.addEventListener("focus", t.onFocus, !0), window.addEventListener("resize", t.onResize);
+                const i = window.visualViewport;
+                i && (i.addEventListener("scroll", t.onResize), i.addEventListener("resize", t.onResize));
+            }
+            detachEvents() {
+                const t = this, e = t.container;
+                if (!e) return;
+                document.removeEventListener("keydown", t.onKeydown, {
+                    passive: !1,
+                    capture: !0
+                }), e.removeEventListener("wheel", t.onWheel, {
+                    passive: !1,
+                    capture: !1
+                }), e.removeEventListener("click", t.onClick, {
+                    passive: !1,
+                    capture: !1
+                }), document.removeEventListener("mousemove", t.onMousemove), window.removeEventListener("resize", t.onResize);
+                const i = window.visualViewport;
+                i && (i.removeEventListener("resize", t.onResize), i.removeEventListener("scroll", t.onResize)), 
+                document.removeEventListener("visibilitychange", t.onVisibilityChange, !1), document.removeEventListener("focus", t.onFocus, !0);
+            }
+            scale() {
+                const t = this.container;
+                if (!t) return;
+                const e = window.visualViewport, i = Math.max(1, (null == e ? void 0 : e.scale) || 1);
+                let n = "", s = "", o = "";
+                if (e && i > 1) {
+                    let t = `${e.offsetLeft}px`, a = `${e.offsetTop}px`;
+                    n = e.width * i + "px", s = e.height * i + "px", o = `translate3d(${t}, ${a}, 0) scale(${1 / i})`;
+                }
+                t.style.transform = o, t.style.width = n, t.style.height = s;
+            }
+            onClick(t) {
+                var e, i;
+                const {container: n, isCompact: s} = this;
+                if (!n || this.isClosing()) return;
+                !s && this.option("idle") && this.resetIdle();
+                const o = document.activeElement;
+                if (Ft() && o && n.contains(o)) return;
+                const a = t.composedPath()[0];
+                if (a === (null === (e = this.carousel) || void 0 === e ? void 0 : e.container)) return;
+                if (a.closest(".f-spinner") || a.closest("[data-fancybox-close]")) return t.preventDefault(), 
+                void this.close(t);
+                if (a.closest("[data-fancybox-prev]")) return t.preventDefault(), void this.prev();
+                if (a.closest("[data-fancybox-next]")) return t.preventDefault(), void this.next();
+                if (s && "image" === (null === (i = this.getSlide()) || void 0 === i ? void 0 : i.type)) return void (this.clickTimer ? (clearTimeout(this.clickTimer), 
+                this.clickTimer = null) : this.clickTimer = setTimeout((() => {
+                    this.toggleIdle(), this.clickTimer = null;
+                }), 350));
+                if (this.emit("click", t), t.defaultPrevented) return;
+                let r = !1;
+                if (a.closest(".fancybox__content")) {
+                    if (o) {
+                        if (o.closest("[contenteditable]")) return;
+                        a.matches(J) || o.blur();
+                    }
+                    if (Ft()) return;
+                    r = this.option("contentClick");
+                } else a.closest(".fancybox__carousel") && !a.matches(J) && (r = this.option("backdropClick"));
+                "close" === r ? (t.preventDefault(), this.close(t)) : "next" === r ? (t.preventDefault(), 
+                this.next()) : "prev" === r && (t.preventDefault(), this.prev());
+            }
+            onWheel(t) {
+                var e;
+                let i = this.option("wheel", t);
+                (null === (e = t.target) || void 0 === e ? void 0 : e.closest(".fancybox__thumbs")) && (i = "slide");
+                const n = "slide" === i, s = [ -t.deltaX || 0, -t.deltaY || 0, -t.detail || 0 ].reduce((function(t, e) {
+                    return Math.abs(e) > Math.abs(t) ? e : t;
+                })), o = Math.max(-1, Math.min(1, s)), a = Date.now();
+                this.pwt && a - this.pwt < 300 ? n && t.preventDefault() : (this.pwt = a, this.emit("wheel", t), 
+                t.defaultPrevented || ("close" === i ? (t.preventDefault(), this.close(t)) : "slide" === i && (t.preventDefault(), 
+                this[o > 0 ? "prev" : "next"]())));
+            }
+            onKeydown(t) {
+                if (!this.isTopmost()) return;
+                this.isCompact || !this.option("idle") || this.isClosing() || this.resetIdle();
+                const e = t.key, i = this.option("keyboard");
+                if (!i || t.ctrlKey || t.altKey || t.shiftKey) return;
+                const n = t.composedPath()[0], s = document.activeElement && document.activeElement.classList, o = s && s.contains("f-button") || n.dataset.carouselPage || n.dataset.carouselIndex;
+                if ("Escape" !== e && !o && x(n)) if (n.isContentEditable || -1 !== [ "TEXTAREA", "OPTION", "INPUT", "SELECT", "VIDEO" ].indexOf(n.nodeName)) return;
+                this.emit("keydown", e, t);
+                const a = i[e];
+                "function" == typeof this[a] && (t.preventDefault(), this[a]());
+            }
+            onResize() {
+                const t = It, e = this.container;
+                if (!e) return;
+                const i = this.isCompact;
+                e.classList.toggle(t, i), this.manageCaption(this.getSlide()), this.isCompact ? this.clearIdle() : this.endIdle(), 
+                this.scale(), this.emit("resize");
+            }
+            onFocus(t) {
+                this.isTopmost() && this.checkFocus(t);
+            }
+            onMousemove(t) {
+                this.prevMouseMoveEvent = t, !this.isCompact && this.option("idle") && this.resetIdle();
+            }
+            onVisibilityChange() {
+                "visible" === document.visibilityState ? this.checkFocus() : this.endIdle();
+            }
+            manageCloseBtn(t) {
+                const e = this.optionFor(t, "closeButton") || !1;
+                if ("auto" === e) {
+                    const t = this.plugins.Toolbar;
+                    if (t && t.state === Pt.Ready) return;
+                }
+                if (!e) return;
+                if (!t.contentEl || t.closeBtnEl) return;
+                const i = this.option("tpl.closeButton");
+                if (i) {
+                    const e = n(this.localize(i));
+                    t.closeBtnEl = t.contentEl.appendChild(e), t.el && S(t.el, "has-close-btn");
+                }
+            }
+            manageCaption(t = void 0) {
+                var e, i;
+                const n = "fancybox__caption", s = "has-caption", o = this.container;
+                if (!o) return;
+                const a = this.isCompact || this.option("commonCaption"), r = !a;
+                if (this.caption && this.stop(this.caption), r && this.caption && (this.caption.remove(), 
+                this.caption = null), a && !this.caption) for (const t of (null === (e = this.carousel) || void 0 === e ? void 0 : e.slides) || []) t.captionEl && (t.captionEl.remove(), 
+                t.captionEl = void 0, E(t.el, s), null === (i = t.el) || void 0 === i || i.removeAttribute("aria-labelledby"));
+                if (t || (t = this.getSlide()), !t || a && !this.isCurrentSlide(t)) return;
+                const l = t.el;
+                let c = this.optionFor(t, "caption", "");
+                if (!c) return void (a && this.caption && this.animate(this.caption, "f-fadeOut", (() => {
+                    this.caption && (this.caption.innerHTML = "");
+                })));
+                let h = null;
+                if (r) {
+                    if (h = t.captionEl || null, l && !h) {
+                        const e = n + `_${this.id}_${t.index}`;
+                        h = document.createElement("div"), S(h, n), h.setAttribute("id", e), t.captionEl = l.appendChild(h), 
+                        S(l, s), l.setAttribute("aria-labelledby", e);
+                    }
+                } else {
+                    if (h = this.caption, h || (h = o.querySelector("." + n)), !h) {
+                        h = document.createElement("div"), h.dataset.fancyboxCaption = "", S(h, n);
+                        (this.footer || o).prepend(h);
+                    }
+                    S(o, s), this.caption = h;
+                }
+                h && (h.innerHTML = "", "string" == typeof c ? h.innerHTML = c : c instanceof HTMLElement && h.appendChild(c));
+            }
+            checkFocus(t) {
+                var e;
+                const i = document.activeElement || null;
+                i && (null === (e = this.container) || void 0 === e ? void 0 : e.contains(i)) || this.focus(t);
+            }
+            focus(t) {
+                var e;
+                if (this.ignoreFocusChange) return;
+                const i = document.activeElement || null, n = (null == t ? void 0 : t.target) || null, s = this.container, o = this.getSlide();
+                if (!s || !(null === (e = this.carousel) || void 0 === e ? void 0 : e.viewport)) return;
+                if (!t && i && s.contains(i)) return;
+                const a = o && o.state === it.Ready ? o.el : null;
+                if (!a || a.contains(i) || s === i) return;
+                t && t.cancelable && t.preventDefault(), this.ignoreFocusChange = !0;
+                const r = Array.from(s.querySelectorAll(J));
+                let l = [], c = null;
+                for (let t of r) {
+                    const e = !t.offsetParent || t.closest('[aria-hidden="true"]'), i = a && a.contains(t), n = !this.carousel.viewport.contains(t);
+                    if (t === s || (i || n) && !e) {
+                        l.push(t);
+                        const e = t.dataset.origTabindex;
+                        void 0 !== e && e && (t.tabIndex = parseFloat(e)), t.removeAttribute("data-orig-tabindex"), 
+                        !t.hasAttribute("autoFocus") && c || (c = t);
+                    } else {
+                        const e = void 0 === t.dataset.origTabindex ? t.getAttribute("tabindex") || "" : t.dataset.origTabindex;
+                        e && (t.dataset.origTabindex = e), t.tabIndex = -1;
+                    }
+                }
+                let h = null;
+                t ? (!n || l.indexOf(n) < 0) && (h = c || s, l.length && (i === Ht ? h = l[0] : this.lastFocus !== s && i !== jt || (h = l[l.length - 1]))) : h = o && "image" === o.type ? s : c || s, 
+                h && Q(h), this.lastFocus = document.activeElement, this.ignoreFocusChange = !1;
+            }
+            next() {
+                const t = this.carousel;
+                t && t.pages.length > 1 && t.slideNext();
+            }
+            prev() {
+                const t = this.carousel;
+                t && t.pages.length > 1 && t.slidePrev();
+            }
+            jumpTo(...t) {
+                this.carousel && this.carousel.slideTo(...t);
+            }
+            isTopmost() {
+                var t;
+                return (null === (t = _t.getInstance()) || void 0 === t ? void 0 : t.id) == this.id;
+            }
+            animate(t = null, e = "", i) {
+                if (!t || !e) return void (i && i());
+                this.stop(t);
+                const n = s => {
+                    s.target === t && t.dataset.animationName && (t.removeEventListener("animationend", n), 
+                    delete t.dataset.animationName, i && i(), E(t, e));
+                };
+                t.dataset.animationName = e, t.addEventListener("animationend", n), S(t, e);
+            }
+            stop(t) {
+                t && t.dispatchEvent(new CustomEvent("animationend", {
+                    bubbles: !1,
+                    cancelable: !0,
+                    currentTarget: t
+                }));
+            }
+            setContent(t, e = "", i = !0) {
+                if (this.isClosing()) return;
+                const s = t.el;
+                if (!s) return;
+                let o = null;
+                if (x(e) ? o = e : (o = n(e + ""), x(o) || (o = document.createElement("div"), o.innerHTML = e + "")), 
+                [ "img", "picture", "iframe", "video", "audio" ].includes(o.nodeName.toLowerCase())) {
+                    const t = document.createElement("div");
+                    t.appendChild(o), o = t;
+                }
+                x(o) && t.filter && !t.error && (o = o.querySelector(t.filter)), o && x(o) ? (S(o, "fancybox__content"), 
+                t.id && o.setAttribute("id", t.id), "none" !== o.style.display && "none" !== getComputedStyle(o).getPropertyValue("display") || (o.style.display = t.display || this.option("defaultDisplay") || "flex"), 
+                s.classList.add(`has-${t.error ? "error" : t.type || "unknown"}`), s.prepend(o), 
+                t.contentEl = o, i && this.revealContent(t), this.manageCloseBtn(t), this.manageCaption(t)) : this.setError(t, "{{ELEMENT_NOT_FOUND}}");
+            }
+            revealContent(t, e) {
+                const i = t.el, n = t.contentEl;
+                i && n && (this.emit("reveal", t), this.hideLoading(t), t.state = it.Opening, (e = this.isOpeningSlide(t) ? void 0 === e ? this.optionFor(t, "showClass") : e : "f-fadeIn") ? this.animate(n, e, (() => {
+                    this.done(t);
+                })) : this.done(t));
+            }
+            done(t) {
+                this.isClosing() || (t.state = it.Ready, this.emit("done", t), S(t.el, "is-done"), 
+                this.isCurrentSlide(t) && this.option("autoFocus") && queueMicrotask((() => {
+                    this.option("autoFocus") && (this.option("autoFocus") ? this.focus() : this.checkFocus());
+                })), this.isOpeningSlide(t) && !this.isCompact && this.option("idle") && this.setIdle());
+            }
+            isCurrentSlide(t) {
+                const e = this.getSlide();
+                return !(!t || !e) && e.index === t.index;
+            }
+            isOpeningSlide(t) {
+                var e, i;
+                return null === (null === (e = this.carousel) || void 0 === e ? void 0 : e.prevPage) && t.index === (null === (i = this.getSlide()) || void 0 === i ? void 0 : i.index);
+            }
+            showLoading(t) {
+                t.state = it.Loading;
+                const e = t.el;
+                if (!e) return;
+                S(e, Dt), this.emit("loading", t), t.spinnerEl || setTimeout((() => {
+                    if (!this.isClosing() && !t.spinnerEl && t.state === it.Loading) {
+                        let i = n(w);
+                        t.spinnerEl = i, e.prepend(i), this.animate(i, "f-fadeIn");
+                    }
+                }), 250);
+            }
+            hideLoading(t) {
+                const e = t.el;
+                if (!e) return;
+                const i = t.spinnerEl;
+                this.isClosing() ? null == i || i.remove() : (E(e, Dt), i && this.animate(i, "f-fadeOut", (() => {
+                    i.remove();
+                })), t.state === it.Loading && (this.emit("loaded", t), t.state = it.Ready));
+            }
+            setError(t, e) {
+                if (this.isClosing()) return;
+                const i = new Event("error", {
+                    bubbles: !0,
+                    cancelable: !0
+                });
+                if (this.emit("error", i, t), i.defaultPrevented) return;
+                t.error = e, this.hideLoading(t), this.clearContent(t);
+                const n = document.createElement("div");
+                n.classList.add("fancybox-error"), n.innerHTML = this.localize(e || "<p>{{ERROR}}</p>"), 
+                this.setContent(t, n);
+            }
+            clearContent(t) {
+                var e;
+                null === (e = this.carousel) || void 0 === e || e.emit("removeSlide", t);
+            }
+            getSlide() {
+                var t;
+                const e = this.carousel;
+                return (null === (t = null == e ? void 0 : e.pages[null == e ? void 0 : e.page]) || void 0 === t ? void 0 : t.slides[0]) || void 0;
+            }
+            close(t, e) {
+                if (this.isClosing()) return;
+                const i = new Event("shouldClose", {
+                    bubbles: !0,
+                    cancelable: !0
+                });
+                if (this.emit("shouldClose", i, t), i.defaultPrevented) return;
+                t && t.cancelable && (t.preventDefault(), t.stopPropagation());
+                const n = this.fsAPI, s = () => {
+                    this.proceedClose(t, e);
+                };
+                n && n.isFullscreen() ? Promise.resolve(n.exit()).then((() => s())) : s();
+            }
+            clearIdle() {
+                this.idleTimer && clearTimeout(this.idleTimer), this.idleTimer = null;
+            }
+            setIdle(t = !1) {
+                const e = () => {
+                    this.clearIdle(), this.idle = !0, S(this.container, "is-idle"), this.emit("setIdle");
+                };
+                if (this.clearIdle(), !this.isClosing()) if (t) e(); else {
+                    const t = this.option("idle");
+                    t && (this.idleTimer = setTimeout(e, t));
+                }
+            }
+            endIdle() {
+                this.clearIdle(), this.idle && !this.isClosing() && (this.idle = !1, E(this.container, "is-idle"), 
+                this.emit("endIdle"));
+            }
+            resetIdle() {
+                this.endIdle(), this.setIdle();
+            }
+            toggleIdle() {
+                this.idle ? this.endIdle() : this.setIdle(!0);
+            }
+            toggleFullscreen() {
+                const t = this.fsAPI;
+                t && (t.isFullscreen() ? t.exit() : this.container && t.request(this.container));
+            }
+            isClosing() {
+                return [ et.Closing, et.CustomClosing, et.Destroy ].includes(this.state);
+            }
+            proceedClose(t, e) {
+                var i, n;
+                this.state = et.Closing, this.clearIdle(), this.detachEvents();
+                const s = this.container, o = this.carousel, a = this.getSlide(), r = a && this.option("placeFocusBack") ? a.triggerEl || this.option("triggerEl") : null;
+                if (r && (U(r) ? Q(r) : r.focus()), s && (S(s, "is-closing"), s.setAttribute("aria-hidden", "true"), 
+                this.option("animated") && S(s, kt), s.style.pointerEvents = "none"), o) {
+                    o.clearTransitions(), null === (i = o.panzoom) || void 0 === i || i.destroy(), null === (n = o.plugins.Navigation) || void 0 === n || n.detach();
+                    for (const t of o.slides) {
+                        t.state = it.Closing, this.hideLoading(t);
+                        const e = t.contentEl;
+                        e && this.stop(e);
+                        const i = null == t ? void 0 : t.panzoom;
+                        i && (i.stop(), i.detachEvents(), i.detachObserver()), this.isCurrentSlide(t) || o.emit("removeSlide", t);
+                    }
+                }
+                this.emit("close", t), this.state !== et.CustomClosing ? (void 0 === e && a && (e = this.optionFor(a, "hideClass")), 
+                e && a ? (this.animate(a.contentEl, e, (() => {
+                    o && o.emit("removeSlide", a);
+                })), setTimeout((() => {
+                    this.destroy();
+                }), 500)) : this.destroy()) : setTimeout((() => {
+                    this.destroy();
+                }), 500);
+            }
+            destroy() {
+                var t;
+                if (this.state === et.Destroy) return;
+                this.state = et.Destroy, null === (t = this.carousel) || void 0 === t || t.destroy();
+                const e = this.container;
+                e && e.remove(), Bt.delete(this.id);
+                const i = _t.getInstance();
+                i ? i.focus() : (jt && (jt.remove(), jt = null), Ht && (Ht.remove(), Ht = null), 
+                E(document.documentElement, At), (() => {
+                    if (!G) return;
+                    const t = document, e = t.body;
+                    e.classList.remove(zt), e.style.setProperty(Rt, ""), t.documentElement.style.setProperty(Lt, "");
+                })(), this.emit("destroy"));
+            }
+            static bind(t, e, i) {
+                if (!G) return;
+                let n, s = "", o = {};
+                if (void 0 === t ? n = document.body : "string" == typeof t ? (n = document.body, 
+                s = t, "object" == typeof e && (o = e || {})) : (n = t, "string" == typeof e && (s = e), 
+                "object" == typeof i && (o = i || {})), !n || !x(n)) return;
+                s = s || "[data-fancybox]";
+                const a = _t.openers.get(n) || new Map;
+                a.set(s, o), _t.openers.set(n, a), 1 === a.size && n.addEventListener("click", _t.fromEvent);
+            }
+            static unbind(t, e) {
+                let i, n = "";
+                if ("string" == typeof t ? (i = document.body, n = t) : (i = t, "string" == typeof e && (n = e)), 
+                !i) return;
+                const s = _t.openers.get(i);
+                s && n && s.delete(n), n && s || (_t.openers.delete(i), i.removeEventListener("click", _t.fromEvent));
+            }
+            static destroy() {
+                let t;
+                for (;t = _t.getInstance(); ) t.destroy();
+                for (const t of _t.openers.keys()) t.removeEventListener("click", _t.fromEvent);
+                _t.openers = new Map;
+            }
+            static fromEvent(t) {
+                if (t.defaultPrevented) return;
+                if (t.button && 0 !== t.button) return;
+                if (t.ctrlKey || t.metaKey || t.shiftKey) return;
+                let e = t.composedPath()[0];
+                const i = e.closest("[data-fancybox-trigger]");
+                if (i) {
+                    const t = i.dataset.fancyboxTrigger || "", n = document.querySelectorAll(`[data-fancybox="${t}"]`), s = parseInt(i.dataset.fancyboxIndex || "", 10) || 0;
+                    e = n[s] || e;
+                }
+                if (!(e && e instanceof Element)) return;
+                let n, s, o, a;
+                if ([ ..._t.openers ].reverse().find((([t, i]) => !(!t.contains(e) || ![ ...i ].reverse().find((([i, r]) => {
+                    let l = e.closest(i);
+                    return !!l && (n = t, s = i, o = l, a = r, !0);
+                }))))), !n || !s || !o) return;
+                a = a || {}, t.preventDefault(), e = o;
+                let r = [], l = u({}, tt, a);
+                l.event = t, l.triggerEl = e, l.delegate = i;
+                const c = l.groupAll, h = l.groupAttr, d = h && e ? e.getAttribute(`${h}`) : "";
+                if ((!e || d || c) && (r = [].slice.call(n.querySelectorAll(s))), e && !c && (r = d ? r.filter((t => t.getAttribute(`${h}`) === d)) : [ e ]), 
+                !r.length) return;
+                const p = _t.getInstance();
+                return p && p.options.triggerEl && r.indexOf(p.options.triggerEl) > -1 ? void 0 : (e && (l.startIndex = r.indexOf(e)), 
+                _t.fromNodes(r, l));
+            }
+            static fromSelector(t, e) {
+                let i = null, n = "";
+                if ("string" == typeof t ? (i = document.body, n = t) : t instanceof HTMLElement && "string" == typeof e && (i = t, 
+                n = e), !i || !n) return !1;
+                const s = _t.openers.get(i);
+                if (!s) return !1;
+                const o = s.get(n);
+                return !!o && _t.fromNodes(Array.from(i.querySelectorAll(n)), o);
+            }
+            static fromNodes(t, e) {
+                e = u({}, tt, e || {});
+                const i = [];
+                for (const n of t) {
+                    const t = n.dataset || {}, s = t.src || n.getAttribute("href") || n.getAttribute("currentSrc") || n.getAttribute("src") || void 0;
+                    let o;
+                    const a = e.delegate;
+                    let r;
+                    a && i.length === e.startIndex && (o = a instanceof HTMLImageElement ? a : a.querySelector("img:not([aria-hidden])")), 
+                    o || (o = n instanceof HTMLImageElement ? n : n.querySelector("img:not([aria-hidden])")), 
+                    o && (r = o.currentSrc || o.src || void 0, !r && o.dataset && (r = o.dataset.lazySrc || o.dataset.src || void 0));
+                    const l = {
+                        src: s,
+                        triggerEl: n,
+                        thumbEl: o,
+                        thumbElSrc: r,
+                        thumbSrc: r
+                    };
+                    for (const e in t) l[e] = t[e] + "";
+                    i.push(l);
+                }
+                return new _t(i, e);
+            }
+            static getInstance(t) {
+                if (t) return Bt.get(t);
+                return Array.from(Bt.values()).reverse().find((t => !t.isClosing() && t)) || null;
+            }
+            static getSlide() {
+                var t;
+                return (null === (t = _t.getInstance()) || void 0 === t ? void 0 : t.getSlide()) || null;
+            }
+            static show(t = [], e = {}) {
+                return new _t(t, e);
+            }
+            static next() {
+                const t = _t.getInstance();
+                t && t.next();
+            }
+            static prev() {
+                const t = _t.getInstance();
+                t && t.prev();
+            }
+            static close(t = !0, ...e) {
+                if (t) for (const t of Bt.values()) t.close(...e); else {
+                    const t = _t.getInstance();
+                    t && t.close(...e);
+                }
+            }
+        }
+        Object.defineProperty(_t, "version", {
+            enumerable: !0,
+            configurable: !0,
+            writable: !0,
+            value: "5.0.22"
+        }), Object.defineProperty(_t, "defaults", {
+            enumerable: !0,
+            configurable: !0,
+            writable: !0,
+            value: tt
+        }), Object.defineProperty(_t, "Plugins", {
+            enumerable: !0,
+            configurable: !0,
+            writable: !0,
+            value: Ot
+        }), Object.defineProperty(_t, "openers", {
+            enumerable: !0,
+            configurable: !0,
+            writable: !0,
+            value: new Map
+        });
+        _t.bind("[data-fancybox]", {
+            Hash: false
+        });
         class DynamicAdapt {
             constructor(type) {
                 this.type = type;
@@ -10490,6 +16434,16 @@
                 input.parentElement.classList.remove("_form-focus");
                 e.target.closest(".form__clear-svg").classList.remove("_active");
             }
+            if (e.target.closest("textarea")) txtarAutoHeight(e.target);
+            if (e.target.closest(".personal-data__change")) {
+                changeData(e.target);
+                e.preventDefault();
+            }
+            if (e.target.closest(".order__more-btn")) {
+                let target = e.target.closest(".order__more-btn");
+                target.classList.contains("_spoller-active") ? target.innerHTML = "Свернуть детали заказа" : target.innerHTML = "Показать детали заказа";
+                e.preventDefault();
+            }
         }));
         document.addEventListener("mouseover", documentActions);
         function documentActions(e) {
@@ -10534,7 +16488,7 @@
         const filtersPopup = document.querySelector("#filters-more");
         if (filtersPopup) {
             filtersPopup.remove();
-            document.querySelector(".wrapper").insertAdjacentElement("afterend", filtersPopup);
+            document.querySelector(".popup-box").insertAdjacentElement("beforeend", filtersPopup);
             getFilterColumns(filtersPopup);
         }
         function getFilterColumns(popup) {
@@ -10542,15 +16496,132 @@
             const popupWrapper = popup.querySelector(".filters__wrapper");
             columns.length > 1 ? popupWrapper.classList.add("many-cols") : null;
         }
+        document.querySelectorAll(".float-line").forEach((e => {
+            floatLine(e);
+        }));
+        function floatLine(node) {
+            if (!node) return;
+            node.addEventListener("mouseover", (e => {
+                if (e.target.classList.contains("float-line__item")) if (node.closest(".float-line__horizontal")) {
+                    node.style.setProperty("--underline-offset-y", `${e.target.offsetTop}px`);
+                    node.style.setProperty("--underline-height", `${e.target.offsetHeight}px`);
+                } else {
+                    node.style.setProperty("--underline-width", `${e.target.offsetWidth}px`);
+                    node.style.setProperty("--underline-offset-x", `${e.target.offsetLeft}px`);
+                }
+            }));
+            node.addEventListener("mouseleave", (() => {
+                if (node.closest(".float-line__horizontal")) node.style.setProperty("--underline-height", "0"); else node.style.setProperty("--underline-width", "0");
+            }));
+        }
+        let shareButton = document.getElementById("share-button");
+        if (shareButton) {
+            let thisUrl = window.location.href;
+            let thisTitle = document.title;
+            shareButton.addEventListener("click", (function() {
+                if (navigator.share && isMobile.any()) navigator.share({
+                    title: thisTitle,
+                    url: thisUrl
+                }).then((function() {})).catch((function() {})); else {
+                    modules_flsModules.popup.open("#share-popup");
+                    copyUrl();
+                }
+            }));
+        }
+        function copyUrl() {
+            const copyButton = document.querySelector(".share__button");
+            const copyInput = document.querySelector(".share__input");
+            copyInput.value = window.location.href;
+            setTimeout((() => {
+                copyInput.focus();
+            }), 100);
+            copyButton.addEventListener("click", (function(e) {
+                copyInput.select();
+                document.execCommand("copy");
+                window.getSelection().removeAllRanges();
+                copyButton.innerHTML = "Ссылка скопированна";
+                copyButton.classList.remove("btn__orange");
+                copyButton.setAttribute("disabled", "true");
+            }));
+        }
+        function txtarAutoHeight(target) {
+            const el = target;
+            if (el.closest("textarea")) {
+                let origHeight;
+                if (el.dataset.height) origHeight = el.dataset.height; else {
+                    origHeight = el.scrollHeight;
+                    el.dataset.height = origHeight;
+                }
+                origHeight = Number(origHeight);
+                el.style.height = el.setAttribute("style", "height: " + (origHeight + 1) + "px");
+                el.addEventListener("input", (e => {
+                    if (el.scrollHeight > origHeight) {
+                        el.style.height = "auto";
+                        el.style.height = el.scrollHeight + 10 + "px";
+                    } else {
+                        el.style.height = "auto";
+                        el.style.height = origHeight + "px";
+                    }
+                }));
+            }
+        }
+        function changeData(target) {
+            let el = target.closest(".personal-data__row");
+            el.classList.add("_active");
+            let submitBtn = el.querySelector(".personal-data__btn");
+            submitBtn.addEventListener("click", (function(e) {
+                el.classList.remove("_active");
+                el.classList.add("show-msg");
+                setTimeout((() => {
+                    el.classList.remove("show-msg");
+                }), 3e3);
+            }));
+            document.addEventListener("keydown", (function(e) {
+                if (e.code === "Escape" || e.code === "Enter" || e.code === "NumpadEnter") {
+                    el.classList.remove("_active");
+                    el.classList.add("show-msg");
+                    setTimeout((() => {
+                        el.classList.remove("show-msg");
+                    }), 3e3);
+                }
+            }));
+        }
+        window.addEventListener("load", (function(e) {
+            const target = document.querySelector(".radio-buttons");
+            if (target) {
+                const config = {
+                    attributes: true,
+                    childList: true,
+                    subtree: true
+                };
+                function styleButtonChange() {
+                    const pickUpPointButtons = document.querySelectorAll(".radio-buttons__inner button, .radio-buttons__inner .btn");
+                    pickUpPointButtons.forEach((btn => {
+                        btn.setAttribute("class", "");
+                        btn.style = "display: flex; justify-content:center; align-items: center; text-align: center;";
+                        btn.classList.add("btn__orange", "btn");
+                    }));
+                }
+                styleButtonChange();
+                const callback = function(mutationsList, observer) {
+                    for (let mutation of mutationsList) if (mutation.type === "childList") styleButtonChange();
+                };
+                const observer = new MutationObserver(callback);
+                observer.observe(target, config);
+            }
+        }));
         window["FLS"] = true;
         isWebp();
         addLoadedClass();
         menuInit();
+        spollers();
+        tabs();
         showMore();
         formFieldsInit({
             viewPass: false,
             autoHeight: false
         });
         formQuantity();
+        stickyBlock();
     })();
 })();

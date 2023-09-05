@@ -1,0 +1,330 @@
+.contacts {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   max-width: 1040px;
+   gap: 20px;
+   margin: 0 auto;
+   margin-bottom: rem(90);
+
+   @media (max-width:$tablet) {
+      grid-template-columns: 1fr;
+      margin-bottom: rem(51);
+   }
+
+   @media (max-width:$mobile) {
+      margin-bottom: rem(20);
+   }
+
+   // .contacts__col
+
+   &__col {
+      padding: rem(35) rem(0);
+
+      @media (max-width:$mobile) {
+         padding: rem(10) rem(0);
+      }
+   }
+
+   // .contacts__title
+
+   &__title {
+      font-size: 20px;
+      font-weight: 300;
+      margin-bottom: rem(42);
+
+      @media (max-width:$mobile) {
+         margin-bottom: rem(20);
+      }
+   }
+
+   // .contacts__item
+
+   &__item {
+      display: grid;
+      grid-template-columns: 20px 1fr;
+      gap: 13px;
+
+      &:not(:last-child) {
+         margin-bottom: rem(50);
+
+         @media (max-width:$mobile) {
+            margin-bottom: rem(28);
+         }
+      }
+   }
+
+   // .contacts__icon
+
+   &__icon {
+      grid-column: 1/2;
+      grid-row: 1/3;
+      justify-self: center;
+   }
+
+   // .contacts__item-name
+
+   &__item-name {
+      grid-column: 2/3;
+      line-height: 20px;
+   }
+
+   // .contacts__link
+
+   &__link {
+      grid-column: 2/3;
+      font-size: 26px;
+      font-weight: 600;
+      line-height: 20px;
+
+      @media (max-width: em(375)) {
+         font-size: 20px;
+      }
+
+      &:hover {
+         text-decoration: underline;
+      }
+   }
+
+   // .contacts__map
+
+   &__map {
+      height: 593px;
+      width: 100%;
+
+      @media (max-width:$mobile) {
+         height: 397px;
+      }
+
+      #map {
+         width: 100%;
+         height: 100%;
+      }
+   }
+}
+
+.requisites {
+   background: rgba(217, 224, 231, 0.2);
+   padding: rem(35) rem(100);
+
+   @media (max-width:$laptop) {
+      padding: rem(35) rem(40);
+   }
+
+   @media (max-width:$mobileMiddle) {
+      padding: rem(20);
+      margin: 0px rem(-10);
+   }
+
+   // .requisites__title
+
+   &__title {
+      font-size: 20px;
+      font-weight: 300;
+      margin-bottom: rem(42);
+
+      @media (max-width:$mobile) {
+         margin-bottom: rem(20);
+      }
+   }
+
+   // .requisites__ip
+
+   &__ip {
+      font-weight: 600;
+      line-height: 20px;
+      margin-bottom: rem(20);
+   }
+
+   // .requisites__col
+
+   &__col {
+      margin-bottom: rem(37);
+
+      @media (max-width:$mobile) {
+         margin-bottom: rem(20);
+      }
+   }
+
+
+   // .requisites__list
+
+   &__list {}
+
+   // .requisites__item
+
+   &__item {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      &:not(:last-child) {
+         padding-bottom: rem(13);
+      }
+   }
+
+   // .requisites__name
+
+   &__name {
+      line-height: 20px;
+   }
+
+   // .requisites__value
+
+   &__value {
+      font-weight: 600;
+      line-height: 20px;
+   }
+
+   // .requisites__more
+
+   &__more {
+      color: #525252;
+      font-size: 14px;
+      line-height: 21px;
+      text-decoration: underline 1px dashed #000;
+
+      &:hover {
+         text-decoration: none;
+      }
+   }
+
+   // .requisites__link
+
+   &__link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+   }
+
+   // .requisites__link-name
+
+   &__link-name {
+      line-height: 24px;
+   }
+
+   // .requisites__link-text
+
+   &__link-text {
+      color: #858585;
+      font-size: 14px;
+      line-height: 22px;
+   }
+}
+
+.shops {
+   margin-bottom: rem(90);
+   // .shops__title
+
+   &__title {
+      text-align: center;
+      font-size: 39px;
+      font-weight: 300;
+      margin-bottom: rem(60);
+
+      @media (max-width:$mobile) {
+         font-size: 24px;
+         margin-bottom: rem(27);
+      }
+
+      @media (max-width:$mobileMiddle) {
+         text-align: left;
+      }
+   }
+
+   // .shops__row
+
+   &__row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 26px;
+   }
+
+   // .shops__item
+
+   &__item {
+      position: relative;
+      border-radius: 5px;
+      overflow: hidden;
+      padding: rem(30) rem(40);
+   }
+
+   // .shops__image-ibg
+
+   &__image-ibg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+   }
+
+   // .shops__item-wrapper
+
+   &__item-wrapper {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      position: relative;
+      z-index: 1;
+      color: #fff;
+   }
+
+   // .shops__top
+
+   &__top {
+      flex: 1 1 auto;
+      margin-bottom: rem(43);
+   }
+
+   // .shops__name
+
+   &__name {
+      font-weight: 600;
+      font-size: 23px;
+      margin-bottom: rem(10);
+   }
+
+   // .shops__address
+
+   &__address {
+      line-height: 21px;
+      margin-bottom: rem(20);
+   }
+
+   // .shops__location
+
+   &__location {
+      border-color: #fff;
+
+      &:hover {
+         background: #fff;
+         color: #000;
+      }
+   }
+
+   // .shops__phones
+
+   &__phones {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      margin-bottom: rem(10);
+   }
+
+   // .shops__phone
+
+   &__phone {
+      font-weight: 600;
+      font-size: 19px;
+      line-height: 27px;
+   }
+
+   // .shops__work
+
+   &__work {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 27px;
+   }
+}

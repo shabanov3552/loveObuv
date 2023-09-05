@@ -434,16 +434,3 @@
 
    &__button {}
 }
-
-.btn-red {
-   background: #E52931;
-   color: #fff;
-   padding: rem(15) rem(25);
-   transition: background 0.3s ease 0s;
-   border-radius: 3px;
-   white-space: nowrap;
-
-   &:hover {
-      background: #aa1d24;
-   }
-}

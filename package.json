@@ -72,6 +72,7 @@
 		"webpack-stream": "latest"
 	},
 	"dependencies": {
+		"@fancyapps/ui": "^5.0.22",
 		"gulp-cheerio": "^1.0.0",
 		"simplebar": "latest"
 	}

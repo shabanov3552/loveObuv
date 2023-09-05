@@ -13,7 +13,7 @@ class Popup {
 		let config = {
 			logging: true,
 			init: true,
-			// Для кнопок 
+			// Для кнопок
 			attributeOpenButton: 'data-popup', // Атрибут для кнопки, которая вызывает попап
 			attributeCloseButton: 'data-close', // Атрибут для кнопки, которая закрывает попап
 			// Для сторонних объектов
@@ -34,7 +34,7 @@ class Popup {
 			closeEsc: true, // Закрытие по ESC
 			bodyLock: true, // Блокировка скролла
 			hashSettings: {
-				location: true, // Хэш в адресной строке
+				location: false, // Хэш в адресной строке
 				goHash: true, // Переход по наличию в адресной строке
 			},
 			on: { // События
@@ -100,6 +100,8 @@ class Popup {
 		}
 		this.bodyLock = false;
 		this.options.init ? this.initPopups() : null
+
+		window.popup = this // раз уж синглетон
 	}
 	initPopups() {
 		this.popupLogging(`Проснулся`);
@@ -206,7 +208,7 @@ class Popup {
 					this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`).appendChild(iframe);
 				}
 				if (this.options.hashSettings.location) {
-					// Получение хэша и его выставление 
+					// Получение хэша и его выставление
 					this._getHash();
 					this._setHash();
 				}
@@ -306,7 +308,7 @@ class Popup {
 
 		this.popupLogging(`Закрыл попап`);
 	}
-	// Получение хэша 
+	// Получение хэша
 	_getHash() {
 		if (this.options.hashSettings.location) {
 			this.hash = this.targetOpen.selector.includes('#') ?
@@ -361,4 +363,5 @@ class Popup {
 	}
 }
 // Запускаем и добавляем в объект модулей
-flsModules.popup = new Popup({});
+let popup = new Popup({})
+flsModules.popup = popup
