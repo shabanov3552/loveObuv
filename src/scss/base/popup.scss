@@ -689,3 +689,188 @@ body::after {
 }
 
 // #endregion
+
+.popup {
+
+	// .popup__wrapper
+
+	&__wrapper {}
+
+	// .popup__content
+
+	&__content {}
+
+	// .popup__header
+
+	&__header {}
+
+	// .popup__title
+
+	&__title {}
+
+	// .popup__close
+
+	&__close {}
+
+	// .popup__close-svg
+
+	&__close-svg {}
+
+	// .popup__main
+
+	&__main {
+		.form {
+
+			// .form__line
+
+			&__line {
+				max-width: 440px;
+
+				&:not(:last-child) {
+					margin-bottom: rem(30);
+				}
+			}
+
+			// .form__label
+
+			&__label {}
+
+			// .form__input
+
+			&__input {}
+
+			// .form__clear-svg
+
+			&__clear-svg {}
+
+			// .form__bottom
+
+			&__bottom {
+				display: grid;
+				gap: 25px;
+				align-items: center;
+				grid-template-columns: 248px 1fr;
+
+				@media (max-width:$mobileMiddle) {
+					grid-template-columns: 1fr;
+				}
+			}
+
+			// .form__btn
+
+			&__btn {}
+
+			// .form__line-desc
+
+			&__line-desc {
+				margin-bottom: rem(45);
+				font-size: 14px;
+				line-height: 22px;
+			}
+
+			// .form__consent
+
+			&__consent {
+				color: rgba(0, 0, 0, 0.5);
+				font-size: 12px;
+				line-height: 18px;
+			}
+
+			// .form__consent-link
+
+			&__consent-link {
+				text-decoration: underline;
+				display: block;
+
+				&:hover {
+					text-decoration: none;
+				}
+			}
+		}
+
+	}
+
+	// .popup__text
+
+	&__text {
+		font-size: 18px;
+		line-height: 26px;
+		max-width: 586px;
+		margin-bottom: rem(52);
+	}
+}
+
+.login {
+
+	// .login__text
+
+	&__text {
+		font-size: 18px;
+		line-height: 26px;
+		margin-bottom: rem(52);
+	}
+
+	// .login__link
+
+	&__link {
+		color: #E52931;
+		font-size: 16px;
+		line-height: 24px;
+	}
+}
+
+.popup {
+
+	// .popup__wrapper
+
+	&__wrapper {}
+
+	// .popup__content
+
+	&__content {}
+
+	// .popup__header
+
+	&__header {}
+
+	// .popup__title
+
+	&__title {}
+
+	// .popup__close
+
+	&__close {
+		&.btn-red {
+			width: 248px;
+			display: block;
+			height: 48px;
+		}
+	}
+
+	// .popup__close-svg
+
+	&__close-svg {}
+
+	// .popup__main
+
+	&__main {}
+
+	// .popup__text
+
+	&__text {}
+
+	// .popup__icon
+
+	&__icon {
+		position: absolute;
+		bottom: 113px;
+		right: 114px;
+
+		@media (max-width:$mobileMiddle) {
+			bottom: 50px;
+			right: 50px;
+		}
+	}
+}
+
+.btn-red {}

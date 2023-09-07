@@ -124,7 +124,7 @@ export function formFieldsInit(options = { viewPass: false, autoHeight: false })
 					});
 				});
 				function setHeight(textarea, height) {
-					textarea.style.height = `${height + 16}px`;
+					textarea.style.height = `${height}px`;
 				}
 			}
 		}, 1);

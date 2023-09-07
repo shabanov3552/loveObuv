@@ -1,0 +1,136 @@
+.certificates {
+   margin-bottom: rem(97);
+   // .certificates__top
+
+   &__top {
+      display: grid;
+      grid-template-columns: 1.68fr 1fr;
+
+      @media (max-width:$laptopL) {
+         grid-template-columns: 3.42fr 1fr;
+      }
+
+      @media (max-width:$laptop) {
+         grid-template-columns: 2.42fr 1fr;
+      }
+
+      @media (max-width:$tablet) {
+         display: block;
+         margin-bottom: rem(42);
+      }
+   }
+
+   // .certificates__image-ibg
+
+   &__image-ibg {
+      height: 725px;
+
+      @media (max-width:$laptopL) {
+         height: 597px;
+      }
+
+      @media (max-width:$laptop) {
+         height: 422px;
+      }
+
+      @media (max-width:$tablet) {
+         height: 362px;
+         width: 499px;
+      }
+
+      @media (max-width: em(374)) {
+         width: 426px;
+      }
+   }
+
+   // .certificates__right
+
+   &__right {
+      margin-left: rem(-175);
+      padding-top: rem(110);
+
+      @media (max-width:$laptop) {
+         padding-top: rem(51);
+      }
+
+      @media (max-width:$tablet) {
+         margin-left: 0;
+         padding-top: 0;
+         margin-top: rem(-73);
+      }
+
+      .certificates__main-text {
+         max-width: 700px;
+      }
+   }
+
+   // .certificates__main-text
+
+   &__main-text {
+      margin-bottom: rem(50);
+      font-size: 24px;
+      line-height: 36px;
+   }
+
+   // .certificates__bye
+
+   &__bye {
+      display: block;
+      width: 334px;
+      text-align: center;
+
+      @media (max-width:$mobileSmall) {
+         width: 100%;
+      }
+   }
+
+   // .certificates__descr
+
+   &__descr {
+      max-width: 701px;
+      margin: 0 auto;
+
+      @media (min-width:$tablet) {
+         margin-top: rem(-197);
+
+         @media (max-width:$laptopL) {
+            margin-top: rem(-50);
+         }
+
+         @media (max-width:$laptop) {
+            margin-top: rem(-16);
+         }
+      }
+   }
+
+   // .certificates__subtitle
+
+   &__subtitle {
+      font-size: 18px;
+      margin-bottom: rem(18);
+      line-height: 26px;
+   }
+
+   // .certificates__text
+
+   &__text {
+      p {
+         font-size: 18px;
+         line-height: 26px;
+         margin-bottom: rem(6);
+      }
+
+      ul {
+         line-height: 25px;
+         padding-left: rem(25);
+
+         li {
+            list-style-type: disc;
+
+            &:not(:last-child) {
+               margin-bottom: rem(15);
+            }
+         }
+      }
+   }
+}

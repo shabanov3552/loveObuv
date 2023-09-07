@@ -20,7 +20,7 @@ document.addEventListener("click", function (e) {
    }
    // очистка input по клику на крестик
    if (e.target.closest('.form__clear-svg')) {
-      let input = e.target.closest('.form__line').querySelector('.form__input');
+      let input = e.target.closest('.form__line').querySelector('.form__input') || e.target.closest('.form__line').querySelector('.form__txt');
       input.value = '';
       input.classList.remove('_form-focus');
       input.parentElement.classList.remove('_form-focus');

@@ -1,0 +1,61 @@
+.about {
+   max-width: 1440px;
+   margin: 0 auto;
+   @include adaptiveValue("margin-bottom", 126, 30);
+   // .about__main-image-ibg
+
+   &__main-image-ibg {
+      padding-bottom: 71.25%;
+      z-index: 1;
+   }
+
+   // .about__descr
+
+   &__descr {
+      max-width: 960px;
+      margin: 0 auto;
+      margin-top: rem(-219);
+      margin-bottom: rem(90);
+      background-color: #fff;
+      padding: rem(100) rem(230) rem(30);
+      font-size: 20px;
+      line-height: 28px;
+      position: relative;
+      z-index: 2;
+
+      @media (max-width:$laptop) {
+         padding: rem(50);
+         margin-top: rem(-50);
+      }
+
+      @media (max-width:$mobileMiddle) {
+         padding: rem(10);
+         margin-top: rem(25);
+         margin-bottom: rem(25);
+      }
+   }
+
+   // .about__gallery
+
+   &__gallery {
+      display: grid;
+      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+
+      @media (max-width:$tablet) {
+         gap: 15px;
+         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+   }
+
+   // .about__gellery-item
+
+   &__gellery-item {
+      cursor: pointer;
+
+      img {
+         width: 100%;
+         object-fit: cover;
+      }
+   }
+}

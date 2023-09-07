@@ -131,7 +131,7 @@
             </div>
          </div>
       </div>
-      <div class="contacts__map">
+      <div class="contacts-map">
          <div id="map"></div>
          <script>
 
@@ -168,6 +168,55 @@
             }
 
          </script>
+      </div>
+   </div>
+   <div class="page-form">
+      <div class="page-form__container">
+         <div class="page-form__row">
+            <div class="page-form__text">Задайте вопрос, направьте нам претензию или оставьте отзыв о работе сайта или магазина</div>
+            <div class="page-form__form">
+               <form data-parsley-validate="" data-parsley-trigger="change" action="" class="form">
+                  <div class="form__row">
+                     <div class="form__col">
+                        <div class="form__line">
+                           <label for="pageUserName" class="form__label">Ваше имя</label>
+                           <input required id="pageUserName" type="text" name="" class="form__input">
+                           <svg class="form__clear-svg">
+                              <use xlink:href="img/icons/icons.svg#input_clear"></use>
+                           </svg>
+                        </div>
+                        <div class="form__line">
+                           <label for="pageUserMail" class="form__label">E-mail</label>
+                           <input required id="pageUserMail" type="email" name="" class="form__input">
+                           <svg class="form__clear-svg">
+                              <use xlink:href="img/icons/icons.svg#input_clear"></use>
+                           </svg>
+                        </div>
+                        <div class="form__line">
+                           <label for="pageUserPhone" class="form__label">Телефон</label>
+                           <input required id="pageUserPhone" type="tel" name="" class="form__input js_phone">
+                           <svg class="form__clear-svg">
+                              <use xlink:href="img/icons/icons.svg#input_clear"></use>
+                           </svg>
+                        </div>
+                     </div>
+                     <div class="form__col">
+                        <div class="form__line">
+                           <label for="pageUserText" class="form__label">Сообщение</label>
+                           <textarea id="pageUserText" autocomplete="off" name="" placeholder="" data-error="Ошибка" class="form__txt"></textarea>
+                           <svg class="form__clear-svg">
+                              <use xlink:href="img/icons/icons.svg#input_clear"></use>
+                           </svg>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="form__footer">
+                     <button type="submit" class="form__button btn-red">Отправить</button>
+                     <div class="form__consent">Отправляя данные, я даю свое <a href="" class="form__consent-link">согласие на обработку перс. данных</a></div>
+                  </div>
+               </form>
+            </div>
+         </div>
       </div>
    </div>
 </main>

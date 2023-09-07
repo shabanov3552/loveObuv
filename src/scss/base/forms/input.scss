@@ -12,7 +12,7 @@ textarea {
 
 
 
-.input[placeholder]:not([data-placeholder-nohiden]) {
+.form__input[placeholder]:not([data-placeholder-nohiden]) {
 	&::placeholder {
 		transition: opacity 0.3s;
 	}
@@ -22,7 +22,6 @@ textarea {
 	}
 }
 
-textarea.input {
+textarea.form__txt {
 	resize: vertical;
-	padding: 0px 0px;
 }

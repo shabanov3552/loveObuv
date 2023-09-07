@@ -1,0 +1,158 @@
+@@include('html/_header.htm',{
+"title":"Вакансии",
+"modClass":""
+})
+<main class="page">
+   <div class="page__container">
+      @@include('html/_breadcrumbs.htm',{})
+      <h1 class="page__title">Вакансии</h1>
+      <div class="jobs">
+         <div class="jobs__descr">
+            <p>Мы ищем целеустремленных, коммуникабельных и ответственных людей для работы в нашей команде. Мы предлагаем конкурентную заработную плату, возможность профессионального роста и приятную атмосферу в коллективе. Если вы готовы к новым вызовам и хотите стать частью нашей команды - отправляйте свое резюме уже сегодня!</p>
+         </div>
+         <div class="jobs__grid">
+            <div class="jobs__item">
+               <div class="jobs__item-top">
+                  <div class="jobs__it-left">
+                     <div class="jobs__title">Водитель доставки</div>
+                     <div class="jobs__i">г. Красноярск</div>
+                  </div>
+                  <div class="jobs__it-right">
+                     <div class="jobs__zp">50 000 руб.</div>
+                     <div class="jobs__i">в месяц</div>
+                  </div>
+               </div>
+               <div class="jobs__item-content">
+                  <div class="jobs__row">
+                     <div class="jobs__name">Обязанности</div>
+                     <div class="jobs__value">
+                        <ul>
+                           <li>Работа за рулем</li>
+                           <li>Подготовка отчетной документации</li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="jobs__row">
+                     <div class="jobs__name">Условия</div>
+                     <div class="jobs__value">
+                        <ul>
+                           <li>Официальное трудоустройство, </li>
+                           <li>График 5/2 с 8 до 17</li>
+                           <li>Столовая для сотрудников</li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="jobs__row">
+                     <div class="jobs__name">Требования</div>
+                     <div class="jobs__value">
+                        <ul>
+                           <li>Высшее образование</li>
+                           <li>Опыт работы от 3х лет</li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="jobs__item">
+               <div class="jobs__item-top">
+                  <div class="jobs__it-left">
+                     <div class="jobs__title">Менеджер торгового зала</div>
+                     <div class="jobs__i">г. Красноярск</div>
+                  </div>
+                  <div class="jobs__it-right">
+                     <div class="jobs__zp">50 000 руб.</div>
+                     <div class="jobs__i">в месяц</div>
+                  </div>
+               </div>
+               <div class="jobs__item-content">
+                  <div class="jobs__row">
+                     <div class="jobs__name">Обязанности</div>
+                     <div class="jobs__value">
+                        <ul>
+                           <li>Помощь посетителям магазина</li>
+                           <li>Подготовка отчетной документации</li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="jobs__row">
+                     <div class="jobs__name">Условия</div>
+                     <div class="jobs__value">
+                        <ul>
+                           <li>Официальное трудоустройство, </li>
+                           <li>График 5/2 с 8 до 17</li>
+                           <li>Столовая для сотрудников</li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="jobs__row">
+                     <div class="jobs__name">Требования</div>
+                     <div class="jobs__value">
+                        <ul>
+                           <li>Высшее образование</li>
+                           <li>Опыт работы от 3х лет</li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="page-form">
+      <div class="page-form__container">
+         <div class="page-form__row">
+            <div class="page-form__text">Отправьте свое резюме или свяжитесь с нами для уточнения подробностей:
+               <a href="tel:8 800 551-90-92">8 800 551-90-92</a>
+               или электронной почте
+               <a href="mailto:loveshoes24@mail.ru">loveshoes24@mail.ru</a>
+            </div>
+            <div class="page-form__form">
+               <form data-parsley-validate="" data-parsley-trigger="change" action="" class="form">
+                  <div class="form__row">
+                     <div class="form__col">
+                        <div class="form__line">
+                           <label for="pageUserName" class="form__label">Ваше имя</label>
+                           <input required id="pageUserName" type="text" name="" class="form__input">
+                           <svg class="form__clear-svg">
+                              <use xlink:href="img/icons/icons.svg#input_clear"></use>
+                           </svg>
+                        </div>
+                        <div class="form__line">
+                           <label for="pageUserMail" class="form__label">E-mail</label>
+                           <input required id="pageUserMail" type="email" name="" class="form__input">
+                           <svg class="form__clear-svg">
+                              <use xlink:href="img/icons/icons.svg#input_clear"></use>
+                           </svg>
+                        </div>
+                        <div class="form__line">
+                           <label for="pageUserPhone" class="form__label">Телефон</label>
+                           <input required id="pageUserPhone" type="tel" name="" class="form__input js_phone">
+                           <svg class="form__clear-svg">
+                              <use xlink:href="img/icons/icons.svg#input_clear"></use>
+                           </svg>
+                        </div>
+                        <div class="form__line">
+                           <input required type="file" name="" class="form__file">
+                        </div>
+                     </div>
+                     <div class="form__col">
+                        <div class="form__line">
+                           <label for="pageUserText" class="form__label">Сообщение</label>
+                           <textarea id="pageUserText" autocomplete="off" name="" placeholder="" data-error="Ошибка" class="form__txt"></textarea>
+                           <svg class="form__clear-svg">
+                              <use xlink:href="img/icons/icons.svg#input_clear"></use>
+                           </svg>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="form__footer">
+                     <button type="submit" class="form__button btn-red">Отправить</button>
+                     <div class="form__consent">Отправляя данные, я даю свое <a href="" class="form__consent-link">согласие на обработку перс. данных</a></div>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+</main>
+@@include('html/_footer.htm',{})

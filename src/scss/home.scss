@@ -391,6 +391,7 @@
       .form {
          display: flex;
          justify-content: flex-end;
+         align-items: flex-start;
          gap: 15px;
 
          @media (max-width:$mobileMiddle) {
@@ -422,15 +423,4 @@
          &__button {}
       }
    }
-}
-
-.form {
-
-   // .form__input
-
-   &__input {}
-
-   // .form__button
-
-   &__button {}
 }

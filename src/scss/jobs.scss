@@ -1,0 +1,134 @@
+.jobs {
+   @include adaptiveValue("margin-bottom", 100, 40);
+   // .jobs__descr
+
+   &__descr {
+      font-size: 18px;
+      line-height: 26px;
+      margin: 0 auto;
+      @include adaptiveValue("margin-bottom", 96, 30);
+      max-width: 1280px;
+   }
+
+   // .jobs__grid
+
+   &__grid {
+      display: grid;
+      gap: 60px;
+      grid-template-columns: repeat(auto-fill, minmax(650px, 1fr));
+
+      @media (max-width:$tablet) {
+         grid-template-columns: 1fr;
+      }
+   }
+
+   // .jobs__item
+
+   &__item {
+      background: #F5F5F5;
+   }
+
+   // .jobs__item-top
+
+   &__item-top {
+      border-bottom: 2px solid #D2D2D2;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: rem(40) rem(70) rem(30);
+
+      @media (max-width:$tablet) {
+         padding: rem(20);
+      }
+
+      @media (max-width:$mobileMiddle) {
+         flex-direction: column;
+      }
+   }
+
+   // .jobs__it-left
+
+   &__it-left {}
+
+   // .jobs__title
+
+   &__title {
+      font-size: 30px;
+      font-weight: 600;
+      margin-bottom: rem(7);
+   }
+
+   // .jobs__i
+
+   &__i {
+      font-size: 20px;
+   }
+
+   // .jobs__it-right
+
+   &__it-right {
+      padding-top: rem(8);
+      text-align: right;
+
+      @media (max-width:$mobileMiddle) {
+         text-align: left;
+      }
+   }
+
+   // .jobs__zp
+
+   &__zp {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: rem(9);
+      white-space: nowrap;
+   }
+
+   // .jobs__item-content
+
+   &__item-content {
+      padding: rem(45) rem(70);
+
+      @media (max-width:$tablet) {
+         padding: rem(20);
+      }
+   }
+
+   // .jobs__row
+
+   &__row {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 20px;
+
+      @media (max-width:$mobileMiddle) {
+         grid-template-columns: 1fr;
+      }
+
+      &:not(:last-child) {
+         margin-bottom: rem(45);
+      }
+   }
+
+   // .jobs__name
+
+   &__name {
+      font-size: 20px;
+      font-weight: 600;
+   }
+
+   // .jobs__value
+
+   &__value {
+      font-size: 18px;
+      line-height: 25px;
+
+      ul {
+         padding-left: rem(25);
+
+         li {
+            list-style-type: disc;
+         }
+      }
+   }
+}

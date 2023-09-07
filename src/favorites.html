@@ -1,0 +1,123 @@
+@@include('html/_header.htm',{
+"title":"Избранное",
+"modClass":""
+})
+<main class="page">
+   <div class="page__container">
+      @@include('html/_breadcrumbs.htm',{})
+      <div class="page__title">Избранное</div>
+
+      <div class="favorites">
+         <div class="favorites__sort sort">
+            <div class="sort__row">
+               <div class="sort__left">
+                  <div class="sort__title">Сортировка</div>
+                  <div class="sort__select-wrapper">
+                     <select name="form[]" data-class-modif="sort">
+                        <option value="1" selected>Сначала новинки</option>
+                        <option value="2">Сортировать по возрастанию цены</option>
+                        <option value="3">Пункт №3</option>
+                        <option value="4">Пункт №4</option>
+                     </select>
+                  </div>
+               </div>
+               <div class="sort__right">
+                  <div class="sort__select-wrapper">
+                     <select name="form[]" data-class-modif="sort">
+                        <option value="1" selected>Показывать по 15</option>
+                        <option value="2">Показывать по 30</option>
+                        <option value="3">Показывать по 60</option>
+                     </select>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="favorites__cards">
+            @@include('html/_product-card.htm',{
+            "image":"img/products/pd-c-1.png",
+            "name":"Мокасины женские Evita",
+            "price":"4 390 ₽",
+            "oldPrice":"",
+            "discont":"",
+            "link":"В корзину",
+            "active":""
+            })
+
+            @@include('html/_product-card.htm',{
+            "image":"img/products/pd-c-2.png",
+            "name":"Туфли женские Madella",
+            "price":"5 990 ₽",
+            "oldPrice":"5 990 ₽",
+            "discont":"-30%",
+            "link":"Выбрать размер",
+            "active":"_active"
+            })
+
+            @@include('html/_product-card.htm',{
+            "image":"img/products/pd-c-3.png",
+            "name":"Туфли женские Cavaletto",
+            "price":"5 590 ₽",
+            "oldPrice":"",
+            "discont":"",
+            "link":"В корзину",
+            "active":""
+            })
+
+            @@include('html/_product-card.htm',{
+            "image":"img/products/pd-c-4.png",
+            "name":"Кроссовки женские PATROL",
+            "price":"4 390 ₽",
+            "oldPrice":"",
+            "discont":"",
+            "link":"Выбрать размер",
+            "active":""
+            })
+
+            @@include('html/_product-card.htm',{
+            "image":"img/products/pd-c-1.png",
+            "name":"Мокасины женские Evita",
+            "price":"4 390 ₽",
+            "oldPrice":"",
+            "discont":"",
+            "link":"В корзину",
+            "active":""
+            })
+
+            @@include('html/_product-card.htm',{
+            "image":"img/products/pd-c-2.png",
+            "name":"Туфли женские Madella",
+            "price":"5 990 ₽",
+            "oldPrice":"5 990 ₽",
+            "discont":"-30%",
+            "link":"Выбрать размер",
+            "active":"_active"
+            })
+
+            @@include('html/_product-card.htm',{
+            "image":"img/products/pd-c-3.png",
+            "name":"Туфли женские Cavaletto",
+            "price":"5 590 ₽",
+            "oldPrice":"",
+            "discont":"",
+            "link":"В корзину",
+            "active":""
+            })
+
+            @@include('html/_product-card.htm',{
+            "image":"img/products/pd-c-4.png",
+            "name":"Кроссовки женские PATROL",
+            "price":"4 390 ₽",
+            "oldPrice":"",
+            "discont":"",
+            "link":"Выбрать размер",
+            "active":""
+            })
+         </div>
+         <div class="favorites__pagging">
+            @@include('html/_pagging.htm',{})
+         </div>
+      </div>
+
+   </div>
+</main>
+@@include('html/_footer.htm',{})

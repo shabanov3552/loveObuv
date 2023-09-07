@@ -225,8 +225,6 @@
 			grid-template-columns: 1fr;
 		}
 
-		.product-card {}
-
 		@media (min-width:$mobile) {
 			&.row {
 				flex-direction: column;
