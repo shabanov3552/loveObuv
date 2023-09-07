@@ -14983,7 +14983,7 @@ PERFORMANCE OF THIS SOFTWARE.
                 observer.observe(target, config);
             }
         }));
-        window["FLS"] = true;
+        window["FLS"] = false;
         isWebp();
         addLoadedClass();
         menuInit();
