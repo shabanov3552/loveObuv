@@ -3840,6 +3840,7 @@
                     }
                     const buttonClose = e.target.closest(`[${this.options.attributeCloseButton}]`);
                     if (buttonClose || !e.target.closest(`.${this.options.classes.popupContent}`) && this.isOpen) {
+                        if (e.target.closest("ymaps")) return;
                         e.preventDefault();
                         this.close();
                         return;
@@ -11409,20 +11410,6 @@
             });
         }
         function initSliders() {
-            if (document.querySelector(".s")) new swiper_core_Swiper(".s", {
-                modules: [ Navigation ],
-                observer: true,
-                observeParents: true,
-                slidesPerView: 1,
-                spaceBetween: 0,
-                autoHeight: true,
-                speed: 800,
-                navigation: {
-                    prevEl: ".swiper-button-prev",
-                    nextEl: ".swiper-button-next"
-                },
-                on: {}
-            });
             if (document.querySelector(".main-page-baner__slider")) {
                 let mainPageBlockSlider = new swiper_core_Swiper(".main-page-baner__slider", {
                     modules: [ Navigation, Autoplay ],
@@ -11432,8 +11419,9 @@
                     spaceBetween: 22,
                     autoHeight: true,
                     speed: 800,
+                    loop: true,
                     autoplay: {
-                        delay: 5e3,
+                        delay: 3e3,
                         disableOnInteraction: false
                     },
                     navigation: {
@@ -11469,6 +11457,7 @@
                         spaceBetween: 0,
                         speed: 300,
                         watchSlidesProgress: true,
+                        loop: true,
                         navigation: {
                             prevEl: "." + btnClassName + " .swiper-button-prev",
                             nextEl: "." + btnClassName + " .swiper-button-next"
@@ -11504,6 +11493,7 @@
                         spaceBetween: 80,
                         speed: 300,
                         watchSlidesProgress: true,
+                        loop: true,
                         navigation: {
                             prevEl: "." + btnClassName + " .swiper-button-prev",
                             nextEl: "." + btnClassName + " .swiper-button-next"

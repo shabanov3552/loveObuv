@@ -8,7 +8,7 @@
 	<!-- <style>body{opacity: 0;}</style> -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap&_v=20230908010428" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap&_v=20230914125241" rel="stylesheet">
 	<style>
 		.preloader {
 			position: fixed;
@@ -35,10 +35,11 @@
 			visibility: hidden;
 		}
 	</style>
-	<link rel="stylesheet" href="css/style.min.css?_v=20230908010428">
+	<link rel="stylesheet" href="css/style.min.css?_v=20230914125241">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://api-maps.yandex.ru/2.1/?apikey=1eaa3d10-f76d-4aa4-a3c0-8e9708f5d77d&lang=ru_RU&_v=20230914125241"></script>
 </head>
 
 <body>
@@ -458,6 +459,7 @@
 								<a href="" class="footer__link">Обмен и возврат</a>
 								<a href="" class="footer__link">Вопросы и ответы</a>
 								<a href="" class="footer__link">Подарочные сертификаты</a>
+								<a href="" class="footer__link footer__link_red">Акции</a>
 							</div>
 						</div>
 						<div class="footer__row">
@@ -496,7 +498,7 @@
 				<div class="footer__bottom copyright">
 					<div class="copyright__wrapper">
 						<div class="copyright__body">
-							<div class="copyright__item">2009–2023 © «Любимая обувь»</div>
+							<div class="copyright__item">2024 © «Любимая обувь»</div>
 							<a href="" data-popup="#policy" class="copyright__item">Политика конфиденциальности</a>
 							<a href="" data-popup="#consent" class="copyright__item">Согласие на обработку персональных данных</a>
 							<a href="https://websalt.ru" target="_blank" class="copyright__item">Создание сайта
@@ -816,7 +818,7 @@
 							<div class="share__social">
 
 								<!-- uSocial -->
-								<script async src="https://usocial.pro/usocial/usocial.js?uid=21cd4b58eaf61697&v=6.1.5&_v=20230908010428" data-script="usocial" charset="utf-8"></script>
+								<script async src="https://usocial.pro/usocial/usocial.js?uid=21cd4b58eaf61697&v=6.1.5&_v=20230914125241" data-script="usocial" charset="utf-8"></script>
 								<div class="uSocial-Share" data-pid="b7450283dbc9e941ee22b283d6036804" data-type="share" data-options="round-rect,style1,default,absolute,horizontal,size48,eachCounter0,counter0,nomobile,mobile_position_right" data-social="vk,ok,telegram,wa,vi"></div>
 								<!-- /uSocial -->
 							</div>
@@ -1140,9 +1142,232 @@
 			</div>
 		</div>
 		<!-- Спасибо -->
+
+		<!-- Живой поиск -->
+		<div id="search" aria-hidden="true" class="popup">
+			<div class="popup__wrapper">
+				<div class="popup__content">
+					<form action="" class="form search-form">
+						<div class="search-form__top">
+							<div class="form__line search-form__line">
+								<label for="searchForm" class="form__label search-form__label">Поиск по товарам</label>
+								<input autocomplete="off" id="searchForm" type="text" class="search-form__input form__input">
+								<svg class="form__clear-svg search-form__svg">
+									<use xlink:href="img/icons/icons.svg#input_clear"></use>
+								</svg>
+								<img class="search-form__icon" src="img/icons/search-black.svg" alt="">
+							</div>
+							<button data-close type="button" class="popup__close">
+								<svg class="popup__close-svg">
+									<use xlink:href="img/icons/icons.svg#close-modal"></use>
+								</svg>
+							</button>
+						</div>
+						<div class="search-form__center">
+							<a href="" class="search-form__item">
+								<div class="search-form__image-ibg search-form__image-ibg_contain"><picture><source srcset="img/detail-prod/1b.webp" type="image/webp"><img loading="lazy" src="img/detail-prod/1b.jpg" alt=""></picture></div>
+								<div class="search-form__content">
+									<div class="search-form__name">Костюм муж утепленный Асгард (куртка и брюки)</div>
+									<div class="search-form__prices">
+										<div class="search-form__price">18000 ₽</div>
+									</div>
+								</div>
+							</a>
+							<a href="" class="search-form__item">
+								<div class="search-form__image-ibg search-form__image-ibg_contain"><picture><source srcset="img/detail-prod/2b.webp" type="image/webp"><img loading="lazy" src="img/detail-prod/2b.jpg" alt=""></picture></div>
+								<div class="search-form__content">
+									<div class="search-form__name">Костюм утепленный "Спектр" с полукомбинезоном</div>
+									<div class="search-form__prices">
+										<div class="search-form__price">19780 ₽</div>
+									</div>
+								</div>
+							</a>
+							<a href="" class="search-form__item">
+								<div class="search-form__image-ibg search-form__image-ibg_contain"><picture><source srcset="img/detail-prod/3b.webp" type="image/webp"><img loading="lazy" src="img/detail-prod/3b.jpg" alt=""></picture></div>
+								<div class="search-form__content">
+									<div class="search-form__name">Костюм муж утепленный Фотон (куртка и полукомбинезон )</div>
+									<div class="search-form__prices">
+										<div class="search-form__price">19780 ₽</div>
+									</div>
+								</div>
+							</a>
+							<a href="" class="search-form__item">
+								<div class="search-form__image-ibg search-form__image-ibg_contain"><picture><source srcset="img/detail-prod/4b.webp" type="image/webp"><img loading="lazy" src="img/detail-prod/4b.jpg" alt=""></picture></div>
+								<div class="search-form__content">
+									<div class="search-form__name">Костюм утепленный "Спектр" с полукомбинезоном</div>
+									<div class="search-form__prices">
+										<div class="search-form__price">4 580 ₽</div>
+									</div>
+								</div>
+							</a>
+							<a href="" class="search-form__item">
+								<div class="search-form__image-ibg search-form__image-ibg_contain"><picture><source srcset="img/detail-prod/5b.webp" type="image/webp"><img loading="lazy" src="img/detail-prod/5b.jpg" alt=""></picture></div>
+								<div class="search-form__content">
+									<div class="search-form__name">Костюм муж утепленный Асгард (куртка и брюки)</div>
+									<div class="search-form__prices">
+										<div class="search-form__price">18000 ₽</div>
+									</div>
+								</div>
+							</a>
+							<a href="" class="search-form__item">
+								<div class="search-form__image-ibg search-form__image-ibg_contain"><picture><source srcset="img/detail-prod/6b.webp" type="image/webp"><img loading="lazy" src="img/detail-prod/6b.jpg" alt=""></picture></div>
+								<div class="search-form__content">
+									<div class="search-form__name">Костюм утепленный "Спектр" с полукомбинезоном</div>
+									<div class="search-form__prices">
+										<div class="search-form__price">19780 ₽</div>
+									</div>
+								</div>
+							</a>
+							<a href="" class="search-form__item">
+								<div class="search-form__image-ibg search-form__image-ibg_contain"><picture><source srcset="img/detail-prod/7b.webp" type="image/webp"><img loading="lazy" src="img/detail-prod/7b.jpg" alt=""></picture></div>
+								<div class="search-form__content">
+									<div class="search-form__name">Костюм муж утепленный Фотон (куртка и полукомбинезон )</div>
+									<div class="search-form__prices">
+										<div class="search-form__price">19780 ₽</div>
+									</div>
+								</div>
+							</a>
+							<a href="" class="search-form__item">
+								<div class="search-form__image-ibg search-form__image-ibg_contain"><picture><source srcset="img/detail-prod/8b.webp" type="image/webp"><img loading="lazy" src="img/detail-prod/8b.jpg" alt=""></picture></div>
+								<div class="search-form__content">
+									<div class="search-form__name">Костюм утепленный "Спектр" с полукомбинезоном</div>
+									<div class="search-form__prices">
+										<div class="search-form__price">4 580 ₽</div>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="search-form__bottom">
+							<button type="submit" class="form__button search-form__button btn-transparent">Показать все</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- Живой поиск -->
+
+		<!-- Модалка с адресами -->
+		<div id="addresses" aria-hidden="true" class="popup popup_center">
+			<div class="popup__wrapper">
+				<div class="popup__content">
+					<div class="map-shops">
+						<button data-close type="button" class="popup__close">
+							<svg class="popup__close-svg">
+								<use xlink:href="img/icons/icons.svg#close-modal"></use>
+							</svg>
+						</button>
+						<div class="map-shops__row">
+							<div class="map-shops__col">
+								<div class="map-shops__title">Адреса магазинов</div>
+								<ul class="map-shops__list">
+									<li class="map-shops__item" data-coordinates="56.02237669044193,92.79737166001888">
+										<div class="map-shops__mag-name">ТК на Свободном</div>
+										<div class="map-shops__mag-address">Телевизорная, 1</div>
+										<div class="map-shops__phones">
+											<a href="tel:+73912788915" class="map-shops__phone">+7 (391) 278 89 15</a>
+										</div>
+										<div class="map-shops__work">Ежедневно с 10:00 до 22:00</div>
+									</li>
+									<li class="map-shops__item" data-coordinates="56.034537649605426,92.90784499999998">
+										<div class="map-shops__mag-name">ТЦ Взлетка-Plaza, 2 этаж</div>
+										<div class="map-shops__mag-address">Весны, 1</div>
+										<div class="map-shops__phones">
+											<a href="tel:+7 (391) 277 73 73" class="map-shops__phone">+7 (391) 277 73 73</a>
+										</div>
+										<div class="map-shops__work">Ежедневно с 10:00 до 21:00</div>
+									</li>
+									<li class="map-shops__item" data-coordinates="56.010402173855326,92.86042127116394">
+										<div class="map-shops__mag-name">ЦУМ, 2 этаж</div>
+										<div class="map-shops__mag-address">Карла Маркса, 102</div>
+										<div class="map-shops__phones">
+											<a href="tel:+73912783113" class="map-shops__phone">+7 (391) 278-31-13</a>
+											<a href="tel:+73912781040" class="map-shops__phone">+7 (391) 278-10-40</a>
+										</div>
+										<div class="map-shops__work">Ежедневно с 10:00 до 20:00</div>
+									</li>
+									<li class="map-shops__item" data-coordinates="56.03722156871502,92.93518049999993">
+										<div class="map-shops__mag-name">ТРЦ «Июнь»</div>
+										<div class="map-shops__mag-address">Партизана Железняка, 23</div>
+										<div class="map-shops__phones">
+											<a href="tel:+73912716735" class="map-shops__phone">+7 (391) 271-67-35</a>
+										</div>
+										<div class="map-shops__work">Ежедневно с 10:00 до 22:00</div>
+									</li>
+									<li class="map-shops__item" data-coordinates="56.020578600419185,93.01100280824272">
+										<div class="map-shops__mag-name">ТП МЕГА</div>
+										<div class="map-shops__mag-address">Красноярский рабочий, 27</div>
+										<div class="map-shops__phones">
+											<a href="tel:+73912730890" class="map-shops__phone">+7 (391) 273-08-90</a>
+										</div>
+										<div class="map-shops__work">Ежедневно с 10:00 до 21:00</div>
+									</li>
+								</ul>
+							</div>
+							<div class="map-shops__map">
+								<div id="map-shops"></div>
+								<script type="text/javascript">
+									ymaps.ready(mapShopsInit);
+
+									function mapShopsInit() {
+
+										let mapShopsItem = document.querySelectorAll('#addresses .map-shops__item');
+										let markers = [];
+
+										let myMap = new ymaps.Map("map-shops", {
+											center: [56.02309737020559, 92.87417199999999],
+											zoom: 12,
+											controls: ['zoomControl'],
+										});
+
+										mapShopsItem.forEach(item => {
+											let coord = item.dataset.coordinates.split(',');
+
+											let placemark = new ymaps.Placemark([coord[0], coord[1]], {
+												// Зададим содержимое основной части балуна.
+												balloonContentBody: `
+											<span>${item.querySelector('.map-shops__mag-name').textContent}</span>
+											<br>
+											<span>${item.querySelector('.map-shops__mag-address').textContent}</span>`,
+												// Зададим содержимое всплывающей подсказки.
+												hintContent: `${item.querySelector('.map-shops__mag-name').textContent}`
+											}, {
+												iconLayout: 'default#imageWithContent',
+												iconImageHref: 'img/icons/map-marker.svg',
+												iconImageSize: [48, 55],
+												iconImageOffset: [-30, -60],
+												iconContentOffset: [0, 0],
+												hideIconOnBalloonOpen: false,
+												balloonOffset: [80, 0]
+											});
+											markers.push(placemark);
+											myMap.geoObjects.add(placemark);
+										});
+
+										document.addEventListener("click", function(e) {
+											let target = e.target;
+											if (target.closest('.map-shops__item')) {
+												mapShopsItem.forEach((item, id) => {
+													item.classList.remove('_active');
+													if (item === target.closest('.map-shops__item')) {
+														markers[id].events.fire('click');
+														item.classList.add('_active');
+													}
+												});
+											}
+										});
+
+									}
+								</script>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Модалка с адресами -->
 	</div>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js?_v=20230908010428" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-	<script src="js/app.min.js?_v=20230908010428"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js?_v=20230914125241" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="js/app.min.js?_v=20230914125241"></script>
 </body>
 
 </html>

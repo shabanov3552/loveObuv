@@ -106,6 +106,12 @@
    &__link {
       font-size: 18px;
       line-height: 24px;
+
+      // .footer__link_red
+
+      &_red {
+         color: #E52931;
+      }
    }
 
    // .footer__contacts
