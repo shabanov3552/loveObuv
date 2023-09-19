@@ -404,7 +404,7 @@
 								<label for="userMailForSendings" class="form__label">Телефон</label>
 								<input id="userMailForSendings" type="tel" name="tel" class="form__input js_phone">
 								<svg class="form__clear-svg">
-									<use xlink:href="img/icons/icons.svg#svg-input_close"></use>
+									<use xlink:href="img/icons/icons.svg#input_clear"></use>
 								</svg>
 							</div>
 							<div class="form__bottom">
@@ -439,7 +439,7 @@
 								<label for="userMailForSendings" class="form__label">Пароль из SMS</label>
 								<input id="userMailForSendings" type="number" name="number" class="form__input">
 								<svg class="form__clear-svg">
-									<use xlink:href="img/icons/icons.svg#svg-input_close"></use>
+									<use xlink:href="img/icons/icons.svg#input_clear"></use>
 								</svg>
 							</div>
 							<div class="form__line-desc js-countdown">Получить новый код вы сможете через 55 секунд</div>
@@ -474,28 +474,28 @@
 							<label for="data-change1" class="form__label">ФИО</label>
 							<input id="data-change1" type="name" name="name" class="form__input">
 							<svg class="form__clear-svg">
-								<use xlink:href="img/icons/icons.svg#svg-input_close"></use>
+								<use xlink:href="img/icons/icons.svg#input_clear"></use>
 							</svg>
 						</div>
 						<div class="form__line">
 							<label for="data-change2" class="form__label">Контактный номер</label>
 							<input id="data-change2" type="tel" name="tel" class="form__input js_phone">
 							<svg class="form__clear-svg">
-								<use xlink:href="img/icons/icons.svg#svg-input_close"></use>
+								<use xlink:href="img/icons/icons.svg#input_clear"></use>
 							</svg>
 						</div>
 						<div class="form__line">
 							<label for="data-change3" class="form__label">E-mail</label>
 							<input id="data-change3" type="email" name="email" class="form__input">
 							<svg class="form__clear-svg">
-								<use xlink:href="img/icons/icons.svg#svg-input_close"></use>
+								<use xlink:href="img/icons/icons.svg#input_clear"></use>
 							</svg>
 						</div>
 						<div class="form__line">
 							<label for="data-change4" class="form__label">Адрес для доставки</label>
 							<input id="data-change4" type="text" name="addres" class="form__input">
 							<svg class="form__clear-svg">
-								<use xlink:href="img/icons/icons.svg#svg-input_close"></use>
+								<use xlink:href="img/icons/icons.svg#input_clear"></use>
 							</svg>
 						</div>
 						<div class="form__bottom">
@@ -527,28 +527,28 @@
 							<label for="add-profile1" class="form__label">ФИО</label>
 							<input id="add-profile1" type="name" name="name" class="form__input">
 							<svg class="form__clear-svg">
-								<use xlink:href="img/icons/icons.svg#svg-input_close"></use>
+								<use xlink:href="img/icons/icons.svg#input_clear"></use>
 							</svg>
 						</div>
 						<div class="form__line">
 							<label for="add-profile2" class="form__label">Контактный номер</label>
 							<input id="add-profile2" type="tel" name="tel" class="form__input js_phone">
 							<svg class="form__clear-svg">
-								<use xlink:href="img/icons/icons.svg#svg-input_close"></use>
+								<use xlink:href="img/icons/icons.svg#input_clear"></use>
 							</svg>
 						</div>
 						<div class="form__line">
 							<label for="add-profile3" class="form__label">E-mail</label>
 							<input id="add-profile3" type="email" name="email" class="form__input">
 							<svg class="form__clear-svg">
-								<use xlink:href="img/icons/icons.svg#svg-input_close"></use>
+								<use xlink:href="img/icons/icons.svg#input_clear"></use>
 							</svg>
 						</div>
 						<div class="form__line">
 							<label for="add-profile4" class="form__label">Адрес для доставки</label>
 							<input id="add-profile4" type="text" name="addres" class="form__input">
 							<svg class="form__clear-svg">
-								<use xlink:href="img/icons/icons.svg#svg-input_close"></use>
+								<use xlink:href="img/icons/icons.svg#input_clear"></use>
 							</svg>
 						</div>
 						<div class="form__bottom">
@@ -581,14 +581,14 @@
 							<label for="reserv1" class="form__label">Ваше имя</label>
 							<input required id="reserv1" type="name" name="name" class="form__input">
 							<svg class="form__clear-svg">
-								<use xlink:href="img/icons/icons.svg#svg-input_close"></use>
+								<use xlink:href="img/icons/icons.svg#input_clear"></use>
 							</svg>
 						</div>
 						<div class="form__line">
 							<label for="reserv2" class="form__label">Телефон</label>
 							<input required id="reserv2" type="tel" name="tel" class="form__input js_phone">
 							<svg class="form__clear-svg">
-								<use xlink:href="img/icons/icons.svg#svg-input_close"></use>
+								<use xlink:href="img/icons/icons.svg#input_clear"></use>
 							</svg>
 						</div>
 						<div class="form__bottom">
@@ -849,4 +849,99 @@
 		</div>
 	</div>
 	<!-- Модалка с адресами -->
+
+	<!-- Покупка сертификата -->
+	<div id="bye-certificate" aria-hidden="true" class="popup">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<div class="popup__header">
+					<div class="popup__title">Покупка подарочного сертификата</div>
+					<button data-close type="button" class="popup__close">
+						<svg class="popup__close-svg">
+							<use xlink:href="img/icons/icons.svg#close-modal"></use>
+						</svg>
+					</button>
+				</div>
+				<div class="popup__main">
+					<div class="popup__text">Заполните необходимые данные и мы свяжемся с вами для уточнения информации</div>
+					<form action="" class="form" data-parsley-validate data-parsley-trigger="change">
+						<div class="form__line">
+							<label for="byeCert1" class="form__label">Ваше имя *</label>
+							<input id="byeCert1" type="name" name="name" class="form__input" required>
+							<svg class="form__clear-svg">
+								<use xlink:href="img/icons/icons.svg#input_clear"></use>
+							</svg>
+						</div>
+						<div class="form__line">
+							<label for="byeCert2" class="form__label">Телефон *</label>
+							<input id="byeCert2" type="tel" name="tel" class="form__input js_phone" required>
+							<svg class="form__clear-svg">
+								<use xlink:href="img/icons/icons.svg#input_clear"></use>
+							</svg>
+						</div>
+						<div class="form__line">
+							<label for="byeCert3" class="form__label">E-mail *</label>
+							<input id="byeCert3" type="email" name="email" class="form__input" required>
+							<svg class="form__clear-svg">
+								<use xlink:href="img/icons/icons.svg#input_clear"></use>
+							</svg>
+						</div>
+						<div class="form__line">
+							<div class="form__line-title">Номинал карты *</div>
+							<div class="form__row">
+								<div class="checkbox">
+									<input id="byeCert-c_1" data-error="Ошибка" class="checkbox__input" type="checkbox" value="3000" name="">
+									<label for="byeCert-c_1" class="checkbox__label">
+										<span class="checkbox__text">3000 ₽</span>
+									</label>
+								</div>
+								<div class="checkbox">
+									<input id="byeCert-c_2" data-error="Ошибка" class="checkbox__input" type="checkbox" value="5000" name="">
+									<label for="byeCert-c_2" class="checkbox__label">
+										<span class="checkbox__text">5000 ₽</span>
+									</label>
+								</div>
+								<div class="checkbox">
+									<input id="byeCert-c_3" data-error="Ошибка" class="checkbox__input" type="checkbox" value="10000" name="">
+									<label for="byeCert-c_3" class="checkbox__label">
+										<span class="checkbox__text">10 000 ₽</span>
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="form__line">
+							<div class="form__line-title">Способ доставки</div>
+							<select name="form[]" data-class-modif="filter">
+								<option value="1" selected>Самовывоз</option>
+								<option value="2">Пункт №2</option>
+								<option value="3">Пункт №3</option>
+								<option value="4">Пункт №4</option>
+							</select>
+						</div>
+						<div class="form__line">
+							<div class="form__line-title">Способ оплаты</div>
+							<select name="form[]" data-class-modif="filter">
+								<option value="1" selected>Наличные</option>
+								<option value="2">Пункт №2</option>
+								<option value="3">Пункт №3</option>
+								<option value="4">Пункт №4</option>
+							</select>
+						</div>
+						<div class="form__line">
+							<label for="byeCertText" class="form__label">Комментарий</label>
+							<textarea id="byeCertText" autocomplete="off" name="" placeholder="" data-error="Ошибка" class="form__txt"></textarea>
+							<svg class="form__clear-svg">
+								<use xlink:href="img/icons/icons.svg#input_clear"></use>
+							</svg>
+						</div>
+						<div class="form__bottom">
+							<button type="submit" class="form__btn btn-red">Зарезервировать</button>
+							<div class="form__consent">Отправляя данные, я даю свое <a href="" class="form__consent-link" data-popup="#consent">согласие на обработку перс. данных</a></div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Покупка сертификата -->
 </div>

@@ -4,14 +4,16 @@
 
    &__top {
       display: grid;
-      grid-template-columns: 1.68fr 1fr;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 26px;
+      margin-bottom: rem(18);
 
       @media (max-width:$laptopL) {
-         grid-template-columns: 3.42fr 1fr;
+         // grid-template-columns: 3.42fr 1fr;
       }
 
       @media (max-width:$laptop) {
-         grid-template-columns: 2.42fr 1fr;
+         // grid-template-columns: 2.42fr 1fr;
       }
 
       @media (max-width:$tablet) {
@@ -23,30 +25,30 @@
    // .certificates__image-ibg
 
    &__image-ibg {
-      height: 725px;
+      height: 533px;
 
       @media (max-width:$laptopL) {
-         height: 597px;
+         // height: 597px;
       }
 
       @media (max-width:$laptop) {
-         height: 422px;
+         height: 356px;
       }
 
       @media (max-width:$tablet) {
-         height: 362px;
-         width: 499px;
+         height: 265px;
+         // width: 499px;
       }
 
       @media (max-width: em(374)) {
-         width: 426px;
+         // width: 426px;
       }
    }
 
    // .certificates__right
 
    &__right {
-      margin-left: rem(-175);
+      // margin-left: rem(-175);
       padding-top: rem(110);
 
       @media (max-width:$laptop) {
@@ -54,9 +56,9 @@
       }
 
       @media (max-width:$tablet) {
-         margin-left: 0;
+         // margin-left: 0;
          padding-top: 0;
-         margin-top: rem(-73);
+         // margin-top: rem(-73);
       }
 
       .certificates__main-text {
@@ -90,17 +92,17 @@
       max-width: 701px;
       margin: 0 auto;
 
-      @media (min-width:$tablet) {
-         margin-top: rem(-197);
+      // @media (min-width:$tablet) {
+      //    margin-top: rem(-197);
 
-         @media (max-width:$laptopL) {
-            margin-top: rem(-50);
-         }
+      //    @media (max-width:$laptopL) {
+      //       margin-top: rem(-50);
+      //    }
 
-         @media (max-width:$laptop) {
-            margin-top: rem(-16);
-         }
-      }
+      //    @media (max-width:$laptop) {
+      //       margin-top: rem(-16);
+      //    }
+      // }
    }
 
    // .certificates__subtitle

@@ -358,17 +358,21 @@
 
 
 .main-page-slider {
+   margin: rem(60) 0;
    margin-bottom: rem(120);
 
    @media (max-width:$laptop) {
+      margin: rem(45) 0;
       margin-bottom: rem(90);
    }
 
    @media (max-width:$tablet) {
+      margin: rem(25) 0;
       margin-bottom: rem(47);
    }
 
    @media (max-width:$mobile) {
+      margin: rem(22) 0;
       margin-bottom: rem(34);
    }
 }

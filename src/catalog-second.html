@@ -44,8 +44,8 @@
 							<button hidden data-showmore-button type="button" class="category__more"><span>Раскрыть все</span><span>Скрыть</span></button>
 						</div>
 					</div>
-					<div class="main-catalog__filters filters">
-						<div class="filters__wrapper">
+					<div data-showmore="items" class="main-catalog__filters filters">
+						<div data-showmore-content="5" class="filters__wrapper">
 							<div class="filters__price">
 								<div class="filters__box-header">
 									<div class="filters__filter-title">Цена (₽)</div>
@@ -222,11 +222,12 @@
 								<button hidden data-showmore-button type="button" class="showmore__button"><span>Раскрыть всё</span><span>Скрыть</span></button>
 							</div>
 						</div>
-						<div class="filters__more-btn btn-transparent" data-popup="#filters-more">
+						<div class="filters__more-btn btn-transparent" hidden data-showmore-button>
 							<svg class="filters__more-svg">
 								<use xlink:href="img/icons/icons.svg#filters-btn"></use>
 							</svg>
 							<span>Показать все фильтры</span>
+							<span>Скыть все фильтры</span>
 						</div>
 						<div class="filters__reset-btn">
 							<svg class="filters__reset-svg">
@@ -718,4 +719,8 @@
 		</div>
 	</div>
 </main>
+<div data-showmore class="block">
+	<div data-showmore-content class="block__content"></div>
+	<button hidden data-showmore-button type="button" class="block__more"><span>Показать еще</span><span>Скыть</span></button>
+</div>
 @@include('html/_footer.htm',{})

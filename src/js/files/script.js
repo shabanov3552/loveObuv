@@ -304,3 +304,7 @@ window.addEventListener("load", function (e) {
    //    closeAlertPopup();
    // }, 20000);
 });
+
+if (document.querySelector('.order-success')) {
+   document.querySelector('.page__title').classList.add('order-success')
+}

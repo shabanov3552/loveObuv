@@ -156,7 +156,8 @@
 
    &__item {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr;
+      gap: 10px;
 
       &:not(:last-child) {
          padding-bottom: rem(13);

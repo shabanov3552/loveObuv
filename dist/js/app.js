@@ -4004,6 +4004,14 @@
             if (formFields.length) formFields.forEach((formField => {
                 if (!formField.hasAttribute("data-placeholder-nohide")) formField.dataset.placeholder = formField.placeholder;
             }));
+            const inputs = document.querySelectorAll(".form__input,.form__txt");
+            inputs.forEach((input => {
+                if (input.value.length > 0) {
+                    input.classList.add("_form-focus");
+                    input.parentElement.classList.add("_form-focus");
+                    if (input.parentElement.querySelector(".form__clear-svg")) input.parentElement.querySelector(".form__clear-svg").classList.add("_active");
+                }
+            }));
             document.body.addEventListener("input", (function(e) {
                 const targetElement = e.target;
                 if (targetElement.tagName === "INPUT" || targetElement.tagName === "TEXTAREA") {
@@ -8174,7 +8182,83 @@
             render
         });
         const tippy_esm = tippy;
-        modules_flsModules.tippy = tippy_esm("[data-tippy-content]", {});
+        modules_flsModules.tippy = tippy_esm("[data-tippy-content]", {
+            placement: "right-end"
+        });
+        const breakpoint = window.matchMedia("(max-width: 768px)");
+        const breakpointChecker = () => {
+            if (breakpoint.matches) for (let i = 0; i < modules_flsModules.tippy.length; i++) modules_flsModules.tippy[i].setProps({
+                placement: "top"
+            }); else for (let i = 0; i < modules_flsModules.tippy.length; i++) modules_flsModules.tippy[i].setProps({
+                placement: "right-end"
+            });
+        };
+        breakpoint.addEventListener("change", breakpointChecker);
+        breakpointChecker();
+        class CustomTippy {
+            constructor(node, text, activeText) {
+                this.node = node;
+                this.text = text;
+                this.activeText = activeText;
+                this.tippyItem = tippy_esm(this.node);
+                this.isMobile = isMobile.any();
+                this.breakpoint = null;
+            }
+            initTippy() {
+                this.tippyItem.setContent(`Добавить в ${this.text}`);
+                let observer = new MutationObserver((records => {
+                    records[0].target.classList.forEach((item => {
+                        item == "_active" ? this.tippyItem.setContent(`Удалить из ${this.activeText}`) : this.tippyItem.setContent(`Добавить в ${this.text}`);
+                    }));
+                }));
+                observer.observe(this.node, {
+                    subtree: true,
+                    attributes: true
+                });
+                this.breakpointCheck();
+                this.node.addEventListener("click", (e => {
+                    this.createMobileTippy(e);
+                }));
+            }
+            breakpointCheck() {
+                const breakpoint = window.matchMedia("(max-width: 768px)");
+                const breakpointChecker = () => {
+                    if (breakpoint.matches) {
+                        this.breakpoint = true;
+                        this.tippyItem.disable();
+                    } else {
+                        this.breakpoint = false;
+                        this.tippyItem.enable();
+                    }
+                };
+                breakpoint.addEventListener("change", breakpointChecker);
+                breakpointChecker();
+            }
+            createMobileTippy(e) {
+                if (this.breakpoint) {
+                    let element = document.createElement("div");
+                    element.classList.add("action-notification");
+                    if (!this.node.classList.contains("_active")) element.insertAdjacentHTML("afterbegin", `\n\t\t\t\t<p>Товар добавлен в ${this.text}</p>\n\t\t\t`); else element.insertAdjacentHTML("afterbegin", `\n\t\t\t\t<p>Товар удален из ${this.activeText}</p>\n\t\t\t`);
+                    document.querySelector(".wrapper").insertAdjacentElement("afterend", element);
+                    setTimeout((() => {
+                        element.classList.add("show");
+                        setTimeout((() => {
+                            element.classList.remove("show");
+                            element.remove();
+                        }), 2e3);
+                    }), 100);
+                }
+            }
+        }
+        const favorButtons = document.querySelectorAll(".product-card__btn-favorites");
+        favorButtons.forEach((element => {
+            let tip = new CustomTippy(element, "избранное", "избранного");
+            tip.initTippy();
+        }));
+        if (document.querySelector(".product")) {
+            let productFavorTippy = new CustomTippy(document.querySelector(".product__btn-favorites"), "избранное", "избранного");
+            productFavorTippy.initTippy();
+        }
         function isObject(obj) {
             return obj !== null && typeof obj === "object" && "constructor" in obj && obj.constructor === Object;
         }
@@ -14973,6 +15057,7 @@ PERFORMANCE OF THIS SOFTWARE.
                 observer.observe(target, config);
             }
         }));
+        if (document.querySelector(".order-success")) document.querySelector(".page__title").classList.add("order-success");
         window["FLS"] = false;
         isWebp();
         addLoadedClass();

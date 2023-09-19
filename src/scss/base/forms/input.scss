@@ -25,3 +25,64 @@ textarea {
 textarea.form__txt {
 	resize: vertical;
 }
+
+.input {
+	// .input__file
+
+	&__file {
+		opacity: 0;
+		visibility: hidden;
+		position: absolute;
+
+		&+.parsley-errors-list {
+			position: absolute;
+			bottom: -32px;
+			margin: 0;
+			left: 0;
+		}
+	}
+
+	// .input__file-button
+
+	&__file-button {
+		display: flex;
+		// align-items: center;
+		cursor: pointer;
+		min-height: 48px;
+		background: #fff;
+		border: 2px dashed rgba(146, 146, 146, 0.80);
+		border-radius: 5px;
+		padding: rem(12);
+		padding-left: rem(14);
+	}
+
+	// .input__file-icon-wrapper
+
+	&__file-icon-wrapper {}
+
+	// .input__file-icon
+
+	&__file-icon {
+		width: 16px;
+		height: 20px;
+		margin: 0px 10px 0px 0px;
+
+		use {
+			fill: #8A8A8A;
+		}
+	}
+
+	// .input__file-button-text
+
+	&__file-button-text {
+		color: rgba(0, 0, 0, 0.60);
+		font-size: 18px;
+		line-height: 22px;
+		overflow-wrap: anywhere;
+	}
+}
+
+.parsley-errors-list.filled+.input__file-button {
+	border: 2px dashed #CB2424;
+
+}

@@ -132,7 +132,15 @@
                            </svg>
                         </div>
                         <div class="form__line">
-                           <input required type="file" name="" class="form__file">
+                           <input type="file" name="file" id="input__file" class="input input__file" required>
+                           <label for="input__file" class="input__file-button">
+                              <span class="input__file-icon-wrapper">
+                                 <svg class="input__file-icon">
+                                    <use xlink:href="img/icons/icons.svg#add_file"></use>
+                                 </svg>
+                              </span>
+                              <div class="input__file-button-text">Прикрепить файл</div>
+                           </label>
                         </div>
                      </div>
                      <div class="form__col">
@@ -150,6 +158,91 @@
                      <div class="form__consent">Отправляя данные, я даю свое <a href="" class="form__consent-link">согласие на обработку перс. данных</a></div>
                   </div>
                </form>
+               <script>
+                  const input = document.querySelector('.input__file');
+                  const preview = document.querySelector('.input__file-button-text');
+                  const fileIcon = document.querySelector('.input__file-icon-wrapper');
+                  let clsBtn = clearBtnCreate();
+                  input.style.opacity = 0;
+
+                  input.addEventListener('change', insertFileName);
+                  clsBtn.addEventListener('click', fileRemove);
+
+                  function fileRemove(e) {
+                     e.preventDefault();
+                     input.value = '';
+                     clsBtn.remove();
+                     preview.textContent = `Прикрепить файл`;
+                     preview.before(fileIcon);
+                  }
+
+                  function clearBtnCreate() {
+                     let clearBtn = document.createElement('span');
+                     clearBtn.classList.add('clear-btn');
+                     clearBtn.insertAdjacentHTML(
+                        'beforeend',
+                        `<svg class="input__file-icon">
+									<use xlink:href="img/icons/icons.svg#close-modal"></use>
+								</svg>`
+                     );
+                     return clearBtn
+                  }
+
+
+                  function insertFileName() {
+                     while (preview.firstChild) {
+                        preview.removeChild(preview.firstChild);
+                     }
+
+                     const curFiles = input.files;
+                     if (curFiles.length === 0) {
+                        const para = document.createElement('p');
+                        para.textContent = 'Не выбрано ни одного файла';
+                        preview.appendChild(para);
+                     } else {
+                        fileIcon.remove();
+                        preview.before(clsBtn);
+                        const list = document.createElement('ul');
+                        preview.appendChild(list);
+                        // list.style.paddingLeft = "20px";
+                        for (const file of curFiles) {
+                           const listItem = document.createElement('li');
+                           const para = document.createElement('p');
+                           para.textContent = file.name;
+                           listItem.appendChild(para);
+                           list.appendChild(listItem);
+                        }
+                     }
+                  }
+
+						// https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types
+                  /* 						const fileTypes = [
+                                       'image/apng',
+                                       'image/bmp',
+                                       'image/gif',
+                                       'image/jpeg',
+                                       'image/pjpeg',
+                                       'image/png',
+                                       'image/svg+xml',
+                                       'image/tiff',
+                                       'image/webp',
+                                       `image/x-icon`
+                                    ];
+               	
+                                    function validFileType(file) {
+                                       return fileTypes.includes(file.type);
+                                    }
+               	
+                                    function returnFileSize(number) {
+                                       if (number < 1024) {
+                                          return number + 'bytes';
+                                       } else if (number > 1024 && number < 1048576) {
+                                          return (number / 1024).toFixed(1) + 'KB';
+                                       } else if (number > 1048576) {
+                                          return (number / 1048576).toFixed(1) + 'MB';
+                                       }
+                                    } */
+               </script>
             </div>
          </div>
       </div>

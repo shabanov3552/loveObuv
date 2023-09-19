@@ -807,7 +807,20 @@ body .simplebar-scrollbar:before {
    @media (max-width:$mobile) {
       text-align: left;
       font-size: 26px;
-      margin-bottom: rem(10);
+      margin-bottom: rem(25);
+   }
+
+   &.order-success {
+      display: flex;
+      gap: 36px;
+
+      &::after {
+         content: '';
+         width: 38px;
+         height: 30px;
+         display: block;
+         background: url(../img/icons/popup__icon.svg) center center / contain no-repeat
+      }
    }
 }
 
@@ -1114,5 +1127,25 @@ body .simplebar-scrollbar:before {
 
    &__text {
       text-align: center;
+   }
+}
+
+.action-notification {
+   position: fixed;
+   top: -150px;
+   left: 0;
+   right: 0;
+   background: #000;
+   color: #fff;
+   z-index: 500;
+   width: 300px;
+   margin: 0 auto;
+   border-radius: 10px;
+   padding: rem(10);
+   text-align: center;
+   transition: all 0.3s ease 0s;
+
+   &.show {
+      top: 100px;
    }
 }

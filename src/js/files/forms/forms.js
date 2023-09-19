@@ -22,6 +22,16 @@ export function formFieldsInit(options = { viewPass: false, autoHeight: false })
 			}
 		});
 	}
+
+	const inputs = document.querySelectorAll('.form__input,.form__txt');
+	inputs.forEach(input => {
+		if (input.value.length > 0) {
+			input.classList.add('_form-focus');
+			input.parentElement.classList.add('_form-focus');
+			if (input.parentElement.querySelector('.form__clear-svg')) input.parentElement.querySelector('.form__clear-svg').classList.add('_active');
+		}
+	})
+
 	document.body.addEventListener("input", function (e) {
 		const targetElement = e.target;
 		if ((targetElement.tagName === 'INPUT' || targetElement.tagName === 'TEXTAREA')) {

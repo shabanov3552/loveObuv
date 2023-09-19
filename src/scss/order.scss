@@ -735,8 +735,10 @@
 }
 
 .order-success {
+	// @include adaptiveValue("padding-left", 400, 0, 0, 1920, 1000, );
+	max-width: 1000px;
+	margin: 0 auto;
 	margin-top: rem(85);
-	@include adaptiveValue("padding-left", 160, 0, 1280, 1000, 1);
 
 	// .order-success__row
 

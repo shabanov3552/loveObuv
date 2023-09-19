@@ -1,7 +1,11 @@
 //<FORM>
 // Снипет (HTML):
 .form {
-	&__row {}
+	&__row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px 30px;
+	}
 
 	&__column {}
 
@@ -15,6 +19,18 @@
 				font-size: 12px;
 				line-height: 22px;
 			}
+		}
+	}
+
+	// .form__line-title
+
+	&__line-title {
+		color: #5B5B5B;
+		font-size: 12px;
+		line-height: 22px;
+
+		&+.form__row {
+			margin-top: rem(8);
 		}
 	}
 
@@ -49,6 +65,12 @@
 
 		&.parsley-error {
 			border: 2px solid #CB2424;
+		}
+	}
+
+	&__txt {
+		#bye-certificate & {
+			min-height: 88px;
 		}
 	}
 
