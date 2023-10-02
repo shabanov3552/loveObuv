@@ -3215,7 +3215,7 @@ body .simplebar-scrollbar:before {
   width: 100%;
   height: calc(100% - 123px);
   overflow: auto;
-  z-index: 4;
+  z-index: 24;
 }
 
 .footer__grid {
@@ -6783,6 +6783,11 @@ body .simplebar-scrollbar:before {
   display: -ms-flexbox;
   display: flex;
   position: relative;
+}
+
+.swiper-initialized {
+  -ms-touch-action: pan-y;
+      touch-action: pan-y;
 }
 
 .swiper-vertical .swiper-wrapper {
