@@ -33,6 +33,9 @@
 	// .order__sidebar-inner
 
 	&__sidebar-inner {
+		position: sticky;
+		top: 20px;
+
 		@media (max-width: em(1280)) {
 			position: static !important;
 			width: auto !important;

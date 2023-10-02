@@ -4703,6 +4703,11 @@ body .simplebar-scrollbar:before {
   grid-column: 2/3;
 }
 
+.order__sidebar-inner {
+  position: sticky;
+  top: 20px;
+}
+
 .order__total {
   background: #F5F5F5;
   position: relative;
