@@ -1,0 +1,147 @@
+.faq {
+	margin-top: rem(50);
+	margin-bottom: rem(130);
+	@include adaptiveValue("padding-left", 162, 0, 0, 1920, 1440);
+	// .faq__container
+
+	&__container {
+		display: grid;
+		grid-template-columns: 190px 1fr;
+		gap: 133px;
+
+		@media (max-width:$laptopL) {
+			gap: 55px;
+		}
+
+		@media (max-width:$laptop) {
+			gap: 36px;
+		}
+
+		@media (max-width:$tablet) {
+			gap: 30px;
+			grid-template-columns: 1fr;
+		}
+	}
+
+	// .faq__navigation
+
+	&__navigation {
+		display: flex;
+		flex-direction: column;
+		gap: 28px;
+		align-items: flex-start;
+
+		@media (max-width:$tablet) {
+			display: grid;
+			justify-items: start;
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	// .faq__directory
+
+	&__directory {
+		font-size: 16px;
+		line-height: 20px;
+		font-weight: 400;
+		color: #E52931;
+		text-align: left;
+
+		&._tab-active,
+		&:hover {
+			color: #000;
+		}
+	}
+
+	// .faq__content
+
+	&__content {
+		max-width: 1120px;
+	}
+
+	// .faq__body
+
+	&__body {
+		@media (max-width:$mobileSmall) {
+			margin: 0 rem(-20);
+		}
+	}
+
+	// .faq__spollers
+
+	&__spollers {}
+
+	// .faq__block
+
+	&__block {
+		border: 1px solid #B4B0AD;
+
+		&:not(:last-child) {
+			border-bottom: none;
+		}
+	}
+
+	// .faq__spoller
+
+	&__spoller {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 22px;
+		padding: rem(26);
+		padding-left: rem(38);
+		padding-right: rem(29);
+		cursor: pointer;
+
+		&._spoller-active {
+			.faq__spoller-icon {
+				transform: rotate(45deg);
+			}
+		}
+
+		@media (max-width:$mobile) {
+			padding-left: rem(18);
+			padding-right: rem(23);
+		}
+	}
+
+	// .faq__subtitle
+
+	&__subtitle {
+		font-size: 20px;
+		font-weight: 600;
+	}
+
+	// .faq__spoller-icon
+
+	&__spoller-icon {
+		transition: all 0.3s ease 0s;
+		width: 31px;
+		height: 31px;
+		flex: 0 0 31px;
+	}
+
+	// .faq__spoller-svg
+
+	&__spoller-svg {
+		width: 100%;
+		height: 100%;
+	}
+
+	// .faq__text
+
+	&__text {
+		padding-left: rem(70);
+		padding-right: rem(127);
+		padding-bottom: rem(31);
+		font-size: 18px;
+		line-height: 26px;
+		font-weight: 400;
+
+		@media (max-width:$mobile) {
+			padding: 0 rem(25);
+			padding-bottom: rem(31);
+
+		}
+	}
+}
