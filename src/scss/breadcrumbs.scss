@@ -12,6 +12,7 @@
 
 	@media (max-width:$mobile) {
 		margin-bottom: rem(10);
+		justify-content: flex-start;
 	}
 
 	// .breadcrumbs__list

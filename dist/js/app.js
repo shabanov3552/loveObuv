@@ -3797,7 +3797,7 @@
                 this._reopen = false;
                 this._selectorOpen = false;
                 this.lastFocusEl = false;
-                this._focusEl = [ "a[href]", 'input:not([disabled]):not([type="hidden"]):not([aria-hidden])', "button:not([disabled]):not([aria-hidden])", "select:not([disabled]):not([aria-hidden])", "textarea:not([disabled]):not([aria-hidden])", "area[href]", "iframe", "object", "embed", "[contenteditable]", '[tabindex]:not([tabindex^="-"])' ];
+                this._focusEl = [ 'input:not([disabled]):not([type="hidden"]):not([aria-hidden])', "textarea:not([disabled]):not([aria-hidden])", "a[href]", "button:not([disabled]):not([aria-hidden])", "select:not([disabled]):not([aria-hidden])", "area[href]", "iframe", "object", "embed", "[contenteditable]", '[tabindex]:not([tabindex^="-"])' ];
                 this.options = {
                     ...config,
                     ...options,
@@ -3988,7 +3988,10 @@
             }
             _focusTrap() {
                 const focusable = this.previousOpen.element.querySelectorAll(this._focusEl);
-                if (!this.isOpen && this.lastFocusEl) this.lastFocusEl.focus(); else focusable[0].focus();
+                if (!this.isOpen && this.lastFocusEl) this.lastFocusEl.focus(); else {
+                    let focusElement = this.targetOpen.element.querySelector("input") || focusable[0];
+                    focusElement.focus();
+                }
             }
             popupLogging(message) {
                 this.options.logging ? functions_FLS(`[Попапос]: ${message}`) : null;

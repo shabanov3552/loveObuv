@@ -131,6 +131,7 @@ body::after {
 	&__close {
 		width: 22px;
 		height: 22px;
+		flex: 0 0 22px;
 
 		&.btn-red {
 			width: 248px;
@@ -184,6 +185,7 @@ body::after {
 
 		.basket-empty & {
 			justify-content: flex-end;
+			padding: rem(25);
 		}
 
 		@media (max-width:$mobile) {
@@ -200,6 +202,10 @@ body::after {
 
 	&__title {
 		font-size: 40px;
+
+		.basket-empty & {
+			display: none;
+		}
 
 		@media (max-width:$mobile) {
 			font-size: 25px;
@@ -349,6 +355,7 @@ body::after {
 		color: #7E7E7E;
 		font-size: 20px;
 		font-weight: 400;
+		text-decoration: line-through;
 	}
 
 	// .basket-card__discont
@@ -398,6 +405,54 @@ body::after {
 	&__favor {
 		width: 19px;
 		height: 17px;
+		font-size: 0;
+
+		img {
+			&:first-child {
+				display: block;
+			}
+
+			&:last-child {
+				display: none;
+			}
+		}
+
+		&:hover {
+			img {
+				&:first-child {
+					display: none;
+				}
+
+				&:last-child {
+					display: block;
+				}
+			}
+		}
+
+		&._delete,
+		&._active {
+			img {
+				&:first-child {
+					display: none;
+				}
+
+				&:last-child {
+					display: block;
+				}
+			}
+
+			&:hover {
+				img {
+					&:first-child {
+						display: block;
+					}
+
+					&:last-child {
+						display: none;
+					}
+				}
+			}
+		}
 	}
 
 	// .basket-card__compare
@@ -648,7 +703,7 @@ body::after {
 // #region Таблица размеров
 
 .sizes {
-	max-width: 530px;
+	max-width: 600px;
 	// .sizes__top
 
 	&__top {
@@ -703,6 +758,7 @@ body::after {
 	// .sizes__item
 
 	&__item {
+		flex: 0 0 40px;
 		font-size: 18px;
 		line-height: 26px;
 		font-weight: 600;
@@ -1154,7 +1210,11 @@ body::after {
 
 	// .map-shops__phones
 
-	&__phones {}
+	&__phones {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 15px;
+	}
 
 	// .map-shops__phone
 

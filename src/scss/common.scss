@@ -824,6 +824,23 @@ body .simplebar-scrollbar:before {
    }
 }
 
+.page__text-block {
+   margin-bottom: 60px;
+
+   ul {
+      line-height: 25px;
+      padding-left: rem(25);
+
+      li {
+         list-style-type: disc;
+
+         &:not(:last-child) {
+            margin-bottom: rem(15);
+         }
+      }
+   }
+}
+
 //========================================================================================================================================================
 
 .float-line {

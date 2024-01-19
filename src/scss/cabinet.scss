@@ -406,9 +406,11 @@
 	&__btn-add {
 		padding: 0px 30px;
 		height: 48px;
+		width: 243px;
 
 		@media (max-width: 1800px) {
 			padding: 0px 15px;
+			width: auto;
 		}
 
 		@media (max-width: 768px) {

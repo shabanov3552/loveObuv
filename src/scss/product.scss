@@ -200,14 +200,22 @@
    // .product__size
 
    &__size {
+      cursor: pointer;
       font-size: 18px;
       line-height: 22px;
-      padding: rem(12) 0;
+      padding: rem(12) rem(10);
       display: block;
       width: 100%;
       text-align: center;
       border: 1px solid #CACACA;
       transition: all 0.3s ease 0s;
+
+      @media (max-width:$mobileSmall) {
+         height: 70px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+      }
 
       &:hover,
       ._active & {
@@ -420,6 +428,7 @@
    // .mini-prod__slide
 
    &__slide {
+      cursor: pointer;
       position: relative;
       background: #ffffff;
       width: 86px;
@@ -550,7 +559,7 @@
 
    &__row {
       display: grid;
-      grid-template-columns: 290px 1fr;
+      grid-template-columns: 310px 1fr;
       gap: 10px 46px;
 
       @media (max-width:$laptopL) {

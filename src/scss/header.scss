@@ -270,7 +270,6 @@
 
 	&__lvl-1st {
 		display: flex;
-		align-items: center;
 		justify-content: center;
 
 		@media (max-width:$tablet) {
@@ -282,6 +281,7 @@
 				&::after {
 					content: '';
 					width: 14px;
+					flex: 0 0 14px;
 					height: 22px;
 					display: block;
 					background: url(../img/icons/header-catalog-button.svg);
@@ -297,6 +297,9 @@
 		display: block;
 		padding: rem(18) rem(60);
 		line-height: normal;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 
 		@media (max-width:$laptopL) {
 			padding: rem(18) rem(50);
@@ -336,7 +339,6 @@
 	right: 0;
 	z-index: 20;
 
-	// top: 100%;
 	@media (max-width:$tablet) {
 		position: fixed;
 		top: 84px;
@@ -368,7 +370,7 @@
 		padding-right: rem(160);
 
 		@media (max-width:$pc) {
-			padding-right: rem(107);
+			padding-right: 0;
 		}
 
 		@media (max-width:$tablet) {
@@ -380,66 +382,6 @@
 		&._sub-menu-open {
 			display: block;
 		}
-
-		// .catalog-2nd-lvl__block_mens
-
-		&_mens {
-			.catalog-2nd-lvl__category_shoes {
-				.catalog-2nd-lvl__menu {
-					display: grid;
-					grid-template-columns: repeat(2, 1fr);
-				}
-			}
-		}
-
-		// .catalog-2nd-lvl__block_womens
-
-		&_womens {
-
-			.catalog-2nd-lvl__category_shoes {
-				.catalog-2nd-lvl__menu {
-					display: grid;
-					grid-template-columns: repeat(3, 1fr);
-
-					@media (max-width:$tablet) {
-						grid-template-columns: repeat(2, 1fr);
-					}
-				}
-			}
-		}
-
-		// .catalog-2nd-lvl__block_care
-
-		&_care {
-			.catalog-2nd-lvl__row {
-				grid-template-columns: 397px 1fr;
-
-				@media (max-width:$laptop) {
-					grid-template-columns: 1fr;
-				}
-			}
-
-			.catalog-2nd-lvl__col {
-				padding-left: rem(140);
-				column-gap: 140px;
-				flex-direction: row;
-
-				@media (max-width:$pc) {
-					padding-left: rem(25);
-				}
-
-				@media (max-width:$laptopL) {
-					column-gap: 20px;
-					justify-content: space-between;
-				}
-
-				@media (max-width:$tablet) {
-					padding: 0;
-					display: flex;
-					flex-direction: column;
-				}
-			}
-		}
 	}
 
 	// .catalog-2nd-lvl__row
@@ -450,7 +392,7 @@
 		gap: 40px;
 
 		@media (max-width:$laptop) {
-			grid-template-columns: 1fr 210px;
+			grid-template-columns: 1fr;
 		}
 
 		@media (max-width:$tablet) {
@@ -470,37 +412,25 @@
 	// .catalog-2nd-lvl__category
 
 	&__category {
-		&:not(:last-child) {
-			margin-bottom: rem(45);
+		padding: rem(41);
+		padding-bottom: rem(100);
+		display: grid;
+		grid-template-columns: 1fr auto;
+		gap: 50px;
+
+		@media (max-width:$mobile) {
+			padding: 0;
+			grid-template-columns: 1fr;
 		}
+	}
 
-		// .catalog-2nd-lvl__category_shoes
+	// .catalog-2nd-lvl__sub-category
 
-		&_shoes {
-			padding-top: rem(40);
-			padding-bottom: rem(80);
-			padding-left: rem(100);
-
-			@media (max-width:$pc) {
-				padding-left: rem(25);
-			}
-
-			@media (max-width:$tablet) {
-				padding: 0;
-			}
+	&__sub-category {
+		.catalog-2nd-lvl__menu {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
 		}
-
-		// .catalog-2nd-lvl__category_bags
-
-		&_bags {}
-
-		// .catalog-2nd-lvl__category_accessories
-
-		&_accessories {}
-
-		// .catalog-2nd-lvl__category_new
-
-		&_new {}
 	}
 
 	// .catalog-2nd-lvl__link-title
@@ -510,6 +440,7 @@
 		color: #E52931;
 		margin-bottom: rem(35);
 		display: inline-block;
+		text-align: left;
 
 		&:hover {
 			text-decoration: underline;
@@ -522,10 +453,8 @@
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-
 		gap: 20px;
 		row-gap: 35px;
-
 	}
 
 	// .catalog-2nd-lvl__link
@@ -536,30 +465,67 @@
 		color: #104C9E;
 		display: inline-block;
 
-
 		&:hover {
 			text-decoration: underline;
 		}
+	}
 
-		// .catalog-2nd-lvl__link_sale
+	// .catalog-2nd-lvl__spollers
 
-		&_sale {
-			font-size: 30px;
+	&__spollers {}
+
+	// .catalog-2nd-lvl__spollers-item
+
+	&__spollers-item {
+		&~.catalog-2nd-lvl__spollers-item {
+			margin-top: 35px;
+		}
+
+		.catalog-2nd-lvl__link-title {
+			margin-bottom: 0;
+			transition: all 0.3s ease 0s;
+			position: relative;
+			width: 100%;
+			padding-right: rem(50);
+
+			&::after,
+			&::before {
+				content: '';
+				position: absolute;
+				height: 3px;
+				width: 20px;
+				background: #E52931;
+				display: block;
+				right: 0;
+				top: 50%;
+				transition: all 0.3s ease 0s;
+			}
+
+			&::before {
+				transform: translate(-12px, -50%) rotate(45deg);
+			}
+
+			&::after {
+				transform: translate(0, -50%) rotate(-45deg);
+			}
+
+			&._spoller-active {
+				margin-bottom: rem(35);
+
+				&::before {
+					transform: translate(-12px, -50%) rotate(-45deg);
+				}
+
+				&::after {
+					transform: translate(0, -50%) rotate(45deg);
+				}
+			}
 		}
 	}
 
-	// .catalog-2nd-lvl__col
+	// .catalog-2nd-lvl__spollers-body
 
-	&__col {
-		padding-top: rem(40);
-		padding-bottom: rem(80);
-		display: flex;
-		flex-direction: column;
-
-		@media (max-width:$tablet) {
-			padding: 0;
-		}
-	}
+	&__spollers-body {}
 }
 
 .menu-banner {

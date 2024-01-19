@@ -69,11 +69,11 @@ class Popup {
 
 		this.lastFocusEl = false;
 		this._focusEl = [
-			'a[href]',
 			'input:not([disabled]):not([type="hidden"]):not([aria-hidden])',
+			'textarea:not([disabled]):not([aria-hidden])',
+			'a[href]',
 			'button:not([disabled]):not([aria-hidden])',
 			'select:not([disabled]):not([aria-hidden])',
-			'textarea:not([disabled]):not([aria-hidden])',
 			'area[href]',
 			'iframe',
 			'object',
@@ -355,7 +355,8 @@ class Popup {
 		if (!this.isOpen && this.lastFocusEl) {
 			this.lastFocusEl.focus();
 		} else {
-			focusable[0].focus();
+			let focusElement = this.targetOpen.element.querySelector('input') || focusable[0];
+			focusElement.focus();
 		}
 	}
 	// Функция вывода в консоль
