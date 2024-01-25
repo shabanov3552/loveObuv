@@ -169,6 +169,13 @@
 
          .main-page-links__link {
             background: #114E9B;
+            grid-column: 2/3;
+            grid-row: 1/2;
+         }
+
+         .main-page-links__image-ibg {
+            grid-column: 1/2;
+            grid-row: 1/2;
          }
       }
    }

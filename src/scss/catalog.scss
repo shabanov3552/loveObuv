@@ -528,9 +528,14 @@
 
 		.checkbox {
 			position: relative;
+			padding: rem(7) 0;
 
-			&:not(:last-child) {
-				padding-bottom: em(14);
+			&:first-child {
+				padding-top: 0;
+			}
+
+			&:last-child {
+				padding-bottom: 0;
 			}
 		}
 	}

@@ -149,7 +149,7 @@ function initSliders() {
 						320: {
 							slidesPerView: 1,
 						},
-						375: {
+						480: {
 							slidesPerView: 2,
 						},
 						768: {
@@ -230,7 +230,7 @@ function initSliders() {
 							slidesPerView: 1,
 							spaceBetween: 20,
 						},
-						375: {
+						480: {
 							slidesPerView: 2,
 							spaceBetween: 20,
 						},

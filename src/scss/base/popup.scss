@@ -123,6 +123,10 @@ body::after {
 
 		.basket-empty & {
 			max-width: 336px;
+
+			@media (max-width:$mobileSmall) {
+				max-width: 100%;
+			}
 		}
 	}
 
@@ -195,6 +199,13 @@ body::after {
 		@media (max-width: em(679.98)) {
 			padding-top: rem(13);
 			padding-bottom: rem(21);
+		}
+
+		@media (max-width:$mobileSmall) {
+			#bye-certificate & {
+				padding-right: rem(15);
+				padding-left: rem(15);
+			}
 		}
 	}
 

@@ -541,7 +541,8 @@
 		z-index: 1;
 
 		img {
-			object-position: top right;
+			object-position: top left;
+			object-fit: contain;
 		}
 	}
 
