@@ -305,7 +305,18 @@
 			.order__block-title {
 				&::before {
 					content: url('@img/icons/order-addres.svg');
+				}
+			}
 
+			.order__line {
+				width: 100%;
+
+				textarea {
+					resize: vertical;
+
+					&::-webkit-scrollbar {
+						display: none;
+					}
 				}
 			}
 
@@ -392,6 +403,10 @@
 
 	&__col {
 		flex: 0 1 50%;
+
+		&.empty {
+			display: none;
+		}
 
 		@media (max-width:$mobile) {
 			&:first-child {

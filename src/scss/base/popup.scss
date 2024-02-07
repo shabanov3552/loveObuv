@@ -1052,7 +1052,6 @@ body::after {
 		display: grid;
 		grid-template-columns: 85px 1fr;
 		gap: 11px;
-		align-items: center;
 
 		&:not(:last-child) {
 			margin-bottom: rem(7);
@@ -1089,7 +1088,16 @@ body::after {
 
 	// .search-form__prices
 
-	&__prices {}
+	&__prices {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		align-items: end;
+
+		@media (max-width:$mobileMiddle) {
+			grid-template-columns: 1fr;
+			gap: 5px;
+		}
+	}
 
 	// .search-form__price
 
@@ -1097,6 +1105,25 @@ body::after {
 		font-size: 20px;
 		font-weight: 600;
 		line-height: 24px;
+	}
+
+	// .search-form__price-old
+
+	&__price-old {
+		font-weight: 600;
+		font-size: 16px;
+		line-height: 20px;
+		color: rgba(0, 0, 0, 0.496476);
+		text-decoration: line-through;
+	}
+
+	// .search-form__price-discount
+
+	&__price-discount {
+		color: #E52931;
+		font-size: 16px;
+		font-weight: 700;
+		line-height: normal;
 	}
 
 	// .search-form__bottom
