@@ -463,10 +463,29 @@
 		font-size: 18px;
 		line-height: 18px;
 		color: #104C9E;
-		display: inline-block;
+		display: block;
+
+		img {
+			margin-left: rem(10);
+		}
 
 		&:hover {
 			text-decoration: underline;
+		}
+
+		// .catalog-2nd-lvl__link_new
+
+		&_new {
+			margin-top: rem(60);
+			font-size: 30px;
+			color: #E52931;
+		}
+
+		// .catalog-2nd-lvl__link_sale
+
+		&_sale {
+			font-size: 30px;
+			margin-top: rem(60);
 		}
 	}
 
@@ -529,9 +548,9 @@
 }
 
 .menu-banner {
-	height: 100%;
-	padding-bottom: rem(50);
+	height: 440px;
 	position: relative;
+
 	// .menu-banner__image-ibg
 
 	&__image-ibg {
